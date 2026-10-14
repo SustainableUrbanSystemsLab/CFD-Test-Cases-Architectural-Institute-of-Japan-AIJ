@@ -1,0 +1,10845 @@
+{
+ "schema_version": "1.0.0",
+ "generated_from": "4fb5e6e9093d5b925f977d4e0502d8c881fec52d",
+ "generated_at": "2026-10-14T03:54:23+00:00",
+ "licence": "CC BY 4.0",
+ "case": "C",
+ "title": "Case C — 3 × 3 block array",
+ "points_source": "CaseC_cleaned/RS_caseC.csv",
+ "units": {
+  "length": "m (model scale)",
+  "velocity": "m/s"
+ },
+ "frame": {
+  "origin": "array centre on the ground plane (centre of the middle block)",
+  "x": "+x streamwise at WD = 0 (checked three ways on the data: y -> -y is a symmetry, the x <= -0.25 band is faster than x >= +0.25 in every configuration, and the regression slope of Vs is most negative within 0.8-4.3 deg of +x)",
+  "y": "+y lateral",
+  "z": "+z up; all points at z = 0.02",
+  "wind_direction_rotation": "In the CSV's own frame WD rotates the wind from +x TOWARD -y (the WD = 45 field is mirror-symmetric about y = -x to within the experiment's repeatability, 0.10-0.13 m/s, and not about y = +x, 0.5-0.8 m/s). Figure 3 of the data paper draws the fan rotating toward +y. The two disagree by a y-sign flip; this release keeps the CSV frame, which is the frame the point coordinates live in. The disagreement is invisible at WD = 0.",
+  "lateral_sign_applied": 1,
+  "coordinate_scale_applied": 1.0
+ },
+ "columns": [
+  "point_id",
+  "config",
+  "instrument",
+  "wind_direction_deg",
+  "x",
+  "y",
+  "z",
+  "Vs"
+ ],
+ "column_meaning": {
+  "point_id": "the tunnel's own measurement point number",
+  "config": "configuration key: 'default', Case C centre building '0D'/'1D'/'2D', Case E state 'bc' (before) / 'ac' (after construction)",
+  "instrument": "'split_fibre' (vector components) or 'thermistor' (omnidirectional scalar speed)",
+  "wind_direction_deg": "AIJ wind direction in degrees; 0 is the case's reference direction (see frame)",
+  "x": "m, case frame",
+  "y": "m, case frame",
+  "z": "m above ground, case frame",
+  "Vs": "m/s, mean omnidirectional scalar wind speed (thermistor); Case D also lists |U| of the split-fibre probe under Vs for its 33 vector points"
+ },
+ "n": 1080,
+ "points": [
+  {
+   "point_id": 63,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.3,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.75
+  },
+  {
+   "point_id": 54,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.3,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 3.08
+  },
+  {
+   "point_id": 45,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.3,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 2.67
+  },
+  {
+   "point_id": 31,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.3,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.67
+  },
+  {
+   "point_id": 32,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.3,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.91
+  },
+  {
+   "point_id": 33,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.3,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 2.6
+  },
+  {
+   "point_id": 66,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 1.08
+  },
+  {
+   "point_id": 62,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.56
+  },
+  {
+   "point_id": 53,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 2.74
+  },
+  {
+   "point_id": 44,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 2.55
+  },
+  {
+   "point_id": 22,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.37
+  },
+  {
+   "point_id": 23,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 0.51
+  },
+  {
+   "point_id": 24,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 0.73
+  },
+  {
+   "point_id": 25,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 0.73
+  },
+  {
+   "point_id": 26,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 1.63
+  },
+  {
+   "point_id": 27,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.43
+  },
+  {
+   "point_id": 28,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.58
+  },
+  {
+   "point_id": 29,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 2.4
+  },
+  {
+   "point_id": 30,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.23
+  },
+  {
+   "point_id": 65,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 1.22
+  },
+  {
+   "point_id": 61,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.23
+  },
+  {
+   "point_id": 52,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 2.44
+  },
+  {
+   "point_id": 43,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 2.39
+  },
+  {
+   "point_id": 13,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.62
+  },
+  {
+   "point_id": 14,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 0.92
+  },
+  {
+   "point_id": 15,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 1.11
+  },
+  {
+   "point_id": 16,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 1.19
+  },
+  {
+   "point_id": 17,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 1.68
+  },
+  {
+   "point_id": 18,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.25
+  },
+  {
+   "point_id": 19,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.33
+  },
+  {
+   "point_id": 20,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 2.11
+  },
+  {
+   "point_id": 21,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.25
+  },
+  {
+   "point_id": 64,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 1.35
+  },
+  {
+   "point_id": 60,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.97
+  },
+  {
+   "point_id": 51,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 2.23
+  },
+  {
+   "point_id": 42,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 2.14
+  },
+  {
+   "point_id": 4,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.58
+  },
+  {
+   "point_id": 5,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 0.94
+  },
+  {
+   "point_id": 6,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 1.08
+  },
+  {
+   "point_id": 7,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 0.96
+  },
+  {
+   "point_id": 8,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 1.53
+  },
+  {
+   "point_id": 9,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.08
+  },
+  {
+   "point_id": 10,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.14
+  },
+  {
+   "point_id": 11,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.88
+  },
+  {
+   "point_id": 12,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.33
+  },
+  {
+   "point_id": 59,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.1,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.79
+  },
+  {
+   "point_id": 50,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.1,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 2.02
+  },
+  {
+   "point_id": 41,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.1,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.85
+  },
+  {
+   "point_id": 103,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.1,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.94
+  },
+  {
+   "point_id": 112,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.1,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.01
+  },
+  {
+   "point_id": 121,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.1,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.68
+  },
+  {
+   "point_id": 58,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.05,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.4
+  },
+  {
+   "point_id": 49,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.05,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.85
+  },
+  {
+   "point_id": 40,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.05,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.69
+  },
+  {
+   "point_id": 104,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.05,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.49
+  },
+  {
+   "point_id": 113,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.05,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.6
+  },
+  {
+   "point_id": 122,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.05,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.3
+  },
+  {
+   "point_id": 57,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.0,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.24
+  },
+  {
+   "point_id": 48,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.0,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.52
+  },
+  {
+   "point_id": 39,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.0,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.52
+  },
+  {
+   "point_id": 105,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.0,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.47
+  },
+  {
+   "point_id": 114,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.0,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.44
+  },
+  {
+   "point_id": 123,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.0,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.2
+  },
+  {
+   "point_id": 56,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.05,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.2
+  },
+  {
+   "point_id": 47,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.05,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.36
+  },
+  {
+   "point_id": 38,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.05,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.37
+  },
+  {
+   "point_id": 106,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.05,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.29
+  },
+  {
+   "point_id": 115,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.05,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.52
+  },
+  {
+   "point_id": 124,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.05,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.29
+  },
+  {
+   "point_id": 69,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.1,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.39
+  },
+  {
+   "point_id": 68,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.1,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.48
+  },
+  {
+   "point_id": 67,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.1,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.38
+  },
+  {
+   "point_id": 107,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.1,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.15
+  },
+  {
+   "point_id": 116,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.1,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.31
+  },
+  {
+   "point_id": 125,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.1,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.39
+  },
+  {
+   "point_id": 78,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 1.23
+  },
+  {
+   "point_id": 77,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.53
+  },
+  {
+   "point_id": 76,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.54
+  },
+  {
+   "point_id": 75,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.35
+  },
+  {
+   "point_id": 74,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 0.98
+  },
+  {
+   "point_id": 73,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 0.85
+  },
+  {
+   "point_id": 72,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 0.83
+  },
+  {
+   "point_id": 71,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 0.75
+  },
+  {
+   "point_id": 70,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 1.08
+  },
+  {
+   "point_id": 108,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.27
+  },
+  {
+   "point_id": 117,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.48
+  },
+  {
+   "point_id": 126,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.43
+  },
+  {
+   "point_id": 130,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.16
+  },
+  {
+   "point_id": 87,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 1.3
+  },
+  {
+   "point_id": 86,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.53
+  },
+  {
+   "point_id": 85,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.51
+  },
+  {
+   "point_id": 84,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.55
+  },
+  {
+   "point_id": 83,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.18
+  },
+  {
+   "point_id": 82,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 1.29
+  },
+  {
+   "point_id": 81,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 0.95
+  },
+  {
+   "point_id": 80,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 0.93
+  },
+  {
+   "point_id": 79,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 1.24
+  },
+  {
+   "point_id": 109,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.46
+  },
+  {
+   "point_id": 118,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.53
+  },
+  {
+   "point_id": 127,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.67
+  },
+  {
+   "point_id": 131,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.25
+  },
+  {
+   "point_id": 96,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 1.17
+  },
+  {
+   "point_id": 95,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.6
+  },
+  {
+   "point_id": 94,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.72
+  },
+  {
+   "point_id": 93,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.71
+  },
+  {
+   "point_id": 92,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.65
+  },
+  {
+   "point_id": 91,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 1.18
+  },
+  {
+   "point_id": 90,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 0.86
+  },
+  {
+   "point_id": 89,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 1.05
+  },
+  {
+   "point_id": 88,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 1.53
+  },
+  {
+   "point_id": 110,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.75
+  },
+  {
+   "point_id": 119,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.69
+  },
+  {
+   "point_id": 128,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.63
+  },
+  {
+   "point_id": 132,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.22
+  },
+  {
+   "point_id": 99,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.3,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.74
+  },
+  {
+   "point_id": 98,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.3,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.87
+  },
+  {
+   "point_id": 97,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.3,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 2.12
+  },
+  {
+   "point_id": 111,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.3,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.29
+  },
+  {
+   "point_id": 120,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.3,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.99
+  },
+  {
+   "point_id": 129,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.3,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.83
+  },
+  {
+   "point_id": 63,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.3,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.91
+  },
+  {
+   "point_id": 54,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.3,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 3.0
+  },
+  {
+   "point_id": 45,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.3,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 2.35
+  },
+  {
+   "point_id": 31,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.3,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.49
+  },
+  {
+   "point_id": 32,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.3,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.86
+  },
+  {
+   "point_id": 33,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.3,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 2.68
+  },
+  {
+   "point_id": 66,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 1.13
+  },
+  {
+   "point_id": 62,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.77
+  },
+  {
+   "point_id": 53,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 2.69
+  },
+  {
+   "point_id": 44,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 2.17
+  },
+  {
+   "point_id": 22,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.12
+  },
+  {
+   "point_id": 23,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 0.91
+  },
+  {
+   "point_id": 24,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 0.93
+  },
+  {
+   "point_id": 25,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 0.96
+  },
+  {
+   "point_id": 26,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 1.27
+  },
+  {
+   "point_id": 27,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.16
+  },
+  {
+   "point_id": 28,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.45
+  },
+  {
+   "point_id": 29,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 2.45
+  },
+  {
+   "point_id": 30,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.35
+  },
+  {
+   "point_id": 65,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 1.39
+  },
+  {
+   "point_id": 61,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.49
+  },
+  {
+   "point_id": 52,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 2.37
+  },
+  {
+   "point_id": 43,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.92
+  },
+  {
+   "point_id": 13,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.25
+  },
+  {
+   "point_id": 14,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 1.2
+  },
+  {
+   "point_id": 15,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 1.29
+  },
+  {
+   "point_id": 16,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 1.29
+  },
+  {
+   "point_id": 17,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 1.23
+  },
+  {
+   "point_id": 18,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.97
+  },
+  {
+   "point_id": 19,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.24
+  },
+  {
+   "point_id": 20,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 2.23
+  },
+  {
+   "point_id": 21,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.45
+  },
+  {
+   "point_id": 64,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 1.54
+  },
+  {
+   "point_id": 60,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.21
+  },
+  {
+   "point_id": 51,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 2.18
+  },
+  {
+   "point_id": 42,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.69
+  },
+  {
+   "point_id": 4,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.36
+  },
+  {
+   "point_id": 5,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 1.12
+  },
+  {
+   "point_id": 6,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 1.35
+  },
+  {
+   "point_id": 7,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 1.15
+  },
+  {
+   "point_id": 8,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 1.18
+  },
+  {
+   "point_id": 9,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.74
+  },
+  {
+   "point_id": 10,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.08
+  },
+  {
+   "point_id": 11,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 2.05
+  },
+  {
+   "point_id": 12,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.49
+  },
+  {
+   "point_id": 59,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.1,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.03
+  },
+  {
+   "point_id": 50,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.1,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 2.02
+  },
+  {
+   "point_id": 41,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.1,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.62
+  },
+  {
+   "point_id": 103,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.1,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.75
+  },
+  {
+   "point_id": 112,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.1,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.99
+  },
+  {
+   "point_id": 121,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.1,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.94
+  },
+  {
+   "point_id": 58,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.05,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.81
+  },
+  {
+   "point_id": 49,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.05,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.94
+  },
+  {
+   "point_id": 40,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.05,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.44
+  },
+  {
+   "point_id": 104,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.05,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.33
+  },
+  {
+   "point_id": 113,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.05,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.66
+  },
+  {
+   "point_id": 122,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.05,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.73
+  },
+  {
+   "point_id": 57,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.0,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.61
+  },
+  {
+   "point_id": 48,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.0,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.61
+  },
+  {
+   "point_id": 39,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.0,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.36
+  },
+  {
+   "point_id": 105,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.0,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.32
+  },
+  {
+   "point_id": 114,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.0,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.51
+  },
+  {
+   "point_id": 123,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.0,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.55
+  },
+  {
+   "point_id": 56,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.05,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.5
+  },
+  {
+   "point_id": 47,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.05,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.39
+  },
+  {
+   "point_id": 38,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.05,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.25
+  },
+  {
+   "point_id": 106,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.05,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.24
+  },
+  {
+   "point_id": 115,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.05,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.58
+  },
+  {
+   "point_id": 124,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.05,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.5
+  },
+  {
+   "point_id": 69,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.1,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.66
+  },
+  {
+   "point_id": 68,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.1,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.49
+  },
+  {
+   "point_id": 67,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.1,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.36
+  },
+  {
+   "point_id": 107,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.1,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.24
+  },
+  {
+   "point_id": 116,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.1,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.44
+  },
+  {
+   "point_id": 125,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.1,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.53
+  },
+  {
+   "point_id": 78,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 1.17
+  },
+  {
+   "point_id": 77,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.69
+  },
+  {
+   "point_id": 76,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.55
+  },
+  {
+   "point_id": 75,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.42
+  },
+  {
+   "point_id": 74,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 0.88
+  },
+  {
+   "point_id": 73,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 0.85
+  },
+  {
+   "point_id": 72,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 0.93
+  },
+  {
+   "point_id": 71,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 0.66
+  },
+  {
+   "point_id": 70,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 1.09
+  },
+  {
+   "point_id": 108,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.42
+  },
+  {
+   "point_id": 117,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.59
+  },
+  {
+   "point_id": 126,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.52
+  },
+  {
+   "point_id": 130,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.18
+  },
+  {
+   "point_id": 87,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 1.25
+  },
+  {
+   "point_id": 86,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.62
+  },
+  {
+   "point_id": 85,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.51
+  },
+  {
+   "point_id": 84,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.56
+  },
+  {
+   "point_id": 83,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.11
+  },
+  {
+   "point_id": 82,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 1.31
+  },
+  {
+   "point_id": 81,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 1.12
+  },
+  {
+   "point_id": 80,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 0.99
+  },
+  {
+   "point_id": 79,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 1.19
+  },
+  {
+   "point_id": 109,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.56
+  },
+  {
+   "point_id": 118,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.65
+  },
+  {
+   "point_id": 127,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.69
+  },
+  {
+   "point_id": 131,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.28
+  },
+  {
+   "point_id": 96,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 1.24
+  },
+  {
+   "point_id": 95,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.62
+  },
+  {
+   "point_id": 94,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.68
+  },
+  {
+   "point_id": 93,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.48
+  },
+  {
+   "point_id": 92,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.29
+  },
+  {
+   "point_id": 91,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 1.11
+  },
+  {
+   "point_id": 90,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 1.03
+  },
+  {
+   "point_id": 89,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 1.02
+  },
+  {
+   "point_id": 88,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 1.11
+  },
+  {
+   "point_id": 110,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.62
+  },
+  {
+   "point_id": 119,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.65
+  },
+  {
+   "point_id": 128,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.69
+  },
+  {
+   "point_id": 132,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.4
+  },
+  {
+   "point_id": 99,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.3,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.57
+  },
+  {
+   "point_id": 98,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.3,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.63
+  },
+  {
+   "point_id": 97,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.3,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.5
+  },
+  {
+   "point_id": 111,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.3,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.62
+  },
+  {
+   "point_id": 120,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.3,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.74
+  },
+  {
+   "point_id": 129,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.3,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.69
+  },
+  {
+   "point_id": 63,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.3,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.64
+  },
+  {
+   "point_id": 54,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.3,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 2.32
+  },
+  {
+   "point_id": 45,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.3,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.75
+  },
+  {
+   "point_id": 31,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.3,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.74
+  },
+  {
+   "point_id": 32,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.3,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.2
+  },
+  {
+   "point_id": 33,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.3,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 2.53
+  },
+  {
+   "point_id": 66,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 2.37
+  },
+  {
+   "point_id": 62,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.58
+  },
+  {
+   "point_id": 53,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 2.15
+  },
+  {
+   "point_id": 44,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.89
+  },
+  {
+   "point_id": 22,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 2.17
+  },
+  {
+   "point_id": 23,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 2.26
+  },
+  {
+   "point_id": 24,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 2.02
+  },
+  {
+   "point_id": 25,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 2.27
+  },
+  {
+   "point_id": 26,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 2.06
+  },
+  {
+   "point_id": 27,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.79
+  },
+  {
+   "point_id": 28,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.11
+  },
+  {
+   "point_id": 29,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 2.52
+  },
+  {
+   "point_id": 30,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.25,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 2.33
+  },
+  {
+   "point_id": 65,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 2.31
+  },
+  {
+   "point_id": 61,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.35
+  },
+  {
+   "point_id": 52,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 2.14
+  },
+  {
+   "point_id": 43,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 2.42
+  },
+  {
+   "point_id": 13,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 2.77
+  },
+  {
+   "point_id": 14,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 2.68
+  },
+  {
+   "point_id": 15,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 2.38
+  },
+  {
+   "point_id": 16,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 2.49
+  },
+  {
+   "point_id": 17,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 2.65
+  },
+  {
+   "point_id": 18,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.17
+  },
+  {
+   "point_id": 19,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.05
+  },
+  {
+   "point_id": 20,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 2.38
+  },
+  {
+   "point_id": 21,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.2,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 2.44
+  },
+  {
+   "point_id": 64,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 1.82
+  },
+  {
+   "point_id": 60,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.88
+  },
+  {
+   "point_id": 51,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.84
+  },
+  {
+   "point_id": 42,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 2.34
+  },
+  {
+   "point_id": 4,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 2.82
+  },
+  {
+   "point_id": 5,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 2.3
+  },
+  {
+   "point_id": 6,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 2.04
+  },
+  {
+   "point_id": 7,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 2.32
+  },
+  {
+   "point_id": 8,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 2.74
+  },
+  {
+   "point_id": 9,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.29
+  },
+  {
+   "point_id": 10,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.0
+  },
+  {
+   "point_id": 11,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.94
+  },
+  {
+   "point_id": 12,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.15,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.99
+  },
+  {
+   "point_id": 59,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.1,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.61
+  },
+  {
+   "point_id": 50,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.1,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.69
+  },
+  {
+   "point_id": 41,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.1,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 2.12
+  },
+  {
+   "point_id": 103,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.1,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.23
+  },
+  {
+   "point_id": 112,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.1,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.58
+  },
+  {
+   "point_id": 121,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.1,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.48
+  },
+  {
+   "point_id": 58,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.05,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.57
+  },
+  {
+   "point_id": 49,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.05,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.67
+  },
+  {
+   "point_id": 40,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.05,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.7
+  },
+  {
+   "point_id": 104,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.05,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.57
+  },
+  {
+   "point_id": 113,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.05,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.39
+  },
+  {
+   "point_id": 122,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": -0.05,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.45
+  },
+  {
+   "point_id": 57,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.0,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.32
+  },
+  {
+   "point_id": 48,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.0,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.38
+  },
+  {
+   "point_id": 39,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.0,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.56
+  },
+  {
+   "point_id": 105,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.0,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.59
+  },
+  {
+   "point_id": 114,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.0,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.33
+  },
+  {
+   "point_id": 123,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.0,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.29
+  },
+  {
+   "point_id": 56,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.05,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.22
+  },
+  {
+   "point_id": 47,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.05,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.38
+  },
+  {
+   "point_id": 38,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.05,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.62
+  },
+  {
+   "point_id": 106,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.05,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.58
+  },
+  {
+   "point_id": 115,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.05,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.49
+  },
+  {
+   "point_id": 124,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.05,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.22
+  },
+  {
+   "point_id": 69,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.1,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.2
+  },
+  {
+   "point_id": 68,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.1,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.39
+  },
+  {
+   "point_id": 67,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.1,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.68
+  },
+  {
+   "point_id": 107,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.1,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.55
+  },
+  {
+   "point_id": 116,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.1,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.31
+  },
+  {
+   "point_id": 125,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.1,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.24
+  },
+  {
+   "point_id": 78,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 1.07
+  },
+  {
+   "point_id": 77,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.26
+  },
+  {
+   "point_id": 76,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.47
+  },
+  {
+   "point_id": 75,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.68
+  },
+  {
+   "point_id": 74,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.59
+  },
+  {
+   "point_id": 73,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 1.05
+  },
+  {
+   "point_id": 72,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 1.3
+  },
+  {
+   "point_id": 71,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 0.99
+  },
+  {
+   "point_id": 70,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 1.69
+  },
+  {
+   "point_id": 108,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.6
+  },
+  {
+   "point_id": 117,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.45
+  },
+  {
+   "point_id": 126,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.18
+  },
+  {
+   "point_id": 130,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.15,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.08
+  },
+  {
+   "point_id": 87,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 1.13
+  },
+  {
+   "point_id": 86,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.24
+  },
+  {
+   "point_id": 85,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.39
+  },
+  {
+   "point_id": 84,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.7
+  },
+  {
+   "point_id": 83,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.52
+  },
+  {
+   "point_id": 82,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 1.43
+  },
+  {
+   "point_id": 81,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 1.34
+  },
+  {
+   "point_id": 80,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 1.19
+  },
+  {
+   "point_id": 79,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 1.58
+  },
+  {
+   "point_id": 109,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.64
+  },
+  {
+   "point_id": 118,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.43
+  },
+  {
+   "point_id": 127,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.49
+  },
+  {
+   "point_id": 131,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.2,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.3
+  },
+  {
+   "point_id": 96,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 1.34
+  },
+  {
+   "point_id": 95,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.49
+  },
+  {
+   "point_id": 94,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.58
+  },
+  {
+   "point_id": 93,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.55
+  },
+  {
+   "point_id": 92,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.39
+  },
+  {
+   "point_id": 91,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 1.15
+  },
+  {
+   "point_id": 90,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 1.17
+  },
+  {
+   "point_id": 89,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 1.11
+  },
+  {
+   "point_id": 88,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 1.22
+  },
+  {
+   "point_id": 110,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.52
+  },
+  {
+   "point_id": 119,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.48
+  },
+  {
+   "point_id": 128,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.55
+  },
+  {
+   "point_id": 132,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.25,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.54
+  },
+  {
+   "point_id": 99,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.3,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.57
+  },
+  {
+   "point_id": 98,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.3,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.56
+  },
+  {
+   "point_id": 97,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.3,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.61
+  },
+  {
+   "point_id": 111,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.3,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.55
+  },
+  {
+   "point_id": 120,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.3,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.53
+  },
+  {
+   "point_id": 129,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 0.0,
+   "x": 0.3,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.64
+  },
+  {
+   "point_id": 63,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.3,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 3.41
+  },
+  {
+   "point_id": 54,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.3,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 2.76
+  },
+  {
+   "point_id": 45,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.3,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.65
+  },
+  {
+   "point_id": 31,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.3,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.88
+  },
+  {
+   "point_id": 32,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.3,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.4
+  },
+  {
+   "point_id": 33,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.3,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.83
+  },
+  {
+   "point_id": 66,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 2.11
+  },
+  {
+   "point_id": 62,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 3.15
+  },
+  {
+   "point_id": 53,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 2.36
+  },
+  {
+   "point_id": 44,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.61
+  },
+  {
+   "point_id": 22,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 0.96
+  },
+  {
+   "point_id": 23,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 0.79
+  },
+  {
+   "point_id": 24,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 0.88
+  },
+  {
+   "point_id": 25,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 0.77
+  },
+  {
+   "point_id": 26,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 2.95
+  },
+  {
+   "point_id": 27,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.54
+  },
+  {
+   "point_id": 28,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.91
+  },
+  {
+   "point_id": 29,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.48
+  },
+  {
+   "point_id": 30,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.25
+  },
+  {
+   "point_id": 65,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 2.59
+  },
+  {
+   "point_id": 61,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.65
+  },
+  {
+   "point_id": 52,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 2.0
+  },
+  {
+   "point_id": 43,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.57
+  },
+  {
+   "point_id": 13,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.29
+  },
+  {
+   "point_id": 14,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 1.23
+  },
+  {
+   "point_id": 15,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 1.25
+  },
+  {
+   "point_id": 16,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 1.51
+  },
+  {
+   "point_id": 17,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 2.89
+  },
+  {
+   "point_id": 18,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.3
+  },
+  {
+   "point_id": 19,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.76
+  },
+  {
+   "point_id": 20,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.45
+  },
+  {
+   "point_id": 21,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.32
+  },
+  {
+   "point_id": 64,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 2.41
+  },
+  {
+   "point_id": 60,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.08
+  },
+  {
+   "point_id": 51,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.74
+  },
+  {
+   "point_id": 42,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.36
+  },
+  {
+   "point_id": 4,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.31
+  },
+  {
+   "point_id": 5,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 1.34
+  },
+  {
+   "point_id": 6,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 1.47
+  },
+  {
+   "point_id": 7,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 2.08
+  },
+  {
+   "point_id": 8,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 2.79
+  },
+  {
+   "point_id": 9,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.49
+  },
+  {
+   "point_id": 10,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.19
+  },
+  {
+   "point_id": 11,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 2.1
+  },
+  {
+   "point_id": 12,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 2.1
+  },
+  {
+   "point_id": 59,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.1,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.7
+  },
+  {
+   "point_id": 50,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.1,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.48
+  },
+  {
+   "point_id": 41,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.1,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.19
+  },
+  {
+   "point_id": 103,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.1,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.77
+  },
+  {
+   "point_id": 112,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.1,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.79
+  },
+  {
+   "point_id": 121,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.1,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 2.97
+  },
+  {
+   "point_id": 58,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.05,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.58
+  },
+  {
+   "point_id": 49,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.05,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.65
+  },
+  {
+   "point_id": 40,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.05,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.33
+  },
+  {
+   "point_id": 104,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.05,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.43
+  },
+  {
+   "point_id": 113,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.05,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.66
+  },
+  {
+   "point_id": 122,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.05,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 0.8
+  },
+  {
+   "point_id": 57,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.0,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.64
+  },
+  {
+   "point_id": 48,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.0,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.51
+  },
+  {
+   "point_id": 39,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.0,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.41
+  },
+  {
+   "point_id": 105,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.0,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.63
+  },
+  {
+   "point_id": 114,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.0,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.21
+  },
+  {
+   "point_id": 123,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.0,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 0.95
+  },
+  {
+   "point_id": 56,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.05,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.88
+  },
+  {
+   "point_id": 47,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.05,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.6
+  },
+  {
+   "point_id": 38,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.05,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.3
+  },
+  {
+   "point_id": 106,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.05,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.2
+  },
+  {
+   "point_id": 115,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.05,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.29
+  },
+  {
+   "point_id": 124,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.05,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.07
+  },
+  {
+   "point_id": 69,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.1,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.11
+  },
+  {
+   "point_id": 68,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.1,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.75
+  },
+  {
+   "point_id": 67,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.1,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.44
+  },
+  {
+   "point_id": 107,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.1,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 0.98
+  },
+  {
+   "point_id": 116,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.1,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.08
+  },
+  {
+   "point_id": 125,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.1,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.13
+  },
+  {
+   "point_id": 78,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 2.61
+  },
+  {
+   "point_id": 77,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.14
+  },
+  {
+   "point_id": 76,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.76
+  },
+  {
+   "point_id": 75,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.43
+  },
+  {
+   "point_id": 74,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.1
+  },
+  {
+   "point_id": 73,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 1.07
+  },
+  {
+   "point_id": 72,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 1.08
+  },
+  {
+   "point_id": 71,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 1.0
+  },
+  {
+   "point_id": 70,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 1.11
+  },
+  {
+   "point_id": 108,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.07
+  },
+  {
+   "point_id": 117,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.28
+  },
+  {
+   "point_id": 126,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.14
+  },
+  {
+   "point_id": 130,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.24
+  },
+  {
+   "point_id": 87,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 2.33
+  },
+  {
+   "point_id": 86,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.93
+  },
+  {
+   "point_id": 85,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.69
+  },
+  {
+   "point_id": 84,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.59
+  },
+  {
+   "point_id": 83,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.24
+  },
+  {
+   "point_id": 82,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 1.39
+  },
+  {
+   "point_id": 81,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 1.06
+  },
+  {
+   "point_id": 80,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 0.92
+  },
+  {
+   "point_id": 79,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 1.06
+  },
+  {
+   "point_id": 109,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.27
+  },
+  {
+   "point_id": 118,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.29
+  },
+  {
+   "point_id": 127,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.48
+  },
+  {
+   "point_id": 131,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.18
+  },
+  {
+   "point_id": 96,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 1.57
+  },
+  {
+   "point_id": 95,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.77
+  },
+  {
+   "point_id": 94,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.75
+  },
+  {
+   "point_id": 93,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.68
+  },
+  {
+   "point_id": 92,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.67
+  },
+  {
+   "point_id": 91,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 1.42
+  },
+  {
+   "point_id": 90,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 1.1
+  },
+  {
+   "point_id": 89,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 0.97
+  },
+  {
+   "point_id": 88,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 1.04
+  },
+  {
+   "point_id": 110,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.47
+  },
+  {
+   "point_id": 119,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.58
+  },
+  {
+   "point_id": 128,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.79
+  },
+  {
+   "point_id": 132,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.85
+  },
+  {
+   "point_id": 99,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.3,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.79
+  },
+  {
+   "point_id": 98,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.3,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 2.0
+  },
+  {
+   "point_id": 97,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.3,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 2.3
+  },
+  {
+   "point_id": 111,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.3,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.9
+  },
+  {
+   "point_id": 120,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.3,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.5
+  },
+  {
+   "point_id": 129,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.3,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 3.2
+  },
+  {
+   "point_id": 63,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.3,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 3.22
+  },
+  {
+   "point_id": 54,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.3,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 2.41
+  },
+  {
+   "point_id": 45,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.3,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.67
+  },
+  {
+   "point_id": 31,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.3,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.96
+  },
+  {
+   "point_id": 32,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.3,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.44
+  },
+  {
+   "point_id": 33,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.3,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.82
+  },
+  {
+   "point_id": 66,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 2.66
+  },
+  {
+   "point_id": 62,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.82
+  },
+  {
+   "point_id": 53,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.88
+  },
+  {
+   "point_id": 44,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.53
+  },
+  {
+   "point_id": 22,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.19
+  },
+  {
+   "point_id": 23,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 0.88
+  },
+  {
+   "point_id": 24,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 0.84
+  },
+  {
+   "point_id": 25,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 0.74
+  },
+  {
+   "point_id": 26,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 2.68
+  },
+  {
+   "point_id": 27,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.46
+  },
+  {
+   "point_id": 28,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.86
+  },
+  {
+   "point_id": 29,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.45
+  },
+  {
+   "point_id": 30,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.16
+  },
+  {
+   "point_id": 65,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 2.97
+  },
+  {
+   "point_id": 61,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.33
+  },
+  {
+   "point_id": 52,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.64
+  },
+  {
+   "point_id": 43,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.52
+  },
+  {
+   "point_id": 13,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.32
+  },
+  {
+   "point_id": 14,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 1.08
+  },
+  {
+   "point_id": 15,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 0.93
+  },
+  {
+   "point_id": 16,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 1.37
+  },
+  {
+   "point_id": 17,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 2.6
+  },
+  {
+   "point_id": 18,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.12
+  },
+  {
+   "point_id": 19,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.63
+  },
+  {
+   "point_id": 20,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.44
+  },
+  {
+   "point_id": 21,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.28
+  },
+  {
+   "point_id": 64,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 2.47
+  },
+  {
+   "point_id": 60,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.1
+  },
+  {
+   "point_id": 51,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.92
+  },
+  {
+   "point_id": 42,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.84
+  },
+  {
+   "point_id": 4,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.93
+  },
+  {
+   "point_id": 5,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 2.24
+  },
+  {
+   "point_id": 6,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 2.12
+  },
+  {
+   "point_id": 7,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 2.24
+  },
+  {
+   "point_id": 8,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 2.16
+  },
+  {
+   "point_id": 9,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.07
+  },
+  {
+   "point_id": 10,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.01
+  },
+  {
+   "point_id": 11,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 2.05
+  },
+  {
+   "point_id": 12,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 2.11
+  },
+  {
+   "point_id": 59,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.1,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.05
+  },
+  {
+   "point_id": 50,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.1,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 2.27
+  },
+  {
+   "point_id": 41,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.1,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 2.48
+  },
+  {
+   "point_id": 103,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.1,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.29
+  },
+  {
+   "point_id": 112,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.1,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.68
+  },
+  {
+   "point_id": 121,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.1,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 3.21
+  },
+  {
+   "point_id": 58,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.05,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.11
+  },
+  {
+   "point_id": 49,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.05,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.94
+  },
+  {
+   "point_id": 40,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.05,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.0
+  },
+  {
+   "point_id": 104,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.05,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.46
+  },
+  {
+   "point_id": 113,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.05,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.18
+  },
+  {
+   "point_id": 122,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.05,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.17
+  },
+  {
+   "point_id": 57,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.0,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.0
+  },
+  {
+   "point_id": 48,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.0,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.54
+  },
+  {
+   "point_id": 39,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.0,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.05
+  },
+  {
+   "point_id": 105,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.0,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.38
+  },
+  {
+   "point_id": 114,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.0,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.69
+  },
+  {
+   "point_id": 123,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.0,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.04
+  },
+  {
+   "point_id": 56,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.05,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.86
+  },
+  {
+   "point_id": 47,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.05,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.25
+  },
+  {
+   "point_id": 38,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.05,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 0.84
+  },
+  {
+   "point_id": 106,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.05,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.17
+  },
+  {
+   "point_id": 115,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.05,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.55
+  },
+  {
+   "point_id": 124,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.05,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 0.97
+  },
+  {
+   "point_id": 69,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.1,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.66
+  },
+  {
+   "point_id": 68,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.1,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.2
+  },
+  {
+   "point_id": 67,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.1,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.05
+  },
+  {
+   "point_id": 107,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.1,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.91
+  },
+  {
+   "point_id": 116,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.1,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.18
+  },
+  {
+   "point_id": 125,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.1,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 0.99
+  },
+  {
+   "point_id": 78,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 2.27
+  },
+  {
+   "point_id": 77,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.54
+  },
+  {
+   "point_id": 76,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.28
+  },
+  {
+   "point_id": 75,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.04
+  },
+  {
+   "point_id": 74,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 0.89
+  },
+  {
+   "point_id": 73,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 0.91
+  },
+  {
+   "point_id": 72,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 0.79
+  },
+  {
+   "point_id": 71,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 0.49
+  },
+  {
+   "point_id": 70,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 2.12
+  },
+  {
+   "point_id": 108,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.61
+  },
+  {
+   "point_id": 117,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.23
+  },
+  {
+   "point_id": 126,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 0.9
+  },
+  {
+   "point_id": 130,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.13
+  },
+  {
+   "point_id": 87,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 1.86
+  },
+  {
+   "point_id": 86,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.46
+  },
+  {
+   "point_id": 85,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.37
+  },
+  {
+   "point_id": 84,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.46
+  },
+  {
+   "point_id": 83,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.22
+  },
+  {
+   "point_id": 82,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 1.42
+  },
+  {
+   "point_id": 81,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 0.9
+  },
+  {
+   "point_id": 80,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 0.87
+  },
+  {
+   "point_id": 79,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 2.06
+  },
+  {
+   "point_id": 109,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.5
+  },
+  {
+   "point_id": 118,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.25
+  },
+  {
+   "point_id": 127,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.3
+  },
+  {
+   "point_id": 131,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.2
+  },
+  {
+   "point_id": 96,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 1.37
+  },
+  {
+   "point_id": 95,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.54
+  },
+  {
+   "point_id": 94,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.64
+  },
+  {
+   "point_id": 93,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.64
+  },
+  {
+   "point_id": 92,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.64
+  },
+  {
+   "point_id": 91,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 1.66
+  },
+  {
+   "point_id": 90,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 1.58
+  },
+  {
+   "point_id": 89,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 1.58
+  },
+  {
+   "point_id": 88,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 1.55
+  },
+  {
+   "point_id": 110,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.55
+  },
+  {
+   "point_id": 119,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.59
+  },
+  {
+   "point_id": 128,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.7
+  },
+  {
+   "point_id": 132,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.64
+  },
+  {
+   "point_id": 99,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.3,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.48
+  },
+  {
+   "point_id": 98,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.3,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.8
+  },
+  {
+   "point_id": 97,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.3,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 2.04
+  },
+  {
+   "point_id": 111,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.3,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.82
+  },
+  {
+   "point_id": 120,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.3,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.45
+  },
+  {
+   "point_id": 129,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.3,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 3.19
+  },
+  {
+   "point_id": 63,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.3,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.47
+  },
+  {
+   "point_id": 54,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.3,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.67
+  },
+  {
+   "point_id": 45,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.3,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.66
+  },
+  {
+   "point_id": 31,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.3,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.69
+  },
+  {
+   "point_id": 32,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.3,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.3
+  },
+  {
+   "point_id": 33,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.3,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.73
+  },
+  {
+   "point_id": 66,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 3.32
+  },
+  {
+   "point_id": 62,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.33
+  },
+  {
+   "point_id": 53,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.93
+  },
+  {
+   "point_id": 44,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 2.02
+  },
+  {
+   "point_id": 22,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.93
+  },
+  {
+   "point_id": 23,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 1.47
+  },
+  {
+   "point_id": 24,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 1.41
+  },
+  {
+   "point_id": 25,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 1.27
+  },
+  {
+   "point_id": 26,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 2.12
+  },
+  {
+   "point_id": 27,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.51
+  },
+  {
+   "point_id": 28,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.92
+  },
+  {
+   "point_id": 29,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.53
+  },
+  {
+   "point_id": 30,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.25,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.1
+  },
+  {
+   "point_id": 65,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 2.88
+  },
+  {
+   "point_id": 61,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.45
+  },
+  {
+   "point_id": 52,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 2.51
+  },
+  {
+   "point_id": 43,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 2.62
+  },
+  {
+   "point_id": 13,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 2.32
+  },
+  {
+   "point_id": 14,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 2.02
+  },
+  {
+   "point_id": 15,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 1.75
+  },
+  {
+   "point_id": 16,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 1.62
+  },
+  {
+   "point_id": 17,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 2.11
+  },
+  {
+   "point_id": 18,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.16
+  },
+  {
+   "point_id": 19,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.69
+  },
+  {
+   "point_id": 20,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.38
+  },
+  {
+   "point_id": 21,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.2,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.07
+  },
+  {
+   "point_id": 64,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 2.52
+  },
+  {
+   "point_id": 60,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.69
+  },
+  {
+   "point_id": 51,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 2.75
+  },
+  {
+   "point_id": 42,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 2.98
+  },
+  {
+   "point_id": 4,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 2.71
+  },
+  {
+   "point_id": 5,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 2.64
+  },
+  {
+   "point_id": 6,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 2.32
+  },
+  {
+   "point_id": 7,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 2.16
+  },
+  {
+   "point_id": 8,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 1.75
+  },
+  {
+   "point_id": 9,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.95
+  },
+  {
+   "point_id": 10,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.9
+  },
+  {
+   "point_id": 11,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.81
+  },
+  {
+   "point_id": 12,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.15,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.79
+  },
+  {
+   "point_id": 59,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.1,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.54
+  },
+  {
+   "point_id": 50,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.1,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 2.94
+  },
+  {
+   "point_id": 41,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.1,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 3.63
+  },
+  {
+   "point_id": 103,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.1,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.04
+  },
+  {
+   "point_id": 112,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.1,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.41
+  },
+  {
+   "point_id": 121,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.1,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 2.85
+  },
+  {
+   "point_id": 58,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.05,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.71
+  },
+  {
+   "point_id": 49,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.05,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 3.21
+  },
+  {
+   "point_id": 40,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.05,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 3.35
+  },
+  {
+   "point_id": 104,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.05,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.32
+  },
+  {
+   "point_id": 113,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.05,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.29
+  },
+  {
+   "point_id": 122,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": -0.05,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.5
+  },
+  {
+   "point_id": 57,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.0,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.95
+  },
+  {
+   "point_id": 48,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.0,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 3.42
+  },
+  {
+   "point_id": 39,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.0,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 2.99
+  },
+  {
+   "point_id": 105,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.0,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.36
+  },
+  {
+   "point_id": 114,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.0,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.98
+  },
+  {
+   "point_id": 123,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.0,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.26
+  },
+  {
+   "point_id": 56,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.05,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 3.27
+  },
+  {
+   "point_id": 47,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.05,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 3.34
+  },
+  {
+   "point_id": 38,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.05,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 2.72
+  },
+  {
+   "point_id": 106,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.05,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.34
+  },
+  {
+   "point_id": 115,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.05,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.84
+  },
+  {
+   "point_id": 124,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.05,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.22
+  },
+  {
+   "point_id": 69,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.1,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 3.08
+  },
+  {
+   "point_id": 68,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.1,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 3.14
+  },
+  {
+   "point_id": 67,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.1,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 2.85
+  },
+  {
+   "point_id": 107,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.1,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.27
+  },
+  {
+   "point_id": 116,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.1,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.62
+  },
+  {
+   "point_id": 125,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.1,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.29
+  },
+  {
+   "point_id": 78,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 2.54
+  },
+  {
+   "point_id": 77,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.93
+  },
+  {
+   "point_id": 76,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 2.82
+  },
+  {
+   "point_id": 75,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 2.45
+  },
+  {
+   "point_id": 74,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 2.05
+  },
+  {
+   "point_id": 73,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 1.7
+  },
+  {
+   "point_id": 72,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 1.38
+  },
+  {
+   "point_id": 71,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 0.92
+  },
+  {
+   "point_id": 70,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 2.93
+  },
+  {
+   "point_id": 108,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.07
+  },
+  {
+   "point_id": 117,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.6
+  },
+  {
+   "point_id": 126,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.15
+  },
+  {
+   "point_id": 130,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.15,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.25
+  },
+  {
+   "point_id": 87,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 2.51
+  },
+  {
+   "point_id": 86,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.66
+  },
+  {
+   "point_id": 85,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 2.39
+  },
+  {
+   "point_id": 84,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.92
+  },
+  {
+   "point_id": 83,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.56
+  },
+  {
+   "point_id": 82,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 1.82
+  },
+  {
+   "point_id": 81,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 1.55
+  },
+  {
+   "point_id": 80,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 1.94
+  },
+  {
+   "point_id": 79,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 2.46
+  },
+  {
+   "point_id": 109,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.94
+  },
+  {
+   "point_id": 118,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.59
+  },
+  {
+   "point_id": 127,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.42
+  },
+  {
+   "point_id": 131,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.2,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.26
+  },
+  {
+   "point_id": 96,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 2.16
+  },
+  {
+   "point_id": 95,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.42
+  },
+  {
+   "point_id": 94,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 2.16
+  },
+  {
+   "point_id": 93,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.75
+  },
+  {
+   "point_id": 92,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.62
+  },
+  {
+   "point_id": 91,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 1.89
+  },
+  {
+   "point_id": 90,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 2.19
+  },
+  {
+   "point_id": 89,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 2.21
+  },
+  {
+   "point_id": 88,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 1.79
+  },
+  {
+   "point_id": 110,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.8
+  },
+  {
+   "point_id": 119,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.77
+  },
+  {
+   "point_id": 128,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.8
+  },
+  {
+   "point_id": 132,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.25,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.66
+  },
+  {
+   "point_id": 99,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.3,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.21
+  },
+  {
+   "point_id": 98,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.3,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 2.29
+  },
+  {
+   "point_id": 97,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.3,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 2.29
+  },
+  {
+   "point_id": 111,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.3,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.86
+  },
+  {
+   "point_id": 120,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.3,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.29
+  },
+  {
+   "point_id": 129,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 22.5,
+   "x": 0.3,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 2.94
+  },
+  {
+   "point_id": 63,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.3,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 3.19
+  },
+  {
+   "point_id": 54,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.3,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.54
+  },
+  {
+   "point_id": 45,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.3,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.06
+  },
+  {
+   "point_id": 31,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.3,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.73
+  },
+  {
+   "point_id": 32,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.3,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.54
+  },
+  {
+   "point_id": 33,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.3,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.5
+  },
+  {
+   "point_id": 66,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 2.9
+  },
+  {
+   "point_id": 62,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.78
+  },
+  {
+   "point_id": 53,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.59
+  },
+  {
+   "point_id": 44,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.33
+  },
+  {
+   "point_id": 22,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.24
+  },
+  {
+   "point_id": 23,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 1.01
+  },
+  {
+   "point_id": 24,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 1.03
+  },
+  {
+   "point_id": 25,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 0.83
+  },
+  {
+   "point_id": 26,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 3.32
+  },
+  {
+   "point_id": 27,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.23
+  },
+  {
+   "point_id": 28,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.46
+  },
+  {
+   "point_id": 29,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.48
+  },
+  {
+   "point_id": 30,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.24
+  },
+  {
+   "point_id": 65,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 3.02
+  },
+  {
+   "point_id": 61,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.15
+  },
+  {
+   "point_id": 52,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.54
+  },
+  {
+   "point_id": 43,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.48
+  },
+  {
+   "point_id": 13,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.51
+  },
+  {
+   "point_id": 14,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 1.35
+  },
+  {
+   "point_id": 15,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 1.23
+  },
+  {
+   "point_id": 16,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 1.78
+  },
+  {
+   "point_id": 17,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 3.15
+  },
+  {
+   "point_id": 18,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.06
+  },
+  {
+   "point_id": 19,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.52
+  },
+  {
+   "point_id": 20,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.51
+  },
+  {
+   "point_id": 21,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.49
+  },
+  {
+   "point_id": 64,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 2.18
+  },
+  {
+   "point_id": 60,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.71
+  },
+  {
+   "point_id": 51,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.6
+  },
+  {
+   "point_id": 42,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.34
+  },
+  {
+   "point_id": 4,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.45
+  },
+  {
+   "point_id": 5,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 1.45
+  },
+  {
+   "point_id": 6,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 1.84
+  },
+  {
+   "point_id": 7,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 2.73
+  },
+  {
+   "point_id": 8,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 2.98
+  },
+  {
+   "point_id": 9,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.47
+  },
+  {
+   "point_id": 10,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.16
+  },
+  {
+   "point_id": 11,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 2.45
+  },
+  {
+   "point_id": 12,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 2.86
+  },
+  {
+   "point_id": 59,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.1,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.53
+  },
+  {
+   "point_id": 50,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.1,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.37
+  },
+  {
+   "point_id": 41,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.1,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.09
+  },
+  {
+   "point_id": 103,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.1,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 3.11
+  },
+  {
+   "point_id": 112,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.1,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 3.17
+  },
+  {
+   "point_id": 121,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.1,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 3.41
+  },
+  {
+   "point_id": 58,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.05,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.46
+  },
+  {
+   "point_id": 49,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.05,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.48
+  },
+  {
+   "point_id": 40,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.05,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.17
+  },
+  {
+   "point_id": 104,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.05,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.4
+  },
+  {
+   "point_id": 113,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.05,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.43
+  },
+  {
+   "point_id": 122,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.05,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 0.79
+  },
+  {
+   "point_id": 57,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.0,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.52
+  },
+  {
+   "point_id": 48,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.0,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.38
+  },
+  {
+   "point_id": 39,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.0,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.34
+  },
+  {
+   "point_id": 105,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.0,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.66
+  },
+  {
+   "point_id": 114,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.0,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.34
+  },
+  {
+   "point_id": 123,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.0,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.12
+  },
+  {
+   "point_id": 56,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.05,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.86
+  },
+  {
+   "point_id": 47,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.05,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.49
+  },
+  {
+   "point_id": 38,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.05,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.47
+  },
+  {
+   "point_id": 106,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.05,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.51
+  },
+  {
+   "point_id": 115,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.05,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.55
+  },
+  {
+   "point_id": 124,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.05,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.23
+  },
+  {
+   "point_id": 69,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.1,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.04
+  },
+  {
+   "point_id": 68,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.1,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.76
+  },
+  {
+   "point_id": 67,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.1,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.63
+  },
+  {
+   "point_id": 107,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.1,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.44
+  },
+  {
+   "point_id": 116,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.1,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.47
+  },
+  {
+   "point_id": 125,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.1,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.34
+  },
+  {
+   "point_id": 78,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 2.55
+  },
+  {
+   "point_id": 77,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.09
+  },
+  {
+   "point_id": 76,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.86
+  },
+  {
+   "point_id": 75,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.66
+  },
+  {
+   "point_id": 74,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.51
+  },
+  {
+   "point_id": 73,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 1.47
+  },
+  {
+   "point_id": 72,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 1.39
+  },
+  {
+   "point_id": 71,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 1.24
+  },
+  {
+   "point_id": 70,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 1.33
+  },
+  {
+   "point_id": 108,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.48
+  },
+  {
+   "point_id": 117,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.56
+  },
+  {
+   "point_id": 126,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.32
+  },
+  {
+   "point_id": 130,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.15
+  },
+  {
+   "point_id": 87,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 2.15
+  },
+  {
+   "point_id": 86,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.94
+  },
+  {
+   "point_id": 85,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.84
+  },
+  {
+   "point_id": 84,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.83
+  },
+  {
+   "point_id": 83,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.69
+  },
+  {
+   "point_id": 82,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 1.71
+  },
+  {
+   "point_id": 81,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 1.4
+  },
+  {
+   "point_id": 80,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 1.27
+  },
+  {
+   "point_id": 79,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 1.37
+  },
+  {
+   "point_id": 109,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.6
+  },
+  {
+   "point_id": 118,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.68
+  },
+  {
+   "point_id": 127,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.85
+  },
+  {
+   "point_id": 131,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.68
+  },
+  {
+   "point_id": 96,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 1.66
+  },
+  {
+   "point_id": 95,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.82
+  },
+  {
+   "point_id": 94,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.94
+  },
+  {
+   "point_id": 93,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 2.09
+  },
+  {
+   "point_id": 92,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 2.07
+  },
+  {
+   "point_id": 91,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 1.79
+  },
+  {
+   "point_id": 90,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 1.44
+  },
+  {
+   "point_id": 89,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 1.41
+  },
+  {
+   "point_id": 88,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 1.44
+  },
+  {
+   "point_id": 110,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.81
+  },
+  {
+   "point_id": 119,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.18
+  },
+  {
+   "point_id": 128,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 2.79
+  },
+  {
+   "point_id": 132,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 3.22
+  },
+  {
+   "point_id": 99,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.3,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.73
+  },
+  {
+   "point_id": 98,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.3,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 2.21
+  },
+  {
+   "point_id": 97,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.3,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 2.7
+  },
+  {
+   "point_id": 111,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.3,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.26
+  },
+  {
+   "point_id": 120,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.3,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 3.27
+  },
+  {
+   "point_id": 129,
+   "config": "0D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.3,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 3.59
+  },
+  {
+   "point_id": 63,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.3,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.37
+  },
+  {
+   "point_id": 54,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.3,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.35
+  },
+  {
+   "point_id": 45,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.3,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.68
+  },
+  {
+   "point_id": 31,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.3,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.66
+  },
+  {
+   "point_id": 32,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.3,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.49
+  },
+  {
+   "point_id": 33,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.3,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.54
+  },
+  {
+   "point_id": 66,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 3.3
+  },
+  {
+   "point_id": 62,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.91
+  },
+  {
+   "point_id": 53,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.31
+  },
+  {
+   "point_id": 44,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.64
+  },
+  {
+   "point_id": 22,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.31
+  },
+  {
+   "point_id": 23,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 0.92
+  },
+  {
+   "point_id": 24,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 1.01
+  },
+  {
+   "point_id": 25,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 0.88
+  },
+  {
+   "point_id": 26,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 3.53
+  },
+  {
+   "point_id": 27,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.21
+  },
+  {
+   "point_id": 28,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.48
+  },
+  {
+   "point_id": 29,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.48
+  },
+  {
+   "point_id": 30,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.23
+  },
+  {
+   "point_id": 65,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 2.76
+  },
+  {
+   "point_id": 61,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.83
+  },
+  {
+   "point_id": 52,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.62
+  },
+  {
+   "point_id": 43,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.91
+  },
+  {
+   "point_id": 13,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.94
+  },
+  {
+   "point_id": 14,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 1.8
+  },
+  {
+   "point_id": 15,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 1.67
+  },
+  {
+   "point_id": 16,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 2.27
+  },
+  {
+   "point_id": 17,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 2.94
+  },
+  {
+   "point_id": 18,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.87
+  },
+  {
+   "point_id": 19,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.46
+  },
+  {
+   "point_id": 20,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.51
+  },
+  {
+   "point_id": 21,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.57
+  },
+  {
+   "point_id": 64,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 2.21
+  },
+  {
+   "point_id": 60,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.94
+  },
+  {
+   "point_id": 51,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 2.04
+  },
+  {
+   "point_id": 42,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 2.35
+  },
+  {
+   "point_id": 4,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 2.7
+  },
+  {
+   "point_id": 5,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 3.06
+  },
+  {
+   "point_id": 6,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 3.04
+  },
+  {
+   "point_id": 7,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 2.8
+  },
+  {
+   "point_id": 8,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 2.12
+  },
+  {
+   "point_id": 9,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.89
+  },
+  {
+   "point_id": 10,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.94
+  },
+  {
+   "point_id": 11,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 2.35
+  },
+  {
+   "point_id": 12,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 2.86
+  },
+  {
+   "point_id": 59,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.1,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.9
+  },
+  {
+   "point_id": 50,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.1,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 2.62
+  },
+  {
+   "point_id": 41,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.1,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 2.95
+  },
+  {
+   "point_id": 103,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.1,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.28
+  },
+  {
+   "point_id": 112,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.1,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.97
+  },
+  {
+   "point_id": 121,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.1,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 3.62
+  },
+  {
+   "point_id": 58,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.05,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.1
+  },
+  {
+   "point_id": 49,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.05,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.78
+  },
+  {
+   "point_id": 40,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.05,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 0.52
+  },
+  {
+   "point_id": 104,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.05,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.73
+  },
+  {
+   "point_id": 113,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.05,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.92
+  },
+  {
+   "point_id": 122,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.05,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 0.76
+  },
+  {
+   "point_id": 57,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.0,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.39
+  },
+  {
+   "point_id": 48,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.0,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.48
+  },
+  {
+   "point_id": 39,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.0,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 0.8
+  },
+  {
+   "point_id": 105,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.0,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 3.07
+  },
+  {
+   "point_id": 114,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.0,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.49
+  },
+  {
+   "point_id": 123,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.0,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.03
+  },
+  {
+   "point_id": 56,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.05,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.56
+  },
+  {
+   "point_id": 47,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.05,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.7
+  },
+  {
+   "point_id": 38,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.05,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.03
+  },
+  {
+   "point_id": 106,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.05,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.99
+  },
+  {
+   "point_id": 115,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.05,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.71
+  },
+  {
+   "point_id": 124,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.05,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.07
+  },
+  {
+   "point_id": 69,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.1,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.17
+  },
+  {
+   "point_id": 68,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.1,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.6
+  },
+  {
+   "point_id": 67,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.1,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.36
+  },
+  {
+   "point_id": 107,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.1,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.78
+  },
+  {
+   "point_id": 116,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.1,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.75
+  },
+  {
+   "point_id": 125,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.1,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.39
+  },
+  {
+   "point_id": 78,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 2.8
+  },
+  {
+   "point_id": 77,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.95
+  },
+  {
+   "point_id": 76,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.47
+  },
+  {
+   "point_id": 75,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.2
+  },
+  {
+   "point_id": 74,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.2
+  },
+  {
+   "point_id": 73,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 1.12
+  },
+  {
+   "point_id": 72,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 0.88
+  },
+  {
+   "point_id": 71,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 0.48
+  },
+  {
+   "point_id": 70,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 2.66
+  },
+  {
+   "point_id": 108,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.36
+  },
+  {
+   "point_id": 117,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.73
+  },
+  {
+   "point_id": 126,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.51
+  },
+  {
+   "point_id": 130,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.8
+  },
+  {
+   "point_id": 87,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 2.4
+  },
+  {
+   "point_id": 86,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.77
+  },
+  {
+   "point_id": 85,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.48
+  },
+  {
+   "point_id": 84,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.52
+  },
+  {
+   "point_id": 83,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.63
+  },
+  {
+   "point_id": 82,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 1.86
+  },
+  {
+   "point_id": 81,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 1.49
+  },
+  {
+   "point_id": 80,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 1.34
+  },
+  {
+   "point_id": 79,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 2.63
+  },
+  {
+   "point_id": 109,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.03
+  },
+  {
+   "point_id": 118,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.57
+  },
+  {
+   "point_id": 127,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.53
+  },
+  {
+   "point_id": 131,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.56
+  },
+  {
+   "point_id": 96,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 1.83
+  },
+  {
+   "point_id": 95,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.84
+  },
+  {
+   "point_id": 94,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.81
+  },
+  {
+   "point_id": 93,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.92
+  },
+  {
+   "point_id": 92,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 2.18
+  },
+  {
+   "point_id": 91,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 2.42
+  },
+  {
+   "point_id": 90,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 2.36
+  },
+  {
+   "point_id": 89,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 2.19
+  },
+  {
+   "point_id": 88,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 1.96
+  },
+  {
+   "point_id": 110,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.96
+  },
+  {
+   "point_id": 119,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.78
+  },
+  {
+   "point_id": 128,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 2.0
+  },
+  {
+   "point_id": 132,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 2.57
+  },
+  {
+   "point_id": 99,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.3,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.85
+  },
+  {
+   "point_id": 98,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.3,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 2.31
+  },
+  {
+   "point_id": 97,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.3,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 2.82
+  },
+  {
+   "point_id": 111,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.3,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.27
+  },
+  {
+   "point_id": 120,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.3,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.86
+  },
+  {
+   "point_id": 129,
+   "config": "1D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.3,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 3.59
+  },
+  {
+   "point_id": 63,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.3,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.08
+  },
+  {
+   "point_id": 54,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.3,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.26
+  },
+  {
+   "point_id": 45,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.3,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.54
+  },
+  {
+   "point_id": 31,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.3,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.48
+  },
+  {
+   "point_id": 32,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.3,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.42
+  },
+  {
+   "point_id": 33,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.3,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.25
+  },
+  {
+   "point_id": 66,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 3.2
+  },
+  {
+   "point_id": 62,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.97
+  },
+  {
+   "point_id": 53,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.39
+  },
+  {
+   "point_id": 44,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.55
+  },
+  {
+   "point_id": 22,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 1.52
+  },
+  {
+   "point_id": 23,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 1.2
+  },
+  {
+   "point_id": 24,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 1.19
+  },
+  {
+   "point_id": 25,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 1.09
+  },
+  {
+   "point_id": 26,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 3.14
+  },
+  {
+   "point_id": 27,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.89
+  },
+  {
+   "point_id": 28,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.4
+  },
+  {
+   "point_id": 29,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.39
+  },
+  {
+   "point_id": 30,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.25,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.17
+  },
+  {
+   "point_id": 65,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 2.56
+  },
+  {
+   "point_id": 61,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.98
+  },
+  {
+   "point_id": 52,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.79
+  },
+  {
+   "point_id": 43,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.96
+  },
+  {
+   "point_id": 13,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 2.19
+  },
+  {
+   "point_id": 14,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 2.26
+  },
+  {
+   "point_id": 15,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 2.16
+  },
+  {
+   "point_id": 16,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 2.35
+  },
+  {
+   "point_id": 17,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 2.42
+  },
+  {
+   "point_id": 18,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.65
+  },
+  {
+   "point_id": 19,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.32
+  },
+  {
+   "point_id": 20,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.4
+  },
+  {
+   "point_id": 21,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.2,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.37
+  },
+  {
+   "point_id": 64,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 2.23
+  },
+  {
+   "point_id": 60,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.06
+  },
+  {
+   "point_id": 51,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 2.19
+  },
+  {
+   "point_id": 42,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 2.56
+  },
+  {
+   "point_id": 4,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 2.79
+  },
+  {
+   "point_id": 5,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 3.03
+  },
+  {
+   "point_id": 6,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 2.81
+  },
+  {
+   "point_id": 7,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 2.52
+  },
+  {
+   "point_id": 8,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 1.8
+  },
+  {
+   "point_id": 9,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 1.64
+  },
+  {
+   "point_id": 10,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 1.76
+  },
+  {
+   "point_id": 11,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 2.2
+  },
+  {
+   "point_id": 12,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.15,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 2.71
+  },
+  {
+   "point_id": 59,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.1,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 1.97
+  },
+  {
+   "point_id": 50,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.1,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 2.66
+  },
+  {
+   "point_id": 41,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.1,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 3.48
+  },
+  {
+   "point_id": 103,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.1,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.02
+  },
+  {
+   "point_id": 112,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.1,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.67
+  },
+  {
+   "point_id": 121,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.1,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 3.39
+  },
+  {
+   "point_id": 58,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.05,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.55
+  },
+  {
+   "point_id": 49,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.05,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 3.18
+  },
+  {
+   "point_id": 40,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.05,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.55
+  },
+  {
+   "point_id": 104,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.05,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.54
+  },
+  {
+   "point_id": 113,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.05,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.22
+  },
+  {
+   "point_id": 122,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": -0.05,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.07
+  },
+  {
+   "point_id": 57,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.0,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 3.3
+  },
+  {
+   "point_id": 48,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.0,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 3.22
+  },
+  {
+   "point_id": 39,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.0,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.33
+  },
+  {
+   "point_id": 105,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.0,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.99
+  },
+  {
+   "point_id": 114,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.0,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.14
+  },
+  {
+   "point_id": 123,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.0,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.27
+  },
+  {
+   "point_id": 56,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.05,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 3.71
+  },
+  {
+   "point_id": 47,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.05,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 2.94
+  },
+  {
+   "point_id": 38,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.05,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.55
+  },
+  {
+   "point_id": 106,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.05,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 3.07
+  },
+  {
+   "point_id": 115,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.05,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.27
+  },
+  {
+   "point_id": 124,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.05,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.41
+  },
+  {
+   "point_id": 69,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.1,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 3.0
+  },
+  {
+   "point_id": 68,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.1,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 2.42
+  },
+  {
+   "point_id": 67,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.1,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 2.06
+  },
+  {
+   "point_id": 107,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.1,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 3.07
+  },
+  {
+   "point_id": 116,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.1,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.19
+  },
+  {
+   "point_id": 125,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.1,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.74
+  },
+  {
+   "point_id": 78,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 2.79
+  },
+  {
+   "point_id": 77,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.44
+  },
+  {
+   "point_id": 76,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.87
+  },
+  {
+   "point_id": 75,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.78
+  },
+  {
+   "point_id": 74,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 2.0
+  },
+  {
+   "point_id": 73,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 1.59
+  },
+  {
+   "point_id": 72,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 1.34
+  },
+  {
+   "point_id": 71,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 1.58
+  },
+  {
+   "point_id": 70,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 3.42
+  },
+  {
+   "point_id": 108,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.77
+  },
+  {
+   "point_id": 117,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.13
+  },
+  {
+   "point_id": 126,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.75
+  },
+  {
+   "point_id": 130,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.15,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.84
+  },
+  {
+   "point_id": 87,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 2.81
+  },
+  {
+   "point_id": 86,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.15
+  },
+  {
+   "point_id": 85,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 1.61
+  },
+  {
+   "point_id": 84,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 1.96
+  },
+  {
+   "point_id": 83,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 2.63
+  },
+  {
+   "point_id": 82,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 3.18
+  },
+  {
+   "point_id": 81,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 3.27
+  },
+  {
+   "point_id": 80,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 3.26
+  },
+  {
+   "point_id": 79,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 2.69
+  },
+  {
+   "point_id": 109,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.44
+  },
+  {
+   "point_id": 118,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.07
+  },
+  {
+   "point_id": 127,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.7
+  },
+  {
+   "point_id": 131,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.2,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 1.46
+  },
+  {
+   "point_id": 96,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": -0.3,
+   "z": 0.02,
+   "Vs": 2.45
+  },
+  {
+   "point_id": 95,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.3
+  },
+  {
+   "point_id": 94,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 2.2
+  },
+  {
+   "point_id": 93,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 2.62
+  },
+  {
+   "point_id": 92,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": -0.1,
+   "z": 0.02,
+   "Vs": 3.14
+  },
+  {
+   "point_id": 91,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": -0.05,
+   "z": 0.02,
+   "Vs": 3.5
+  },
+  {
+   "point_id": 90,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": 0.0,
+   "z": 0.02,
+   "Vs": 3.27
+  },
+  {
+   "point_id": 89,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": 0.05,
+   "z": 0.02,
+   "Vs": 2.62
+  },
+  {
+   "point_id": 88,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": 0.1,
+   "z": 0.02,
+   "Vs": 2.0
+  },
+  {
+   "point_id": 110,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.29
+  },
+  {
+   "point_id": 119,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.13
+  },
+  {
+   "point_id": 128,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 1.9
+  },
+  {
+   "point_id": 132,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.25,
+   "y": 0.3,
+   "z": 0.02,
+   "Vs": 2.08
+  },
+  {
+   "point_id": 99,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.3,
+   "y": -0.25,
+   "z": 0.02,
+   "Vs": 2.56
+  },
+  {
+   "point_id": 98,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.3,
+   "y": -0.2,
+   "z": 0.02,
+   "Vs": 2.91
+  },
+  {
+   "point_id": 97,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.3,
+   "y": -0.15,
+   "z": 0.02,
+   "Vs": 3.09
+  },
+  {
+   "point_id": 111,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.3,
+   "y": 0.15,
+   "z": 0.02,
+   "Vs": 2.51
+  },
+  {
+   "point_id": 120,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.3,
+   "y": 0.2,
+   "z": 0.02,
+   "Vs": 2.75
+  },
+  {
+   "point_id": 129,
+   "config": "2D",
+   "instrument": "thermistor",
+   "wind_direction_deg": 45.0,
+   "x": 0.3,
+   "y": 0.25,
+   "z": 0.02,
+   "Vs": 3.35
+  }
+ ]
+}

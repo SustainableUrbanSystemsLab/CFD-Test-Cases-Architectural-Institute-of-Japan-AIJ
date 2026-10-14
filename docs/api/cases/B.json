@@ -1,0 +1,228 @@
+{
+ "schema_version": "1.0.0",
+ "generated_from": "4fb5e6e9093d5b925f977d4e0502d8c881fec52d",
+ "generated_at": "2026-10-14T03:54:23+00:00",
+ "licence": "CC BY 4.0",
+ "id": "B",
+ "slug": "case-b",
+ "title": "Case B — 1:4:4 slab",
+ "summary": "Isolated 1:4:4 slab, velocity field (split-fibre hot wire).",
+ "configuration": {
+  "building": "1:4:4 (depth : width : height) slab",
+  "depth_m": 0.05,
+  "width_m": 0.2,
+  "H_m": 0.2,
+  "Re_H": 72000,
+  "U_H_m_s": 5.133,
+  "wind_directions_deg": [
+   0
+  ],
+  "measurement_planes": [
+   "vertical centre plane y/H = 0",
+   "horizontal z/H = 1/16"
+  ],
+  "instrument": "hot-wire anemometer, split-fibre probe, 100 Hz, 60 s per point",
+  "tunnel": "Niigata Institute of Technology, Kashiwazaki",
+  "scale_note": "model scale; Eddy3D solves it at 1:100 (H = 20 m) with the tunnel velocities"
+ },
+ "configurations": [
+  {
+   "config": "default",
+   "wind_direction_deg": 0.0,
+   "points": 224
+  }
+ ],
+ "quantities": [
+  "U",
+  "V",
+  "W",
+  "uu",
+  "vv",
+  "ww",
+  "k"
+ ],
+ "units": {
+  "length": "m (model scale; converted from the published millimetres)",
+  "velocity": "m/s",
+  "variance": "m^2/s^2",
+  "k": "m^2/s^2"
+ },
+ "frame": {
+  "origin": "building centre on the ground plane",
+  "x": "+x streamwise (the wind at WD = 0 blows toward +x); slab spans x in [-0.025, 0.025]",
+  "y": "+y lateral; slab spans y in [-0.10, 0.10]; points published on the y <= 0 half by the tunnel's symmetry convention",
+  "z": "+z up from the ground; roof at z = 0.20",
+  "lateral_sign_applied": -1,
+  "coordinate_scale_applied": 0.001
+ },
+ "inflow_fit": {
+  "method": "log law, kappa = 0.41, least squares over z = 0.02 ... 2H on the case's own approach-flow file",
+  "u_star_m_s": 0.399,
+  "z0_mm": 0.882,
+  "U_H_measured_m_s": 5.133,
+  "log_law_error_at_H": "+2.9 %"
+ },
+ "approach_flow": {
+  "source": "Case_B_cleaned/AF_caseB.csv",
+  "units": {
+   "z": "m",
+   "U": "m/s",
+   "k": "m^2/s^2",
+   "u_rms": "m/s"
+  },
+  "rows": [
+   {
+    "z": 0.005,
+    "U": 2.865,
+    "k": 0.376
+   },
+   {
+    "z": 0.01,
+    "U": 3.059,
+    "k": 0.41
+   },
+   {
+    "z": 0.02,
+    "U": 3.28,
+    "k": 0.428
+   },
+   {
+    "z": 0.03,
+    "U": 3.427,
+    "k": 0.486
+   },
+   {
+    "z": 0.05,
+    "U": 3.784,
+    "k": 0.537
+   },
+   {
+    "z": 0.1,
+    "U": 4.381,
+    "k": 0.624
+   },
+   {
+    "z": 0.2,
+    "U": 5.133,
+    "k": 0.556
+   },
+   {
+    "z": 0.3,
+    "U": 5.724,
+    "k": 0.512
+   },
+   {
+    "z": 0.4,
+    "U": 6.191,
+    "k": 0.45
+   },
+   {
+    "z": 0.6,
+    "U": 7.004,
+    "k": 0.378
+   },
+   {
+    "z": 0.8,
+    "U": 7.433,
+    "k": 0.274
+   },
+   {
+    "z": 1.0,
+    "U": 7.84,
+    "k": 0.106
+   }
+  ]
+ },
+ "points": {
+  "endpoint_json": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/B/points.json",
+  "endpoint_csv": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/B/points.csv",
+  "source": "Case_B_cleaned/RS_caseB.csv",
+  "rows": 224,
+  "distinct_points": 224,
+  "columns": [
+   "point_id",
+   "config",
+   "instrument",
+   "wind_direction_deg",
+   "x",
+   "y",
+   "z",
+   "U",
+   "V",
+   "W",
+   "uu",
+   "vv",
+   "ww",
+   "k"
+  ],
+  "counts": {
+   "config": {
+    "default": 224
+   },
+   "instrument": {
+    "split_fibre": 224
+   },
+   "wind_direction_deg": {
+    "0.0": 224
+   }
+  },
+  "nulls": {},
+  "bbox_min": [
+   -0.075,
+   -0.35,
+   0.005
+  ],
+  "bbox_max": [
+   0.55,
+   0.0,
+   0.35
+  ]
+ },
+ "geometry": {
+  "endpoint": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/B/geometry.json",
+  "files": [
+   {
+    "configuration": "default",
+    "file": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/B/geometry.stl",
+    "triangles": 12,
+    "watertight": true
+   }
+  ]
+ },
+ "validation": {
+  "endpoint": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/B/validation.json",
+  "status": "validated",
+  "engines": {
+   "openfoam12-realizableKE": "validated",
+   "openlb": "pending",
+   "fluidx3d": "pending",
+   "ml-surrogate": "n/a"
+  }
+ },
+ "gotchas": [
+  "The published coordinates are MILLIMETRES (x[mm]) while velocities are m/s. The API serves metres (coordinate_scale_applied = 0.001). Read as metres, every probe lands 1000x too far out.",
+  "The published lateral velocity V is positive toward -y (V = +3.630 m/s at (-0.025, -0.110, 0.013), just outside the y < 0 flank where the flow must deflect toward -y). The API multiplies V by -1 (lateral_sign_applied = -1) so that V is positive toward +y as in Case A. Scored without this, Case B's V comes out at R = -0.910 against R = +0.959 for U on the same points.",
+  "The RANS solution is symmetric, so model V = 0 on the centre plane while the tunnel measures small non-zero values there."
+ ],
+ "people": {
+  "data_collectors": [
+   "Yoshihide Tominaga (Niigata Institute of Technology)"
+  ],
+  "editors_distributors": [
+   "Hideki Kikumoto (The University of Tokyo)",
+   "Tsubasa Okaze (Institute of Science Tokyo)"
+  ],
+  "contact": "Yoshihide Tominaga <tominaga@abe.niit.ac.jp>"
+ },
+ "doi": "10.5281/zenodo.15401455",
+ "doi_note": null,
+ "citation_requested": "Miyazaki, T., Tominaga, Y. (2003). Wind tunnel experiment on flow field around a building model with a scale ratio of 4:4:1 placed within the surface boundary layer. Proc. Annual Meeting of Hokuriku Chapter, AIJ, 201-204 (in Japanese). https://www.aij.or.jp/paper/detail.html?productId=313933",
+ "files_in_repository": {
+  "folder": "https://github.com/SustainableUrbanSystemsLab/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/tree/main/Case_B_cleaned",
+  "reference": "Case_B_cleaned/RS_caseB.csv",
+  "approach_flow": "Case_B_cleaned/AF_caseB.csv",
+  "readme": "Case_B_cleaned/readme_caseB.md"
+ },
+ "render": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/geom_caseB.png",
+ "page": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/cases/case-b/"
+}

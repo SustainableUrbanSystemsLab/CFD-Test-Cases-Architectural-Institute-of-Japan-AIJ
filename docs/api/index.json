@@ -1,0 +1,152 @@
+{
+ "schema_version": "1.0.0",
+ "generated_from": "4fb5e6e9093d5b925f977d4e0502d8c881fec52d",
+ "generated_at": "2026-10-14T03:54:23+00:00",
+ "licence": "CC BY 4.0",
+ "name": "AIJ UWE benchmark — cleaned data API",
+ "description": "Static JSON/CSV/STL endpoints for the Architectural Institute of Japan Urban Wind Environment benchmark (Cases A-E) and Eddy3D's validation against it. Every file is a plain HTTP GET; nothing is computed on request.",
+ "base_url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api",
+ "fallback_base_url": "https://raw.githubusercontent.com/SustainableUrbanSystemsLab/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/main/docs/api",
+ "fallback_note": "the same files, served raw from the repository's main branch (use when the Pages site is not reachable)",
+ "repository": "https://github.com/SustainableUrbanSystemsLab/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ",
+ "site": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ",
+ "versions": {
+  "schema": "1.0.0",
+  "data_commit": "4fb5e6e9093d5b925f977d4e0502d8c881fec52d",
+  "clean_manifest": null
+ },
+ "endpoints": [
+  {
+   "path": "index.json",
+   "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/index.json",
+   "method": "GET",
+   "description": "every endpoint, versions, licence, how to cite"
+  },
+  {
+   "path": "cases.json",
+   "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases.json",
+   "method": "GET",
+   "description": "the five cases: id, title, configuration facts, units, frame, counts, engine status, links"
+  },
+  {
+   "path": "cases/{id}.json",
+   "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/{id}.json",
+   "method": "GET",
+   "description": "one case in full: configurations, inflow fit and approach-flow profile, point-table summary, geometry files, validation status, gotchas"
+  },
+  {
+   "path": "cases/{id}/points.json",
+   "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/{id}/points.json",
+   "method": "GET",
+   "description": "the cleaned measurement table, SI units, one frame, null for unmeasured"
+  },
+  {
+   "path": "cases/{id}/points.csv",
+   "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/{id}/points.csv",
+   "method": "GET",
+   "description": "the same table as CSV"
+  },
+  {
+   "path": "cases/{id}/geometry.json",
+   "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/{id}/geometry.json",
+   "method": "GET",
+   "description": "geometry description: frame, configurations, box lists where the geometry is boxes, STL statistics"
+  },
+  {
+   "path": "cases/{id}/geometry.stl",
+   "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/{id}/geometry.stl",
+   "method": "GET",
+   "description": "cleaned ASCII STL of the default configuration, metres, outward normals"
+  },
+  {
+   "path": "cases/{id}/geometry_{configuration}.stl",
+   "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/{id}/geometry_{configuration}.stl",
+   "method": "GET",
+   "description": "the other configurations' STLs (C: 0D, 1D; E: bc)"
+  },
+  {
+   "path": "cases/{id}/validation.json",
+   "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/{id}/validation.json",
+   "method": "GET",
+   "description": "Eddy3D validation scores per engine (empty list where none has been run) with figure URLs"
+  },
+  {
+   "path": "openapi.json",
+   "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/openapi.json",
+   "method": "GET",
+   "description": "OpenAPI 3.1 description of these GETs"
+  },
+  {
+   "path": "llms.txt",
+   "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/llms.txt",
+   "method": "GET",
+   "description": "plain-text entry point for agents"
+  }
+ ],
+ "case_ids": [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E"
+ ],
+ "files": [
+  "cases.json",
+  "cases/A.json",
+  "cases/A/geometry.json",
+  "cases/A/geometry.stl",
+  "cases/A/points.csv",
+  "cases/A/points.json",
+  "cases/A/validation.json",
+  "cases/B.json",
+  "cases/B/geometry.json",
+  "cases/B/geometry.stl",
+  "cases/B/points.csv",
+  "cases/B/points.json",
+  "cases/B/validation.json",
+  "cases/C.json",
+  "cases/C/geometry.json",
+  "cases/C/geometry.stl",
+  "cases/C/geometry_0D.stl",
+  "cases/C/geometry_1D.stl",
+  "cases/C/points.csv",
+  "cases/C/points.json",
+  "cases/C/validation.json",
+  "cases/D.json",
+  "cases/D/geometry.json",
+  "cases/D/geometry.stl",
+  "cases/D/points.csv",
+  "cases/D/points.json",
+  "cases/D/validation.json",
+  "cases/E.json",
+  "cases/E/geometry.json",
+  "cases/E/geometry.stl",
+  "cases/E/geometry_bc.stl",
+  "cases/E/points.csv",
+  "cases/E/points.json",
+  "cases/E/validation.json",
+  "index.json",
+  "llms.txt",
+  "openapi.json"
+ ],
+ "licence_detail": {
+  "data": "CC BY 4.0",
+  "data_url": "https://creativecommons.org/licenses/by/4.0/",
+  "note": "The measurement data belongs to its collectors and distributors, named per case. Cite the AIJ UWE benchmark and the accompanying papers when using it."
+ },
+ "cite": {
+  "benchmark": "Kikumoto, H., Tominaga, Y., Okaze, T. et al. (2026). Comprehensive Experimental Database for Validating CFD Simulations in Urban Environments. Japan Architectural Review 9(1), e70083.",
+  "guidelines": "Tominaga, Y., Mochida, A., Yoshie, R., Kataoka, H., Nozu, T., Yoshikawa, M., Shirasawa, T. (2008). AIJ guidelines for practical applications of CFD to pedestrian wind environment around buildings. J. Wind Eng. Ind. Aerodyn. 96, 1749-1761. https://doi.org/10.1016/j.jweia.2008.02.058",
+  "per_case": "Each case lists its own data collectors, Zenodo DOI and requested citation."
+ },
+ "agents": {
+  "start_here": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/llms.txt",
+  "walk": [
+   "GET index.json",
+   "GET cases.json and pick an id",
+   "GET cases/{id}.json for frame, units and gotchas",
+   "GET cases/{id}/points.json (SI units, one frame) and cases/{id}/geometry.stl (metres)",
+   "GET cases/{id}/validation.json before quoting any Eddy3D score; an empty results list means no validation exists"
+  ]
+ }
+}

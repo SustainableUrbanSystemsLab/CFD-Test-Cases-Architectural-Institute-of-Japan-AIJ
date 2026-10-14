@@ -1,0 +1,433 @@
+{
+ "schema_version": "1.0.0",
+ "generated_from": "4fb5e6e9093d5b925f977d4e0502d8c881fec52d",
+ "generated_at": "2026-10-14T03:54:23+00:00",
+ "licence": "CC BY 4.0",
+ "case": "C",
+ "title": "Case C — 3 × 3 block array",
+ "units": "metres (model scale)",
+ "frame": {
+  "origin": "array centre on the ground plane (centre of the middle block)",
+  "x": "+x streamwise at WD = 0 (checked three ways on the data: y -> -y is a symmetry, the x <= -0.25 band is faster than x >= +0.25 in every configuration, and the regression slope of Vs is most negative within 0.8-4.3 deg of +x)",
+  "y": "+y lateral",
+  "z": "+z up; all points at z = 0.02",
+  "wind_direction_rotation": "In the CSV's own frame WD rotates the wind from +x TOWARD -y (the WD = 45 field is mirror-symmetric about y = -x to within the experiment's repeatability, 0.10-0.13 m/s, and not about y = +x, 0.5-0.8 m/s). Figure 3 of the data paper draws the fan rotating toward +y. The two disagree by a y-sign flip; this release keeps the CSV frame, which is the frame the point coordinates live in. The disagreement is invisible at WD = 0.",
+  "lateral_sign_applied": 1,
+  "coordinate_scale_applied": 1.0
+ },
+ "default_configuration": "2D",
+ "configurations": [
+  "2D",
+  "0D",
+  "1D"
+ ],
+ "is_boxes": true,
+ "files": [
+  {
+   "configuration": "2D",
+   "file": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/C/geometry.stl",
+   "path": "cases/C/geometry.stl",
+   "format": "ASCII STL, LF line endings, outward normals",
+   "source": "generated from the stated dimensions",
+   "stats": {
+    "triangles": 108,
+    "bbox_min": [
+     -0.5,
+     -0.5,
+     0.0
+    ],
+    "bbox_max": [
+     0.5,
+     0.5,
+     0.4
+    ],
+    "signed_volume": 0.08,
+    "edges": 162,
+    "edges_shared_by_two_faces": 162,
+    "edges_boundary": 0,
+    "edges_non_manifold": 0,
+    "watertight": true
+   },
+   "bbox_matches_stated_dimensions": true,
+   "boxes": [
+    {
+     "min": [
+      -0.5,
+      -0.5,
+      0.0
+     ],
+     "max": [
+      -0.3,
+      -0.3,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      -0.5,
+      -0.1,
+      0.0
+     ],
+     "max": [
+      -0.3,
+      0.1,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      -0.5,
+      0.3,
+      0.0
+     ],
+     "max": [
+      -0.3,
+      0.5,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      -0.1,
+      -0.5,
+      0.0
+     ],
+     "max": [
+      0.1,
+      -0.3,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      -0.1,
+      -0.1,
+      0.0
+     ],
+     "max": [
+      0.1,
+      0.1,
+      0.4
+     ]
+    },
+    {
+     "min": [
+      -0.1,
+      0.3,
+      0.0
+     ],
+     "max": [
+      0.1,
+      0.5,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      0.3,
+      -0.5,
+      0.0
+     ],
+     "max": [
+      0.5,
+      -0.3,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      0.3,
+      -0.1,
+      0.0
+     ],
+     "max": [
+      0.5,
+      0.1,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      0.3,
+      0.3,
+      0.0
+     ],
+     "max": [
+      0.5,
+      0.5,
+      0.2
+     ]
+    }
+   ],
+   "box_count": 9,
+   "analytic_volume": 0.08
+  },
+  {
+   "configuration": "0D",
+   "file": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/C/geometry_0D.stl",
+   "path": "cases/C/geometry_0D.stl",
+   "format": "ASCII STL, LF line endings, outward normals",
+   "source": "generated from the stated dimensions",
+   "stats": {
+    "triangles": 96,
+    "bbox_min": [
+     -0.5,
+     -0.5,
+     0.0
+    ],
+    "bbox_max": [
+     0.5,
+     0.5,
+     0.2
+    ],
+    "signed_volume": 0.064,
+    "edges": 144,
+    "edges_shared_by_two_faces": 144,
+    "edges_boundary": 0,
+    "edges_non_manifold": 0,
+    "watertight": true
+   },
+   "bbox_matches_stated_dimensions": true,
+   "boxes": [
+    {
+     "min": [
+      -0.5,
+      -0.5,
+      0.0
+     ],
+     "max": [
+      -0.3,
+      -0.3,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      -0.5,
+      -0.1,
+      0.0
+     ],
+     "max": [
+      -0.3,
+      0.1,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      -0.5,
+      0.3,
+      0.0
+     ],
+     "max": [
+      -0.3,
+      0.5,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      -0.1,
+      -0.5,
+      0.0
+     ],
+     "max": [
+      0.1,
+      -0.3,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      -0.1,
+      0.3,
+      0.0
+     ],
+     "max": [
+      0.1,
+      0.5,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      0.3,
+      -0.5,
+      0.0
+     ],
+     "max": [
+      0.5,
+      -0.3,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      0.3,
+      -0.1,
+      0.0
+     ],
+     "max": [
+      0.5,
+      0.1,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      0.3,
+      0.3,
+      0.0
+     ],
+     "max": [
+      0.5,
+      0.5,
+      0.2
+     ]
+    }
+   ],
+   "box_count": 8,
+   "analytic_volume": 0.064
+  },
+  {
+   "configuration": "1D",
+   "file": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/C/geometry_1D.stl",
+   "path": "cases/C/geometry_1D.stl",
+   "format": "ASCII STL, LF line endings, outward normals",
+   "source": "generated from the stated dimensions",
+   "stats": {
+    "triangles": 108,
+    "bbox_min": [
+     -0.5,
+     -0.5,
+     0.0
+    ],
+    "bbox_max": [
+     0.5,
+     0.5,
+     0.2
+    ],
+    "signed_volume": 0.072,
+    "edges": 162,
+    "edges_shared_by_two_faces": 162,
+    "edges_boundary": 0,
+    "edges_non_manifold": 0,
+    "watertight": true
+   },
+   "bbox_matches_stated_dimensions": true,
+   "boxes": [
+    {
+     "min": [
+      -0.5,
+      -0.5,
+      0.0
+     ],
+     "max": [
+      -0.3,
+      -0.3,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      -0.5,
+      -0.1,
+      0.0
+     ],
+     "max": [
+      -0.3,
+      0.1,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      -0.5,
+      0.3,
+      0.0
+     ],
+     "max": [
+      -0.3,
+      0.5,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      -0.1,
+      -0.5,
+      0.0
+     ],
+     "max": [
+      0.1,
+      -0.3,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      -0.1,
+      -0.1,
+      0.0
+     ],
+     "max": [
+      0.1,
+      0.1,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      -0.1,
+      0.3,
+      0.0
+     ],
+     "max": [
+      0.1,
+      0.5,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      0.3,
+      -0.5,
+      0.0
+     ],
+     "max": [
+      0.5,
+      -0.3,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      0.3,
+      -0.1,
+      0.0
+     ],
+     "max": [
+      0.5,
+      0.1,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      0.3,
+      0.3,
+      0.0
+     ],
+     "max": [
+      0.5,
+      0.5,
+      0.2
+     ]
+    }
+   ],
+   "box_count": 9,
+   "analytic_volume": 0.072
+  }
+ ],
+ "render": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/geom_caseC.png"
+}

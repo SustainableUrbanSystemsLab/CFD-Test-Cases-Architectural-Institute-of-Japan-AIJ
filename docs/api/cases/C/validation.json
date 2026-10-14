@@ -1,0 +1,29 @@
+{
+ "schema_version": "1.0.0",
+ "generated_from": "4fb5e6e9093d5b925f977d4e0502d8c881fec52d",
+ "generated_at": "2026-10-14T03:54:23+00:00",
+ "licence": "CC BY 4.0",
+ "case": "C",
+ "title": "Case C — 3 × 3 block array",
+ "status": "pending",
+ "engines": [
+  {
+   "engine": "openfoam12-realizableKE",
+   "status": "pending"
+  },
+  {
+   "engine": "openlb",
+   "status": "pending"
+  },
+  {
+   "engine": "fluidx3d",
+   "status": "pending"
+  },
+  {
+   "engine": "ml-surrogate",
+   "status": "pending"
+  }
+ ],
+ "results": [],
+ "note": "No validation has been run for this case yet; results is an empty list. Nothing on this page is a claim about this case."
+}

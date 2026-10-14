@@ -1,0 +1,3 @@
+# The served API files are LF on purpose (a CRLF STL leaves  in the last token for OpenFOAM readers).
+docs/api/** text eol=lf
+scripts/*.py text eol=lf

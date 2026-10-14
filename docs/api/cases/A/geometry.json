@@ -1,0 +1,68 @@
+{
+ "schema_version": "1.0.0",
+ "generated_from": "4fb5e6e9093d5b925f977d4e0502d8c881fec52d",
+ "generated_at": "2026-10-14T03:54:23+00:00",
+ "licence": "CC BY 4.0",
+ "case": "A",
+ "title": "Case A — 1:1:2 building",
+ "units": "metres (model scale)",
+ "frame": {
+  "origin": "building centre on the ground plane",
+  "x": "+x streamwise (the wind at WD = 0 blows toward +x); building spans x in [-0.04, 0.04]",
+  "y": "+y lateral; building spans y in [-0.04, 0.04]; points published on the y <= 0 half by the tunnel's symmetry convention",
+  "z": "+z up from the ground; roof at z = 0.16",
+  "lateral_sign_applied": 1,
+  "coordinate_scale_applied": 1.0
+ },
+ "default_configuration": "default",
+ "configurations": [
+  "default"
+ ],
+ "is_boxes": true,
+ "files": [
+  {
+   "configuration": "default",
+   "file": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/A/geometry.stl",
+   "path": "cases/A/geometry.stl",
+   "format": "ASCII STL, LF line endings, outward normals",
+   "source": "generated from the stated dimensions",
+   "stats": {
+    "triangles": 12,
+    "bbox_min": [
+     -0.04,
+     -0.04,
+     0.0
+    ],
+    "bbox_max": [
+     0.04,
+     0.04,
+     0.16
+    ],
+    "signed_volume": 0.001024,
+    "edges": 18,
+    "edges_shared_by_two_faces": 18,
+    "edges_boundary": 0,
+    "edges_non_manifold": 0,
+    "watertight": true
+   },
+   "bbox_matches_stated_dimensions": true,
+   "boxes": [
+    {
+     "min": [
+      -0.04,
+      -0.04,
+      0.0
+     ],
+     "max": [
+      0.04,
+      0.04,
+      0.16
+     ]
+    }
+   ],
+   "box_count": 1,
+   "analytic_volume": 0.001024
+  }
+ ],
+ "render": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/geom_caseA.png"
+}

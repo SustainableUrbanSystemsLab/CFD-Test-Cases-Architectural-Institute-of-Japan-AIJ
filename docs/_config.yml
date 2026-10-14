@@ -1,0 +1,42 @@
+title: AIJ UWE benchmark
+description: Wind-tunnel reference data from the Architectural Institute of Japan Urban Wind Environment benchmark (Cases A-E), cleaned, with Eddy3D's validation against it and a static API.
+url: "https://sustainableurbansystems.com"
+baseurl: "/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ"
+
+# GitHub's Jekyll build: remote theme, whitelisted plugins only, no build server needed.
+remote_theme: just-the-docs/just-the-docs
+plugins:
+  - jekyll-remote-theme
+  - jekyll-include-cache
+
+permalink: pretty
+search_enabled: true
+heading_anchors: true
+color_scheme: light
+
+aux_links:
+  "Repository": "https://github.com/SustainableUrbanSystemsLab/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ"
+  "API": "/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/index.json"
+
+footer_content: "Measurement data CC BY 4.0, belongs to its collectors and distributors (named per case). Cite the AIJ UWE benchmark and the accompanying papers."
+
+callouts:
+  warning:
+    title: Caveat
+    color: yellow
+  note:
+    title: Note
+    color: blue
+
+# Everything under api/ is static data; keep Jekyll from touching it beyond copying.
+keep_files:
+  - api
+defaults:
+  - scope:
+      path: "api"
+    values:
+      layout: null
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md

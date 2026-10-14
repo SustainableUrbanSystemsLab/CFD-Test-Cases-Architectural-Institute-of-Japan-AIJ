@@ -1,0 +1,314 @@
+{
+ "schema_version": "1.0.0",
+ "generated_from": "4fb5e6e9093d5b925f977d4e0502d8c881fec52d",
+ "generated_at": "2026-10-14T03:54:23+00:00",
+ "licence": "CC BY 4.0",
+ "id": "A",
+ "slug": "case-a",
+ "title": "Case A — 1:1:2 building",
+ "summary": "Isolated 1:1:2 building, velocity field (split-fibre hot wire).",
+ "configuration": {
+  "building": "1:1:2 (width : depth : height) prism",
+  "b_m": 0.08,
+  "H_m": 0.16,
+  "Re_H": 24000,
+  "U_H_m_s": 4.491,
+  "wind_directions_deg": [
+   0
+  ],
+  "measurement_planes": [
+   "vertical centre plane y/b = 0",
+   "horizontal z/b = 0.125",
+   "horizontal z/b = 1.25"
+  ],
+  "instrument": "hot-wire anemometer, split-fibre probes (DANTEC 55R55 streamwise, 55R57 spanwise/vertical), 1000 Hz, 60 s per point, 500 Hz low-pass",
+  "tunnel": "Technical Research Institute, Shimizu Corporation, Tokyo",
+  "scale_note": "model scale; Eddy3D solves it at 1:100 (b = 8 m, H = 16 m) with the tunnel velocities"
+ },
+ "configurations": [
+  {
+   "config": "default",
+   "wind_direction_deg": 0.0,
+   "points": 186
+  }
+ ],
+ "quantities": [
+  "U",
+  "V",
+  "W",
+  "uu",
+  "vv",
+  "ww",
+  "k"
+ ],
+ "units": {
+  "length": "m (model scale)",
+  "velocity": "m/s",
+  "variance": "m^2/s^2",
+  "k": "m^2/s^2"
+ },
+ "frame": {
+  "origin": "building centre on the ground plane",
+  "x": "+x streamwise (the wind at WD = 0 blows toward +x); building spans x in [-0.04, 0.04]",
+  "y": "+y lateral; building spans y in [-0.04, 0.04]; points published on the y <= 0 half by the tunnel's symmetry convention",
+  "z": "+z up from the ground; roof at z = 0.16",
+  "lateral_sign_applied": 1,
+  "coordinate_scale_applied": 1.0
+ },
+ "inflow_fit": {
+  "method": "log law, kappa = 0.41, least squares over z = 0.02 ... 2H on the case's own approach-flow file",
+  "u_star_m_s": 0.343,
+  "z0_mm": 0.668,
+  "U_H_measured_m_s": 4.491,
+  "log_law_error_at_H": "+2.0 %"
+ },
+ "approach_flow": {
+  "source": "Case_A_cleaned/AF_caseA.csv",
+  "units": {
+   "z": "m",
+   "U": "m/s",
+   "k": "m^2/s^2",
+   "u_rms": "m/s"
+  },
+  "rows": [
+   {
+    "z": 0.005,
+    "U": 2.745,
+    "k": 0.372,
+    "u_rms": 0.663
+   },
+   {
+    "z": 0.01,
+    "U": 2.935,
+    "k": 0.4,
+    "u_rms": 0.669
+   },
+   {
+    "z": 0.02,
+    "U": 3.175,
+    "k": 0.437,
+    "u_rms": 0.687
+   },
+   {
+    "z": 0.04,
+    "U": 3.435,
+    "k": 0.492,
+    "u_rms": 0.717
+   },
+   {
+    "z": 0.06,
+    "U": 3.627,
+    "k": 0.538,
+    "u_rms": 0.749
+   },
+   {
+    "z": 0.08,
+    "U": 3.824,
+    "k": 0.574,
+    "u_rms": 0.777
+   },
+   {
+    "z": 0.1,
+    "U": 4.021,
+    "k": 0.585,
+    "u_rms": 0.766
+   },
+   {
+    "z": 0.12,
+    "U": 4.21,
+    "k": 0.627,
+    "u_rms": 0.799
+   },
+   {
+    "z": 0.14,
+    "U": 4.362,
+    "k": 0.635,
+    "u_rms": 0.793
+   },
+   {
+    "z": 0.16,
+    "U": 4.491,
+    "k": 0.652,
+    "u_rms": 0.807
+   },
+   {
+    "z": 0.165,
+    "U": 4.502,
+    "k": 0.643,
+    "u_rms": 0.798
+   },
+   {
+    "z": 0.17,
+    "U": 4.586,
+    "k": 0.657,
+    "u_rms": 0.813
+   },
+   {
+    "z": 0.18,
+    "U": 4.606,
+    "k": 0.65,
+    "u_rms": 0.799
+   },
+   {
+    "z": 0.19,
+    "U": 4.712,
+    "k": 0.659,
+    "u_rms": 0.808
+   },
+   {
+    "z": 0.21,
+    "U": 4.854,
+    "k": 0.661,
+    "u_rms": 0.806
+   },
+   {
+    "z": 0.23,
+    "U": 4.993,
+    "k": 0.651,
+    "u_rms": 0.795
+   },
+   {
+    "z": 0.25,
+    "U": 5.132,
+    "k": 0.626,
+    "u_rms": 0.784
+   },
+   {
+    "z": 0.3,
+    "U": 5.449,
+    "k": 0.593,
+    "u_rms": 0.767
+   },
+   {
+    "z": 0.35,
+    "U": 5.782,
+    "k": 0.521,
+    "u_rms": 0.725
+   },
+   {
+    "z": 0.4,
+    "U": 6.077,
+    "k": 0.434,
+    "u_rms": 0.663
+   },
+   {
+    "z": 0.45,
+    "U": 6.338,
+    "k": 0.352,
+    "u_rms": 0.594
+   },
+   {
+    "z": 0.5,
+    "U": 6.588,
+    "k": 0.254,
+    "u_rms": 0.496
+   },
+   {
+    "z": 0.55,
+    "U": 6.693,
+    "k": 0.175,
+    "u_rms": 0.402
+   },
+   {
+    "z": 0.6,
+    "U": 6.751,
+    "k": 0.106,
+    "u_rms": 0.307
+   }
+  ]
+ },
+ "points": {
+  "endpoint_json": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/A/points.json",
+  "endpoint_csv": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/A/points.csv",
+  "source": "Case_A_cleaned/RS-caseA.csv",
+  "rows": 186,
+  "distinct_points": 186,
+  "columns": [
+   "point_id",
+   "config",
+   "instrument",
+   "wind_direction_deg",
+   "x",
+   "y",
+   "z",
+   "U",
+   "V",
+   "W",
+   "uu",
+   "vv",
+   "ww",
+   "k"
+  ],
+  "counts": {
+   "config": {
+    "default": 186
+   },
+   "instrument": {
+    "split_fibre": 186
+   },
+   "wind_direction_deg": {
+    "0.0": 186
+   }
+  },
+  "nulls": {},
+  "bbox_min": [
+   -0.06,
+   -0.16,
+   0.01
+  ],
+  "bbox_max": [
+   0.26,
+   0.0,
+   0.28
+  ]
+ },
+ "geometry": {
+  "endpoint": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/A/geometry.json",
+  "files": [
+   {
+    "configuration": "default",
+    "file": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/A/geometry.stl",
+    "triangles": 12,
+    "watertight": true
+   }
+  ]
+ },
+ "validation": {
+  "endpoint": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/A/validation.json",
+  "status": "validated",
+  "engines": {
+   "openfoam12-realizableKE": "validated",
+   "openlb": "pending",
+   "fluidx3d": "pending",
+   "ml-surrogate": "n/a"
+  }
+ },
+ "gotchas": [
+  "Lateral velocity V is positive toward +y (checked: V = -2.893 m/s at (-0.040, -0.050, 0.010), just outside the y < 0 flank, deflecting away from the centreline). Case B uses the OPPOSITE sign; the API flips Case B so both agree.",
+  "Coordinates are metres (Case B's are millimetres in the published file).",
+  "Case A's turbulence columns are rms values (u_rms, ...). The API serves VARIANCES (uu = u_rms^2) so A and B share one column meaning."
+ ],
+ "people": {
+  "data_collectors": [
+   "Takeshi Ishihara (The University of Tokyo)",
+   "Kazuki Hibi (Numerical Flow Design)"
+  ],
+  "editors_distributors": [
+   "Yoshihide Tominaga (Niigata Institute of Technology)",
+   "Hideki Kikumoto (The University of Tokyo)",
+   "Tsubasa Okaze (Institute of Science Tokyo)"
+  ],
+  "contact": "Takeshi Ishihara <ishihara@bridge.t.u-tokyo.ac.jp>"
+ },
+ "doi": "10.5281/zenodo.15050147",
+ "doi_note": null,
+ "citation_requested": "Meng, Y., & Hibi, K. (1998). Turbulent measurements of the flow field around a high-rise building. Journal of Wind Engineering, JAWE, 76, 55-64. https://doi.org/10.5359/jawe.1998.76_55",
+ "files_in_repository": {
+  "folder": "https://github.com/SustainableUrbanSystemsLab/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/tree/main/Case_A_cleaned",
+  "reference": "Case_A_cleaned/RS-caseA.csv",
+  "approach_flow": "Case_A_cleaned/AF_caseA.csv",
+  "readme": "Case_A_cleaned/readme_caseA.md"
+ },
+ "render": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/geom_caseA.png",
+ "page": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/cases/case-a/"
+}

@@ -1,0 +1,322 @@
+{
+ "schema_version": "1.0.0",
+ "generated_from": "4fb5e6e9093d5b925f977d4e0502d8c881fec52d",
+ "generated_at": "2026-10-14T03:54:23+00:00",
+ "licence": "CC BY 4.0",
+ "id": "E",
+ "slug": "case-e",
+ "title": "Case E — Niigata district",
+ "summary": "Real district in Niigata at 1:250, before and after a 60 m high-rise and two 18 m mid-rises; pedestrian-height velocity ratio (thermistor), 16 wind directions.",
+ "configuration": {
+  "district": "Niigata City urban area near the Shinano River; dense low-rise stock (median top 6 m, max 30 m)",
+  "scale": "1:250",
+  "states": {
+   "bc": "before construction (sites of A, B, C empty)",
+   "ac": "after construction of A (60 m high-rise), B and C (18 m mid-rises)"
+  },
+  "new_buildings": {
+   "A": "60 m high-rise, bbox x [-79.3, -49.1], y [-17.1, 18.3]",
+   "B": "18 m, bbox x [41.5, 61.0], y [-18.5, 8.5]",
+   "C": "18 m, bbox x [64.0, 83.5], y [-8.0, 19.0]"
+  },
+  "wind_directions": [
+   "N",
+   "NNE",
+   "NE",
+   "ENE",
+   "E",
+   "ESE",
+   "SE",
+   "SSE",
+   "S",
+   "SSW",
+   "SW",
+   "WSW",
+   "W",
+   "WNW",
+   "NW",
+   "NNW"
+  ],
+  "wind_directions_deg": [
+   0.0,
+   22.5,
+   45.0,
+   67.5,
+   90.0,
+   112.5,
+   135.0,
+   157.5,
+   180.0,
+   202.5,
+   225.0,
+   247.5,
+   270.0,
+   292.5,
+   315.0,
+   337.5
+  ],
+  "measurement_height_m": 2.0,
+  "measurement_height_note": "2 m full scale = 0.008 m model scale",
+  "points": 80,
+  "values": 2560,
+  "Re": 17000,
+  "normalisation": "velocity ratio = mean scalar speed at 2 m / inflow velocity at 15.9 m (the Niigata meteorological station height); U(15.9 m) = 0.504531 x UR = 3.935 m/s with UR = 7.8 m/s at ZR = 250 m",
+  "instrument": "thermistor anemometer, 100 Hz, 60 s per point, mean scalar wind speed",
+  "tunnel": "Niigata Institute of Technology, Kashiwazaki"
+ },
+ "configurations": [
+  {
+   "config": "bc",
+   "wind_directions": [
+    "N",
+    "NNE",
+    "NE",
+    "ENE",
+    "E",
+    "ESE",
+    "SE",
+    "SSE",
+    "S",
+    "SSW",
+    "SW",
+    "WSW",
+    "W",
+    "WNW",
+    "NW",
+    "NNW"
+   ],
+   "points_per_direction": 80
+  },
+  {
+   "config": "ac",
+   "wind_directions": [
+    "N",
+    "NNE",
+    "NE",
+    "ENE",
+    "E",
+    "ESE",
+    "SE",
+    "SSE",
+    "S",
+    "SSW",
+    "SW",
+    "WSW",
+    "W",
+    "WNW",
+    "NW",
+    "NNW"
+   ],
+   "points_per_direction": 80
+  }
+ ],
+ "quantities": [
+  "velocity_ratio"
+ ],
+ "units": {
+  "length": "m (FULL scale)",
+  "velocity_ratio": "dimensionless"
+ },
+ "frame": {
+  "origin": "centre of the reproduced area, ground plane",
+  "x": "+x EAST (full-scale metres)",
+  "y": "+y NORTH (compass rose in MP_caseE.png)",
+  "z": "+z up; all points at z = 2.0",
+  "wind_direction_rotation": "Meteorological: the compass name is the direction the wind comes FROM (N = 0 deg blows toward -y, E = 90 deg toward -x), clockwise from north. This case keeps its geographic frame instead of '+x along the wind' because the district is real and its coordinates are the data's.",
+  "lateral_sign_applied": 1,
+  "coordinate_scale_applied": 1.0
+ },
+ "inflow_fit": {
+  "method": "the workbook publishes z/ZR, U/UR, k/UR^2 with ZR = 250 m, UR = 7.8 m/s and epsilon = Cmu^0.5 k dU/dz (Cmu = 0.09); de-normalised to full-scale metres and m/s here",
+  "U_ref_15_9m_m_s": 3.935,
+  "log_law": "does not fit: kappa = 0.41 fits reach 5.3-9.4 % max error over the relevant height range and overshoot U(15.9 m) by 4-7 %",
+  "power_law_exponent": {
+   "ground_to_60m": 0.158,
+   "whole_profile": 0.201
+  },
+  "note": "derived during scoping, not published by AIJ"
+ },
+ "approach_flow": {
+  "source": "Case E_cleaned/CaseE(Niigata).xls [sheet Inflow]",
+  "units": {
+   "z": "m",
+   "U": "m/s",
+   "k": "m^2/s^2",
+   "u_rms": "m/s"
+  },
+  "rows": [
+   {
+    "z": 1.25,
+    "U": 2.847,
+    "k": 0.48672
+   },
+   {
+    "z": 2.5,
+    "U": 3.042,
+    "k": 0.5475599999999999
+   },
+   {
+    "z": 5.0,
+    "U": 3.2603999999999997,
+    "k": 0.5475599999999999
+   },
+   {
+    "z": 7.5,
+    "U": 3.4086,
+    "k": 0.5475599999999999
+   },
+   {
+    "z": 12.5,
+    "U": 3.7674,
+    "k": 0.6083999999999999
+   },
+   {
+    "z": 25.0,
+    "U": 4.360200000000001,
+    "k": 0.6083999999999999
+   },
+   {
+    "z": 50.0,
+    "U": 5.109,
+    "k": 0.5475599999999999
+   },
+   {
+    "z": 75.0,
+    "U": 5.694,
+    "k": 0.48672
+   },
+   {
+    "z": 100.0,
+    "U": 6.162,
+    "k": 0.42588000000000004
+   },
+   {
+    "z": 150.0,
+    "U": 6.9654,
+    "k": 0.36504
+   },
+   {
+    "z": 200.0,
+    "U": 7.394399999999999,
+    "k": 0.24336
+   },
+   {
+    "z": 250.0,
+    "U": 7.8,
+    "k": 0.12168
+   }
+  ]
+ },
+ "points": {
+  "endpoint_json": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/points.json",
+  "endpoint_csv": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/points.csv",
+  "source": "Case E_cleaned/CaseE(Niigata).xls",
+  "rows": 2560,
+  "distinct_points": 80,
+  "columns": [
+   "point_id",
+   "config",
+   "instrument",
+   "wind_direction",
+   "wind_direction_deg",
+   "x",
+   "y",
+   "z",
+   "velocity_ratio"
+  ],
+  "counts": {
+   "config": {
+    "ac": 1280,
+    "bc": 1280
+   },
+   "instrument": {
+    "thermistor": 2560
+   },
+   "wind_direction_deg": {
+    "0.0": 160,
+    "112.5": 160,
+    "135.0": 160,
+    "157.5": 160,
+    "180.0": 160,
+    "202.5": 160,
+    "22.5": 160,
+    "225.0": 160,
+    "247.5": 160,
+    "270.0": 160,
+    "292.5": 160,
+    "315.0": 160,
+    "337.5": 160,
+    "45.0": 160,
+    "67.5": 160,
+    "90.0": 160
+   }
+  },
+  "nulls": {},
+  "bbox_min": [
+   -133.0,
+   -94.0,
+   2.0
+  ],
+  "bbox_max": [
+   125.0,
+   112.0,
+   2.0
+  ]
+ },
+ "geometry": {
+  "endpoint": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/geometry.json",
+  "files": [
+   {
+    "configuration": "ac",
+    "file": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/geometry.stl",
+    "triangles": 8436,
+    "watertight": false
+   },
+   {
+    "configuration": "bc",
+    "file": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/geometry_bc.stl",
+    "triangles": 8400,
+    "watertight": false
+   }
+  ]
+ },
+ "validation": {
+  "endpoint": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/validation.json",
+  "status": "pending",
+  "engines": {
+   "openfoam12-realizableKE": "pending",
+   "openlb": "pending",
+   "fluidx3d": "pending",
+   "ml-surrogate": "pending"
+  }
+ },
+ "gotchas": [
+  "The velocity ratio is normalised by the inflow velocity at 15.9 m (= 3.935 m/s), NOT by U_H and NOT by UR = 7.8 m/s. A prior Eddy3D comparison in the folder divided by the wrong reference and came out low by a factor of 2.048 (FAC2 0.338 -> 0.863 once rescaled, R unchanged at 0.661).",
+  "All 2560 published ratios are integer multiples of 0.0198204 (55 distinct levels): the data's own resolution is +/-0.0099, 3.1 % of the median value and about 10 % at the lowest points.",
+  "The readme describes AF_caseE.csv, RS_caseE.csv and BD_caseE.stl, but this repository holds only the .3dm, .ghx, .xls and the MP drawing; everything here is extracted from the workbook and the 3dm.",
+  "CaseE(Niigata).3dm is FULL-SCALE metres (MP_caseE.png is drawn at model scale, +/-0.8 m). Use layers 'buildings' (5,015 meshes, before construction) and 'buildings_new_construction' (3 prisms); exclude the map plate on the Japanese-named general layer, the terrain plates (the site is flat) and 'probes'.",
+  "Do not take the measurement coordinates from the 3dm's 'probes' layer: its 80 spheres sit a median 2.31 m (max 21 m) from the workbook's points, which are authoritative (all 80 fall in open space, min 0.83 m from a building edge).",
+  "The measured quantity is a scalar (thermistor) speed; a RANS |U| is biased low against it in a dense canopy. The construction signal (ac - bc) is largest for SW (mean |d| 0.2155) and smallest for SSE (0.093)."
+ ],
+ "people": {
+  "data_collectors": [
+   "Yoshihide Tominaga (Niigata Institute of Technology)"
+  ],
+  "editors_distributors": [
+   "Hideki Kikumoto (The University of Tokyo)",
+   "Tsubasa Okaze (Institute of Science Tokyo)"
+  ],
+  "contact": "Yoshihide Tominaga <tominaga@abe.niit.ac.jp>"
+ },
+ "doi": "10.5281/zenodo.15429017",
+ "doi_note": null,
+ "citation_requested": "Tominaga, Y. et al. (2008). AIJ guidelines for practical applications of CFD to pedestrian wind environment around buildings. JWEIA 96, 1749-1761. https://doi.org/10.1016/j.jweia.2008.02.058",
+ "files_in_repository": {
+  "folder": "https://github.com/SustainableUrbanSystemsLab/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/tree/main/Case%20E_cleaned",
+  "reference": "Case E_cleaned/CaseE(Niigata).xls",
+  "approach_flow": "Case E_cleaned/CaseE(Niigata).xls [sheet Inflow]",
+  "readme": "Case E_cleaned/readme_caseE_cleaned.md"
+ },
+ "render": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/geom_caseE.png",
+ "page": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/cases/case-e/"
+}

@@ -1,0 +1,386 @@
+{
+ "schema_version": "1.0.0",
+ "generated_from": "4fb5e6e9093d5b925f977d4e0502d8c881fec52d",
+ "generated_at": "2026-10-14T03:54:23+00:00",
+ "licence": "CC BY 4.0",
+ "cases": [
+  {
+   "id": "A",
+   "slug": "case-a",
+   "title": "Case A — 1:1:2 building",
+   "summary": "Isolated 1:1:2 building, velocity field (split-fibre hot wire).",
+   "configuration": {
+    "building": "1:1:2 (width : depth : height) prism",
+    "b_m": 0.08,
+    "H_m": 0.16,
+    "Re_H": 24000,
+    "U_H_m_s": 4.491,
+    "wind_directions_deg": [
+     0
+    ],
+    "measurement_planes": [
+     "vertical centre plane y/b = 0",
+     "horizontal z/b = 0.125",
+     "horizontal z/b = 1.25"
+    ],
+    "instrument": "hot-wire anemometer, split-fibre probes (DANTEC 55R55 streamwise, 55R57 spanwise/vertical), 1000 Hz, 60 s per point, 500 Hz low-pass",
+    "tunnel": "Technical Research Institute, Shimizu Corporation, Tokyo",
+    "scale_note": "model scale; Eddy3D solves it at 1:100 (b = 8 m, H = 16 m) with the tunnel velocities"
+   },
+   "quantities": [
+    "U",
+    "V",
+    "W",
+    "uu",
+    "vv",
+    "ww",
+    "k"
+   ],
+   "units": {
+    "length": "m (model scale)",
+    "velocity": "m/s",
+    "variance": "m^2/s^2",
+    "k": "m^2/s^2"
+   },
+   "frame": {
+    "origin": "building centre on the ground plane",
+    "x": "+x streamwise (the wind at WD = 0 blows toward +x); building spans x in [-0.04, 0.04]",
+    "y": "+y lateral; building spans y in [-0.04, 0.04]; points published on the y <= 0 half by the tunnel's symmetry convention",
+    "z": "+z up from the ground; roof at z = 0.16"
+   },
+   "counts": {
+    "rows": 186,
+    "distinct_points": 186,
+    "configurations": 1
+   },
+   "engines": {
+    "openfoam12-realizableKE": "validated",
+    "openlb": "pending",
+    "fluidx3d": "pending",
+    "ml-surrogate": "n/a"
+   },
+   "doi": "10.5281/zenodo.15050147",
+   "links": {
+    "case": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/A.json",
+    "points": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/A/points.json",
+    "points_csv": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/A/points.csv",
+    "geometry": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/A/geometry.json",
+    "geometry_stl": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/A/geometry.stl",
+    "validation": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/A/validation.json",
+    "page": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/cases/case-a/",
+    "render": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/geom_caseA.png"
+   }
+  },
+  {
+   "id": "B",
+   "slug": "case-b",
+   "title": "Case B — 1:4:4 slab",
+   "summary": "Isolated 1:4:4 slab, velocity field (split-fibre hot wire).",
+   "configuration": {
+    "building": "1:4:4 (depth : width : height) slab",
+    "depth_m": 0.05,
+    "width_m": 0.2,
+    "H_m": 0.2,
+    "Re_H": 72000,
+    "U_H_m_s": 5.133,
+    "wind_directions_deg": [
+     0
+    ],
+    "measurement_planes": [
+     "vertical centre plane y/H = 0",
+     "horizontal z/H = 1/16"
+    ],
+    "instrument": "hot-wire anemometer, split-fibre probe, 100 Hz, 60 s per point",
+    "tunnel": "Niigata Institute of Technology, Kashiwazaki",
+    "scale_note": "model scale; Eddy3D solves it at 1:100 (H = 20 m) with the tunnel velocities"
+   },
+   "quantities": [
+    "U",
+    "V",
+    "W",
+    "uu",
+    "vv",
+    "ww",
+    "k"
+   ],
+   "units": {
+    "length": "m (model scale; converted from the published millimetres)",
+    "velocity": "m/s",
+    "variance": "m^2/s^2",
+    "k": "m^2/s^2"
+   },
+   "frame": {
+    "origin": "building centre on the ground plane",
+    "x": "+x streamwise (the wind at WD = 0 blows toward +x); slab spans x in [-0.025, 0.025]",
+    "y": "+y lateral; slab spans y in [-0.10, 0.10]; points published on the y <= 0 half by the tunnel's symmetry convention",
+    "z": "+z up from the ground; roof at z = 0.20"
+   },
+   "counts": {
+    "rows": 224,
+    "distinct_points": 224,
+    "configurations": 1
+   },
+   "engines": {
+    "openfoam12-realizableKE": "validated",
+    "openlb": "pending",
+    "fluidx3d": "pending",
+    "ml-surrogate": "n/a"
+   },
+   "doi": "10.5281/zenodo.15401455",
+   "links": {
+    "case": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/B.json",
+    "points": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/B/points.json",
+    "points_csv": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/B/points.csv",
+    "geometry": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/B/geometry.json",
+    "geometry_stl": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/B/geometry.stl",
+    "validation": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/B/validation.json",
+    "page": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/cases/case-b/",
+    "render": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/geom_caseB.png"
+   }
+  },
+  {
+   "id": "C",
+   "slug": "case-c",
+   "title": "Case C — 3 × 3 block array",
+   "summary": "3 x 3 array of 0.20 m cubes, centre block at 0D / 1D / 2D, pedestrian-height scalar speed (thermistor), 3 wind directions.",
+   "configuration": {
+    "array": "3 x 3 cubes, D = 0.20 m, block centres at x, y in {-0.4, 0, +0.4} m (pitch 0.40 m = 2D, street width D)",
+    "D_m": 0.2,
+    "centre_building": {
+     "0D": "no centre building",
+     "1D": "0.2 x 0.2 x 0.2 m (same as the surroundings)",
+     "2D": "0.2 x 0.2 x 0.4 m"
+    },
+    "wind_directions_deg": [
+     0,
+     22.5,
+     45
+    ],
+    "configurations": 9,
+    "configurations_note": "3 centre-building heights x 3 wind directions; all nine share the identical 120-point set",
+    "measurement_height_m": 0.02,
+    "measurement_height_note": "z = 0.1 D for every point (2.0 m at the 1:100 scale Eddy3D solves it at)",
+    "Re_D": 52000,
+    "U_H_m_s": 3.654,
+    "U_H_note": "U at z = D = 0.20 m from AF_caseC.csv; the data paper states U_H = 3.65 m/s",
+    "instrument": "thermistor anemometer (omnidirectional scalar speed), 1 Hz, 30 s per point; approach flow by I-type hot wire, 500 Hz, 30 s",
+    "tunnel": "Technology Development Division, Fujita Corporation, Tokyo",
+    "pitch_note": "The 0.40 m pitch is read from MP-z-caseC.png and Figure 3 of the data paper (street = D); the 120-point grid alone bounds the pitch to (0.35, 0.40] m (the 49 absent nodes of the 13 x 13 grid are exactly the nine footprints for 0.375 m as well as 0.40 m)."
+   },
+   "quantities": [
+    "Vs"
+   ],
+   "units": {
+    "length": "m (model scale)",
+    "velocity": "m/s"
+   },
+   "frame": {
+    "origin": "array centre on the ground plane (centre of the middle block)",
+    "x": "+x streamwise at WD = 0 (checked three ways on the data: y -> -y is a symmetry, the x <= -0.25 band is faster than x >= +0.25 in every configuration, and the regression slope of Vs is most negative within 0.8-4.3 deg of +x)",
+    "y": "+y lateral",
+    "z": "+z up; all points at z = 0.02"
+   },
+   "counts": {
+    "rows": 1080,
+    "distinct_points": 120,
+    "configurations": 9
+   },
+   "engines": {
+    "openfoam12-realizableKE": "pending",
+    "openlb": "pending",
+    "fluidx3d": "pending",
+    "ml-surrogate": "pending"
+   },
+   "doi": "10.5281/zenodo.15401791",
+   "links": {
+    "case": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/C.json",
+    "points": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/C/points.json",
+    "points_csv": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/C/points.csv",
+    "geometry": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/C/geometry.json",
+    "geometry_stl": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/C/geometry.stl",
+    "validation": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/C/validation.json",
+    "page": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/cases/case-c/",
+    "render": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/geom_caseC.png"
+   }
+  },
+  {
+   "id": "D",
+   "slug": "case-d",
+   "title": "Case D — high-rise among city blocks",
+   "summary": "1:1:4 tower in a regular array of 82 low blocks, pedestrian-height scalar speed (thermistor, 3 wind directions) plus a 33-point split-fibre velocity field at WD = 0.",
+   "configuration": {
+    "tower": "0.25H x 0.25H x H = 62.5 x 62.5 x 250 mm (1:1:4)",
+    "H_m": 0.25,
+    "blocks": "82 blocks of 0.4H x 0.4H x 0.1H = 100 x 100 x 25 mm",
+    "roads": "0.1H / 0.2H / 0.3H = 25 / 50 / 75 mm; 9 columns in x (pitch alternating 175 / 150 mm), 11 rows in y (pitch 125 mm); corners cut by the turntable circle",
+    "array_extent_m": {
+     "x": [
+      -0.7,
+      0.7
+     ],
+     "y": [
+      -0.675,
+      0.675
+     ],
+     "z": [
+      0,
+      0.25
+     ]
+    },
+    "scale": "1:400 (H = 100 m full scale; the 5 mm measurement plane = 2 m)",
+    "Re_H": 110000,
+    "U_H_m_s": 6.65,
+    "wind_directions_deg": [
+     0,
+     22.5,
+     45
+    ],
+    "measurement_height_m": 0.005,
+    "instrument": "thermistor anemometer (78 points x 3 directions; 66 measured per direction, 12 points in the band around the tower unmeasured) and split-fibre probe (33 points at WD = 0: U, V, W, variances, k)",
+    "tunnel": "see the data paper (Kikumoto et al. 2026, section 3.4)"
+   },
+   "quantities": [
+    "Vs",
+    "U",
+    "V",
+    "W",
+    "uu",
+    "vv",
+    "ww",
+    "k"
+   ],
+   "units": {
+    "length": "m (model scale; converted from the workbook's millimetres)",
+    "velocity": "m/s",
+    "variance": "m^2/s^2",
+    "k": "m^2/s^2"
+   },
+   "frame": {
+    "origin": "tower centre on the ground plane (the array's bounding box is centred on it)",
+    "x": "+x streamwise at WD = 0 (the 0 deg thermistor field is exactly y-mirror symmetric; the split-fibre U is positive at the stream-like points and negative in the tower's windward horseshoe)",
+    "y": "+y lateral",
+    "z": "+z up; all points at z = 0.005"
+   },
+   "counts": {
+    "rows": 267,
+    "distinct_points": 78,
+    "configurations": 4
+   },
+   "engines": {
+    "openfoam12-realizableKE": "pending",
+    "openlb": "pending",
+    "fluidx3d": "pending",
+    "ml-surrogate": "pending"
+   },
+   "doi": null,
+   "links": {
+    "case": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/D.json",
+    "points": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/D/points.json",
+    "points_csv": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/D/points.csv",
+    "geometry": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/D/geometry.json",
+    "geometry_stl": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/D/geometry.stl",
+    "validation": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/D/validation.json",
+    "page": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/cases/case-d/",
+    "render": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/geom_caseD.png"
+   }
+  },
+  {
+   "id": "E",
+   "slug": "case-e",
+   "title": "Case E — Niigata district",
+   "summary": "Real district in Niigata at 1:250, before and after a 60 m high-rise and two 18 m mid-rises; pedestrian-height velocity ratio (thermistor), 16 wind directions.",
+   "configuration": {
+    "district": "Niigata City urban area near the Shinano River; dense low-rise stock (median top 6 m, max 30 m)",
+    "scale": "1:250",
+    "states": {
+     "bc": "before construction (sites of A, B, C empty)",
+     "ac": "after construction of A (60 m high-rise), B and C (18 m mid-rises)"
+    },
+    "new_buildings": {
+     "A": "60 m high-rise, bbox x [-79.3, -49.1], y [-17.1, 18.3]",
+     "B": "18 m, bbox x [41.5, 61.0], y [-18.5, 8.5]",
+     "C": "18 m, bbox x [64.0, 83.5], y [-8.0, 19.0]"
+    },
+    "wind_directions": [
+     "N",
+     "NNE",
+     "NE",
+     "ENE",
+     "E",
+     "ESE",
+     "SE",
+     "SSE",
+     "S",
+     "SSW",
+     "SW",
+     "WSW",
+     "W",
+     "WNW",
+     "NW",
+     "NNW"
+    ],
+    "wind_directions_deg": [
+     0.0,
+     22.5,
+     45.0,
+     67.5,
+     90.0,
+     112.5,
+     135.0,
+     157.5,
+     180.0,
+     202.5,
+     225.0,
+     247.5,
+     270.0,
+     292.5,
+     315.0,
+     337.5
+    ],
+    "measurement_height_m": 2.0,
+    "measurement_height_note": "2 m full scale = 0.008 m model scale",
+    "points": 80,
+    "values": 2560,
+    "Re": 17000,
+    "normalisation": "velocity ratio = mean scalar speed at 2 m / inflow velocity at 15.9 m (the Niigata meteorological station height); U(15.9 m) = 0.504531 x UR = 3.935 m/s with UR = 7.8 m/s at ZR = 250 m",
+    "instrument": "thermistor anemometer, 100 Hz, 60 s per point, mean scalar wind speed",
+    "tunnel": "Niigata Institute of Technology, Kashiwazaki"
+   },
+   "quantities": [
+    "velocity_ratio"
+   ],
+   "units": {
+    "length": "m (FULL scale)",
+    "velocity_ratio": "dimensionless"
+   },
+   "frame": {
+    "origin": "centre of the reproduced area, ground plane",
+    "x": "+x EAST (full-scale metres)",
+    "y": "+y NORTH (compass rose in MP_caseE.png)",
+    "z": "+z up; all points at z = 2.0"
+   },
+   "counts": {
+    "rows": 2560,
+    "distinct_points": 80,
+    "configurations": 2
+   },
+   "engines": {
+    "openfoam12-realizableKE": "pending",
+    "openlb": "pending",
+    "fluidx3d": "pending",
+    "ml-surrogate": "pending"
+   },
+   "doi": "10.5281/zenodo.15429017",
+   "links": {
+    "case": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E.json",
+    "points": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/points.json",
+    "points_csv": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/points.csv",
+    "geometry": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/geometry.json",
+    "geometry_stl": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/geometry.stl",
+    "validation": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/validation.json",
+    "page": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/cases/case-e/",
+    "render": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/geom_caseE.png"
+   }
+  }
+ ]
+}

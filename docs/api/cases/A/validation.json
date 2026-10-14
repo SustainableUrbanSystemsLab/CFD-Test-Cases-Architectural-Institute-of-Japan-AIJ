@@ -1,0 +1,120 @@
+{
+ "schema_version": "1.0.0",
+ "generated_from": "4fb5e6e9093d5b925f977d4e0502d8c881fec52d",
+ "generated_at": "2026-10-14T03:54:23+00:00",
+ "licence": "CC BY 4.0",
+ "case": "A",
+ "title": "Case A — 1:1:2 building",
+ "status": "validated",
+ "engines": [
+  {
+   "engine": "openfoam12-realizableKE",
+   "status": "validated"
+  },
+  {
+   "engine": "openlb",
+   "status": "pending"
+  },
+  {
+   "engine": "fluidx3d",
+   "status": "pending"
+  },
+  {
+   "engine": "ml-surrogate",
+   "status": "n/a"
+  }
+ ],
+ "results": [
+  {
+   "engine": "openfoam12-realizableKE",
+   "solver": "realizableKE",
+   "numerics_level": 3,
+   "scale": 100,
+   "solved_time": 3000,
+   "points_measured": 186,
+   "lateral_sign_applied_in_fixture": 1,
+   "recirculation_Lr_over_H": 1.4897169963016559,
+   "normalisation": "U by U_H, k by U_H^2 (the benchmark's own convention); hit rate D = 0.25, W = 0.05 U_H",
+   "metric_meaning": {
+    "Count": "number of measured points scored",
+    "MeanObserved": "mean of the measured, normalised quantity",
+    "MeanPredicted": "mean of the modelled, normalised quantity",
+    "Fb": "fractional bias, 2 (mean_obs - mean_pred) / (mean_obs + mean_pred); positive = model low",
+    "Nmse": "normalised mean square error",
+    "Nad": "normalised absolute difference",
+    "Fac2": "fraction of points within a factor of two (harsh near zero for sign-changing V and W)",
+    "HitRate": "fraction of points within D = 0.25 relative or W = 0.05 U_H absolute",
+    "Mg": "geometric mean bias",
+    "Vg": "geometric variance",
+    "GeometricPairs": "pairs with both values positive (used for Mg/Vg)",
+    "R": "Pearson correlation coefficient"
+   },
+   "scores": {
+    "velocity.U": {
+     "Count": 186,
+     "MeanObserved": 0.6348264031048957,
+     "MeanPredicted": 0.5273536978377305,
+     "Fb": 0.1849501728346507,
+     "Nmse": 0.07800835684057233,
+     "Nad": 0.10891773191564713,
+     "Fac2": 0.8172043010752689,
+     "HitRate": 0.5860215053763441,
+     "Mg": 1.2758313559148735,
+     "Vg": 1.7376005317453764,
+     "GeometricPairs": 158,
+     "R": 0.9548412675647306
+    },
+    "velocity.V": {
+     "Count": 186,
+     "MeanObserved": -0.040433315855127216,
+     "MeanPredicted": -0.049759690228725034,
+     "Fb": -0.2068092589114306,
+     "Nmse": 0.5759025878347055,
+     "Nad": -0.2570454245211839,
+     "Fac2": 0.34946236559139787,
+     "HitRate": 0.8924731182795699,
+     "Mg": 6.204495097304643,
+     "Vg": 31996.757808134196,
+     "GeometricPairs": 51,
+     "R": 0.9609755519503337
+    },
+    "velocity.W": {
+     "Count": 186,
+     "MeanObserved": 0.0013814965654127787,
+     "MeanPredicted": 0.009696567567632283,
+     "Fb": -1.5011776249635982,
+     "Nmse": 318.23623106215297,
+     "Nad": 3.3983356017720303,
+     "Fac2": 0.3978494623655914,
+     "HitRate": 0.8010752688172043,
+     "Mg": 0.9450322342366085,
+     "Vg": 3.0149459855402783,
+     "GeometricPairs": 67,
+     "R": 0.7082287378700081
+    },
+    "k": {
+     "Count": 186,
+     "MeanObserved": 0.05589626736518247,
+     "MeanPredicted": 0.03434236950399794,
+     "Fb": 0.47770885308100053,
+     "Nmse": 0.6504253329748079,
+     "Nad": 0.3036631109045946,
+     "Fac2": 0.6666666666666666,
+     "HitRate": 0.1774193548387097,
+     "Mg": 1.638197998653992,
+     "Vg": 1.6874276254580902,
+     "GeometricPairs": 186,
+     "R": 0.4798520278226867
+    }
+   },
+   "figures": [
+    "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/aij_agreement.png",
+    "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/aij_profiles.png"
+   ],
+   "reproduce": "validation/plot_aij.py; Eddy3D fixtures TestAijCaseAContainerE2E / TestAijCaseBContainerE2E",
+   "source_file": "validation/results/caseA_openfoam12_realizableKE.json",
+   "reference_string": "Ishihara, T. & Hibi, K.; AIJ UWE Benchmark Dataset Case A; Kikumoto et al. (2026) Japan Architectural Review, Comprehensive Experimental Database for Validating CFD Simulations in Urban Environments"
+  }
+ ],
+ "note": null
+}

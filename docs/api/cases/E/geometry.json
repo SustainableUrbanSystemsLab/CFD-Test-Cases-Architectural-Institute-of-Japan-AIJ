@@ -1,0 +1,81 @@
+{
+ "schema_version": "1.0.0",
+ "generated_from": "4fb5e6e9093d5b925f977d4e0502d8c881fec52d",
+ "generated_at": "2026-10-14T03:54:23+00:00",
+ "licence": "CC BY 4.0",
+ "case": "E",
+ "title": "Case E — Niigata district",
+ "units": "metres (full scale)",
+ "frame": {
+  "origin": "centre of the reproduced area, ground plane",
+  "x": "+x EAST (full-scale metres)",
+  "y": "+y NORTH (compass rose in MP_caseE.png)",
+  "z": "+z up; all points at z = 2.0",
+  "wind_direction_rotation": "Meteorological: the compass name is the direction the wind comes FROM (N = 0 deg blows toward -y, E = 90 deg toward -x), clockwise from north. This case keeps its geographic frame instead of '+x along the wind' because the district is real and its coordinates are the data's.",
+  "lateral_sign_applied": 1,
+  "coordinate_scale_applied": 1.0
+ },
+ "default_configuration": "ac",
+ "configurations": [
+  "ac",
+  "bc"
+ ],
+ "is_boxes": false,
+ "files": [
+  {
+   "configuration": "ac",
+   "file": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/geometry.stl",
+   "path": "cases/E/geometry.stl",
+   "format": "ASCII STL, LF line endings, outward normals",
+   "source": "triangulated from CaseE(Niigata).3dm via rhino3dm, layers 'buildings' + 'buildings_new_construction'; 478 of 506 shells were wound inward in the 3dm and are flipped outward here",
+   "stats": {
+    "triangles": 8436,
+    "bbox_min": [
+     -201.5,
+     -201.0,
+     0.0
+    ],
+    "bbox_max": [
+     203.0,
+     197.300003,
+     60.0
+    ],
+    "signed_volume": 153746.549560573,
+    "edges": 12639,
+    "edges_shared_by_two_faces": 12624,
+    "edges_boundary": 0,
+    "edges_non_manifold": 15,
+    "watertight": false
+   },
+   "bbox_matches_stated_dimensions": null
+  },
+  {
+   "configuration": "bc",
+   "file": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/geometry_bc.stl",
+   "path": "cases/E/geometry_bc.stl",
+   "format": "ASCII STL, LF line endings, outward normals",
+   "source": "triangulated from CaseE(Niigata).3dm via rhino3dm, layers 'buildings'; 475 of 503 shells were wound inward in the 3dm and are flipped outward here",
+   "stats": {
+    "triangles": 8400,
+    "bbox_min": [
+     -201.5,
+     -201.0,
+     0.0
+    ],
+    "bbox_max": [
+     203.0,
+     197.300003,
+     30.0
+    ],
+    "signed_volume": 138719.097502925,
+    "edges": 12585,
+    "edges_shared_by_two_faces": 12570,
+    "edges_boundary": 0,
+    "edges_non_manifold": 15,
+    "watertight": false
+   },
+   "bbox_matches_stated_dimensions": null
+  }
+ ],
+ "render": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/geom_caseE.png"
+}
