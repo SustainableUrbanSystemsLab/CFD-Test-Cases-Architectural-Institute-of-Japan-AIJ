@@ -6,7 +6,7 @@
 Base URL: https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api
 Fallback (raw files from the repository): https://raw.githubusercontent.com/SustainableUrbanSystemsLab/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/main/docs/api
 Repository: https://github.com/SustainableUrbanSystemsLab/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ
-API version: 2.0.0. Data version (SHA-256 of the served data): f09f6ec0013369f02ea137ff30f2b53f098a13a5e3952f37b57ab3db1b6f92c7.
+API version: 2.0.0. Data version (SHA-256 of the served data): 856a6a6664e403958b907f8d481cb9d47bd613a4d205bd326e2f52f73d135016.
 Licence: CC-BY-4.0 — the data belongs to its collectors; cite the benchmark and the per-case papers.
 
 ## How to use this
@@ -22,7 +22,7 @@ Licence: CC-BY-4.0 — the data belongs to its collectors; cite the benchmark an
 6. GET validation.json for every case and engine at once, or cases/{id}/validation.json for one case in full.
    Quote the `headline` scores. An engine whose status is not "scored" has NO result for that case: do not
    infer one. "scored" means a run exists, not that it agrees — read the numbers. Each result's `pairs` is
-   the per-point measured and modelled values, so any score can be recomputed. Status today: A: openfoam12-realizableKE scored, openlb scored, fluidx3d scored, ml-surrogate scored; B: openfoam12-realizableKE scored, openlb scored, fluidx3d scored, ml-surrogate scored; C: openfoam12-realizableKE scored, openlb not comparable, fluidx3d not comparable, ml-surrogate scored; D: openfoam12-realizableKE running, openlb not comparable, fluidx3d not comparable, ml-surrogate scored; E: openfoam12-realizableKE scored, openlb not comparable, fluidx3d not comparable, ml-surrogate scored.
+   the per-point measured and modelled values, so any score can be recomputed. Status today: A: openfoam12-realizableKE scored, openlb scored, fluidx3d scored, ml-surrogate scored; B: openfoam12-realizableKE scored, openlb scored, fluidx3d scored, ml-surrogate scored; C: openfoam12-realizableKE scored, openlb not comparable, fluidx3d not comparable, ml-surrogate scored; D: openfoam12-realizableKE scored, openlb not comparable, fluidx3d not comparable, ml-surrogate scored; E: openfoam12-realizableKE scored, openlb not comparable, fluidx3d not comparable, ml-surrogate scored.
 7. All geometry at once: GET geometry.json (every STL with its case, configuration, units, frame and SHA-256)
    or geometry.zip. Each STL stays in its own case's frame and units; they are NOT one scene.
 8. Every JSON document names its JSON Schema in `$schema` (schemas/{name}.schema.json); openapi.json describes
@@ -55,7 +55,7 @@ Licence: CC-BY-4.0 — the data belongs to its collectors; cite the benchmark an
 - A: Case A — 1:1:2 building. Isolated 1:1:2 building, velocity field (split-fibre hot wire). 186 rows, 186 points, columns point_id, config, instrument, wind_direction_deg, x, y, z, U, V, W, uu, vv, ww, k. Engines: openfoam12-realizableKE scored, openlb scored, fluidx3d scored, ml-surrogate scored.
 - B: Case B — 1:4:4 slab. Isolated 1:4:4 slab, velocity field (split-fibre hot wire). 224 rows, 224 points, columns point_id, config, instrument, wind_direction_deg, x, y, z, U, V, W, uu, vv, ww, k. Engines: openfoam12-realizableKE scored, openlb scored, fluidx3d scored, ml-surrogate scored.
 - C: Case C — 3 × 3 block array. 3 x 3 array of 0.20 m cubes, centre block at 0D / 1D / 2D, pedestrian-height scalar speed (thermistor), 3 wind directions. 1080 rows, 120 points, columns point_id, config, instrument, wind_direction_deg, x, y, z, Vs. Engines: openfoam12-realizableKE scored, openlb not comparable, fluidx3d not comparable, ml-surrogate scored.
-- D: Case D — high-rise among city blocks. 1:1:4 tower in a regular array of 82 low blocks, pedestrian-height scalar speed (thermistor, 3 wind directions) plus a 33-point split-fibre velocity field at WD = 0. 267 rows, 78 points, columns point_id, config, instrument, wind_direction_deg, x, y, z, U, V, W, uu, vv, ww, k, Vs. Engines: openfoam12-realizableKE running, openlb not comparable, fluidx3d not comparable, ml-surrogate scored.
+- D: Case D — high-rise among city blocks. 1:1:4 tower in a regular array of 82 low blocks, pedestrian-height scalar speed (thermistor, 3 wind directions) plus a 33-point split-fibre velocity field at WD = 0. 267 rows, 78 points, columns point_id, config, instrument, wind_direction_deg, x, y, z, U, V, W, uu, vv, ww, k, Vs. Engines: openfoam12-realizableKE scored, openlb not comparable, fluidx3d not comparable, ml-surrogate scored.
 - E: Case E — Niigata district. Real district in Niigata at 1:250, before and after a 60 m high-rise and two 18 m mid-rises; pedestrian-height velocity ratio (thermistor), 16 wind directions. 2560 rows, 80 points, columns point_id, config, instrument, wind_direction, wind_direction_deg, x, y, z, velocity_ratio. Engines: openfoam12-realizableKE scored, openlb not comparable, fluidx3d not comparable, ml-surrogate scored.
 
 ## Known data issues

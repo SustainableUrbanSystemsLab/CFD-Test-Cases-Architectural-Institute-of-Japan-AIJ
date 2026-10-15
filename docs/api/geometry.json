@@ -1,7 +1,7 @@
 {
  "$schema": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/schemas/geometry-index.schema.json",
  "schema_version": "2.0.0",
- "data_version": "f09f6ec0013369f02ea137ff30f2b53f098a13a5e3952f37b57ab3db1b6f92c7",
+ "data_version": "856a6a6664e403958b907f8d481cb9d47bd613a4d205bd326e2f52f73d135016",
  "license": "CC-BY-4.0",
  "description": "Every cleaned STL, one entry per case and configuration. Each file is in its own case's frame and units — points.json of the same case lives in that frame — so they are deliberately not one scene: overlaid, the cases would stack at the origin, and Case E is full scale while A-D are model scale. geometry.zip holds the same files under archive_name.",
  "archive": {

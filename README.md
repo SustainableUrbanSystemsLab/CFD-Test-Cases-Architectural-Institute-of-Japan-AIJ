@@ -42,7 +42,7 @@ it agrees is in the numbers and their reading. Anything not marked scored is not
 
 | | A | B | C | D | E |
 |---|---|---|---|---|---|
-| OpenFOAM 12, realizable k-ε | scored | scored | scored, 9 configurations | solving | scored, SW |
+| OpenFOAM 12, realizable k-ε | scored | scored | scored, 9 configurations | scored, WD 0° (22.5°, 45° solving) | scored, SW |
 | OpenLB | scored | scored | not comparable at dx = 1.6 m | not comparable at dx = 1.6 m | not comparable at dx = 1.6 m |
 | FluidX3D | scored | scored | not comparable (no ground wall function) | not comparable (no ground wall function) | not comparable (no ground wall function) |
 | ML surrogate (Yel-2.0) | scored | scored | scored | scored | scored |
@@ -227,9 +227,12 @@ Reading these:
   hit rate 0.68–0.88). The map puts the deficit in the streets running along the wind.
 - **It is not the scalar-vs-vector question.** The tunnel reads above even √(|U|² + 2k) at 902 of the 1080
   points (84 %); |U| alone is lower still.
-- **Most of it arrives with the inflow.** The approach flow reaching the array is 0.83 of `AF_caseC.csv` at the
-  probe height (0.99 at z = D) and carries 0.46 of the tunnel's k there: the log-law inlet's near-ground profile
-  decays over the fetch, and its k is set by u\* alone. A 17 % slow approach is worth FB ≈ +0.19 by itself.
+- **Where the deficit comes from is not settled.** An earlier version of this page put it on the inflow, reading the
+  approach flow at the probe height as 0.83 of the tunnel's. That reading was a sampling artefact: upstream of the
+  array the probe height lies below the centre of the first cell of the coarse background mesh, where the probes'
+  cell-to-point interpolation runs linearly to zero at the wall (the sampled |U| is exactly proportional to z there:
+  1.00 m/s at 1 m, 2.01 m/s at 2 m). At z = D the approach matches the tunnel (0.99). At the measurement points the
+  sampling is sound: none of the 240 checked (2D at 0°, 0D at 45°) has its 2 m sample inside the first cell.
 - **The frame is checked by the scores, not assumed.** Scored with the paper figure's rotation sense (the y
   mirror) R falls to −0.33 … +0.03 at 22.5° and 45°; with upwind and downwind swapped (the x mirror) to
   −0.41 … +0.14 in eight of nine configurations (+0.56 for 2D at 22.5°). The CSV's own sense — WD turns the wind
@@ -249,7 +252,7 @@ FB +0.67, FAC2 0.44, R +0.21, hit rate 0.18 — see *ML surrogate* under *Valida
 </details>
 
 <details>
-<summary><b>Case D — high-rise among city blocks</b> · 78 points × 3 directions (thermistor) + 33 points U/V/W/k · scored: ML; OpenFOAM solving</summary>
+<summary><b>Case D — high-rise among city blocks</b> · 78 points × 3 directions (thermistor) + 33 points U/V/W/k · scored: OpenFOAM 12 (WD 0°), ML</summary>
 
 <p><img src="validation/figures/geometry/case-d.png" width="80%" alt="Case D geometry"><br>
 <em>A 0.25 m tower (blue) among 82 low blocks over 1.40 m × 1.35 m (1:400 model scale); the arrow is WD = 0°.</em></p>
@@ -296,8 +299,33 @@ the array; shifting the cloud by 12.5 mm (5 m full scale) puts points 27 and 28 
 resolves an offset well below one road width. On this evidence the workbook's sensor coordinates and the geometry
 agree.
 
-**Validation.** OpenFOAM 12 is **solving** — 3.6 million cells at 1:400, the three directions one after another
-on 8 cores beside a production campaign (about 14 h each); nothing here is a claim about it yet. The ML surrogate
+**Validation (OpenFOAM 12, realizable k-ε), wind direction 0°**, the first of the three headings; 22.5° and 45° are
+solving, about 15 h each on 8 cores beside a production campaign. 3.6 million cells at 1:400 on a cylinder domain,
+3000 iterations; the last iteration's initial residuals are below 4 × 10⁻³.
+
+![Case D, measured vs modelled](validation/figures/case-d-openfoam-agreement.png)
+
+| | n | FAC2 | FB | q | R |
+|---|---|---|---|---|---|
+| thermistor Vs · √(\|U\|²+2k) | 66 | 0.73 | +0.21 | 0.48 | 0.80 |
+| thermistor Vs · \|U\| | 66 | 0.67 | +0.36 | 0.39 | 0.81 |
+| split fibre \|U\| · \|U\| | 33 | 0.76 | +0.07 | 0.52 | 0.85 |
+| split fibre U · U | 33 | 0.48 | +0.67 | 0.52 | 0.95 |
+
+- **The pattern is right**: R 0.80 on the thermistor plane and 0.85 on the split-fibre |U|. The frame check the
+  fixture asserts (R > 0.5 at 0°; a prior Eddy3D attempt at this case scored R 0.10) passes with room to spare.
+- **Against the instrument that measures what RANS computes, the model is nearly unbiased.** On the 33 split-fibre
+  points its |U| has FB +0.07; against the thermistor it is +0.21 with √(|U|²+2k) and +0.36 with |U|. In the
+  tunnel itself the thermistor reads 1.34 times the split-fibre |U| over the same 33 points, so most of the
+  thermistor gap is the instrument, not the flow.
+- **Its streamwise component is low** (U FB +0.67, R 0.95) while its |U| is not: more of the model's
+  near-ground speed is in the lateral and vertical components than the tunnel's.
+- **At 0° the 66 thermistor values are 33 mirror pairs** (the array is symmetric about y = 0), so 33 are independent
+  and the rotation-sense control, which the fixture asserts at 22.5° and 45°, is trivially equal.
+- The numbers were reproduced from the solver's probe output against the cleaned table, with the frame mapped
+  independently and separate metric code.
+
+The ML surrogate
 (Yel-2.0, scaled ×360 so z = 5 mm sits at 1.8 m) scores FB +0.67, FAC2 0.34, R +0.33, hit rate 0.17 on the
 thermistor plane (198 points, 3 directions) and FB +0.23, FAC2 0.52, R +0.59 on the 33 split-fibre |U| — the
 quantity it predicts. See *ML surrogate* under *Validation method*.
@@ -382,9 +410,13 @@ arrives at 0.998 of the imposed value in both states.
   resolved a change (0.75), the mean change 0.09 modelled against 0.16 measured. The model puts the speed-up and
   the shelter of the new buildings where the tunnel measured them, at about 60 % of their size — and far above
   the control that ignores the construction (R 0.10).
-- **The absolute ratios are low, and the inflow says why.** The approach column at the workbook's two lowest
-  heights (1.25 m and 2.5 m) reads 0.41 and 0.79 of the imposed table, 0.98–1.04 from 5 m up: the near-ground
-  profile decays over the fetch, as in Case C, and the measurement height (2 m) sits in that layer.
+- **The absolute ratios are low, and the cause is not established.** An earlier version of this page read the approach
+  column at 1.25 m and 2.5 m as 0.41 and 0.79 of the imposed table. Both heights lie inside the first cell of the
+  coarse upstream mesh, where the probes interpolate linearly to zero at the wall, so those readings say nothing
+  about the approach flow; from 5 m up it matches the table (0.98–1.04). At the measurement points the sampling is
+  sound for 75 of the 80 points before construction and 79 after; the others have their 2 m sample inside the first
+  cell and read low because of the sampling. The construction change, the difference of the two states, is the
+  more robust result.
 - SW is one of 16 directions; the others are one environment variable away and cost about 3.5 h per state each
   on this machine.
 
@@ -532,8 +564,8 @@ U_H with each case's approach-flow file. The scores use the same metric code and
 | A · \|U\|/U_H, z = 0.01 m plane | 65 | +0.77 | 0.26 | −0.13 | 0.09 | FB +0.27, FAC2 0.85, R +0.90, hit rate 0.45 |
 | B · \|U\|/U_H, z = H/16 plane | 122 | +0.82 | 0.36 | −0.24 | 0.17 | FB +0.12, FAC2 0.84, R +0.87, hit rate 0.57 |
 | C · Vs/U_H, 9 configurations | 1080 | +0.67 | 0.44 | +0.21 | 0.18 | √(\|U\|²+2k): FB +0.18, FAC2 0.93, R +0.87, hit rate 0.69 |
-| D · Vs/U_H, thermistor, 3 WD | 198 | +0.67 | 0.34 | +0.33 | 0.17 | solving |
-| D · \|U\|/U_H, split fibre, WD 0 | 33 | +0.23 | 0.52 | +0.59 | 0.24 | solving |
+| D · Vs/U_H, thermistor, 3 WD | 198 | +0.67 | 0.34 | +0.33 | 0.17 | WD 0° only (66 points): √(\|U\|²+2k) FB +0.21, FAC2 0.73, R +0.80, hit rate 0.48 |
+| D · \|U\|/U_H, split fibre, WD 0 | 33 | +0.23 | 0.52 | +0.59 | 0.24 | FB +0.07, FAC2 0.76, R +0.85, hit rate 0.52 |
 | E · Vs/U(15.9 m), 16 WD, before + after | 2560 | +1.00 | 0.22 | +0.43 | 0.08 | — |
 | E · the same, SW only (both states) | 160 | +1.07 | 0.20 | +0.53 | 0.04 | \|U\|: FB +0.31, FAC2 0.76, R +0.81, hit rate 0.36 |
 
@@ -562,10 +594,14 @@ Fitted to each case's own approach-flow file rather than assumed (Cases C–E: i
 | A | 0.343 | 0.668 | 4.491 | +2.0 % |
 | B | 0.399 | 0.882 | 5.133 | +2.9 % |
 
-The inlet is not the whole story near the ground: in Case C the approach flow that reaches the array is 17 % slower
-than the tunnel's at the probe height (z = 0.1 D) although it matches at z = D, and its k is under half the
-tunnel's there; in Case E, with the tunnel's own profile imposed as a table, the approach column is 0.41 and 0.79
-of it at 1.25 m and 2.5 m and right from 5 m up. Cases C–E all measure in that layer.
+**Sampling near the ground.** The probes interpolate from cell centres to points, and at a wall the point value of
+the velocity is zero, so below the centre of the first cell a sample grows linearly from zero whatever the flow
+does. Upstream, where the background mesh is coarse, the pedestrian heights fall in that layer, so the approach
+flow cannot be read there at 2 m. An earlier version of this page read it as 17 % slow in Case C and as 0.41 and
+0.79 of the table at 1.25 m and 2.5 m in Case E; both were this artefact (the sampled |U| is proportional to z).
+At the measurement points, inside the refined mesh, it affects 0 of 240 points checked in Case C, 2 of 78 in Case D
+(both sheltered and nearly still) and 5 of 80 (before construction) and 1 of 80 (after) in Case E. Reading the
+approach flow at pedestrian height needs a refined upstream column or sampling consistent with the wall function.
 
 ### Reproducing the figures
 
@@ -580,7 +616,7 @@ pairs beside them, so the figures rebuild from this repository alone.
 
 | | A | B | C | D | E |
 |---|---|---|---|---|---|
-| OpenFOAM 12, realizable k-ε | scored | scored | scored | solving | scored, SW |
+| OpenFOAM 12, realizable k-ε | scored | scored | scored | scored, WD 0° (22.5°, 45° solving) | scored, SW |
 | OpenLB | scored | scored | not comparable at dx = 1.6 m | not comparable at dx = 1.6 m | not comparable at dx = 1.6 m |
 | FluidX3D | scored | scored | not comparable (no ground wall function) | not comparable (no ground wall function) | not comparable (no ground wall function) |
 | ML surrogate | scored | scored | scored | scored | scored |

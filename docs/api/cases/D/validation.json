@@ -1,7 +1,7 @@
 {
  "$schema": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/schemas/validation.schema.json",
  "schema_version": "2.0.0",
- "data_version": "f09f6ec0013369f02ea137ff30f2b53f098a13a5e3952f37b57ab3db1b6f92c7",
+ "data_version": "856a6a6664e403958b907f8d481cb9d47bd613a4d205bd326e2f52f73d135016",
  "license": "CC-BY-4.0",
  "case": "D",
  "title": "Case D — high-rise among city blocks",
@@ -15,7 +15,7 @@
  "engines": [
   {
    "engine": "openfoam12-realizableKE",
-   "status": "running"
+   "status": "scored"
   },
   {
    "engine": "openlb",
@@ -31,6 +31,244 @@
   }
  ],
  "results": [
+  {
+   "run_id": "D.openfoam12-realizableKE",
+   "engine": "openfoam12-realizableKE",
+   "configuration": null,
+   "solver": "realizableKE",
+   "numerics_level": 3,
+   "scale": 400,
+   "solved_time": null,
+   "iterations": 3000,
+   "points_measured": null,
+   "lateral_sign_applied_in_fixture": null,
+   "recirculation_Lr_over_H": null,
+   "quantity": null,
+   "normalisation": "velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units",
+   "metric_meaning": {
+    "Count": "number of measured points scored",
+    "MeanObserved": "mean of the measured, normalised quantity",
+    "MeanPredicted": "mean of the modelled, normalised quantity",
+    "Fb": "fractional bias, 2 (mean_obs - mean_pred) / (mean_obs + mean_pred); positive = model low",
+    "Nmse": "normalised mean square error",
+    "Nad": "normalised absolute difference",
+    "Fac2": "fraction of points within a factor of two (harsh near zero for sign-changing V and W)",
+    "HitRate": "fraction of points within D = 0.25 relative or W = 0.05 U_H absolute",
+    "Mg": "geometric mean bias",
+    "Vg": "geometric variance",
+    "GeometricPairs": "pairs with both values positive (used for Mg/Vg)",
+    "R": "Pearson correlation coefficient",
+    "null": "a metric that is undefined for the data (for example Mg and Vg when no pair has both values positive)"
+   },
+   "headline": {
+    "WD 0°, thermistor Vs · √(|U|²+2k)": "vs.0.corrected",
+    "WD 0°, thermistor Vs · |U|": "vs.0.uncorrected",
+    "WD 0°, split fibre |U|": "splitfibre.speed",
+    "WD 0°, split fibre U": "splitfibre.U"
+   },
+   "scores": {
+    "ceiling.corrected": {
+     "Count": 33,
+     "MeanObserved": 0.3984552289815448,
+     "MeanPredicted": 0.37611965571729367,
+     "Fb": 0.05767182413340289,
+     "Nmse": 0.018331639263106533,
+     "Nad": 0.048268092699283664,
+     "Fac2": 1,
+     "HitRate": 0.9090909090909091,
+     "Mg": 1.0500136486023723,
+     "Vg": 1.0257754628088442,
+     "GeometricPairs": 33,
+     "R": 0.9472068417466903
+    },
+    "ceiling.uncorrected": {
+     "Count": 33,
+     "MeanObserved": 0.3984552289815448,
+     "MeanPredicted": 0.29685487354750506,
+     "Fb": 0.2922447266751597,
+     "Nmse": 0.14026550233999338,
+     "Nad": 0.14857593369008215,
+     "Fac2": 0.8181818181818182,
+     "HitRate": 0.5151515151515151,
+     "Mg": 1.4221505036722921,
+     "Vg": 1.2530338625690889,
+     "GeometricPairs": 33,
+     "R": 0.8716068497015137
+    },
+    "vs.0.corrected": {
+     "Count": 66,
+     "MeanObserved": 0.3984552289815448,
+     "MeanPredicted": 0.3213766964995199,
+     "Fb": 0.21415702681014934,
+     "Nmse": 0.13343999104059437,
+     "Nad": 0.14409419775080498,
+     "Fac2": 0.7272727272727273,
+     "HitRate": 0.48484848484848486,
+     "Mg": 1.4027128364354464,
+     "Vg": 1.3756742780323943,
+     "GeometricPairs": 66,
+     "R": 0.8025206217166064
+    },
+    "vs.0.uncorrected": {
+     "Count": 66,
+     "MeanObserved": 0.3984552289815448,
+     "MeanPredicted": 0.2763932604237868,
+     "Fb": 0.3617462896458952,
+     "Nmse": 0.23314974846937778,
+     "Nad": 0.1977650556717452,
+     "Fac2": 0.6666666666666666,
+     "HitRate": 0.3939393939393939,
+     "Mg": 1.9051616190582197,
+     "Vg": 2.753908610991247,
+     "GeometricPairs": 66,
+     "R": 0.8110350777697521
+    },
+    "vs.0.mirrored.corrected": {
+     "Count": 66,
+     "MeanObserved": 0.3984552289815448,
+     "MeanPredicted": 0.32137669649951983,
+     "Fb": 0.21415702681014953,
+     "Nmse": 0.1334399910405944,
+     "Nad": 0.14409419775080493,
+     "Fac2": 0.7272727272727273,
+     "HitRate": 0.48484848484848486,
+     "Mg": 1.4027128364354462,
+     "Vg": 1.375674278032394,
+     "GeometricPairs": 66,
+     "R": 0.8025206217166065
+    },
+    "vs.0.mirrored.uncorrected": {
+     "Count": 66,
+     "MeanObserved": 0.3984552289815448,
+     "MeanPredicted": 0.27639326042378676,
+     "Fb": 0.36174628964589545,
+     "Nmse": 0.2331497484693778,
+     "Nad": 0.1977650556717452,
+     "Fac2": 0.6666666666666666,
+     "HitRate": 0.3939393939393939,
+     "Mg": 1.9051616190582197,
+     "Vg": 2.753908610991247,
+     "GeometricPairs": 66,
+     "R": 0.8110350777697523
+    },
+    "splitfibre.U": {
+     "Count": 33,
+     "MeanObserved": 0.12615174299384832,
+     "MeanPredicted": 0.06298683982683981,
+     "Fb": 0.6679219250245909,
+     "Nmse": 1.4780943147871122,
+     "Nad": 0.472853889594348,
+     "Fac2": 0.48484848484848486,
+     "HitRate": 0.5151515151515151,
+     "Mg": 1.7609420537921643,
+     "Vg": 2.501422565893159,
+     "GeometricPairs": 14,
+     "R": 0.9453052092975043
+    },
+    "splitfibre.V": {
+     "Count": 33,
+     "MeanObserved": -0.003417634996582354,
+     "MeanPredicted": 0.03055729778992937,
+     "Fb": -2.5037107531667857,
+     "Nmse": -55.574429992630144,
+     "Nad": 2.229998863292733,
+     "Fac2": 0.6666666666666666,
+     "HitRate": 0.42424242424242425,
+     "Mg": 0.46549836283321544,
+     "Vg": 5.457082579556414,
+     "GeometricPairs": 16,
+     "R": 0.9261146691603197
+    },
+    "splitfibre.W": {
+     "Count": 33,
+     "MeanObserved": 0.007614490772385508,
+     "MeanPredicted": 0.011650745044429256,
+     "Fb": -0.41901945145367925,
+     "Nmse": 10.16268641660799,
+     "Nad": 1.3021021080686774,
+     "Fac2": 0.30303030303030304,
+     "HitRate": 0.9393939393939394,
+     "Mg": 1.6777919226726776,
+     "Vg": 7.138157574513538,
+     "GeometricPairs": 18,
+     "R": 0.6820710793005658
+    },
+    "splitfibre.k": {
+     "Count": 33,
+     "MeanObserved": 0.023635644134259087,
+     "MeanPredicted": 0.01331789898533072,
+     "Fb": 0.5584170976806132,
+     "Nmse": 1.560411247233076,
+     "Nad": 0.4484475895175252,
+     "Fac2": 0.24242424242424243,
+     "HitRate": 0.09090909090909091,
+     "Mg": 2.074204318190793,
+     "Vg": 4.17316845203003,
+     "GeometricPairs": 33,
+     "R": -0.1405773231451873
+    },
+    "splitfibre.speed": {
+     "Count": 33,
+     "MeanObserved": 0.29685487354750506,
+     "MeanPredicted": 0.27642518113465486,
+     "Fb": 0.07127299213009218,
+     "Nmse": 0.11020529053106276,
+     "Nad": 0.13351518113066313,
+     "Fac2": 0.7575757575757576,
+     "HitRate": 0.5151515151515151,
+     "Mg": 1.3357409112593837,
+     "Vg": 1.9793950811222654,
+     "GeometricPairs": 33,
+     "R": 0.8533161313222494
+    },
+    "inflow.U": {
+     "Count": 13,
+     "MeanObserved": 0.9939026026604976,
+     "MeanPredicted": 0.8402643377674957,
+     "Fb": 0.16752920522834333,
+     "Nmse": 0.06068287508843874,
+     "Nad": 0.09400911426580198,
+     "Fac2": 0.8461538461538461,
+     "HitRate": 0.8461538461538461,
+     "Mg": 1.280581561052278,
+     "Vg": 1.2498636369480964,
+     "GeometricPairs": 13,
+     "R": 0.8803543582782466
+    },
+    "inflow.k": {
+     "Count": 13,
+     "MeanObserved": 0.01209248737807503,
+     "MeanPredicted": 0.00440336410720265,
+     "Fb": 0.9322493328379946,
+     "Nmse": 1.5227233292774562,
+     "Nad": 0.4754048765491547,
+     "Fac2": 0.38461538461538464,
+     "HitRate": 0.07692307692307693,
+     "Mg": 2.639955078747426,
+     "Vg": 4.218379367883771,
+     "GeometricPairs": 13,
+     "R": 0.39562626570673315
+    }
+   },
+   "figures": [
+    {
+     "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/figures/case-d-openfoam-agreement.png",
+     "caption": "Case D, OpenFOAM 12, wind direction 0°: measured thermistor Vs/U_H against the modelled √(|U|²+2k)/U_H (filled) and |U|/U_H (hollow), and the split-fibre |U| against the modelled |U|. At 0° the 66 thermistor points are 33 mirror pairs."
+    }
+   ],
+   "pairs": {
+    "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/D/pairs/openfoam12-realizableKE.csv?v=3505ac0fc9af",
+    "path": "cases/D/pairs/openfoam12-realizableKE.csv",
+    "media_type": "text/csv",
+    "bytes": 14236,
+    "sha256": "3505ac0fc9af9f0cd020c9b945b2649d3e236bb62911648afa5d054c5a0e5439"
+   },
+   "pairs_columns": "instrument (thermistor / split_fibre), wind_direction_deg, point_id; x, y, z in m (model frame); measured_over_UH, the thermistor's Vs or the split fibre's |U| over U_H; scalar_over_UH and vector_over_UH, the modelled sqrt(|U|^2 + 2k) and |U| over U_H; for the split fibre also U, V, W measured (_meas) and modelled (_model) over U_H",
+   "reproduce": "Eddy3D fixture TestAijCaseDContainerE2E (EDDY3D_AIJD_HEADINGS=0; 22.5 and 45 solving); figure validation/plot_case_d_openfoam.py",
+   "source_file": "validation/results/caseD_openfoam12_realizableKE.json",
+   "source_url": "https://github.com/SustainableUrbanSystemsLab/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/blob/main/validation/results/caseD_openfoam12_realizableKE.json",
+   "cite": "Kikumoto, H., Okaze, T., Yoshie, R., Tachibana, T., Ishihara, T., Nonomura, Y., Kiyota, N., Kondo, H., Mochida, A., Tominaga, Y. (2026). Comprehensive Experimental Database for Validating CFD Simulations in Urban Wind Environment: Benchmark Cases Curated by the Architectural Institute of Japan. Japan Architectural Review 9(1), e70083. https://doi.org/10.1002/2475-8876.70083"
+  },
   {
    "run_id": "D.ml-surrogate",
    "engine": "ml-surrogate",
