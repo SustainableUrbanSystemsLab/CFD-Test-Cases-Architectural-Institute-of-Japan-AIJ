@@ -764,6 +764,8 @@ def llms_text(percase):
         "   or geometry.zip. Each STL stays in its own case's frame and units; they are NOT one scene.",
         "8. Every JSON document names its JSON Schema in `$schema` (schemas/{name}.schema.json); openapi.json describes",
         "   every endpoint. Download URLs carry ?v=<SHA-256 prefix>: use the URLs the documents give, not hand-built ones.",
+        "9. Send a descriptive User-Agent: the site's CDN answers HTTP 403 to Python urllib's default one and to some AI",
+        "   crawlers. If you are refused, the fallback URL above serves byte-identical files from the repository.",
         "",
         "## Endpoints",
         "",

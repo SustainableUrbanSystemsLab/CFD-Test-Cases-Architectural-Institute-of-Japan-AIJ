@@ -45,6 +45,11 @@ number.
 **Errors.** A path that does not exist returns HTTP 404 with GitHub Pages' HTML page, not JSON. Case ids are
 `A`–`E`. The other path parameters are enumerated in `openapi.json`.
 
+**Clients.** The custom domain is served through Cloudflare, which rejects some clients with HTTP 403. These
+include Python's `urllib` with its default User-Agent and some AI crawlers; `curl`, `wget`, `requests`, `httpx` and
+browsers are accepted. Send a descriptive `User-Agent` header, as the examples below do, or use the fallback base URL:
+it serves byte-identical files (the same `sha256`) straight from the repository.
+
 **STL content type.** GitHub Pages labels `.stl` responses `application/vnd.ms-pki.stl`, which is a Windows
 certificate type. The body is ASCII STL regardless; read it as such.
 
@@ -118,7 +123,9 @@ BASE = "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institu
 
 
 def fetch(url):
-    with urllib.request.urlopen(url) as r:
+    # A descriptive User-Agent: the site's CDN rejects urllib's default one (see Clients above).
+    req = urllib.request.Request(url, headers={"User-Agent": "aij-uwe-example/1.0"})
+    with urllib.request.urlopen(req) as r:
         return r.read()
 
 

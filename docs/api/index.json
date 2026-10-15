@@ -555,11 +555,11 @@
    "sha256": "d324f0676f8d8010690a8aef6179db022c17be0ed1909157e05426c60c9b955a"
   },
   {
-   "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/llms.txt?v=dbeff87fbc7d",
+   "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/llms.txt?v=a687ee7af75f",
    "path": "llms.txt",
    "media_type": "text/plain",
-   "bytes": 15196,
-   "sha256": "dbeff87fbc7d2c6a417b8ca4fb21b35cf414db4503e01f9239f0d1e8659c788c"
+   "bytes": 15413,
+   "sha256": "a687ee7af75f4c87dd260cfd1a0e6553d9c2404f92a0fb61369e59b9703a5b8c"
   },
   {
    "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/openapi.json?v=fb0380143a55",

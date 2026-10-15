@@ -41,6 +41,8 @@ names in `$schema`.
   metres. Do not apply those corrections a second time when starting from the raw files.
 - Use the download URLs the documents give rather than building them yourself, and check each file against its
   `sha256`.
+- Send a descriptive `User-Agent`. The site's CDN rejects Python `urllib`'s default one and some AI crawlers with
+  HTTP 403. If you are refused anyway, `fallback_base_url` serves byte-identical files from the repository.
 - Quote `data_version` with any number you report: it identifies exactly the data the number came from.
 
 ## Cite
