@@ -424,14 +424,18 @@ def archive_name(case, cfg):
 
 
 def compute_data_version():
-    """SHA-256 over (path, SHA-256) of every data file served and every score snapshot behind validation.json."""
+    """SHA-256 over (path, SHA-256) of every data file served and every score snapshot behind validation.json.
+
+    The served files are written here with LF endings, so their bytes are their content. The score snapshots
+    are hashed as canonical JSON (sorted keys, no whitespace), so a checkout's line endings cannot move it."""
     entries = []
     for rel in sorted(WRITTEN):
         if rel.endswith((".csv", ".stl")):
             entries.append(f"api/{rel}\t{_sha256(rel)[0]}")
     for r in sorted({r["results"] for r in RUNS}):
-        with io.open(os.path.join(RESULTS_DIR, r), "rb") as f:
-            entries.append(f"validation/results/{r}\t{hashlib.sha256(f.read()).hexdigest()}")
+        with io.open(os.path.join(RESULTS_DIR, r), encoding="utf-8") as f:
+            canonical = json.dumps(json.load(f), sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+        entries.append(f"validation/results/{r}\t{hashlib.sha256(canonical.encode('utf-8')).hexdigest()}")
     return hashlib.sha256("\n".join(entries).encode("utf-8")).hexdigest()
 
 
