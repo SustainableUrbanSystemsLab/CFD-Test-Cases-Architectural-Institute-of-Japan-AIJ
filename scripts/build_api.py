@@ -153,12 +153,14 @@ RUNS = [
           f"GPU lattice Boltzmann, D3Q19 Smagorinsky LES, dx = H/64, {'40 + 200' if c == 'A' else '100 + 500'} H/U_H "
           "spin-up + averaging, with an empty-domain control on the same lattice); figure validation/plot_cases_ab_engines.py",
           f"case{c}_fluidx3d_pairs.csv", PAIRS_AB) for c in ("A", "B")],
-    # Case D: wind direction 0 so far; 22.5 and 45 join this run's results.json as they are solved.
+    # Case D: wind directions 0 and 22.5 so far; 45 joins this run's results.json when it is solved.
     run("D", "openfoam12-realizableKE", None, "caseD_openfoam12_realizableKE.json",
         {"WD 0°, thermistor Vs · √(|U|²+2k)": "vs.0.corrected", "WD 0°, thermistor Vs · |U|": "vs.0.uncorrected",
-         "WD 0°, split fibre |U|": "splitfibre.speed", "WD 0°, split fibre U": "splitfibre.U"},
+         "WD 0°, split fibre |U|": "splitfibre.speed", "WD 0°, split fibre U": "splitfibre.U",
+         "WD 22.5°, thermistor Vs · √(|U|²+2k)": "vs.22.5.corrected", "WD 22.5°, thermistor Vs · |U|": "vs.22.5.uncorrected",
+         "WD 22.5°, rotation sense mirrored (control)": "vs.22.5.mirrored.corrected"},
         ["case-d-openfoam-agreement.png"],
-        "Eddy3D fixture TestAijCaseDContainerE2E (EDDY3D_AIJD_HEADINGS=0; 22.5 and 45 solving); figure "
+        "Eddy3D fixture TestAijCaseDContainerE2E (EDDY3D_AIJD_HEADINGS=0,22.5; 45 solving); figure "
         "validation/plot_case_d_openfoam.py", "caseD_openfoam12_realizableKE_pairs.csv",
         "instrument (thermistor / split_fibre), wind_direction_deg, point_id; x, y, z in m (model frame); "
         "measured_over_UH, the thermistor's Vs or the split fibre's |U| over U_H; scalar_over_UH and vector_over_UH, "
@@ -215,9 +217,9 @@ FIGURE_CAPTIONS = {
                                        "V/U_H, one row per engine (OpenFOAM 12; OpenLB at dx = 1.6 m; FluidX3D at H/64). FluidX3D "
                                        "is scored on the filled points, the heights where its empty-domain control holds the "
                                        "imposed log law; the hollow points near the ground are excluded."),
-    "case-d-openfoam-agreement.png": ("Case D, OpenFOAM 12, wind direction 0°: measured thermistor Vs/U_H against the "
+    "case-d-openfoam-agreement.png": ("Case D, OpenFOAM 12, wind directions 0° and 22.5°: measured thermistor Vs/U_H against the "
                                       "modelled √(|U|²+2k)/U_H (filled) and |U|/U_H (hollow), and the split-fibre |U| against "
-                                      "the modelled |U|. At 0° the 66 thermistor points are 33 mirror pairs."),
+                                      "the modelled |U| at 0°. At 0° the 66 thermistor points are 33 mirror pairs."),
     "ml-surrogate-agreement.png": ("Eddy3D ML surrogate (Yel-2.0): measured against predicted pedestrian-height speed, one "
                                    "panel per case, with the 1:1 line and the factor-of-two band."),
 }

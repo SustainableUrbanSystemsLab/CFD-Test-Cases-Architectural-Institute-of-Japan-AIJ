@@ -85,15 +85,15 @@ Unmeasured cells (null): U 234, V 234, W 234, uu 234, vv 234, ww 234, k 234, Vs 
 
 ### OpenFOAM 12, realizable k-epsilon (Eddy3D Outdoor)
 
-| Metric | WD 0°, thermistor Vs · √(\|U\|²+2k) | WD 0°, thermistor Vs · \|U\| | WD 0°, split fibre \|U\| | WD 0°, split fibre U |
-|---|---|---|---|---|
-| **R** | +0.803 | +0.811 | +0.853 | +0.945 |
-| **FAC2** | 0.727 | 0.667 | 0.758 | 0.485 |
-| **FB** | +0.214 | +0.362 | +0.071 | +0.668 |
-| **hit rate** | 0.485 | 0.394 | 0.515 | 0.515 |
-| **n** | 66 | 66 | 33 | 33 |
+| Metric | WD 0°, thermistor Vs · √(\|U\|²+2k) | WD 0°, thermistor Vs · \|U\| | WD 0°, split fibre \|U\| | WD 0°, split fibre U | WD 22.5°, thermistor Vs · √(\|U\|²+2k) | WD 22.5°, thermistor Vs · \|U\| | WD 22.5°, rotation sense mirrored (control) |
+|---|---|---|---|---|---|---|---|
+| **R** | +0.803 | +0.811 | +0.853 | +0.945 | +0.803 | +0.783 | +0.400 |
+| **FAC2** | 0.727 | 0.667 | 0.758 | 0.485 | 0.924 | 0.818 | 0.742 |
+| **FB** | +0.214 | +0.362 | +0.071 | +0.668 | +0.050 | +0.154 | +0.050 |
+| **hit rate** | 0.485 | 0.394 | 0.515 | 0.515 | 0.667 | 0.636 | 0.364 |
+| **n** | 66 | 66 | 33 | 33 | 66 | 66 | 66 |
 
-velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Per-point values: [`/api/cases/D/pairs/openfoam12-realizableKE.csv`]({{ '/api/cases/D/pairs/openfoam12-realizableKE.csv' | relative_url }}). Reproduce: Eddy3D fixture TestAijCaseDContainerE2E (EDDY3D_AIJD_HEADINGS=0; 22.5 and 45 solving); figure validation/plot_case_d_openfoam.py.
+velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Per-point values: [`/api/cases/D/pairs/openfoam12-realizableKE.csv`]({{ '/api/cases/D/pairs/openfoam12-realizableKE.csv' | relative_url }}). Reproduce: Eddy3D fixture TestAijCaseDContainerE2E (EDDY3D_AIJD_HEADINGS=0,22.5; 45 solving); figure validation/plot_case_d_openfoam.py.
 
 ### Eddy3D ML wind surrogate (pedestrian height)
 
@@ -109,7 +109,7 @@ velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15
 
 <figure class="figure">
 <img src="{{ '/assets/figures/case-d-openfoam-agreement.png' | relative_url }}" alt="case-d-openfoam-agreement.png">
-<figcaption><strong>Figure 2.</strong> Case D, OpenFOAM 12, wind direction 0°: measured thermistor Vs/U_H against the modelled √(|U|²+2k)/U_H (filled) and |U|/U_H (hollow), and the split-fibre |U| against the modelled |U|. At 0° the 66 thermistor points are 33 mirror pairs.</figcaption>
+<figcaption><strong>Figure 2.</strong> Case D, OpenFOAM 12, wind directions 0° and 22.5°: measured thermistor Vs/U_H against the modelled √(|U|²+2k)/U_H (filled) and |U|/U_H (hollow), and the split-fibre |U| against the modelled |U| at 0°. At 0° the 66 thermistor points are 33 mirror pairs.</figcaption>
 </figure>
 
 <figure class="figure">

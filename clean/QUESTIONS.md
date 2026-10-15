@@ -37,6 +37,13 @@ it is the OPPOSITE of what Case C's data show for Case C. The Zenodo readme (now
 coordinates of `RS-T_caseD.csv` / `MP_caseD.png`? (Also: which half of the 0° plane was actually
 measured, +y or −y?)
 
+*Update 2026-10-15 — the solved field decides 22.5°.* No measurement alone can, but a solution can: Eddy3D
+solved the array at 22.5° (OpenFOAM 12, realizable k-ε, 3.6 million cells) and scored the 66 measured
+points in this release's sense and in its y mirror on the same solution. In Figure 4's sense (+x toward
++y) R = 0.80, FAC2 0.92; mirrored R = 0.40, FAC2 0.74. A RANS solution knows nothing about the figure, so
+22.5° is corroborated in Figure 4's sense (`directions.csv` says so); 45° stays unverified until it is
+solved. The question stays open for the collector's word, and for 45°.
+
 ## Q3 — Case E: the sensor frame against the two geometries (Tominaga)
 
 1. Point 50 at (−45.5, −45.0) m lies **0.17 m inside a building wall of the official `BD_caseE.stl`**

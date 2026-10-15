@@ -42,7 +42,7 @@ it agrees is in the numbers and their reading. Anything not marked scored is not
 
 | | A | B | C | D | E |
 |---|---|---|---|---|---|
-| OpenFOAM 12, realizable k-ε | scored | scored | scored, 9 configurations | scored, WD 0° (22.5°, 45° solving) | scored, SW |
+| OpenFOAM 12, realizable k-ε | scored | scored | scored, 9 configurations | scored, WD 0° and 22.5° (45° solving) | scored, SW |
 | OpenLB | scored | scored | not comparable at dx = 1.6 m | not comparable at dx = 1.6 m | not comparable at dx = 1.6 m |
 | FluidX3D | scored | scored | not comparable (no ground wall function) | not comparable (no ground wall function) | not comparable (no ground wall function) |
 | ML surrogate (Yel-2.0) | scored | scored | scored | scored | scored |
@@ -252,7 +252,7 @@ FB +0.67, FAC2 0.44, R +0.21, hit rate 0.18 — see *ML surrogate* under *Valida
 </details>
 
 <details>
-<summary><b>Case D — high-rise among city blocks</b> · 78 points × 3 directions (thermistor) + 33 points U/V/W/k · scored: OpenFOAM 12 (WD 0°), ML</summary>
+<summary><b>Case D — high-rise among city blocks</b> · 78 points × 3 directions (thermistor) + 33 points U/V/W/k · scored: OpenFOAM 12 (WD 0° and 22.5°), ML</summary>
 
 <p><img src="validation/figures/geometry/case-d.png" width="80%" alt="Case D geometry"><br>
 <em>A 0.25 m tower (blue) among 82 low blocks over 1.40 m × 1.35 m (1:400 model scale); the arrow is WD = 0°.</em></p>
@@ -299,18 +299,21 @@ the array; shifting the cloud by 12.5 mm (5 m full scale) puts points 27 and 28 
 resolves an offset well below one road width. On this evidence the workbook's sensor coordinates and the geometry
 agree.
 
-**Validation (OpenFOAM 12, realizable k-ε), wind direction 0°**, the first of the three headings; 22.5° and 45° are
-solving, about 15 h each on 8 cores beside a production campaign. 3.6 million cells at 1:400 on a cylinder domain,
+**Validation (OpenFOAM 12, realizable k-ε), wind directions 0° and 22.5°**; 45° is solving, about 15 h on 8 cores
+beside a production campaign. 3.6 million cells at 1:400 on a cylinder domain,
 3000 iterations; the last iteration's initial residuals are below 4 × 10⁻³.
 
 ![Case D, measured vs modelled](validation/figures/case-d-openfoam-agreement.png)
 
 | | n | FAC2 | FB | q | R |
 |---|---|---|---|---|---|
-| thermistor Vs · √(\|U\|²+2k) | 66 | 0.73 | +0.21 | 0.48 | 0.80 |
-| thermistor Vs · \|U\| | 66 | 0.67 | +0.36 | 0.39 | 0.81 |
-| split fibre \|U\| · \|U\| | 33 | 0.76 | +0.07 | 0.52 | 0.85 |
-| split fibre U · U | 33 | 0.48 | +0.67 | 0.52 | 0.95 |
+| WD 0° · thermistor Vs · √(\|U\|²+2k) | 66 | 0.73 | +0.21 | 0.48 | 0.80 |
+| WD 0° · thermistor Vs · \|U\| | 66 | 0.67 | +0.36 | 0.39 | 0.81 |
+| WD 22.5° · thermistor Vs · √(\|U\|²+2k) | 66 | 0.92 | +0.05 | 0.67 | 0.80 |
+| WD 22.5° · thermistor Vs · \|U\| | 66 | 0.82 | +0.15 | 0.64 | 0.78 |
+| WD 22.5° · the same, rotation sense mirrored (control) | 66 | 0.74 | +0.05 | 0.36 | 0.40 |
+| WD 0° · split fibre \|U\| · \|U\| | 33 | 0.76 | +0.07 | 0.52 | 0.85 |
+| WD 0° · split fibre U · U | 33 | 0.48 | +0.67 | 0.52 | 0.95 |
 
 - **The pattern is right**: R 0.80 on the thermistor plane and 0.85 on the split-fibre |U|. The frame check the
   fixture asserts (R > 0.5 at 0°; a prior Eddy3D attempt at this case scored R 0.10) passes with room to spare.
@@ -320,8 +323,13 @@ solving, about 15 h each on 8 cores beside a production campaign. 3.6 million ce
   thermistor gap is the instrument, not the flow.
 - **Its streamwise component is low** (U FB +0.67, R 0.95) while its |U| is not: more of the model's
   near-ground speed is in the lateral and vertical components than the tunnel's.
-- **At 0° the 66 thermistor values are 33 mirror pairs** (the array is symmetric about y = 0), so 33 are independent
-  and the rotation-sense control, which the fixture asserts at 22.5° and 45°, is trivially equal.
+- **At 22.5° the solved field corroborates the rotation sense the data cannot decide.** The array is symmetric about y = 0, so a
+  wind turned toward +y and one turned toward −y give mirror-image fields, and the measurements alone cannot say
+  which was used; the data paper's Figure 4 draws +y. Scored on the same solution, Figure 4's sense gives R
+  0.80 and FAC2 0.92, its mirror R 0.40 and FAC2 0.74. At 22.5° the model is also nearly unbiased against
+  the thermistor (FB +0.05 with √(|U|²+2k)).
+- **At 0° the 66 thermistor values are 33 mirror pairs**, so only 33 are independent and the mirror control is
+  trivially equal there.
 - The numbers were reproduced from the solver's probe output against the cleaned table, with the frame mapped
   independently and separate metric code.
 
@@ -564,7 +572,7 @@ U_H with each case's approach-flow file. The scores use the same metric code and
 | A · \|U\|/U_H, z = 0.01 m plane | 65 | +0.77 | 0.26 | −0.13 | 0.09 | FB +0.27, FAC2 0.85, R +0.90, hit rate 0.45 |
 | B · \|U\|/U_H, z = H/16 plane | 122 | +0.82 | 0.36 | −0.24 | 0.17 | FB +0.12, FAC2 0.84, R +0.87, hit rate 0.57 |
 | C · Vs/U_H, 9 configurations | 1080 | +0.67 | 0.44 | +0.21 | 0.18 | √(\|U\|²+2k): FB +0.18, FAC2 0.93, R +0.87, hit rate 0.69 |
-| D · Vs/U_H, thermistor, 3 WD | 198 | +0.67 | 0.34 | +0.33 | 0.17 | WD 0° only (66 points): √(\|U\|²+2k) FB +0.21, FAC2 0.73, R +0.80, hit rate 0.48 |
+| D · Vs/U_H, thermistor, 3 WD | 198 | +0.67 | 0.34 | +0.33 | 0.17 | WD 0° and 22.5° (66 points each): √(\|U\|²+2k) FB +0.21 / +0.05, FAC2 0.73 / 0.92, R +0.80 / +0.80 |
 | D · \|U\|/U_H, split fibre, WD 0 | 33 | +0.23 | 0.52 | +0.59 | 0.24 | FB +0.07, FAC2 0.76, R +0.85, hit rate 0.52 |
 | E · Vs/U(15.9 m), 16 WD, before + after | 2560 | +1.00 | 0.22 | +0.43 | 0.08 | — |
 | E · the same, SW only (both states) | 160 | +1.07 | 0.20 | +0.53 | 0.04 | \|U\|: FB +0.31, FAC2 0.76, R +0.81, hit rate 0.36 |
@@ -616,7 +624,7 @@ pairs beside them, so the figures rebuild from this repository alone.
 
 | | A | B | C | D | E |
 |---|---|---|---|---|---|
-| OpenFOAM 12, realizable k-ε | scored | scored | scored | scored, WD 0° (22.5°, 45° solving) | scored, SW |
+| OpenFOAM 12, realizable k-ε | scored | scored | scored | scored, WD 0° and 22.5° (45° solving) | scored, SW |
 | OpenLB | scored | scored | not comparable at dx = 1.6 m | not comparable at dx = 1.6 m | not comparable at dx = 1.6 m |
 | FluidX3D | scored | scored | not comparable (no ground wall function) | not comparable (no ground wall function) | not comparable (no ground wall function) |
 | ML surrogate | scored | scored | scored | scored | scored |
@@ -684,7 +692,8 @@ The rest, measured while scoping C–E (each case's section above carries the de
    0.83–0.91 to −0.33 … +0.03 at 22.5° and 45°.
 5. **Case D's STL is dirty** (duplicates, inward roofs); its data is in a BIFF8 `.xls` in millimetres with `-` for
    unmeasured (the Zenodo CSVs use −999.9, and RS-S's z header is the full-width character `ｚ`); its 22.5°/45°
-   rotation sense rests on a figure, because the array's y-symmetry makes it undecidable from the data. Its sensor
+   rotation sense rests on a figure, because the array's y-symmetry makes it undecidable from the data (at 22.5° a
+   solved field corroborates the figure: R 0.80 in its sense, 0.40 mirrored; QUESTIONS.md Q2). Its sensor
    coordinates do agree with its geometry: every point is outside every block, and a 12.5 mm shift is detected.
 6. **Case E's velocity ratio is normalised by U(15.9 m) = 3.935 m/s**, not U_H or UR; the data is quantised at
    0.0198; the CSV/STL the readme names are absent from this folder (mirrored from Zenodo under `clean/sources/`;

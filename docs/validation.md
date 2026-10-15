@@ -144,22 +144,25 @@ established: an earlier version of this page blamed an approach flow decaying ne
 (0.41 and 0.79 of the imposed table at 1.25 m and 2.5 m) were taken inside the first cell of the coarse upstream
 mesh, where the sampling interpolates to zero at the wall (see *Inflow*).
 
-## Case D — the high-rise among city blocks, wind direction 0°
+## Case D — the high-rise among city blocks, wind directions 0° and 22.5°
 
-The first of three headings (22.5° and 45° are solving): 3.6 million cells at 1:400 on a cylinder domain, 3000
+Two of the three headings (45° is solving): 3.6 million cells at 1:400 on a cylinder domain, 3000
 iterations, the 66 measured thermistor points and the 33 split-fibre points at z/H = 0.02.
 
 <figure class="figure">
 <img src="{{ '/assets/figures/case-d-openfoam-agreement.png' | relative_url }}" alt="Case D, measured vs modelled">
-<figcaption><strong>Figure 7.</strong> Case D, wind direction 0°: measured against modelled speed on the thermistor plane and at the split-fibre points.</figcaption>
+<figcaption><strong>Figure 7.</strong> Case D, wind directions 0° and 22.5°: measured against modelled speed on the thermistor plane, and at the split-fibre points (0° only).</figcaption>
 </figure>
 
 | | n | FAC2 | FB | q | R |
 |---|---|---|---|---|---|
-| thermistor Vs · √(\|U\|²+2k) | 66 | 0.73 | +0.21 | 0.48 | 0.80 |
-| thermistor Vs · \|U\| | 66 | 0.67 | +0.36 | 0.39 | 0.81 |
-| split fibre \|U\| · \|U\| | 33 | 0.76 | +0.07 | 0.52 | 0.85 |
-| split fibre U · U | 33 | 0.48 | +0.67 | 0.52 | 0.95 |
+| WD 0° · thermistor Vs · √(\|U\|²+2k) | 66 | 0.73 | +0.21 | 0.48 | 0.80 |
+| WD 0° · thermistor Vs · \|U\| | 66 | 0.67 | +0.36 | 0.39 | 0.81 |
+| WD 22.5° · thermistor Vs · √(\|U\|²+2k) | 66 | 0.92 | +0.05 | 0.67 | 0.80 |
+| WD 22.5° · thermistor Vs · \|U\| | 66 | 0.82 | +0.15 | 0.64 | 0.78 |
+| WD 22.5° · the same, rotation sense mirrored (control) | 66 | 0.74 | +0.05 | 0.36 | 0.40 |
+| WD 0° · split fibre \|U\| · \|U\| | 33 | 0.76 | +0.07 | 0.52 | 0.85 |
+| WD 0° · split fibre U · U | 33 | 0.48 | +0.67 | 0.52 | 0.95 |
 
 - **The pattern is right**: R 0.80 on the thermistor plane and 0.85 on the split-fibre |U|. The frame check the
   fixture asserts (R > 0.5 at 0°; a prior Eddy3D attempt at this case scored R 0.10) passes with room to spare.
@@ -169,8 +172,13 @@ iterations, the 66 measured thermistor points and the 33 split-fibre points at z
   thermistor gap is the instrument, not the flow.
 - **Its streamwise component is low** (U FB +0.67, R 0.95) while its |U| is not: more of the model's
   near-ground speed is in the lateral and vertical components than the tunnel's.
-- **At 0° the 66 thermistor values are 33 mirror pairs** (the array is symmetric about y = 0), so 33 are independent
-  and the rotation-sense control, which the fixture asserts at 22.5° and 45°, is trivially equal.
+- **At 22.5° the solved field corroborates the rotation sense the data cannot decide.** The array is symmetric about y = 0, so a
+  wind turned toward +y and one turned toward −y give mirror-image fields, and the measurements alone cannot say
+  which was used; the data paper's Figure 4 draws +y. Scored on the same solution, Figure 4's sense gives R
+  0.80 and FAC2 0.92, its mirror R 0.40 and FAC2 0.74. At 22.5° the model is also nearly unbiased against
+  the thermistor (FB +0.05 with √(|U|²+2k)).
+- **At 0° the 66 thermistor values are 33 mirror pairs**, so only 33 are independent and the mirror control is
+  trivially equal there.
 - The numbers were reproduced from the solver's probe output against the cleaned table, with the frame mapped
   independently and separate metric code.
 
@@ -263,7 +271,7 @@ settings as the OpenFOAM rows.
 | A · \|U\|/U_H, z = 0.01 m plane | 65 | +0.77 | 0.26 | −0.13 | 0.09 | FB +0.27, FAC2 0.85, R +0.90, hit rate 0.45 |
 | B · \|U\|/U_H, z = H/16 plane | 122 | +0.82 | 0.36 | −0.24 | 0.17 | FB +0.12, FAC2 0.84, R +0.87, hit rate 0.57 |
 | C · Vs/U_H, 9 configurations | 1080 | +0.67 | 0.44 | +0.21 | 0.18 | √(\|U\|²+2k): FB +0.18, FAC2 0.93, R +0.87, hit rate 0.69 |
-| D · Vs/U_H, thermistor, 3 WD | 198 | +0.67 | 0.34 | +0.33 | 0.17 | WD 0° only (66 points): √(\|U\|²+2k) FB +0.21, FAC2 0.73, R +0.80, hit rate 0.48 |
+| D · Vs/U_H, thermistor, 3 WD | 198 | +0.67 | 0.34 | +0.33 | 0.17 | WD 0° and 22.5° (66 points each): √(\|U\|²+2k) FB +0.21 / +0.05, FAC2 0.73 / 0.92, R +0.80 / +0.80 |
 | D · \|U\|/U_H, split fibre, WD 0 | 33 | +0.23 | 0.52 | +0.59 | 0.24 | FB +0.07, FAC2 0.76, R +0.85, hit rate 0.52 |
 | E · Vs/U(15.9 m), 16 WD, before + after | 2560 | +1.00 | 0.22 | +0.43 | 0.08 | — |
 | E · the same, SW only (both states) | 160 | +1.07 | 0.20 | +0.53 | 0.04 | \|U\|: FB +0.31, FAC2 0.76, R +0.81, hit rate 0.36 |
@@ -300,7 +308,7 @@ snapshotted in `validation/results/` with the per-point pairs beside them, and s
 
 | | A | B | C | D | E |
 |---|---|---|---|---|---|
-| OpenFOAM 12, realizable k-ε | scored | scored | scored | scored, WD 0° (22.5°, 45° solving) | scored, SW |
+| OpenFOAM 12, realizable k-ε | scored | scored | scored | scored, WD 0° and 22.5° (45° solving) | scored, SW |
 | OpenLB | scored | scored | not comparable at dx = 1.6 m | not comparable at dx = 1.6 m | not comparable at dx = 1.6 m |
 | FluidX3D | scored | scored | not comparable (no ground wall function) | not comparable (no ground wall function) | not comparable (no ground wall function) |
 | ML surrogate | scored | scored | scored | scored | scored |

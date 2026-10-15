@@ -16,7 +16,7 @@ is also served as a [static API]({{ '/api-reference/' | relative_url }}) for scr
 | [A]({{ '/cases/case-a/' | relative_url }}) | 1:1:2 building, b = 0.08 m, H = 0.16 m, Re_H ≈ 24,000 | 186 points, U/V/W/k | OpenFOAM 12, OpenLB, FluidX3D, ML |
 | [B]({{ '/cases/case-b/' | relative_url }}) | 1:4:4 slab, 0.05 × 0.20 × 0.20 m, Re_H ≈ 72,000 | 224 points, U/V/W/k | OpenFOAM 12, OpenLB, FluidX3D, ML |
 | [C]({{ '/cases/case-c/' | relative_url }}) | 3 × 3 block array, centre building at 0D / 1D / 2D, 3 wind directions | 1080 points, pedestrian height, scalar speed | OpenFOAM 12, ML |
-| [D]({{ '/cases/case-d/' | relative_url }}) | High-rise among 82 blocks, 1:400, 3 wind directions | 78 points × 3 (thermistor) + 33 (split fibre) | OpenFOAM 12 (WD 0°), ML |
+| [D]({{ '/cases/case-d/' | relative_url }}) | High-rise among 82 blocks, 1:400, 3 wind directions | 78 points × 3 (thermistor) + 33 (split fibre) | OpenFOAM 12 (WD 0°, 22.5°), ML |
 | [E]({{ '/cases/case-e/' | relative_url }}) | Niigata district, 1:250, pre/post high-rise, 16 wind directions | 80 points × 16 × 2, velocity ratio | OpenFOAM 12 (SW), ML |
 
 *Scored* means a run exists and its scores are published here — not that it agrees; how well it agrees is in the

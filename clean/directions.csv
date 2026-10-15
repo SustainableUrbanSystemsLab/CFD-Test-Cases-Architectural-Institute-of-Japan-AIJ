@@ -12,7 +12,7 @@ C,2D,thermistor,22.5,,0.923879533,-0.382683432,120,120,"measured: WD0 field y-mi
 C,2D,thermistor,45,,0.707106781,-0.707106781,120,120,"measured: WD0 field y-mirror symmetric and faster upwind; WD45 field mirror-symmetric about y = -x, not y = +x (checks WD45_symmetry_plane_*)",settled (from the data; disagrees with Figure 3 of the data paper — QUESTIONS.md Q1)
 D,default,split_fibre,0,,1,0,33,33,"measured: split-fibre U > 0, exact y-mirror symmetry of the 0 deg field",settled
 D,default,thermistor,0,,1,0,78,66,"measured: split-fibre U > 0, exact y-mirror symmetry of the 0 deg field",settled
-D,default,thermistor,22.5,,0.923879533,0.382683432,78,66,read from Figure 4 of the data paper (scoping); the y-symmetric array makes the sense undecidable from the data,unverified — QUESTIONS.md Q2
+D,default,thermistor,22.5,,0.923879533,0.382683432,78,66,"read from Figure 4 of the data paper; the y-symmetric array makes the sense undecidable from the data alone, and the solved Eddy3D field corroborates it (R 0.80 in this sense, 0.40 mirrored)",corroborated by a solved field — QUESTIONS.md Q2
 D,default,thermistor,45,,0.707106781,0.707106781,78,66,read from Figure 4 of the data paper (scoping); the y-symmetric array makes the sense undecidable from the data,unverified — QUESTIONS.md Q2
 E,ac,thermistor,0,N,0,-1,80,80,"definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control",settled
 E,ac,thermistor,22.5,NNE,-0.382683432,-0.923879533,80,80,"definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control",settled

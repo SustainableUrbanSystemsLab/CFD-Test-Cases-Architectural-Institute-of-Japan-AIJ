@@ -1,7 +1,7 @@
 {
  "$schema": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/schemas/validation.schema.json",
  "schema_version": "2.0.0",
- "data_version": "856a6a6664e403958b907f8d481cb9d47bd613a4d205bd326e2f52f73d135016",
+ "data_version": "e9ab32a2c6c9ed8113d4189941840a9469ffee9388137d0df01e1ead270b5395",
  "license": "CC-BY-4.0",
  "case": "D",
  "title": "Case D — high-rise among city blocks",
@@ -64,7 +64,10 @@
     "WD 0°, thermistor Vs · √(|U|²+2k)": "vs.0.corrected",
     "WD 0°, thermistor Vs · |U|": "vs.0.uncorrected",
     "WD 0°, split fibre |U|": "splitfibre.speed",
-    "WD 0°, split fibre U": "splitfibre.U"
+    "WD 0°, split fibre U": "splitfibre.U",
+    "WD 22.5°, thermistor Vs · √(|U|²+2k)": "vs.22.5.corrected",
+    "WD 22.5°, thermistor Vs · |U|": "vs.22.5.uncorrected",
+    "WD 22.5°, rotation sense mirrored (control)": "vs.22.5.mirrored.corrected"
    },
    "scores": {
     "ceiling.corrected": {
@@ -150,6 +153,62 @@
      "Vg": 2.753908610991247,
      "GeometricPairs": 66,
      "R": 0.8110350777697523
+    },
+    "vs.22.5.corrected": {
+     "Count": 66,
+     "MeanObserved": 0.46318295739348364,
+     "MeanPredicted": 0.44053023269907027,
+     "Fb": 0.050132552988616644,
+     "Nmse": 0.06820371136060999,
+     "Nad": 0.10085391709695539,
+     "Fac2": 0.9242424242424242,
+     "HitRate": 0.6666666666666666,
+     "Mg": 1.0971513812220306,
+     "Vg": 1.1513463055510564,
+     "GeometricPairs": 66,
+     "R": 0.8034592025774423
+    },
+    "vs.22.5.uncorrected": {
+     "Count": 66,
+     "MeanObserved": 0.46318295739348364,
+     "MeanPredicted": 0.3968751218956484,
+     "Fb": 0.1541938552629864,
+     "Nmse": 0.11206148804854547,
+     "Nad": 0.12490656611593239,
+     "Fac2": 0.8181818181818182,
+     "HitRate": 0.6363636363636364,
+     "Mg": 1.3194036296604934,
+     "Vg": 1.495162599684601,
+     "GeometricPairs": 66,
+     "R": 0.7828791559917943
+    },
+    "vs.22.5.mirrored.corrected": {
+     "Count": 66,
+     "MeanObserved": 0.46318295739348364,
+     "MeanPredicted": 0.44053023269907027,
+     "Fb": 0.050132552988616644,
+     "Nmse": 0.19906264577484306,
+     "Nad": 0.19238245940588058,
+     "Fac2": 0.7424242424242424,
+     "HitRate": 0.36363636363636365,
+     "Mg": 1.0971513812220306,
+     "Vg": 1.2959144951877084,
+     "GeometricPairs": 66,
+     "R": 0.40039125155025435
+    },
+    "vs.22.5.mirrored.uncorrected": {
+     "Count": 66,
+     "MeanObserved": 0.46318295739348364,
+     "MeanPredicted": 0.3968751218956484,
+     "Fb": 0.1541938552629864,
+     "Nmse": 0.2606399743399773,
+     "Nad": 0.22007956188538993,
+     "Fac2": 0.7424242424242424,
+     "HitRate": 0.2878787878787879,
+     "Mg": 1.3194036296604934,
+     "Vg": 1.7581181528282532,
+     "GeometricPairs": 66,
+     "R": 0.3937669022419125
     },
     "splitfibre.U": {
      "Count": 33,
@@ -253,18 +312,18 @@
    "figures": [
     {
      "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/figures/case-d-openfoam-agreement.png",
-     "caption": "Case D, OpenFOAM 12, wind direction 0°: measured thermistor Vs/U_H against the modelled √(|U|²+2k)/U_H (filled) and |U|/U_H (hollow), and the split-fibre |U| against the modelled |U|. At 0° the 66 thermistor points are 33 mirror pairs."
+     "caption": "Case D, OpenFOAM 12, wind directions 0° and 22.5°: measured thermistor Vs/U_H against the modelled √(|U|²+2k)/U_H (filled) and |U|/U_H (hollow), and the split-fibre |U| against the modelled |U| at 0°. At 0° the 66 thermistor points are 33 mirror pairs."
     }
    ],
    "pairs": {
-    "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/D/pairs/openfoam12-realizableKE.csv?v=3505ac0fc9af",
+    "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/D/pairs/openfoam12-realizableKE.csv?v=af77106391ef",
     "path": "cases/D/pairs/openfoam12-realizableKE.csv",
     "media_type": "text/csv",
-    "bytes": 14236,
-    "sha256": "3505ac0fc9af9f0cd020c9b945b2649d3e236bb62911648afa5d054c5a0e5439"
+    "bytes": 21080,
+    "sha256": "af77106391ef79b95176f16755cbde080f28975b23d41b6296d472fead309193"
    },
    "pairs_columns": "instrument (thermistor / split_fibre), wind_direction_deg, point_id; x, y, z in m (model frame); measured_over_UH, the thermistor's Vs or the split fibre's |U| over U_H; scalar_over_UH and vector_over_UH, the modelled sqrt(|U|^2 + 2k) and |U| over U_H; for the split fibre also U, V, W measured (_meas) and modelled (_model) over U_H",
-   "reproduce": "Eddy3D fixture TestAijCaseDContainerE2E (EDDY3D_AIJD_HEADINGS=0; 22.5 and 45 solving); figure validation/plot_case_d_openfoam.py",
+   "reproduce": "Eddy3D fixture TestAijCaseDContainerE2E (EDDY3D_AIJD_HEADINGS=0,22.5; 45 solving); figure validation/plot_case_d_openfoam.py",
    "source_file": "validation/results/caseD_openfoam12_realizableKE.json",
    "source_url": "https://github.com/SustainableUrbanSystemsLab/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/blob/main/validation/results/caseD_openfoam12_realizableKE.json",
    "cite": "Kikumoto, H., Okaze, T., Yoshie, R., Tachibana, T., Ishihara, T., Nonomura, Y., Kiyota, N., Kondo, H., Mochida, A., Tominaga, Y. (2026). Comprehensive Experimental Database for Validating CFD Simulations in Urban Wind Environment: Benchmark Cases Curated by the Architectural Institute of Japan. Japan Architectural Review 9(1), e70083. https://doi.org/10.1002/2475-8876.70083"

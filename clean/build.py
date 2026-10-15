@@ -1011,8 +1011,16 @@ def directions_for(case, pts, frame_note):
             status = "settled (from the data; disagrees with Figure 3 of the data paper — QUESTIONS.md Q1)" if wd else "settled"
         elif case == "D":
             fx, fy = math.cos(r), math.sin(r)
-            basis = "measured: split-fibre U > 0, exact y-mirror symmetry of the 0 deg field" if wd == 0 else "read from Figure 4 of the data paper (scoping); the y-symmetric array makes the sense undecidable from the data"
-            status = "settled" if wd == 0 else "unverified — QUESTIONS.md Q2"
+            if wd == 0:
+                basis, status = "measured: split-fibre U > 0, exact y-mirror symmetry of the 0 deg field", "settled"
+            elif wd == 22.5:
+                # The solved Eddy3D field (2026-10-15) scores R 0.80 in this sense and 0.40 in its y mirror.
+                basis = ("read from Figure 4 of the data paper; the y-symmetric array makes the sense undecidable from "
+                         "the data alone, and the solved Eddy3D field corroborates it (R 0.80 in this sense, 0.40 mirrored)")
+                status = "corroborated by a solved field — QUESTIONS.md Q2"
+            else:
+                basis = "read from Figure 4 of the data paper (scoping); the y-symmetric array makes the sense undecidable from the data"
+                status = "unverified — QUESTIONS.md Q2"
         else:
             fx, fy, basis, status = -math.sin(r), -math.cos(r), "definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control", "settled"
         rows.append({"case_id": case, "config": cfg, "instrument": inst, "wind_direction_deg": wd, "wind_direction": wname,
