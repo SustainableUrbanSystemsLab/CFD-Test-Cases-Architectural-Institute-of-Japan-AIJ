@@ -1,8 +1,8 @@
 {
- "schema_version": "1.0.0",
- "generated_from": "ba59418628c8a195787e9c303f0d70eb7f52cd62",
- "generated_at": "2026-10-15T00:57:00+00:00",
- "licence": "CC BY 4.0",
+ "$schema": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/schemas/geometry.schema.json",
+ "schema_version": "2.0.0",
+ "data_version": "9777cc14ece941a72e00c55c70d9487eb8c55528e24a06e836bf3895c8327816",
+ "license": "CC-BY-4.0",
  "case": "D",
  "title": "Case D — high-rise among city blocks",
  "units": "metres (model scale)",
@@ -23,8 +23,11 @@
  "files": [
   {
    "configuration": "default",
-   "file": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/D/geometry.stl",
+   "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/D/geometry.stl?v=531895531271",
    "path": "cases/D/geometry.stl",
+   "media_type": "model/stl",
+   "bytes": 144878,
+   "sha256": "5318955312711ea5419c67d2a8fe6c28868f9bce02ce9e3661e9a79228d6f257",
    "format": "ASCII STL, LF line endings, outward normals",
    "source": "rebuilt from the 83 shells of BD_caseD.stl (1572 raw facets with duplicates and inward roofs), each reduced to its box",
    "stats": {

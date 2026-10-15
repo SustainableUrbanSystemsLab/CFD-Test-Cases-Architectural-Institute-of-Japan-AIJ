@@ -1,8 +1,8 @@
 {
- "schema_version": "1.0.0",
- "generated_from": "ba59418628c8a195787e9c303f0d70eb7f52cd62",
- "generated_at": "2026-10-15T00:57:00+00:00",
- "licence": "CC BY 4.0",
+ "$schema": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/schemas/points.schema.json",
+ "schema_version": "2.0.0",
+ "data_version": "9777cc14ece941a72e00c55c70d9487eb8c55528e24a06e836bf3895c8327816",
+ "license": "CC-BY-4.0",
  "case": "D",
  "title": "Case D — high-rise among city blocks",
  "points_source": "clean/cases/D/points.csv",
@@ -56,6 +56,13 @@
   "Vs": "m/s, mean omnidirectional scalar wind speed (thermistor); Case D also lists |U| of the split-fibre probe under Vs for its 33 vector points"
  },
  "n": 267,
+ "csv": {
+  "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/D/points.csv?v=3b1b348a109a",
+  "path": "cases/D/points.csv",
+  "media_type": "text/csv",
+  "bytes": 17044,
+  "sha256": "3b1b348a109af43d458188a1c378fae95c7012307d2999d328dee7648a64899c"
+ },
  "points": [
   {
    "point_id": 1,

@@ -6,39 +6,46 @@
 Base URL: https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api
 Fallback (raw files from the repository): https://raw.githubusercontent.com/SustainableUrbanSystemsLab/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/main/docs/api
 Repository: https://github.com/SustainableUrbanSystemsLab/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ
-Schema version: 1.0.0. Data commit: ba59418628c8a195787e9c303f0d70eb7f52cd62. Generated: 2026-10-15T00:57:00+00:00.
-Licence: CC BY 4.0 — the data belongs to its collectors; cite the benchmark and the per-case papers.
+API version: 2.0.0. Data version (SHA-256 of the served data): 9777cc14ece941a72e00c55c70d9487eb8c55528e24a06e836bf3895c8327816.
+Licence: CC-BY-4.0 — the data belongs to its collectors; cite the benchmark and the per-case papers.
 
 ## How to use this
 
-1. GET index.json — endpoint list, versions, licence, citation.
+1. GET index.json — every endpoint and file (with size and SHA-256), versions, changelog, citation.
 2. GET cases.json — the five cases with their frame, units, counts and links. Pick an id (A, B, C, D, E).
-3. GET cases/{id}.json — read `frame`, `units` and `gotchas` BEFORE the numbers; they differ per case.
+3. GET cases/{id}.json — read `frame`, `units` and `known_issues` BEFORE the numbers; they differ per case.
 4. GET cases/{id}/points.json (or points.csv) — every value is SI (m, m/s, m^2/s^2) in ONE frame per case;
    unmeasured values are null. Case E's quantity is a dimensionless velocity ratio.
 5. GET cases/{id}/geometry.stl — ASCII STL in metres, outward normals, origin at the building / array centre,
    +x along the wind at WD = 0 (Cases A-D). Case E keeps its geographic frame (+x east, +y north, full-scale metres).
    geometry.json lists the boxes where the geometry IS boxes (A, B, C, D), so you need not parse the STL at all.
-6. GET cases/{id}/validation.json — Eddy3D scores per engine and configuration, with a `headline` map naming
-   the scores to quote. An engine whose status is not "scored" has NO result for that case: do not infer one.
-   "scored" means a run exists, not that it agrees — read the numbers. Status today: A: openfoam12-realizableKE scored, openlb scored, fluidx3d running, ml-surrogate scored; B: openfoam12-realizableKE scored, openlb scored, fluidx3d running, ml-surrogate scored; C: openfoam12-realizableKE scored, openlb not comparable, fluidx3d pending, ml-surrogate scored; D: openfoam12-realizableKE running, openlb not comparable, fluidx3d pending, ml-surrogate scored; E: openfoam12-realizableKE scored, openlb not comparable, fluidx3d pending, ml-surrogate scored.
-7. All geometry at once: GET geometry.json (every STL with its case, configuration, units, frame and sha256)
+6. GET validation.json for every case and engine at once, or cases/{id}/validation.json for one case in full.
+   Quote the `headline` scores. An engine whose status is not "scored" has NO result for that case: do not
+   infer one. "scored" means a run exists, not that it agrees — read the numbers. Each result's `pairs` is
+   the per-point measured and modelled values, so any score can be recomputed. Status today: A: openfoam12-realizableKE scored, openlb scored, fluidx3d running, ml-surrogate scored; B: openfoam12-realizableKE scored, openlb scored, fluidx3d running, ml-surrogate scored; C: openfoam12-realizableKE scored, openlb not comparable, fluidx3d pending, ml-surrogate scored; D: openfoam12-realizableKE running, openlb not comparable, fluidx3d pending, ml-surrogate scored; E: openfoam12-realizableKE scored, openlb not comparable, fluidx3d pending, ml-surrogate scored.
+7. All geometry at once: GET geometry.json (every STL with its case, configuration, units, frame and SHA-256)
    or geometry.zip. Each STL stays in its own case's frame and units; they are NOT one scene.
+8. Every JSON document names its JSON Schema in `$schema` (schemas/{name}.schema.json); openapi.json describes
+   every endpoint. Download URLs carry ?v=<SHA-256 prefix>: use the URLs the documents give, not hand-built ones.
 
 ## Endpoints
 
-- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/index.json — every endpoint, versions, licence, how to cite
-- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases.json — the five cases: id, title, configuration facts, units, frame, counts, engine status, links
-- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/{id}.json — one case in full: configurations, inflow fit and approach-flow profile, point-table summary, geometry files, validation status, gotchas
-- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/{id}/points.json — the cleaned measurement table, SI units, one frame, null for unmeasured
-- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/{id}/points.csv — the same table as CSV
-- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/{id}/geometry.json — geometry description: frame, configurations, box lists where the geometry is boxes, STL statistics
-- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/{id}/geometry.stl — cleaned ASCII STL of the default configuration, metres, outward normals
-- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/{id}/geometry_{configuration}.stl — the other configurations' STLs (C: 0D, 1D; E: bc)
-- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/{id}/validation.json — Eddy3D validation scores per engine (empty list where none has been run) with figure URLs
-- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/geometry.json — every STL of every case in one list: case, configuration, units, frame, bounding box, triangles, sha256, URL
-- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/geometry.zip — every STL in one archive (each file stays in its own case's frame and units: they are not one scene)
-- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/openapi.json — OpenAPI 3.1 description of these GETs
+- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/index.json — every endpoint and file with its size and SHA-256, versions, compatibility policy, changelog, licence, citation
+- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases.json — the five cases: id, title, frame, units, counts, engine status, links
+- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/{id}.json — one case in full: configurations, frame, units, inflow fit and approach-flow profile, point-table summary, geometry files, validation status, known data issues, attribution
+- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/{id}/points.json — the cleaned measurement table: SI units, one frame, null where not measured
+- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/{id}/points.csv — the same table as CSV (empty cell = not measured)
+- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/{id}/approach_flow.csv — the measured approach-flow profile: z (m), U (m/s), and k (m^2/s^2) or u_rms (m/s) where published
+- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/{id}/geometry.json — the case's STL files with statistics, renders, and the boxes where the geometry is boxes
+- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/{id}/geometry.stl — cleaned ASCII STL of the default configuration: metres, case frame, outward normals
+- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/{id}/geometry_{configuration}.stl — the other configurations' STLs (C: 0D, 1D; E: bc, before construction)
+- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/{id}/validation.json — Eddy3D's scores per engine and run, with figures and the per-point pairs
+- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/{id}/pairs/{engine}.csv — per-point measured and modelled values of one engine's runs on the case (columns described by the result's pairs_columns)
+- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/validation.json — every case and engine in one table: status, runs, headline scores
+- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/geometry.json — every STL of every case in one list: case, configuration, units, frame, bounding box, size, SHA-256
+- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/geometry.zip — every STL in one archive (each keeps its own case's frame and units: they are not one scene)
+- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/schemas/{name}.schema.json — the JSON Schema (draft 2020-12) of each JSON document
+- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/openapi.json — OpenAPI 3.1 description of every endpoint
 - https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/llms.txt — plain-text entry point for agents
 
 ## Cases
@@ -49,7 +56,9 @@ Licence: CC BY 4.0 — the data belongs to its collectors; cite the benchmark an
 - D: Case D — high-rise among city blocks. 1:1:4 tower in a regular array of 82 low blocks, pedestrian-height scalar speed (thermistor, 3 wind directions) plus a 33-point split-fibre velocity field at WD = 0. 267 rows, 78 points, columns point_id, config, instrument, wind_direction_deg, x, y, z, U, V, W, uu, vv, ww, k, Vs. Engines: openfoam12-realizableKE running, openlb not comparable, fluidx3d pending, ml-surrogate scored.
 - E: Case E — Niigata district. Real district in Niigata at 1:250, before and after a 60 m high-rise and two 18 m mid-rises; pedestrian-height velocity ratio (thermistor), 16 wind directions. 2560 rows, 80 points, columns point_id, config, instrument, wind_direction, wind_direction_deg, x, y, z, velocity_ratio. Engines: openfoam12-realizableKE scored, openlb not comparable, fluidx3d pending, ml-surrogate scored.
 
-## Gotchas that silently corrupt a comparison
+## Known data issues
+
+Each of these changes the result of a comparison if it is not accounted for.
 
 - [A] Lateral velocity V is positive toward +y (checked: V = -2.893 m/s at (-0.040, -0.050, 0.010), just outside the y < 0 flank, deflecting away from the centreline). Case B uses the OPPOSITE sign; the API flips Case B so both agree.
 - [A] Coordinates are metres (Case B's are millimetres in the published file).

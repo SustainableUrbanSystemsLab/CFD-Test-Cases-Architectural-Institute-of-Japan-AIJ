@@ -1,0 +1,5 @@
+# scripts/build_api.py. Pinned: the build must produce byte-identical files on every platform, and CI checks it.
+xlrd==2.0.2
+rhino3dm==8.35.0
+jsonschema==4.26.0
+openapi-spec-validator==0.7.2

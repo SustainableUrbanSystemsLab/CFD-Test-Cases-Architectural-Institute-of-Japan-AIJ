@@ -1,0 +1,233 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/schemas/index.schema.json",
+ "title": "API index",
+ "description": "Every endpoint and file, versions, compatibility policy, changelog, licence and citation.",
+ "type": "object",
+ "required": [
+  "$schema",
+  "schema_version",
+  "data_version",
+  "license",
+  "name",
+  "base_url",
+  "versions",
+  "endpoints",
+  "case_ids",
+  "files",
+  "changelog",
+  "cite"
+ ],
+ "properties": {
+  "$schema": {
+   "type": "string",
+   "format": "uri"
+  },
+  "schema_version": {
+   "type": "string",
+   "pattern": "^\\d+\\.\\d+\\.\\d+$",
+   "description": "the API's version (semantic versioning); see index.json changelog"
+  },
+  "data_version": {
+   "type": "string",
+   "pattern": "^[0-9a-f]{64}$",
+   "description": "SHA-256 over every served measurement, geometry and score file; changes when, and only when, the data does"
+  },
+  "license": {
+   "const": "CC-BY-4.0",
+   "description": "SPDX identifier of the data's licence"
+  },
+  "name": {
+   "type": "string"
+  },
+  "description": {
+   "type": "string"
+  },
+  "base_url": {
+   "type": "string",
+   "format": "uri"
+  },
+  "fallback_base_url": {
+   "type": "string",
+   "format": "uri"
+  },
+  "repository": {
+   "type": "string",
+   "format": "uri"
+  },
+  "site": {
+   "type": "string",
+   "format": "uri"
+  },
+  "versions": {
+   "type": "object",
+   "required": [
+    "schema",
+    "data"
+   ],
+   "properties": {
+    "schema": {
+     "type": "string"
+    },
+    "data": {
+     "type": "string",
+     "pattern": "^[0-9a-f]{64}$"
+    },
+    "clean_manifest": {
+     "type": [
+      "string",
+      "null"
+     ]
+    }
+   }
+  },
+  "compatibility": {
+   "type": "string"
+  },
+  "caching": {
+   "type": "string"
+  },
+  "changelog": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "version",
+     "date",
+     "changes"
+    ],
+    "properties": {
+     "version": {
+      "type": "string"
+     },
+     "date": {
+      "type": "string",
+      "format": "date"
+     },
+     "changes": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     }
+    }
+   }
+  },
+  "endpoints": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "path",
+     "url",
+     "method",
+     "media_type",
+     "description"
+    ],
+    "properties": {
+     "path": {
+      "type": "string"
+     },
+     "url": {
+      "type": "string"
+     },
+     "method": {
+      "const": "GET"
+     },
+     "media_type": {
+      "type": "string"
+     },
+     "description": {
+      "type": "string"
+     },
+     "schema": {
+      "type": [
+       "string",
+       "null"
+      ]
+     }
+    }
+   }
+  },
+  "case_ids": {
+   "type": "array",
+   "items": {
+    "enum": [
+     "A",
+     "B",
+     "C",
+     "D",
+     "E"
+    ]
+   }
+  },
+  "files": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "url",
+     "path",
+     "media_type",
+     "bytes",
+     "sha256"
+    ],
+    "properties": {
+     "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "absolute URL; the ?v= query is the file's SHA-256 prefix, so a changed file has a new URL"
+     },
+     "path": {
+      "type": "string",
+      "description": "path below the API base"
+     },
+     "media_type": {
+      "type": "string"
+     },
+     "bytes": {
+      "type": "integer",
+      "minimum": 0
+     },
+     "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+     }
+    }
+   }
+  },
+  "license_detail": {
+   "type": "object",
+   "required": [
+    "spdx",
+    "url"
+   ],
+   "properties": {
+    "spdx": {
+     "type": "string"
+    },
+    "name": {
+     "type": "string"
+    },
+    "url": {
+     "type": "string",
+     "format": "uri"
+    },
+    "note": {
+     "type": "string"
+    }
+   }
+  },
+  "cite": {
+   "type": "object",
+   "required": [
+    "benchmark"
+   ],
+   "properties": {
+    "benchmark": {
+     "type": "string"
+    }
+   }
+  }
+ }
+}

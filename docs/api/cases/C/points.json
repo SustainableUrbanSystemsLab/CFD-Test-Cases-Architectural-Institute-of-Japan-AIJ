@@ -1,8 +1,8 @@
 {
- "schema_version": "1.0.0",
- "generated_from": "ba59418628c8a195787e9c303f0d70eb7f52cd62",
- "generated_at": "2026-10-15T00:57:00+00:00",
- "licence": "CC BY 4.0",
+ "$schema": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/schemas/points.schema.json",
+ "schema_version": "2.0.0",
+ "data_version": "9777cc14ece941a72e00c55c70d9487eb8c55528e24a06e836bf3895c8327816",
+ "license": "CC-BY-4.0",
  "case": "C",
  "title": "Case C — 3 × 3 block array",
  "points_source": "clean/cases/C/points.csv",
@@ -40,6 +40,13 @@
   "Vs": "m/s, mean omnidirectional scalar wind speed (thermistor); Case D also lists |U| of the split-fibre probe under Vs for its 33 vector points"
  },
  "n": 1080,
+ "csv": {
+  "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/C/points.csv?v=8cfc37fcec93",
+  "path": "cases/C/points.csv",
+  "media_type": "text/csv",
+  "bytes": 45190,
+  "sha256": "8cfc37fcec9366b3c0493571a07c883d9cc2bcda837b0a62a0779d59d0457d05"
+ },
  "points": [
   {
    "point_id": 4,

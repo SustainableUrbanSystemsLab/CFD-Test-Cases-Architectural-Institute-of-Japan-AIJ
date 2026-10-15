@@ -1,0 +1,200 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/schemas/validation-summary.schema.json",
+ "title": "Validation summary",
+ "description": "Every case and engine in one table: status, runs and their headline scores.",
+ "type": "object",
+ "required": [
+  "$schema",
+  "schema_version",
+  "data_version",
+  "license",
+  "engines",
+  "cases"
+ ],
+ "properties": {
+  "$schema": {
+   "type": "string",
+   "format": "uri"
+  },
+  "schema_version": {
+   "type": "string",
+   "pattern": "^\\d+\\.\\d+\\.\\d+$",
+   "description": "the API's version (semantic versioning); see index.json changelog"
+  },
+  "data_version": {
+   "type": "string",
+   "pattern": "^[0-9a-f]{64}$",
+   "description": "SHA-256 over every served measurement, geometry and score file; changes when, and only when, the data does"
+  },
+  "license": {
+   "const": "CC-BY-4.0",
+   "description": "SPDX identifier of the data's licence"
+  },
+  "engines": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "id",
+     "name",
+     "kind"
+    ],
+    "properties": {
+     "id": {
+      "enum": [
+       "openfoam12-realizableKE",
+       "openlb",
+       "fluidx3d",
+       "ml-surrogate"
+      ]
+     },
+     "name": {
+      "type": "string"
+     },
+     "kind": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "status_meaning": {
+   "type": "object",
+   "additionalProperties": {
+    "type": "string"
+   }
+  },
+  "cases": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "case",
+     "url",
+     "engines"
+    ],
+    "properties": {
+     "case": {
+      "enum": [
+       "A",
+       "B",
+       "C",
+       "D",
+       "E"
+      ]
+     },
+     "title": {
+      "type": "string"
+     },
+     "url": {
+      "type": "string",
+      "format": "uri"
+     },
+     "engines": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "required": [
+        "engine",
+        "status",
+        "runs"
+       ],
+       "properties": {
+        "engine": {
+         "enum": [
+          "openfoam12-realizableKE",
+          "openlb",
+          "fluidx3d",
+          "ml-surrogate"
+         ]
+        },
+        "status": {
+         "enum": [
+          "scored",
+          "running",
+          "pending",
+          "not comparable"
+         ]
+        },
+        "runs": {
+         "type": "array",
+         "items": {
+          "type": "object",
+          "required": [
+           "run_id",
+           "configuration",
+           "headline"
+          ],
+          "properties": {
+           "run_id": {
+            "type": "string"
+           },
+           "configuration": {
+            "type": [
+             "string",
+             "null"
+            ]
+           },
+           "headline": {
+            "type": "array",
+            "items": {
+             "type": "object",
+             "required": [
+              "label",
+              "score",
+              "Count",
+              "R",
+              "Fac2",
+              "Fb",
+              "HitRate"
+             ],
+             "properties": {
+              "label": {
+               "type": "string"
+              },
+              "score": {
+               "type": "string"
+              },
+              "Count": {
+               "type": "integer"
+              },
+              "R": {
+               "type": [
+                "number",
+                "null"
+               ]
+              },
+              "Fac2": {
+               "type": [
+                "number",
+                "null"
+               ]
+              },
+              "Fb": {
+               "type": [
+                "number",
+                "null"
+               ]
+              },
+              "HitRate": {
+               "type": [
+                "number",
+                "null"
+               ]
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   },
+   "minItems": 5,
+   "maxItems": 5
+  }
+ }
+}

@@ -1,0 +1,360 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/schemas/case.schema.json",
+ "title": "Case",
+ "description": "One case in full: configuration, frame, units, inflow, point-table summary, geometry, validation status, known data issues and attribution.",
+ "type": "object",
+ "required": [
+  "$schema",
+  "schema_version",
+  "data_version",
+  "license",
+  "id",
+  "title",
+  "frame",
+  "units",
+  "approach_flow",
+  "points",
+  "geometry",
+  "validation",
+  "known_issues",
+  "people"
+ ],
+ "properties": {
+  "$schema": {
+   "type": "string",
+   "format": "uri"
+  },
+  "schema_version": {
+   "type": "string",
+   "pattern": "^\\d+\\.\\d+\\.\\d+$",
+   "description": "the API's version (semantic versioning); see index.json changelog"
+  },
+  "data_version": {
+   "type": "string",
+   "pattern": "^[0-9a-f]{64}$",
+   "description": "SHA-256 over every served measurement, geometry and score file; changes when, and only when, the data does"
+  },
+  "license": {
+   "const": "CC-BY-4.0",
+   "description": "SPDX identifier of the data's licence"
+  },
+  "id": {
+   "enum": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ]
+  },
+  "slug": {
+   "type": "string"
+  },
+  "title": {
+   "type": "string"
+  },
+  "summary": {
+   "type": "string"
+  },
+  "configuration": {
+   "type": "object"
+  },
+  "configurations": {
+   "type": "array",
+   "items": {
+    "type": "object"
+   }
+  },
+  "quantities": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "units": {
+   "type": "object"
+  },
+  "frame": {
+   "type": "object",
+   "required": [
+    "origin",
+    "x",
+    "y",
+    "z"
+   ],
+   "properties": {
+    "origin": {
+     "type": "string"
+    },
+    "x": {
+     "type": "string"
+    },
+    "y": {
+     "type": "string"
+    },
+    "z": {
+     "type": "string"
+    }
+   }
+  },
+  "inflow_fit": {
+   "type": "object"
+  },
+  "approach_flow": {
+   "type": "object",
+   "required": [
+    "source",
+    "units",
+    "rows",
+    "csv"
+   ],
+   "properties": {
+    "source": {
+     "type": "string"
+    },
+    "units": {
+     "type": "object"
+    },
+    "rows": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "required": [
+       "z",
+       "U"
+      ],
+      "properties": {
+       "z": {
+        "type": "number"
+       },
+       "U": {
+        "type": "number"
+       },
+       "k": {
+        "type": [
+         "number",
+         "null"
+        ]
+       },
+       "u_rms": {
+        "type": [
+         "number",
+         "null"
+        ]
+       }
+      }
+     }
+    },
+    "csv": {
+     "type": "object",
+     "required": [
+      "url",
+      "path",
+      "media_type",
+      "bytes",
+      "sha256"
+     ],
+     "properties": {
+      "url": {
+       "type": "string",
+       "format": "uri",
+       "description": "absolute URL; the ?v= query is the file's SHA-256 prefix, so a changed file has a new URL"
+      },
+      "path": {
+       "type": "string",
+       "description": "path below the API base"
+      },
+      "media_type": {
+       "type": "string"
+      },
+      "bytes": {
+       "type": "integer",
+       "minimum": 0
+      },
+      "sha256": {
+       "type": "string",
+       "pattern": "^[0-9a-f]{64}$"
+      }
+     }
+    }
+   }
+  },
+  "points": {
+   "type": "object",
+   "required": [
+    "url",
+    "csv",
+    "rows",
+    "distinct_points",
+    "columns"
+   ],
+   "properties": {
+    "url": {
+     "type": "string",
+     "format": "uri"
+    },
+    "csv": {
+     "type": "object",
+     "required": [
+      "url",
+      "path",
+      "media_type",
+      "bytes",
+      "sha256"
+     ],
+     "properties": {
+      "url": {
+       "type": "string",
+       "format": "uri",
+       "description": "absolute URL; the ?v= query is the file's SHA-256 prefix, so a changed file has a new URL"
+      },
+      "path": {
+       "type": "string",
+       "description": "path below the API base"
+      },
+      "media_type": {
+       "type": "string"
+      },
+      "bytes": {
+       "type": "integer",
+       "minimum": 0
+      },
+      "sha256": {
+       "type": "string",
+       "pattern": "^[0-9a-f]{64}$"
+      }
+     }
+    },
+    "rows": {
+     "type": "integer"
+    },
+    "distinct_points": {
+     "type": "integer"
+    },
+    "columns": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "geometry": {
+   "type": "object",
+   "required": [
+    "url",
+    "files"
+   ],
+   "properties": {
+    "url": {
+     "type": "string",
+     "format": "uri"
+    },
+    "files": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "required": [
+       "configuration",
+       "url",
+       "triangles",
+       "watertight"
+      ],
+      "properties": {
+       "configuration": {
+        "type": "string"
+       },
+       "url": {
+        "type": "string",
+        "format": "uri"
+       },
+       "triangles": {
+        "type": "integer"
+       },
+       "watertight": {
+        "type": "boolean"
+       }
+      }
+     }
+    }
+   }
+  },
+  "validation": {
+   "type": "object",
+   "required": [
+    "url",
+    "status",
+    "engines"
+   ],
+   "properties": {
+    "url": {
+     "type": "string",
+     "format": "uri"
+    },
+    "status": {
+     "enum": [
+      "scored",
+      "pending"
+     ]
+    },
+    "engines": {
+     "type": "object",
+     "additionalProperties": {
+      "enum": [
+       "scored",
+       "running",
+       "pending",
+       "not comparable"
+      ]
+     }
+    }
+   }
+  },
+  "known_issues": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   },
+   "minItems": 1
+  },
+  "people": {
+   "type": "object",
+   "required": [
+    "data_collectors",
+    "editors_distributors"
+   ],
+   "properties": {
+    "data_collectors": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "editors_distributors": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "doi": {
+   "type": [
+    "string",
+    "null"
+   ]
+  },
+  "citation_requested": {
+   "type": "string"
+  },
+  "render": {
+   "type": "string",
+   "format": "uri"
+  },
+  "page": {
+   "type": "string",
+   "format": "uri"
+  }
+ }
+}

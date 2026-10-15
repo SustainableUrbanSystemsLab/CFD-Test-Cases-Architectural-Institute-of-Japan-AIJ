@@ -1,8 +1,8 @@
 {
- "schema_version": "1.0.0",
- "generated_from": "ba59418628c8a195787e9c303f0d70eb7f52cd62",
- "generated_at": "2026-10-15T00:57:00+00:00",
- "licence": "CC BY 4.0",
+ "$schema": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/schemas/case.schema.json",
+ "schema_version": "2.0.0",
+ "data_version": "9777cc14ece941a72e00c55c70d9487eb8c55528e24a06e836bf3895c8327816",
+ "license": "CC-BY-4.0",
  "id": "E",
  "slug": "case-e",
  "title": "Case E — Niigata district",
@@ -141,8 +141,7 @@
   "units": {
    "z": "m",
    "U": "m/s",
-   "k": "m^2/s^2",
-   "u_rms": "m/s"
+   "k": "m^2/s^2"
   },
   "rows": [
    {
@@ -205,11 +204,24 @@
     "U": 7.8,
     "k": 0.12168
    }
-  ]
+  ],
+  "csv": {
+   "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/approach_flow.csv?v=4971944cd8e9",
+   "path": "cases/E/approach_flow.csv",
+   "media_type": "text/csv",
+   "bytes": 351,
+   "sha256": "4971944cd8e9e09965961f6fd54627806708c04899f49b96df2f0efa229c4170"
+  }
  },
  "points": {
-  "endpoint_json": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/points.json",
-  "endpoint_csv": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/points.csv",
+  "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/points.json",
+  "csv": {
+   "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/points.csv?v=0297eeade3c1",
+   "path": "cases/E/points.csv",
+   "media_type": "text/csv",
+   "bytes": 133503,
+   "sha256": "0297eeade3c1c4e263e43ecdb686ec7847bd3745949d2a3e5bf55670239b9c31"
+  },
   "source": "clean/cases/E/points.csv",
   "rows": 2560,
   "distinct_points": 80,
@@ -264,24 +276,24 @@
   ]
  },
  "geometry": {
-  "endpoint": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/geometry.json",
+  "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/geometry.json",
   "files": [
    {
     "configuration": "ac",
-    "file": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/geometry.stl",
+    "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/geometry.stl?v=f59d27738a49",
     "triangles": 8436,
     "watertight": false
    },
    {
     "configuration": "bc",
-    "file": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/geometry_bc.stl",
+    "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/geometry_bc.stl?v=25d8af3a7617",
     "triangles": 8400,
     "watertight": false
    }
   ]
  },
  "validation": {
-  "endpoint": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/validation.json",
+  "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/validation.json",
   "status": "scored",
   "engines": {
    "openfoam12-realizableKE": "scored",
@@ -290,7 +302,7 @@
    "ml-surrogate": "scored"
   }
  },
- "gotchas": [
+ "known_issues": [
   "The velocity ratio is normalised by the inflow velocity at 15.9 m (= 3.935 m/s), NOT by U_H and NOT by UR = 7.8 m/s. A prior Eddy3D comparison in the folder divided by the wrong reference and came out low by a factor of 2.048 (FAC2 0.338 -> 0.863 once rescaled, R unchanged at 0.661).",
   "All 2560 published ratios are integer multiples of 0.0198204 (55 distinct levels): the data's own resolution is +/-0.0099, 3.1 % of the median value and about 10 % at the lowest points.",
   "The readme describes AF_caseE.csv, RS_caseE.csv and BD_caseE.stl, but this repository holds only the .3dm, .ghx, .xls and the MP drawing; everything here is extracted from the workbook and the 3dm.",

@@ -83,7 +83,7 @@ Reattachment length L_r/H = 1.49.
 | **hit rate** | 0.586 | 0.892 | 0.801 | 0.177 |
 | **n** | 186 | 186 | 186 | 186 |
 
-velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Reproduce: Eddy3D fixture TestAijCaseAContainerE2E; figures validation/plot_cases_ab_openfoam.py.
+velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Per-point values: [`/api/cases/A/pairs/openfoam12-realizableKE.csv`]({{ '/api/cases/A/pairs/openfoam12-realizableKE.csv' | relative_url }}). Reproduce: Eddy3D fixture TestAijCaseAContainerE2E; figures validation/plot_cases_ab_openfoam.py.
 
 ### OpenLB (Eddy3D LBM)
 
@@ -97,7 +97,7 @@ Reattachment length L_r/H = 3.39.
 | **hit rate** | 0.371 | 0.562 | 0.624 | 0.586 | 0.000 | 0.570 |
 | **n** | 186 | 121 | 186 | 186 | 186 | 186 |
 
-velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Reproduce: Eddy3D fixture TestAijCaseAOpenLbContainerE2E (OpenLB eddy3dWind, CPU image, dx = 1.6 m); figure validation/plot_cases_ab_engines.py.
+velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Per-point values: [`/api/cases/A/pairs/openlb.csv`]({{ '/api/cases/A/pairs/openlb.csv' | relative_url }}). Reproduce: Eddy3D fixture TestAijCaseAOpenLbContainerE2E (OpenLB eddy3dWind, CPU image, dx = 1.6 m); figure validation/plot_cases_ab_engines.py.
 
 ### Eddy3D ML wind surrogate (pedestrian height)
 
@@ -109,7 +109,7 @@ velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15
 | **hit rate** | 0.092 | 0.338 | 0.092 |
 | **n** | 65 | 65 | 65 |
 
-velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Reproduce: Eddy3D fixture Outdoor.ML.Tests/TestAijSurrogateE2E; figure validation/plot_ml_surrogate.py.
+velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Per-point values: [`/api/cases/A/pairs/ml-surrogate.csv`]({{ '/api/cases/A/pairs/ml-surrogate.csv' | relative_url }}). Reproduce: Eddy3D fixture Outdoor.ML.Tests/TestAijSurrogateE2E; figure validation/plot_ml_surrogate.py.
 
 <figure class="figure">
 <img src="{{ '/assets/figures/cases-ab-openfoam-agreement.png' | relative_url }}" alt="cases-ab-openfoam-agreement.png">
@@ -137,12 +137,13 @@ How to read these is on the [Validation]({{ '/validation/' | relative_url }}) pa
 
 | Resource | Endpoint |
 |---|---|
-| case | [`/api/cases/A.json`]({{ '/api/cases/A.json' | relative_url }}) |
-| points (JSON) | [`/api/cases/A/points.json`]({{ '/api/cases/A/points.json' | relative_url }}) |
-| points (CSV) | [`/api/cases/A/points.csv`]({{ '/api/cases/A/points.csv' | relative_url }}) |
-| geometry | [`/api/cases/A/geometry.json`]({{ '/api/cases/A/geometry.json' | relative_url }}) |
-| geometry STL | [`/api/cases/A/geometry.stl`]({{ '/api/cases/A/geometry.stl' | relative_url }}) |
-| validation | [`/api/cases/A/validation.json`]({{ '/api/cases/A/validation.json' | relative_url }}) |
+| Case | [`/api/cases/A.json`]({{ '/api/cases/A.json' | relative_url }}) |
+| Points (JSON) | [`/api/cases/A/points.json`]({{ '/api/cases/A/points.json' | relative_url }}) |
+| Points (CSV) | [`/api/cases/A/points.csv`]({{ '/api/cases/A/points.csv' | relative_url }}) |
+| Approach flow (CSV) | [`/api/cases/A/approach_flow.csv`]({{ '/api/cases/A/approach_flow.csv' | relative_url }}) |
+| Geometry | [`/api/cases/A/geometry.json`]({{ '/api/cases/A/geometry.json' | relative_url }}) |
+| Geometry (STL) | [`/api/cases/A/geometry.stl`]({{ '/api/cases/A/geometry.stl' | relative_url }}) |
+| Validation | [`/api/cases/A/validation.json`]({{ '/api/cases/A/validation.json' | relative_url }}) |
 
 ## Attribution
 

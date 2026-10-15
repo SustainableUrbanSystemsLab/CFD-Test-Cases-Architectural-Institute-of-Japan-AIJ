@@ -1,0 +1,175 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/schemas/cases.schema.json",
+ "title": "Case list",
+ "description": "The five cases with their frame, units, counts, engine status and links.",
+ "type": "object",
+ "required": [
+  "$schema",
+  "schema_version",
+  "data_version",
+  "license",
+  "cases"
+ ],
+ "properties": {
+  "$schema": {
+   "type": "string",
+   "format": "uri"
+  },
+  "schema_version": {
+   "type": "string",
+   "pattern": "^\\d+\\.\\d+\\.\\d+$",
+   "description": "the API's version (semantic versioning); see index.json changelog"
+  },
+  "data_version": {
+   "type": "string",
+   "pattern": "^[0-9a-f]{64}$",
+   "description": "SHA-256 over every served measurement, geometry and score file; changes when, and only when, the data does"
+  },
+  "license": {
+   "const": "CC-BY-4.0",
+   "description": "SPDX identifier of the data's licence"
+  },
+  "cases": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "id",
+     "slug",
+     "title",
+     "frame",
+     "units",
+     "counts",
+     "engines",
+     "links"
+    ],
+    "properties": {
+     "id": {
+      "enum": [
+       "A",
+       "B",
+       "C",
+       "D",
+       "E"
+      ]
+     },
+     "slug": {
+      "type": "string"
+     },
+     "title": {
+      "type": "string"
+     },
+     "summary": {
+      "type": "string"
+     },
+     "frame": {
+      "type": "object",
+      "required": [
+       "origin",
+       "x",
+       "y",
+       "z"
+      ],
+      "properties": {
+       "origin": {
+        "type": "string"
+       },
+       "x": {
+        "type": "string"
+       },
+       "y": {
+        "type": "string"
+       },
+       "z": {
+        "type": "string"
+       }
+      }
+     },
+     "units": {
+      "type": "object"
+     },
+     "counts": {
+      "type": "object",
+      "required": [
+       "rows",
+       "distinct_points"
+      ],
+      "properties": {
+       "rows": {
+        "type": "integer"
+       },
+       "distinct_points": {
+        "type": "integer"
+       }
+      }
+     },
+     "engines": {
+      "type": "object",
+      "additionalProperties": {
+       "enum": [
+        "scored",
+        "running",
+        "pending",
+        "not comparable"
+       ]
+      }
+     },
+     "doi": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "links": {
+      "type": "object",
+      "required": [
+       "case",
+       "points",
+       "points_csv",
+       "geometry",
+       "geometry_stl",
+       "validation"
+      ],
+      "properties": {
+       "case": {
+        "type": "string",
+        "format": "uri"
+       },
+       "points": {
+        "type": "string",
+        "format": "uri"
+       },
+       "points_csv": {
+        "type": "string",
+        "format": "uri"
+       },
+       "geometry": {
+        "type": "string",
+        "format": "uri"
+       },
+       "geometry_stl": {
+        "type": "string",
+        "format": "uri"
+       },
+       "validation": {
+        "type": "string",
+        "format": "uri"
+       },
+       "page": {
+        "type": "string",
+        "format": "uri"
+       },
+       "render": {
+        "type": "string",
+        "format": "uri"
+       }
+      }
+     }
+    }
+   },
+   "minItems": 5,
+   "maxItems": 5
+  }
+ }
+}

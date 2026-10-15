@@ -101,7 +101,7 @@ Quantity: Vs (thermistor) scored against sqrt(|U|^2 + 2k) [scalar] and |U| [vect
 | **hit rate** | 0.567 | 0.308 | 0.750 | 0.433 | 0.783 | 0.533 |
 | **n** | 120 | 120 | 120 | 120 | 120 | 120 |
 
-velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Reproduce: Eddy3D fixture TestAijCaseC0DContainerE2E; figures validation/plot_case_c_openfoam.py (per-point pairs in validation/results/caseC_openfoam12_realizableKE_pairs.csv).
+velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Per-point values: [`/api/cases/C/pairs/openfoam12-realizableKE.csv`]({{ '/api/cases/C/pairs/openfoam12-realizableKE.csv' | relative_url }}). Reproduce: Eddy3D fixture TestAijCaseC0DContainerE2E; figures validation/plot_case_c_openfoam.py.
 
 ### OpenFOAM 12, realizable k-epsilon (Eddy3D Outdoor) — configuration 1D
 
@@ -115,7 +115,7 @@ Quantity: Vs (thermistor) scored against sqrt(|U|^2 + 2k) [scalar] and |U| [vect
 | **hit rate** | 0.433 | 0.292 | 0.675 | 0.367 | 0.733 | 0.433 |
 | **n** | 120 | 120 | 120 | 120 | 120 | 120 |
 
-velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Reproduce: Eddy3D fixture TestAijCaseC1DContainerE2E; figures validation/plot_case_c_openfoam.py (per-point pairs in validation/results/caseC_openfoam12_realizableKE_pairs.csv).
+velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Per-point values: [`/api/cases/C/pairs/openfoam12-realizableKE.csv`]({{ '/api/cases/C/pairs/openfoam12-realizableKE.csv' | relative_url }}). Reproduce: Eddy3D fixture TestAijCaseC1DContainerE2E; figures validation/plot_case_c_openfoam.py.
 
 ### OpenFOAM 12, realizable k-epsilon (Eddy3D Outdoor) — configuration 2D
 
@@ -129,7 +129,7 @@ Quantity: Vs (thermistor) scored against sqrt(|U|^2 + 2k) [scalar] and |U| [vect
 | **hit rate** | 0.492 | 0.317 | 0.875 | 0.633 | 0.883 | 0.608 |
 | **n** | 120 | 120 | 120 | 120 | 120 | 120 |
 
-velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Reproduce: Eddy3D fixture TestAijCaseC2DContainerE2E; figures validation/plot_case_c_openfoam.py (per-point pairs in validation/results/caseC_openfoam12_realizableKE_pairs.csv).
+velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Per-point values: [`/api/cases/C/pairs/openfoam12-realizableKE.csv`]({{ '/api/cases/C/pairs/openfoam12-realizableKE.csv' | relative_url }}). Reproduce: Eddy3D fixture TestAijCaseC2DContainerE2E; figures validation/plot_case_c_openfoam.py.
 
 ### Eddy3D ML wind surrogate (pedestrian height)
 
@@ -141,7 +141,7 @@ velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15
 | **hit rate** | 0.181 | 0.400 | 0.392 |
 | **n** | 1080 | 120 | 120 |
 
-velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Reproduce: Eddy3D fixture Outdoor.ML.Tests/TestAijSurrogateE2E; figure validation/plot_ml_surrogate.py.
+velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Per-point values: [`/api/cases/C/pairs/ml-surrogate.csv`]({{ '/api/cases/C/pairs/ml-surrogate.csv' | relative_url }}). Reproduce: Eddy3D fixture Outdoor.ML.Tests/TestAijSurrogateE2E; figure validation/plot_ml_surrogate.py.
 
 <figure class="figure">
 <img src="{{ '/assets/figures/case-c-openfoam-agreement.png' | relative_url }}" alt="case-c-openfoam-agreement.png">
@@ -164,12 +164,13 @@ How to read these is on the [Validation]({{ '/validation/' | relative_url }}) pa
 
 | Resource | Endpoint |
 |---|---|
-| case | [`/api/cases/C.json`]({{ '/api/cases/C.json' | relative_url }}) |
-| points (JSON) | [`/api/cases/C/points.json`]({{ '/api/cases/C/points.json' | relative_url }}) |
-| points (CSV) | [`/api/cases/C/points.csv`]({{ '/api/cases/C/points.csv' | relative_url }}) |
-| geometry | [`/api/cases/C/geometry.json`]({{ '/api/cases/C/geometry.json' | relative_url }}) |
-| geometry STL | [`/api/cases/C/geometry.stl`]({{ '/api/cases/C/geometry.stl' | relative_url }}) |
-| validation | [`/api/cases/C/validation.json`]({{ '/api/cases/C/validation.json' | relative_url }}) |
+| Case | [`/api/cases/C.json`]({{ '/api/cases/C.json' | relative_url }}) |
+| Points (JSON) | [`/api/cases/C/points.json`]({{ '/api/cases/C/points.json' | relative_url }}) |
+| Points (CSV) | [`/api/cases/C/points.csv`]({{ '/api/cases/C/points.csv' | relative_url }}) |
+| Approach flow (CSV) | [`/api/cases/C/approach_flow.csv`]({{ '/api/cases/C/approach_flow.csv' | relative_url }}) |
+| Geometry | [`/api/cases/C/geometry.json`]({{ '/api/cases/C/geometry.json' | relative_url }}) |
+| Geometry (STL) | [`/api/cases/C/geometry.stl`]({{ '/api/cases/C/geometry.stl' | relative_url }}) |
+| Validation | [`/api/cases/C/validation.json`]({{ '/api/cases/C/validation.json' | relative_url }}) |
 
 ## Attribution
 

@@ -1,8 +1,8 @@
 {
- "schema_version": "1.0.0",
- "generated_from": "ba59418628c8a195787e9c303f0d70eb7f52cd62",
- "generated_at": "2026-10-15T00:57:00+00:00",
- "licence": "CC BY 4.0",
+ "$schema": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/schemas/case.schema.json",
+ "schema_version": "2.0.0",
+ "data_version": "9777cc14ece941a72e00c55c70d9487eb8c55528e24a06e836bf3895c8327816",
+ "license": "CC-BY-4.0",
  "id": "D",
  "slug": "case-d",
  "title": "Case D — high-rise among city blocks",
@@ -120,8 +120,7 @@
   "units": {
    "z": "m",
    "U": "m/s",
-   "k": "m^2/s^2",
-   "u_rms": "m/s"
+   "k": "m^2/s^2"
   },
   "rows": [
    {
@@ -189,11 +188,24 @@
     "U": 10.070574886535551,
     "k": 0.0678133461197791
    }
-  ]
+  ],
+  "csv": {
+   "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/D/approach_flow.csv?v=c8239428b9b9",
+   "path": "cases/D/approach_flow.csv",
+   "media_type": "text/csv",
+   "bytes": 529,
+   "sha256": "c8239428b9b9ae37e33a2b35226b2519ebf6ae9fa5d1f3b3f8ea0733ae6da5dc"
+  }
  },
  "points": {
-  "endpoint_json": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/D/points.json",
-  "endpoint_csv": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/D/points.csv",
+  "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/D/points.json",
+  "csv": {
+   "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/D/points.csv?v=3b1b348a109a",
+   "path": "cases/D/points.csv",
+   "media_type": "text/csv",
+   "bytes": 17044,
+   "sha256": "3b1b348a109af43d458188a1c378fae95c7012307d2999d328dee7648a64899c"
+  },
   "source": "clean/cases/D/points.csv",
   "rows": 267,
   "distinct_points": 78,
@@ -250,18 +262,18 @@
   ]
  },
  "geometry": {
-  "endpoint": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/D/geometry.json",
+  "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/D/geometry.json",
   "files": [
    {
     "configuration": "default",
-    "file": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/D/geometry.stl",
+    "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/D/geometry.stl?v=531895531271",
     "triangles": 996,
     "watertight": true
    }
   ]
  },
  "validation": {
-  "endpoint": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/D/validation.json",
+  "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/D/validation.json",
   "status": "scored",
   "engines": {
    "openfoam12-realizableKE": "running",
@@ -270,7 +282,7 @@
    "ml-surrogate": "scored"
   }
  },
- "gotchas": [
+ "known_issues": [
   "All of Case D's data lives in LF_caseD.xls, a genuine OLE2/BIFF8 workbook (read it with xlrd 2.x; openpyxl cannot). Sheets: 'Geometry&Points', 'Inflow', 'Results (Exp_S)' (split fibre, WD = 0), 'Results (Exp_T)' (thermistor, 0 / 22.5 / 45 deg).",
   "Coordinates are millimetres in the workbook; the API serves metres.",
   "The shipped BD_caseD.stl is dirty: 1572 facets of which 576 are duplicates, and all 83 roofs are wound inward (signed volume 0.011159 m^3 against the true 0.021477 m^3). The API's geometry.stl is rebuilt from the 83 shells' bounding boxes: 996 facets, watertight, volume 0.021477 m^3.",

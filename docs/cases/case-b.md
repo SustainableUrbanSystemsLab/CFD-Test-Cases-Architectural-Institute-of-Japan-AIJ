@@ -84,7 +84,7 @@ Reattachment length L_r/H = 3.27.
 | **hit rate** | 0.562 | 0.612 | 0.808 | 0.223 |
 | **n** | 224 | 224 | 224 | 224 |
 
-velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Reproduce: Eddy3D fixture TestAijCaseBContainerE2E; figures validation/plot_cases_ab_openfoam.py.
+velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Per-point values: [`/api/cases/B/pairs/openfoam12-realizableKE.csv`]({{ '/api/cases/B/pairs/openfoam12-realizableKE.csv' | relative_url }}). Reproduce: Eddy3D fixture TestAijCaseBContainerE2E; figures validation/plot_cases_ab_openfoam.py.
 
 ### OpenLB (Eddy3D LBM)
 
@@ -98,7 +98,7 @@ Reattachment length L_r/H = 2.71.
 | **hit rate** | 0.290 | 0.516 | 0.549 | 0.652 | 0.004 | 0.491 |
 | **n** | 224 | 95 | 224 | 224 | 224 | 224 |
 
-velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Reproduce: Eddy3D fixture TestAijCaseBOpenLbContainerE2E (OpenLB eddy3dWind, CPU image, dx = 1.6 m); figure validation/plot_cases_ab_engines.py.
+velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Per-point values: [`/api/cases/B/pairs/openlb.csv`]({{ '/api/cases/B/pairs/openlb.csv' | relative_url }}). Reproduce: Eddy3D fixture TestAijCaseBOpenLbContainerE2E (OpenLB eddy3dWind, CPU image, dx = 1.6 m); figure validation/plot_cases_ab_engines.py.
 
 ### Eddy3D ML wind surrogate (pedestrian height)
 
@@ -110,7 +110,7 @@ velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15
 | **hit rate** | 0.172 | 0.189 | 0.172 |
 | **n** | 122 | 122 | 122 |
 
-velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Reproduce: Eddy3D fixture Outdoor.ML.Tests/TestAijSurrogateE2E; figure validation/plot_ml_surrogate.py.
+velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Per-point values: [`/api/cases/B/pairs/ml-surrogate.csv`]({{ '/api/cases/B/pairs/ml-surrogate.csv' | relative_url }}). Reproduce: Eddy3D fixture Outdoor.ML.Tests/TestAijSurrogateE2E; figure validation/plot_ml_surrogate.py.
 
 <figure class="figure">
 <img src="{{ '/assets/figures/cases-ab-openfoam-agreement.png' | relative_url }}" alt="cases-ab-openfoam-agreement.png">
@@ -138,12 +138,13 @@ How to read these is on the [Validation]({{ '/validation/' | relative_url }}) pa
 
 | Resource | Endpoint |
 |---|---|
-| case | [`/api/cases/B.json`]({{ '/api/cases/B.json' | relative_url }}) |
-| points (JSON) | [`/api/cases/B/points.json`]({{ '/api/cases/B/points.json' | relative_url }}) |
-| points (CSV) | [`/api/cases/B/points.csv`]({{ '/api/cases/B/points.csv' | relative_url }}) |
-| geometry | [`/api/cases/B/geometry.json`]({{ '/api/cases/B/geometry.json' | relative_url }}) |
-| geometry STL | [`/api/cases/B/geometry.stl`]({{ '/api/cases/B/geometry.stl' | relative_url }}) |
-| validation | [`/api/cases/B/validation.json`]({{ '/api/cases/B/validation.json' | relative_url }}) |
+| Case | [`/api/cases/B.json`]({{ '/api/cases/B.json' | relative_url }}) |
+| Points (JSON) | [`/api/cases/B/points.json`]({{ '/api/cases/B/points.json' | relative_url }}) |
+| Points (CSV) | [`/api/cases/B/points.csv`]({{ '/api/cases/B/points.csv' | relative_url }}) |
+| Approach flow (CSV) | [`/api/cases/B/approach_flow.csv`]({{ '/api/cases/B/approach_flow.csv' | relative_url }}) |
+| Geometry | [`/api/cases/B/geometry.json`]({{ '/api/cases/B/geometry.json' | relative_url }}) |
+| Geometry (STL) | [`/api/cases/B/geometry.stl`]({{ '/api/cases/B/geometry.stl' | relative_url }}) |
+| Validation | [`/api/cases/B/validation.json`]({{ '/api/cases/B/validation.json' | relative_url }}) |
 
 ## Attribution
 

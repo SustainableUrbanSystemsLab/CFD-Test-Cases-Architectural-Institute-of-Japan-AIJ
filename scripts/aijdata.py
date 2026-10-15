@@ -48,9 +48,10 @@ POINT_COLUMNS = ["point_id", "config", "instrument", "wind_direction", "wind_dir
 COMPASS = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE",
            "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"]
 
-LICENCE = {
-    "data": "CC BY 4.0",
-    "data_url": "https://creativecommons.org/licenses/by/4.0/",
+LICENSE = {
+    "spdx": "CC-BY-4.0",
+    "name": "Creative Commons Attribution 4.0 International",
+    "url": "https://creativecommons.org/licenses/by/4.0/",
     "note": ("The measurement data belongs to its collectors and distributors, named per case. "
              "Cite the AIJ UWE benchmark and the accompanying papers when using it."),
 }
@@ -138,7 +139,7 @@ CASES = {
             "method": "log law, kappa = 0.41, least squares over z = 0.02 ... 2H on the case's own approach-flow file",
             "u_star_m_s": 0.343, "z0_mm": 0.668, "U_H_measured_m_s": 4.491, "log_law_error_at_H": "+2.0 %",
         },
-        "gotchas": [
+        "known_issues": [
             "Lateral velocity V is positive toward +y (checked: V = -2.893 m/s at (-0.040, -0.050, 0.010), just outside the y < 0 flank, deflecting away from the centreline). Case B uses the OPPOSITE sign; the API flips Case B so both agree.",
             "Coordinates are metres (Case B's are millimetres in the published file).",
             "Case A's turbulence columns are rms values (u_rms, ...). The API serves VARIANCES (uu = u_rms^2) so A and B share one column meaning.",
@@ -184,7 +185,7 @@ CASES = {
             "method": "log law, kappa = 0.41, least squares over z = 0.02 ... 2H on the case's own approach-flow file",
             "u_star_m_s": 0.399, "z0_mm": 0.882, "U_H_measured_m_s": 5.133, "log_law_error_at_H": "+2.9 %",
         },
-        "gotchas": [
+        "known_issues": [
             "The published coordinates are MILLIMETRES (x[mm]) while velocities are m/s. The API serves metres (coordinate_scale_applied = 0.001). Read as metres, every probe lands 1000x too far out.",
             "The published lateral velocity V is positive toward -y (V = +3.630 m/s at (-0.025, -0.110, 0.013), just outside the y < 0 flank where the flow must deflect toward -y). The API multiplies V by -1 (lateral_sign_applied = -1) so that V is positive toward +y as in Case A. Scored without this, Case B's V comes out at R = -0.910 against R = +0.959 for U on the same points.",
             "The RANS solution is symmetric, so model V = 0 on the centre plane while the tunnel measures small non-zero values there.",
@@ -242,7 +243,7 @@ CASES = {
             "turbulence_intensity_at_D": 0.219,
             "note": "derived during scoping, not published by AIJ; the tunnel profile is closer to a power law than a log law, so a log-law inlet carries a ~2.3 % rms residual over the fitted range",
         },
-        "gotchas": [
+        "known_issues": [
             "The measured quantity Vs is the MEAN OMNIDIRECTIONAL SCALAR speed from a thermistor, not |mean velocity vector|. A RANS |U| is biased low against it; the data paper suggests comparing sqrt(|U|^2 + 2k) as a conservative correction (over all 1080 rows no Vs is below 0.13 U_H).",
             "The 'CB' column is TEXT ('0D', '1D', '2D'); a reader that parses every field as a number gets NaN for it. The header ends with a trailing comma (an empty 8th column).",
             "1080 rows = 3 wind directions x 3 centre buildings x 120 points, not 3 configurations. In the 0D configuration the 25 centre grid nodes are still absent although the ground there is free: the grid is held constant across configurations.",
@@ -301,7 +302,7 @@ CASES = {
             "power_law_exponent_fitted": 0.189, "power_law_exponent_paper": 0.25,
             "note": "derived during scoping, not published by AIJ; a log-law inlet cannot be right at both the measurement plane and the upper profile",
         },
-        "gotchas": [
+        "known_issues": [
             "All of Case D's data lives in LF_caseD.xls, a genuine OLE2/BIFF8 workbook (read it with xlrd 2.x; openpyxl cannot). Sheets: 'Geometry&Points', 'Inflow', 'Results (Exp_S)' (split fibre, WD = 0), 'Results (Exp_T)' (thermistor, 0 / 22.5 / 45 deg).",
             "Coordinates are millimetres in the workbook; the API serves metres.",
             "The shipped BD_caseD.stl is dirty: 1572 facets of which 576 are duplicates, and all 83 roofs are wound inward (signed volume 0.011159 m^3 against the true 0.021477 m^3). The API's geometry.stl is rebuilt from the 83 shells' bounding boxes: 996 facets, watertight, volume 0.021477 m^3.",
@@ -358,7 +359,7 @@ CASES = {
             "power_law_exponent": {"ground_to_60m": 0.158, "whole_profile": 0.201},
             "note": "derived during scoping, not published by AIJ",
         },
-        "gotchas": [
+        "known_issues": [
             "The velocity ratio is normalised by the inflow velocity at 15.9 m (= 3.935 m/s), NOT by U_H and NOT by UR = 7.8 m/s. A prior Eddy3D comparison in the folder divided by the wrong reference and came out low by a factor of 2.048 (FAC2 0.338 -> 0.863 once rescaled, R unchanged at 0.661).",
             "All 2560 published ratios are integer multiples of 0.0198204 (55 distinct levels): the data's own resolution is +/-0.0099, 3.1 % of the median value and about 10 % at the lowest points.",
             "The readme describes AF_caseE.csv, RS_caseE.csv and BD_caseE.stl, but this repository holds only the .3dm, .ghx, .xls and the MP drawing; everything here is extracted from the workbook and the 3dm.",

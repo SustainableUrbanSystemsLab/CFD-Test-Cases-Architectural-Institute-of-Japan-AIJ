@@ -1,0 +1,299 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/schemas/validation.schema.json",
+ "title": "Case validation",
+ "description": "Eddy3D's scores against one case, per engine and run. 'scored' means a run exists, not that it agrees; an engine that is not 'scored' has no result here.",
+ "type": "object",
+ "required": [
+  "$schema",
+  "schema_version",
+  "data_version",
+  "license",
+  "case",
+  "status",
+  "engines",
+  "results"
+ ],
+ "properties": {
+  "$schema": {
+   "type": "string",
+   "format": "uri"
+  },
+  "schema_version": {
+   "type": "string",
+   "pattern": "^\\d+\\.\\d+\\.\\d+$",
+   "description": "the API's version (semantic versioning); see index.json changelog"
+  },
+  "data_version": {
+   "type": "string",
+   "pattern": "^[0-9a-f]{64}$",
+   "description": "SHA-256 over every served measurement, geometry and score file; changes when, and only when, the data does"
+  },
+  "license": {
+   "const": "CC-BY-4.0",
+   "description": "SPDX identifier of the data's licence"
+  },
+  "case": {
+   "enum": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ]
+  },
+  "title": {
+   "type": "string"
+  },
+  "status": {
+   "enum": [
+    "scored",
+    "pending"
+   ]
+  },
+  "status_meaning": {
+   "type": "object",
+   "additionalProperties": {
+    "type": "string"
+   }
+  },
+  "engines": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "engine",
+     "status"
+    ],
+    "properties": {
+     "engine": {
+      "enum": [
+       "openfoam12-realizableKE",
+       "openlb",
+       "fluidx3d",
+       "ml-surrogate"
+      ]
+     },
+     "status": {
+      "enum": [
+       "scored",
+       "running",
+       "pending",
+       "not comparable"
+      ]
+     }
+    }
+   }
+  },
+  "results": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "run_id",
+     "engine",
+     "configuration",
+     "headline",
+     "scores",
+     "figures",
+     "pairs",
+     "source_url"
+    ],
+    "properties": {
+     "run_id": {
+      "type": "string"
+     },
+     "engine": {
+      "enum": [
+       "openfoam12-realizableKE",
+       "openlb",
+       "fluidx3d",
+       "ml-surrogate"
+      ]
+     },
+     "configuration": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "quantity": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "normalisation": {
+      "type": "string"
+     },
+     "headline": {
+      "type": "object",
+      "additionalProperties": {
+       "type": "string"
+      }
+     },
+     "scores": {
+      "type": "object",
+      "additionalProperties": {
+       "type": "object",
+       "required": [
+        "Count",
+        "Fb",
+        "R"
+       ],
+       "properties": {
+        "Count": {
+         "type": "integer",
+         "minimum": 0
+        },
+        "MeanObserved": {
+         "type": [
+          "number",
+          "null"
+         ]
+        },
+        "MeanPredicted": {
+         "type": [
+          "number",
+          "null"
+         ]
+        },
+        "Fb": {
+         "type": [
+          "number",
+          "null"
+         ]
+        },
+        "Nmse": {
+         "type": [
+          "number",
+          "null"
+         ]
+        },
+        "Nad": {
+         "type": [
+          "number",
+          "null"
+         ]
+        },
+        "Fac2": {
+         "type": [
+          "number",
+          "null"
+         ]
+        },
+        "HitRate": {
+         "type": [
+          "number",
+          "null"
+         ]
+        },
+        "Mg": {
+         "type": [
+          "number",
+          "null"
+         ]
+        },
+        "Vg": {
+         "type": [
+          "number",
+          "null"
+         ]
+        },
+        "GeometricPairs": {
+         "type": [
+          "integer",
+          "null"
+         ]
+        },
+        "R": {
+         "type": [
+          "number",
+          "null"
+         ]
+        }
+       }
+      }
+     },
+     "figures": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "required": [
+        "url",
+        "caption"
+       ],
+       "properties": {
+        "url": {
+         "type": "string",
+         "format": "uri"
+        },
+        "caption": {
+         "type": "string"
+        }
+       }
+      }
+     },
+     "pairs": {
+      "anyOf": [
+       {
+        "type": "object",
+        "required": [
+         "url",
+         "path",
+         "media_type",
+         "bytes",
+         "sha256"
+        ],
+        "properties": {
+         "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "absolute URL; the ?v= query is the file's SHA-256 prefix, so a changed file has a new URL"
+         },
+         "path": {
+          "type": "string",
+          "description": "path below the API base"
+         },
+         "media_type": {
+          "type": "string"
+         },
+         "bytes": {
+          "type": "integer",
+          "minimum": 0
+         },
+         "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+         }
+        }
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "pairs_columns": {
+      "type": [
+       "string",
+       "null"
+      ]
+     },
+     "reproduce": {
+      "type": "string"
+     },
+     "source_file": {
+      "type": "string"
+     },
+     "source_url": {
+      "type": "string",
+      "format": "uri"
+     },
+     "cite": {
+      "type": "string"
+     }
+    }
+   }
+  }
+ }
+}

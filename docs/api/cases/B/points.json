@@ -1,8 +1,8 @@
 {
- "schema_version": "1.0.0",
- "generated_from": "ba59418628c8a195787e9c303f0d70eb7f52cd62",
- "generated_at": "2026-10-15T00:57:00+00:00",
- "licence": "CC BY 4.0",
+ "$schema": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/schemas/points.schema.json",
+ "schema_version": "2.0.0",
+ "data_version": "9777cc14ece941a72e00c55c70d9487eb8c55528e24a06e836bf3895c8327816",
+ "license": "CC-BY-4.0",
  "case": "B",
  "title": "Case B — 1:4:4 slab",
  "points_source": "clean/cases/B/points.csv",
@@ -53,6 +53,13 @@
   "k": "m^2/s^2, turbulent kinetic energy"
  },
  "n": 224,
+ "csv": {
+  "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/B/points.csv?v=e8214b704821",
+  "path": "cases/B/points.csv",
+  "media_type": "text/csv",
+  "bytes": 19396,
+  "sha256": "e8214b7048218de961dacf43b6ecfea419a5326205b2cf544782353dc7c9729e"
+ },
  "points": [
   {
    "point_id": 1,

@@ -1,8 +1,8 @@
 {
- "schema_version": "1.0.0",
- "generated_from": "ba59418628c8a195787e9c303f0d70eb7f52cd62",
- "generated_at": "2026-10-15T00:57:00+00:00",
- "licence": "CC BY 4.0",
+ "$schema": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/schemas/validation.schema.json",
+ "schema_version": "2.0.0",
+ "data_version": "9777cc14ece941a72e00c55c70d9487eb8c55528e24a06e836bf3895c8327816",
+ "license": "CC-BY-4.0",
  "case": "C",
  "title": "Case C — 3 × 3 block array",
  "status": "scored",
@@ -32,6 +32,7 @@
  ],
  "results": [
   {
+   "run_id": "C.openfoam12-realizableKE.0D",
    "engine": "openfoam12-realizableKE",
    "configuration": "0D",
    "solver": "realizableKE",
@@ -279,15 +280,30 @@
     }
    },
    "figures": [
-    "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/figures/case-c-openfoam-agreement.png",
-    "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/figures/case-c-openfoam-bias-map.png"
+    {
+     "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/figures/case-c-openfoam-agreement.png",
+     "caption": "Case C, OpenFOAM 12: measured Vs/U_H against the modelled √(|U|²+2k)/U_H (filled) and |U|/U_H (hollow), one panel per configuration (centre block × wind direction)."
+    },
+    {
+     "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/figures/case-c-openfoam-bias-map.png",
+     "caption": "Case C, OpenFOAM 12: log₂(model / tunnel) of the scalar speed at each of the 120 points on the plan of the array, per configuration — where the model is slow and where it is fast."
+    }
    ],
-   "reproduce": "Eddy3D fixture TestAijCaseC0DContainerE2E; figures validation/plot_case_c_openfoam.py (per-point pairs in validation/results/caseC_openfoam12_realizableKE_pairs.csv)",
+   "pairs": {
+    "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/C/pairs/openfoam12-realizableKE.csv?v=f3d2b649b543",
+    "path": "cases/C/pairs/openfoam12-realizableKE.csv",
+    "media_type": "text/csv",
+    "bytes": 90478,
+    "sha256": "f3d2b649b5439ec17e735bd157ccfd8f5904657f27ddabf72162bdbc2e7d6a78"
+   },
+   "pairs_columns": "config (0D/1D/2D), wind_direction_deg, point_id; x, y, z in m (case frame); measured_over_UH, the thermistor Vs/U_H; scalar_over_UH, the modelled sqrt(|U|^2 + 2k)/U_H; vector_over_UH, the modelled |U|/U_H (all nine configurations in one file)",
+   "reproduce": "Eddy3D fixture TestAijCaseC0DContainerE2E; figures validation/plot_case_c_openfoam.py",
    "source_file": "validation/results/caseC_openfoam12_realizableKE_0D.json",
    "source_url": "https://github.com/SustainableUrbanSystemsLab/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/blob/main/validation/results/caseC_openfoam12_realizableKE_0D.json",
    "cite": "Kikumoto, H., Okaze, T., Yoshie, R., Tachibana, T., Ishihara, T., Nonomura, Y., Kiyota, N., Kondo, H., Mochida, A., Tominaga, Y. (2026). Comprehensive Experimental Database for Validating CFD Simulations in Urban Wind Environment: Benchmark Cases Curated by the Architectural Institute of Japan. Japan Architectural Review 9(1), e70083. https://doi.org/10.1002/2475-8876.70083"
   },
   {
+   "run_id": "C.openfoam12-realizableKE.1D",
    "engine": "openfoam12-realizableKE",
    "configuration": "1D",
    "solver": "realizableKE",
@@ -535,15 +551,30 @@
     }
    },
    "figures": [
-    "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/figures/case-c-openfoam-agreement.png",
-    "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/figures/case-c-openfoam-bias-map.png"
+    {
+     "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/figures/case-c-openfoam-agreement.png",
+     "caption": "Case C, OpenFOAM 12: measured Vs/U_H against the modelled √(|U|²+2k)/U_H (filled) and |U|/U_H (hollow), one panel per configuration (centre block × wind direction)."
+    },
+    {
+     "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/figures/case-c-openfoam-bias-map.png",
+     "caption": "Case C, OpenFOAM 12: log₂(model / tunnel) of the scalar speed at each of the 120 points on the plan of the array, per configuration — where the model is slow and where it is fast."
+    }
    ],
-   "reproduce": "Eddy3D fixture TestAijCaseC1DContainerE2E; figures validation/plot_case_c_openfoam.py (per-point pairs in validation/results/caseC_openfoam12_realizableKE_pairs.csv)",
+   "pairs": {
+    "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/C/pairs/openfoam12-realizableKE.csv?v=f3d2b649b543",
+    "path": "cases/C/pairs/openfoam12-realizableKE.csv",
+    "media_type": "text/csv",
+    "bytes": 90478,
+    "sha256": "f3d2b649b5439ec17e735bd157ccfd8f5904657f27ddabf72162bdbc2e7d6a78"
+   },
+   "pairs_columns": "config (0D/1D/2D), wind_direction_deg, point_id; x, y, z in m (case frame); measured_over_UH, the thermistor Vs/U_H; scalar_over_UH, the modelled sqrt(|U|^2 + 2k)/U_H; vector_over_UH, the modelled |U|/U_H (all nine configurations in one file)",
+   "reproduce": "Eddy3D fixture TestAijCaseC1DContainerE2E; figures validation/plot_case_c_openfoam.py",
    "source_file": "validation/results/caseC_openfoam12_realizableKE_1D.json",
    "source_url": "https://github.com/SustainableUrbanSystemsLab/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/blob/main/validation/results/caseC_openfoam12_realizableKE_1D.json",
    "cite": "Kikumoto, H., Okaze, T., Yoshie, R., Tachibana, T., Ishihara, T., Nonomura, Y., Kiyota, N., Kondo, H., Mochida, A., Tominaga, Y. (2026). Comprehensive Experimental Database for Validating CFD Simulations in Urban Wind Environment: Benchmark Cases Curated by the Architectural Institute of Japan. Japan Architectural Review 9(1), e70083. https://doi.org/10.1002/2475-8876.70083"
   },
   {
+   "run_id": "C.openfoam12-realizableKE.2D",
    "engine": "openfoam12-realizableKE",
    "configuration": "2D",
    "solver": "realizableKE",
@@ -791,15 +822,30 @@
     }
    },
    "figures": [
-    "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/figures/case-c-openfoam-agreement.png",
-    "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/figures/case-c-openfoam-bias-map.png"
+    {
+     "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/figures/case-c-openfoam-agreement.png",
+     "caption": "Case C, OpenFOAM 12: measured Vs/U_H against the modelled √(|U|²+2k)/U_H (filled) and |U|/U_H (hollow), one panel per configuration (centre block × wind direction)."
+    },
+    {
+     "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/figures/case-c-openfoam-bias-map.png",
+     "caption": "Case C, OpenFOAM 12: log₂(model / tunnel) of the scalar speed at each of the 120 points on the plan of the array, per configuration — where the model is slow and where it is fast."
+    }
    ],
-   "reproduce": "Eddy3D fixture TestAijCaseC2DContainerE2E; figures validation/plot_case_c_openfoam.py (per-point pairs in validation/results/caseC_openfoam12_realizableKE_pairs.csv)",
+   "pairs": {
+    "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/C/pairs/openfoam12-realizableKE.csv?v=f3d2b649b543",
+    "path": "cases/C/pairs/openfoam12-realizableKE.csv",
+    "media_type": "text/csv",
+    "bytes": 90478,
+    "sha256": "f3d2b649b5439ec17e735bd157ccfd8f5904657f27ddabf72162bdbc2e7d6a78"
+   },
+   "pairs_columns": "config (0D/1D/2D), wind_direction_deg, point_id; x, y, z in m (case frame); measured_over_UH, the thermistor Vs/U_H; scalar_over_UH, the modelled sqrt(|U|^2 + 2k)/U_H; vector_over_UH, the modelled |U|/U_H (all nine configurations in one file)",
+   "reproduce": "Eddy3D fixture TestAijCaseC2DContainerE2E; figures validation/plot_case_c_openfoam.py",
    "source_file": "validation/results/caseC_openfoam12_realizableKE_2D.json",
    "source_url": "https://github.com/SustainableUrbanSystemsLab/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/blob/main/validation/results/caseC_openfoam12_realizableKE_2D.json",
    "cite": "Kikumoto, H., Okaze, T., Yoshie, R., Tachibana, T., Ishihara, T., Nonomura, Y., Kiyota, N., Kondo, H., Mochida, A., Tominaga, Y. (2026). Comprehensive Experimental Database for Validating CFD Simulations in Urban Wind Environment: Benchmark Cases Curated by the Architectural Institute of Japan. Japan Architectural Review 9(1), e70083. https://doi.org/10.1002/2475-8876.70083"
   },
   {
+   "run_id": "C.ml-surrogate",
    "engine": "ml-surrogate",
    "configuration": null,
    "solver": "ML surrogate — Eddy3D Wind Predictor, Yel-2.0.onnx (1 output channel, |U_mean|/U_ref) on ONNX Runtime CPU",
@@ -1016,8 +1062,19 @@
     }
    },
    "figures": [
-    "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/figures/ml-surrogate-agreement.png"
+    {
+     "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/figures/ml-surrogate-agreement.png",
+     "caption": "Eddy3D ML surrogate (Yel-2.0): measured against predicted pedestrian-height speed, one panel per case, with the 1:1 line and the factor-of-two band."
+    }
    ],
+   "pairs": {
+    "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/C/pairs/ml-surrogate.csv?v=6a2b60658913",
+    "path": "cases/C/pairs/ml-surrogate.csv",
+    "media_type": "text/csv",
+    "bytes": 72957,
+    "sha256": "6a2b60658913b7e56072bb08d521c5b4adcc12c065975c75b48f36a3b09676ab"
+   },
+   "pairs_columns": "set (the scored subset); x_tunnel, y_tunnel in m (case frame); x_scene, y_scene in m (the scaled scene the surrogate was given); observed_over_UH and predicted_over_UH, the speeds divided by U_H (Case E: by U at 15.9 m)",
    "reproduce": "Eddy3D fixture Outdoor.ML.Tests/TestAijSurrogateE2E; figure validation/plot_ml_surrogate.py",
    "source_file": "validation/results/caseC_ml.json",
    "source_url": "https://github.com/SustainableUrbanSystemsLab/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/blob/main/validation/results/caseC_ml.json",

@@ -1,0 +1,220 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/schemas/points.schema.json",
+ "title": "Point table",
+ "description": "The cleaned measurement table of one case: SI units, one frame, null where not measured.",
+ "type": "object",
+ "required": [
+  "$schema",
+  "schema_version",
+  "data_version",
+  "license",
+  "case",
+  "columns",
+  "column_meaning",
+  "n",
+  "points",
+  "units",
+  "frame"
+ ],
+ "properties": {
+  "$schema": {
+   "type": "string",
+   "format": "uri"
+  },
+  "schema_version": {
+   "type": "string",
+   "pattern": "^\\d+\\.\\d+\\.\\d+$",
+   "description": "the API's version (semantic versioning); see index.json changelog"
+  },
+  "data_version": {
+   "type": "string",
+   "pattern": "^[0-9a-f]{64}$",
+   "description": "SHA-256 over every served measurement, geometry and score file; changes when, and only when, the data does"
+  },
+  "license": {
+   "const": "CC-BY-4.0",
+   "description": "SPDX identifier of the data's licence"
+  },
+  "case": {
+   "enum": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ]
+  },
+  "title": {
+   "type": "string"
+  },
+  "points_source": {
+   "type": "string"
+  },
+  "units": {
+   "type": "object"
+  },
+  "frame": {
+   "type": "object",
+   "required": [
+    "origin",
+    "x",
+    "y",
+    "z"
+   ],
+   "properties": {
+    "origin": {
+     "type": "string"
+    },
+    "x": {
+     "type": "string"
+    },
+    "y": {
+     "type": "string"
+    },
+    "z": {
+     "type": "string"
+    }
+   }
+  },
+  "columns": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "column_meaning": {
+   "type": "object",
+   "additionalProperties": {
+    "type": "string"
+   }
+  },
+  "n": {
+   "type": "integer"
+  },
+  "points": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "point_id",
+     "x",
+     "y",
+     "z"
+    ],
+    "properties": {
+     "point_id": {
+      "type": "integer"
+     },
+     "config": {
+      "type": "string"
+     },
+     "instrument": {
+      "type": "string"
+     },
+     "wind_direction": {
+      "type": "string"
+     },
+     "wind_direction_deg": {
+      "type": "number"
+     },
+     "x": {
+      "type": "number"
+     },
+     "y": {
+      "type": "number"
+     },
+     "z": {
+      "type": "number"
+     },
+     "U": {
+      "type": [
+       "number",
+       "null"
+      ]
+     },
+     "V": {
+      "type": [
+       "number",
+       "null"
+      ]
+     },
+     "W": {
+      "type": [
+       "number",
+       "null"
+      ]
+     },
+     "uu": {
+      "type": [
+       "number",
+       "null"
+      ]
+     },
+     "vv": {
+      "type": [
+       "number",
+       "null"
+      ]
+     },
+     "ww": {
+      "type": [
+       "number",
+       "null"
+      ]
+     },
+     "k": {
+      "type": [
+       "number",
+       "null"
+      ]
+     },
+     "Vs": {
+      "type": [
+       "number",
+       "null"
+      ]
+     },
+     "velocity_ratio": {
+      "type": [
+       "number",
+       "null"
+      ]
+     }
+    }
+   }
+  },
+  "csv": {
+   "type": "object",
+   "required": [
+    "url",
+    "path",
+    "media_type",
+    "bytes",
+    "sha256"
+   ],
+   "properties": {
+    "url": {
+     "type": "string",
+     "format": "uri",
+     "description": "absolute URL; the ?v= query is the file's SHA-256 prefix, so a changed file has a new URL"
+    },
+    "path": {
+     "type": "string",
+     "description": "path below the API base"
+    },
+    "media_type": {
+     "type": "string"
+    },
+    "bytes": {
+     "type": "integer",
+     "minimum": 0
+    },
+    "sha256": {
+     "type": "string",
+     "pattern": "^[0-9a-f]{64}$"
+    }
+   }
+  }
+ }
+}

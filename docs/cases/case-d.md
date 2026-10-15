@@ -93,7 +93,7 @@ Unmeasured cells (null): U 234, V 234, W 234, uu 234, vv 234, ww 234, k 234, Vs 
 | **hit rate** | 0.167 | 0.242 | 0.273 | 0.197 |
 | **n** | 198 | 33 | 66 | 66 |
 
-velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Reproduce: Eddy3D fixture Outdoor.ML.Tests/TestAijSurrogateE2E; figure validation/plot_ml_surrogate.py.
+velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Per-point values: [`/api/cases/D/pairs/ml-surrogate.csv`]({{ '/api/cases/D/pairs/ml-surrogate.csv' | relative_url }}). Reproduce: Eddy3D fixture Outdoor.ML.Tests/TestAijSurrogateE2E; figure validation/plot_ml_surrogate.py.
 
 <figure class="figure">
 <img src="{{ '/assets/figures/ml-surrogate-agreement.png' | relative_url }}" alt="ml-surrogate-agreement.png">
@@ -106,12 +106,13 @@ How to read these is on the [Validation]({{ '/validation/' | relative_url }}) pa
 
 | Resource | Endpoint |
 |---|---|
-| case | [`/api/cases/D.json`]({{ '/api/cases/D.json' | relative_url }}) |
-| points (JSON) | [`/api/cases/D/points.json`]({{ '/api/cases/D/points.json' | relative_url }}) |
-| points (CSV) | [`/api/cases/D/points.csv`]({{ '/api/cases/D/points.csv' | relative_url }}) |
-| geometry | [`/api/cases/D/geometry.json`]({{ '/api/cases/D/geometry.json' | relative_url }}) |
-| geometry STL | [`/api/cases/D/geometry.stl`]({{ '/api/cases/D/geometry.stl' | relative_url }}) |
-| validation | [`/api/cases/D/validation.json`]({{ '/api/cases/D/validation.json' | relative_url }}) |
+| Case | [`/api/cases/D.json`]({{ '/api/cases/D.json' | relative_url }}) |
+| Points (JSON) | [`/api/cases/D/points.json`]({{ '/api/cases/D/points.json' | relative_url }}) |
+| Points (CSV) | [`/api/cases/D/points.csv`]({{ '/api/cases/D/points.csv' | relative_url }}) |
+| Approach flow (CSV) | [`/api/cases/D/approach_flow.csv`]({{ '/api/cases/D/approach_flow.csv' | relative_url }}) |
+| Geometry | [`/api/cases/D/geometry.json`]({{ '/api/cases/D/geometry.json' | relative_url }}) |
+| Geometry (STL) | [`/api/cases/D/geometry.stl`]({{ '/api/cases/D/geometry.stl' | relative_url }}) |
+| Validation | [`/api/cases/D/validation.json`]({{ '/api/cases/D/validation.json' | relative_url }}) |
 
 ## Attribution
 

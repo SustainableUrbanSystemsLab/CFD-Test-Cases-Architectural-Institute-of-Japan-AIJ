@@ -91,7 +91,7 @@ The cleaned table has **2560 rows** over **80 distinct points**; columns `point_
 | **hit rate** | 0.613 | 0.412 | 0.475 | 0.300 | 0.350 |
 | **n** | 80 | 80 | 80 | 80 | 80 |
 
-velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Reproduce: Eddy3D fixture TestAijCaseEContainerE2E (EDDY3D_AIJ_E_DIRECTIONS=SW, tabulated inlet); figures validation/plot_case_e_openfoam.py (per-point pairs in validation/results/caseE_openfoam12_realizableKE_pairs.csv).
+velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Per-point values: [`/api/cases/E/pairs/openfoam12-realizableKE.csv`]({{ '/api/cases/E/pairs/openfoam12-realizableKE.csv' | relative_url }}). Reproduce: Eddy3D fixture TestAijCaseEContainerE2E (EDDY3D_AIJ_E_DIRECTIONS=SW, tabulated inlet); figures validation/plot_case_e_openfoam.py.
 
 ### Eddy3D ML wind surrogate (pedestrian height)
 
@@ -103,7 +103,7 @@ velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15
 | **hit rate** | 0.082 | 0.105 | 0.312 | 0.388 | 0.105 |
 | **n** | 2560 | 1280 | 1280 | 1280 | 1280 |
 
-velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Reproduce: Eddy3D fixture Outdoor.ML.Tests/TestAijSurrogateE2E; figure validation/plot_ml_surrogate.py.
+velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Per-point values: [`/api/cases/E/pairs/ml-surrogate.csv`]({{ '/api/cases/E/pairs/ml-surrogate.csv' | relative_url }}). Reproduce: Eddy3D fixture Outdoor.ML.Tests/TestAijSurrogateE2E; figure validation/plot_ml_surrogate.py.
 
 <figure class="figure">
 <img src="{{ '/assets/figures/case-e-openfoam-agreement.png' | relative_url }}" alt="case-e-openfoam-agreement.png">
@@ -126,12 +126,13 @@ How to read these is on the [Validation]({{ '/validation/' | relative_url }}) pa
 
 | Resource | Endpoint |
 |---|---|
-| case | [`/api/cases/E.json`]({{ '/api/cases/E.json' | relative_url }}) |
-| points (JSON) | [`/api/cases/E/points.json`]({{ '/api/cases/E/points.json' | relative_url }}) |
-| points (CSV) | [`/api/cases/E/points.csv`]({{ '/api/cases/E/points.csv' | relative_url }}) |
-| geometry | [`/api/cases/E/geometry.json`]({{ '/api/cases/E/geometry.json' | relative_url }}) |
-| geometry STL | [`/api/cases/E/geometry.stl`]({{ '/api/cases/E/geometry.stl' | relative_url }}) |
-| validation | [`/api/cases/E/validation.json`]({{ '/api/cases/E/validation.json' | relative_url }}) |
+| Case | [`/api/cases/E.json`]({{ '/api/cases/E.json' | relative_url }}) |
+| Points (JSON) | [`/api/cases/E/points.json`]({{ '/api/cases/E/points.json' | relative_url }}) |
+| Points (CSV) | [`/api/cases/E/points.csv`]({{ '/api/cases/E/points.csv' | relative_url }}) |
+| Approach flow (CSV) | [`/api/cases/E/approach_flow.csv`]({{ '/api/cases/E/approach_flow.csv' | relative_url }}) |
+| Geometry | [`/api/cases/E/geometry.json`]({{ '/api/cases/E/geometry.json' | relative_url }}) |
+| Geometry (STL) | [`/api/cases/E/geometry.stl`]({{ '/api/cases/E/geometry.stl' | relative_url }}) |
+| Validation | [`/api/cases/E/validation.json`]({{ '/api/cases/E/validation.json' | relative_url }}) |
 
 ## Attribution
 

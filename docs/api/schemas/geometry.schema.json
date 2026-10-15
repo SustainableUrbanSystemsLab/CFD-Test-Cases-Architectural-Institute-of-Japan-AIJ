@@ -1,0 +1,220 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/schemas/geometry.schema.json",
+ "title": "Case geometry",
+ "description": "The STL files of one case, their statistics and, where the geometry is boxes, the boxes.",
+ "type": "object",
+ "required": [
+  "$schema",
+  "schema_version",
+  "data_version",
+  "license",
+  "case",
+  "units",
+  "frame",
+  "default_configuration",
+  "configurations",
+  "files"
+ ],
+ "properties": {
+  "$schema": {
+   "type": "string",
+   "format": "uri"
+  },
+  "schema_version": {
+   "type": "string",
+   "pattern": "^\\d+\\.\\d+\\.\\d+$",
+   "description": "the API's version (semantic versioning); see index.json changelog"
+  },
+  "data_version": {
+   "type": "string",
+   "pattern": "^[0-9a-f]{64}$",
+   "description": "SHA-256 over every served measurement, geometry and score file; changes when, and only when, the data does"
+  },
+  "license": {
+   "const": "CC-BY-4.0",
+   "description": "SPDX identifier of the data's licence"
+  },
+  "case": {
+   "enum": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+   ]
+  },
+  "title": {
+   "type": "string"
+  },
+  "units": {
+   "type": "string"
+  },
+  "frame": {
+   "type": "object",
+   "required": [
+    "origin",
+    "x",
+    "y",
+    "z"
+   ],
+   "properties": {
+    "origin": {
+     "type": "string"
+    },
+    "x": {
+     "type": "string"
+    },
+    "y": {
+     "type": "string"
+    },
+    "z": {
+     "type": "string"
+    }
+   }
+  },
+  "default_configuration": {
+   "type": "string"
+  },
+  "configurations": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "is_boxes": {
+   "type": "boolean"
+  },
+  "files": {
+   "type": "array",
+   "items": {
+    "allOf": [
+     {
+      "type": "object",
+      "required": [
+       "url",
+       "path",
+       "media_type",
+       "bytes",
+       "sha256"
+      ],
+      "properties": {
+       "url": {
+        "type": "string",
+        "format": "uri",
+        "description": "absolute URL; the ?v= query is the file's SHA-256 prefix, so a changed file has a new URL"
+       },
+       "path": {
+        "type": "string",
+        "description": "path below the API base"
+       },
+       "media_type": {
+        "type": "string"
+       },
+       "bytes": {
+        "type": "integer",
+        "minimum": 0
+       },
+       "sha256": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+       }
+      }
+     },
+     {
+      "type": "object",
+      "required": [
+       "configuration",
+       "stats",
+       "render"
+      ],
+      "properties": {
+       "configuration": {
+        "type": "string"
+       },
+       "format": {
+        "type": "string"
+       },
+       "source": {
+        "type": "string"
+       },
+       "stats": {
+        "type": "object",
+        "required": [
+         "triangles",
+         "bbox_min",
+         "bbox_max",
+         "watertight"
+        ],
+        "properties": {
+         "triangles": {
+          "type": "integer"
+         },
+         "bbox_min": {
+          "type": "array",
+          "items": {
+           "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+         },
+         "bbox_max": {
+          "type": "array",
+          "items": {
+           "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+         },
+         "watertight": {
+          "type": "boolean"
+         }
+        }
+       },
+       "render": {
+        "type": "string",
+        "format": "uri"
+       },
+       "render_caption": {
+        "type": "string"
+       },
+       "boxes": {
+        "type": "array",
+        "items": {
+         "type": "object",
+         "required": [
+          "min",
+          "max"
+         ],
+         "properties": {
+          "min": {
+           "type": "array",
+           "items": {
+            "type": "number"
+           },
+           "minItems": 3,
+           "maxItems": 3
+          },
+          "max": {
+           "type": "array",
+           "items": {
+            "type": "number"
+           },
+           "minItems": 3,
+           "maxItems": 3
+          }
+         }
+        }
+       }
+      }
+     }
+    ]
+   },
+   "minItems": 1
+  },
+  "render": {
+   "type": "string",
+   "format": "uri"
+  }
+ }
+}

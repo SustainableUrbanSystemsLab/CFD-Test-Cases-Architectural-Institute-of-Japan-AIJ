@@ -1,0 +1,104 @@
+# AIJ UWE benchmark — cleaned data API
+
+> Wind-tunnel reference data from the Architectural Institute of Japan Urban Wind Environment (UWE)
+> benchmark, Cases A-E, cleaned into one schema, plus Eddy3D's validation against it. Static files, plain GET.
+
+Base URL: https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api
+Fallback (raw files from the repository): https://raw.githubusercontent.com/SustainableUrbanSystemsLab/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/main/docs/api
+Repository: https://github.com/SustainableUrbanSystemsLab/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ
+API version: 2.0.0. Data version (SHA-256 of the served data): 9777cc14ece941a72e00c55c70d9487eb8c55528e24a06e836bf3895c8327816.
+Licence: CC-BY-4.0 — the data belongs to its collectors; cite the benchmark and the per-case papers.
+
+## How to use this
+
+1. GET index.json — every endpoint and file (with size and SHA-256), versions, changelog, citation.
+2. GET cases.json — the five cases with their frame, units, counts and links. Pick an id (A, B, C, D, E).
+3. GET cases/{id}.json — read `frame`, `units` and `known_issues` BEFORE the numbers; they differ per case.
+4. GET cases/{id}/points.json (or points.csv) — every value is SI (m, m/s, m^2/s^2) in ONE frame per case;
+   unmeasured values are null. Case E's quantity is a dimensionless velocity ratio.
+5. GET cases/{id}/geometry.stl — ASCII STL in metres, outward normals, origin at the building / array centre,
+   +x along the wind at WD = 0 (Cases A-D). Case E keeps its geographic frame (+x east, +y north, full-scale metres).
+   geometry.json lists the boxes where the geometry IS boxes (A, B, C, D), so you need not parse the STL at all.
+6. GET validation.json for every case and engine at once, or cases/{id}/validation.json for one case in full.
+   Quote the `headline` scores. An engine whose status is not "scored" has NO result for that case: do not
+   infer one. "scored" means a run exists, not that it agrees — read the numbers. Each result's `pairs` is
+   the per-point measured and modelled values, so any score can be recomputed. Status today: A: openfoam12-realizableKE scored, openlb scored, fluidx3d running, ml-surrogate scored; B: openfoam12-realizableKE scored, openlb scored, fluidx3d running, ml-surrogate scored; C: openfoam12-realizableKE scored, openlb not comparable, fluidx3d pending, ml-surrogate scored; D: openfoam12-realizableKE running, openlb not comparable, fluidx3d pending, ml-surrogate scored; E: openfoam12-realizableKE scored, openlb not comparable, fluidx3d pending, ml-surrogate scored.
+7. All geometry at once: GET geometry.json (every STL with its case, configuration, units, frame and SHA-256)
+   or geometry.zip. Each STL stays in its own case's frame and units; they are NOT one scene.
+8. Every JSON document names its JSON Schema in `$schema` (schemas/{name}.schema.json); openapi.json describes
+   every endpoint. Download URLs carry ?v=<SHA-256 prefix>: use the URLs the documents give, not hand-built ones.
+
+## Endpoints
+
+- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/index.json — every endpoint and file with its size and SHA-256, versions, compatibility policy, changelog, licence, citation
+- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases.json — the five cases: id, title, frame, units, counts, engine status, links
+- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/{id}.json — one case in full: configurations, frame, units, inflow fit and approach-flow profile, point-table summary, geometry files, validation status, known data issues, attribution
+- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/{id}/points.json — the cleaned measurement table: SI units, one frame, null where not measured
+- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/{id}/points.csv — the same table as CSV (empty cell = not measured)
+- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/{id}/approach_flow.csv — the measured approach-flow profile: z (m), U (m/s), and k (m^2/s^2) or u_rms (m/s) where published
+- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/{id}/geometry.json — the case's STL files with statistics, renders, and the boxes where the geometry is boxes
+- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/{id}/geometry.stl — cleaned ASCII STL of the default configuration: metres, case frame, outward normals
+- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/{id}/geometry_{configuration}.stl — the other configurations' STLs (C: 0D, 1D; E: bc, before construction)
+- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/{id}/validation.json — Eddy3D's scores per engine and run, with figures and the per-point pairs
+- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/{id}/pairs/{engine}.csv — per-point measured and modelled values of one engine's runs on the case (columns described by the result's pairs_columns)
+- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/validation.json — every case and engine in one table: status, runs, headline scores
+- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/geometry.json — every STL of every case in one list: case, configuration, units, frame, bounding box, size, SHA-256
+- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/geometry.zip — every STL in one archive (each keeps its own case's frame and units: they are not one scene)
+- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/schemas/{name}.schema.json — the JSON Schema (draft 2020-12) of each JSON document
+- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/openapi.json — OpenAPI 3.1 description of every endpoint
+- https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/llms.txt — plain-text entry point for agents
+
+## Cases
+
+- A: Case A — 1:1:2 building. Isolated 1:1:2 building, velocity field (split-fibre hot wire). 186 rows, 186 points, columns point_id, config, instrument, wind_direction_deg, x, y, z, U, V, W, uu, vv, ww, k. Engines: openfoam12-realizableKE scored, openlb scored, fluidx3d running, ml-surrogate scored.
+- B: Case B — 1:4:4 slab. Isolated 1:4:4 slab, velocity field (split-fibre hot wire). 224 rows, 224 points, columns point_id, config, instrument, wind_direction_deg, x, y, z, U, V, W, uu, vv, ww, k. Engines: openfoam12-realizableKE scored, openlb scored, fluidx3d running, ml-surrogate scored.
+- C: Case C — 3 × 3 block array. 3 x 3 array of 0.20 m cubes, centre block at 0D / 1D / 2D, pedestrian-height scalar speed (thermistor), 3 wind directions. 1080 rows, 120 points, columns point_id, config, instrument, wind_direction_deg, x, y, z, Vs. Engines: openfoam12-realizableKE scored, openlb not comparable, fluidx3d pending, ml-surrogate scored.
+- D: Case D — high-rise among city blocks. 1:1:4 tower in a regular array of 82 low blocks, pedestrian-height scalar speed (thermistor, 3 wind directions) plus a 33-point split-fibre velocity field at WD = 0. 267 rows, 78 points, columns point_id, config, instrument, wind_direction_deg, x, y, z, U, V, W, uu, vv, ww, k, Vs. Engines: openfoam12-realizableKE running, openlb not comparable, fluidx3d pending, ml-surrogate scored.
+- E: Case E — Niigata district. Real district in Niigata at 1:250, before and after a 60 m high-rise and two 18 m mid-rises; pedestrian-height velocity ratio (thermistor), 16 wind directions. 2560 rows, 80 points, columns point_id, config, instrument, wind_direction, wind_direction_deg, x, y, z, velocity_ratio. Engines: openfoam12-realizableKE scored, openlb not comparable, fluidx3d pending, ml-surrogate scored.
+
+## Known data issues
+
+Each of these changes the result of a comparison if it is not accounted for.
+
+- [A] Lateral velocity V is positive toward +y (checked: V = -2.893 m/s at (-0.040, -0.050, 0.010), just outside the y < 0 flank, deflecting away from the centreline). Case B uses the OPPOSITE sign; the API flips Case B so both agree.
+- [A] Coordinates are metres (Case B's are millimetres in the published file).
+- [A] Case A's turbulence columns are rms values (u_rms, ...). The API serves VARIANCES (uu = u_rms^2) so A and B share one column meaning.
+- [B] The published coordinates are MILLIMETRES (x[mm]) while velocities are m/s. The API serves metres (coordinate_scale_applied = 0.001). Read as metres, every probe lands 1000x too far out.
+- [B] The published lateral velocity V is positive toward -y (V = +3.630 m/s at (-0.025, -0.110, 0.013), just outside the y < 0 flank where the flow must deflect toward -y). The API multiplies V by -1 (lateral_sign_applied = -1) so that V is positive toward +y as in Case A. Scored without this, Case B's V comes out at R = -0.910 against R = +0.959 for U on the same points.
+- [B] The RANS solution is symmetric, so model V = 0 on the centre plane while the tunnel measures small non-zero values there.
+- [C] The measured quantity Vs is the MEAN OMNIDIRECTIONAL SCALAR speed from a thermistor, not |mean velocity vector|. A RANS |U| is biased low against it; the data paper suggests comparing sqrt(|U|^2 + 2k) as a conservative correction (over all 1080 rows no Vs is below 0.13 U_H).
+- [C] The 'CB' column is TEXT ('0D', '1D', '2D'); a reader that parses every field as a number gets NaN for it. The header ends with a trailing comma (an empty 8th column).
+- [C] 1080 rows = 3 wind directions x 3 centre buildings x 120 points, not 3 configurations. In the 0D configuration the 25 centre grid nodes are still absent although the ground there is free: the grid is held constant across configurations.
+- [C] 24 of the 120 points sit exactly on a building face plane (|x| = 0.30 or |y| = 0.30) in the open gap between two blocks: legitimate fluid points, but a probe's cell lookup is delicate there.
+- [C] Point numbers 1, 2, 3, 34, 35, 36, 37, 46, 55, 100, 101, 102 do not occur (No. runs 4 ... 132 with nine interior gaps).
+- [C] Experimental repeatability, from the mirror-symmetric point pairs: mean |dVs| 0.088-0.137 m/s (0.024-0.038 U_H).
+- [D] All of Case D's data lives in LF_caseD.xls, a genuine OLE2/BIFF8 workbook (read it with xlrd 2.x; openpyxl cannot). Sheets: 'Geometry&Points', 'Inflow', 'Results (Exp_S)' (split fibre, WD = 0), 'Results (Exp_T)' (thermistor, 0 / 22.5 / 45 deg).
+- [D] Coordinates are millimetres in the workbook; the API serves metres.
+- [D] The shipped BD_caseD.stl is dirty: 1572 facets of which 576 are duplicates, and all 83 roofs are wound inward (signed volume 0.011159 m^3 against the true 0.021477 m^3). The API's geometry.stl is rebuilt from the 83 shells' bounding boxes: 996 facets, watertight, volume 0.021477 m^3.
+- [D] The thermistor reads a SCALAR speed. Over the 33 points where both instruments overlap at WD = 0, the ratio of mean thermistor speed to mean |U| is 1.342 (the mean of the per-point ratios is 1.50). sqrt(|U|^2 + 2k) from the split-fibre data matches the thermistor to FB +0.058, R 0.947; |U| alone to FB +0.292, R 0.872.
+- [D] Unmeasured thermistor cells are '-' in the workbook (null here). At WD = 0 the 66 measured values are 33 exact mirror pairs, so only 33 are independent; at 22.5 and 45 deg all 66 are independent.
+- [D] A prior Eddy3D comparison kept in the folder (case-d-eddy3d-prior-comparison.xlsx) scores R = +0.096 against the thermistor: a frame or geometry error, not a closure result. It is not a validation.
+- [E] The velocity ratio is normalised by the inflow velocity at 15.9 m (= 3.935 m/s), NOT by U_H and NOT by UR = 7.8 m/s. A prior Eddy3D comparison in the folder divided by the wrong reference and came out low by a factor of 2.048 (FAC2 0.338 -> 0.863 once rescaled, R unchanged at 0.661).
+- [E] All 2560 published ratios are integer multiples of 0.0198204 (55 distinct levels): the data's own resolution is +/-0.0099, 3.1 % of the median value and about 10 % at the lowest points.
+- [E] The readme describes AF_caseE.csv, RS_caseE.csv and BD_caseE.stl, but this repository holds only the .3dm, .ghx, .xls and the MP drawing; everything here is extracted from the workbook and the 3dm.
+- [E] case-e.3dm is FULL-SCALE metres (MP_caseE.png is drawn at model scale, +/-0.8 m). Use layers 'buildings' (5,015 meshes, before construction) and 'buildings_new_construction' (3 prisms); exclude the map plate on the Japanese-named general layer, the terrain plates (the site is flat) and 'probes'.
+- [E] Do not take the measurement coordinates from the 3dm's 'probes' layer: its 80 spheres sit a median 2.31 m (max 21 m) from the workbook's points, which are authoritative (all 80 fall in open space, min 0.83 m from a building edge).
+- [E] The measured quantity is a scalar (thermistor) speed; a RANS |U| is biased low against it in a dense canopy. The construction signal (ac - bc) is largest for SW (mean |d| 0.2155) and smallest for SSE (0.093).
+
+## Validation method
+
+Each case is solved through Eddy3D's production case writer (build-case -> run -> probe), not a hand-built
+OpenFOAM case; the probe sits at exactly the tunnel's measurement coordinates. Scores are normalised by U_H
+(k by U_H^2; Case E by U at 15.9 m); hit rate uses D = 0.25, W = 0.05 in those units. FAC2 is harsh by
+construction on sign-changing V and W; read R and hit rate there. The lateral sign of Case B is corrected
+before scoring. Cases C-E measure an omnidirectional SCALAR speed (thermistor): the model is scored as
+sqrt(|U|^2 + 2k) and as |U|, the two ends of the bracket the measurement must fall in.
+The ML surrogate predicts |U|/U_ref at 1.8 m; each case is scaled so its measurement plane lands there.
+On the full prediction window it does not respond to the wind direction at all (reversing the wind changes
+the field by < 1e-4 U_ref) — its scores grade the geometry it was given, not a wind it was told.
+
+## Cite
+
+- Kikumoto, H., Okaze, T., Yoshie, R., Tachibana, T., Ishihara, T., Nonomura, Y., Kiyota, N., Kondo, H., Mochida, A., Tominaga, Y. (2026). Comprehensive Experimental Database for Validating CFD Simulations in Urban Wind Environment: Benchmark Cases Curated by the Architectural Institute of Japan. Japan Architectural Review 9(1), e70083. https://doi.org/10.1002/2475-8876.70083
+- Tominaga, Y., Mochida, A., Yoshie, R., Kataoka, H., Nozu, T., Yoshikawa, M., Shirasawa, T. (2008). AIJ guidelines for practical applications of CFD to pedestrian wind environment around buildings. J. Wind Eng. Ind. Aerodyn. 96, 1749-1761. https://doi.org/10.1016/j.jweia.2008.02.058
+- Each case's own requested citation and Zenodo DOI are in cases/{id}.json.

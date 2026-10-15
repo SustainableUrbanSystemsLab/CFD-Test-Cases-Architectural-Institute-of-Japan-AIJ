@@ -1,8 +1,8 @@
 {
- "schema_version": "1.0.0",
- "generated_from": "ba59418628c8a195787e9c303f0d70eb7f52cd62",
- "generated_at": "2026-10-15T00:57:00+00:00",
- "licence": "CC BY 4.0",
+ "$schema": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/schemas/geometry.schema.json",
+ "schema_version": "2.0.0",
+ "data_version": "9777cc14ece941a72e00c55c70d9487eb8c55528e24a06e836bf3895c8327816",
+ "license": "CC-BY-4.0",
  "case": "E",
  "title": "Case E — Niigata district",
  "units": "metres (full scale)",
@@ -24,8 +24,11 @@
  "files": [
   {
    "configuration": "ac",
-   "file": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/geometry.stl",
+   "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/geometry.stl?v=f59d27738a49",
    "path": "cases/E/geometry.stl",
+   "media_type": "model/stl",
+   "bytes": 1211403,
+   "sha256": "f59d27738a49edb8a51724c56a6c159ffc53f66f7cd2c05291c6f55ab8f5e5ce",
    "format": "ASCII STL, LF line endings, outward normals",
    "source": "triangulated from case-e.3dm via rhino3dm, layers 'buildings' + 'buildings_new_construction'; 478 of 506 shells were wound inward in the 3dm and are flipped outward here",
    "stats": {
@@ -53,8 +56,11 @@
   },
   {
    "configuration": "bc",
-   "file": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/geometry_bc.stl",
+   "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/geometry_bc.stl?v=25d8af3a7617",
    "path": "cases/E/geometry_bc.stl",
+   "media_type": "model/stl",
+   "bytes": 1206272,
+   "sha256": "25d8af3a7617893a8077d4ed23661caeece421dac3fd048506ceb6b6df2d3552",
    "format": "ASCII STL, LF line endings, outward normals",
    "source": "triangulated from case-e.3dm via rhino3dm, layers 'buildings'; 475 of 503 shells were wound inward in the 3dm and are flipped outward here",
    "stats": {

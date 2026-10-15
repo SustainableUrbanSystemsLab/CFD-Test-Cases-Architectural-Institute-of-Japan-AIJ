@@ -1,0 +1,824 @@
+{
+ "$schema": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/schemas/validation-summary.schema.json",
+ "schema_version": "2.0.0",
+ "data_version": "9777cc14ece941a72e00c55c70d9487eb8c55528e24a06e836bf3895c8327816",
+ "license": "CC-BY-4.0",
+ "description": "Every case and engine in one table. 'scored' means a run exists, not that it agrees: read the scores. Headline scores are the ones to quote; every score, the figures and the per-point pairs are in each case's validation.json.",
+ "engines": [
+  {
+   "id": "openfoam12-realizableKE",
+   "name": "OpenFOAM 12, realizable k-epsilon (Eddy3D Outdoor)",
+   "kind": "RANS"
+  },
+  {
+   "id": "openlb",
+   "name": "OpenLB (Eddy3D LBM)",
+   "kind": "LBM"
+  },
+  {
+   "id": "fluidx3d",
+   "name": "FluidX3D (Eddy3D GPU LBM)",
+   "kind": "LBM"
+  },
+  {
+   "id": "ml-surrogate",
+   "name": "Eddy3D ML wind surrogate (pedestrian height)",
+   "kind": "surrogate"
+  }
+ ],
+ "status_meaning": {
+  "scored": "a validation run exists and its scores are in cases/{id}/validation.json; whether it agrees is in the numbers",
+  "running": "the solve is in progress; no scores yet",
+  "pending": "not run yet",
+  "not comparable": "the engine cannot produce the measured quantity at the measured location at a resolution this hardware runs; the measurement behind that is in the README"
+ },
+ "metric_meaning": {
+  "Count": "number of measured points scored",
+  "MeanObserved": "mean of the measured, normalised quantity",
+  "MeanPredicted": "mean of the modelled, normalised quantity",
+  "Fb": "fractional bias, 2 (mean_obs - mean_pred) / (mean_obs + mean_pred); positive = model low",
+  "Nmse": "normalised mean square error",
+  "Nad": "normalised absolute difference",
+  "Fac2": "fraction of points within a factor of two (harsh near zero for sign-changing V and W)",
+  "HitRate": "fraction of points within D = 0.25 relative or W = 0.05 U_H absolute",
+  "Mg": "geometric mean bias",
+  "Vg": "geometric variance",
+  "GeometricPairs": "pairs with both values positive (used for Mg/Vg)",
+  "R": "Pearson correlation coefficient"
+ },
+ "cases": [
+  {
+   "case": "A",
+   "title": "Case A — 1:1:2 building",
+   "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/A/validation.json",
+   "engines": [
+    {
+     "engine": "openfoam12-realizableKE",
+     "status": "scored",
+     "runs": [
+      {
+       "run_id": "A.openfoam12-realizableKE",
+       "configuration": null,
+       "headline": [
+        {
+         "label": "U",
+         "score": "velocity.U",
+         "Count": 186,
+         "R": 0.9548412675647306,
+         "Fac2": 0.8172043010752689,
+         "Fb": 0.1849501728346507,
+         "HitRate": 0.5860215053763441
+        },
+        {
+         "label": "V",
+         "score": "velocity.V",
+         "Count": 186,
+         "R": 0.9609755519503337,
+         "Fac2": 0.34946236559139787,
+         "Fb": -0.2068092589114306,
+         "HitRate": 0.8924731182795699
+        },
+        {
+         "label": "W",
+         "score": "velocity.W",
+         "Count": 186,
+         "R": 0.7082287378700081,
+         "Fac2": 0.3978494623655914,
+         "Fb": -1.5011776249635982,
+         "HitRate": 0.8010752688172043
+        },
+        {
+         "label": "k",
+         "score": "k",
+         "Count": 186,
+         "R": 0.4798520278226867,
+         "Fac2": 0.6666666666666666,
+         "Fb": 0.47770885308100053,
+         "HitRate": 0.1774193548387097
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "engine": "openlb",
+     "status": "scored",
+     "runs": [
+      {
+       "run_id": "A.openlb",
+       "configuration": null,
+       "headline": [
+        {
+         "label": "U",
+         "score": "velocity.U",
+         "Count": 186,
+         "R": 0.7583970986232789,
+         "Fac2": 0.42473118279569894,
+         "Fb": 0.39547591914137653,
+         "HitRate": 0.3709677419354839
+        },
+        {
+         "label": "U, points ≥ 2 dx",
+         "score": "velocity.U.aboveTwoCells",
+         "Count": 121,
+         "R": 0.8122928699200334,
+         "Fac2": 0.6446280991735537,
+         "Fb": 0.16874394508099494,
+         "HitRate": 0.5619834710743802
+        },
+        {
+         "label": "V",
+         "score": "velocity.V",
+         "Count": 186,
+         "R": 0.6463606336884147,
+         "Fac2": 0.17204301075268819,
+         "Fb": 0.04071893467680309,
+         "HitRate": 0.6236559139784946
+        },
+        {
+         "label": "W",
+         "score": "velocity.W",
+         "Count": 186,
+         "R": 0.5396763008509257,
+         "Fac2": 0.12365591397849462,
+         "Fb": -1.758666954984517,
+         "HitRate": 0.5860215053763441
+        },
+        {
+         "label": "k (resolved)",
+         "score": "k.resolved",
+         "Count": 186,
+         "R": 0.19989851051928828,
+         "Fac2": 0,
+         "Fb": 1.9706331448115753,
+         "HitRate": 0
+        },
+        {
+         "label": "V, lateral sign flipped (control)",
+         "score": "control.V.lateralSignFlipped",
+         "Count": 186,
+         "R": -0.6463606336884147,
+         "Fac2": 0.11827956989247312,
+         "Fb": 98.23439713610028,
+         "HitRate": 0.5698924731182796
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "engine": "fluidx3d",
+     "status": "running",
+     "runs": []
+    },
+    {
+     "engine": "ml-surrogate",
+     "status": "scored",
+     "runs": [
+      {
+       "run_id": "A.ml-surrogate",
+       "configuration": null,
+       "headline": [
+        {
+         "label": "|U| (z = 0.01 m plane)",
+         "score": "speed.vectorMagnitude",
+         "Count": 65,
+         "R": -0.1252913701124984,
+         "Fac2": 0.26153846153846155,
+         "Fb": 0.7717034552607615,
+         "HitRate": 0.09230769230769231
+        },
+        {
+         "label": "|U|, lattice cut at ±250 m",
+         "score": "halfExtent250.forward",
+         "Count": 65,
+         "R": 0.433641499610416,
+         "Fac2": 0.6153846153846154,
+         "Fb": 0.4007214964012751,
+         "HitRate": 0.3384615384615385
+        },
+        {
+         "label": "wind reversed (control)",
+         "score": "negativeControl.reversedWind",
+         "Count": 65,
+         "R": -0.12529194701305824,
+         "Fac2": 0.26153846153846155,
+         "Fb": 0.7717035059147103,
+         "HitRate": 0.09230769230769231
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "case": "B",
+   "title": "Case B — 1:4:4 slab",
+   "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/B/validation.json",
+   "engines": [
+    {
+     "engine": "openfoam12-realizableKE",
+     "status": "scored",
+     "runs": [
+      {
+       "run_id": "B.openfoam12-realizableKE",
+       "configuration": null,
+       "headline": [
+        {
+         "label": "U",
+         "score": "velocity.U",
+         "Count": 224,
+         "R": 0.9592051445848486,
+         "Fac2": 0.7008928571428571,
+         "Fb": 0.23953360978856061,
+         "HitRate": 0.5625
+        },
+        {
+         "label": "V",
+         "score": "velocity.V",
+         "Count": 224,
+         "R": 0.910002388064394,
+         "Fac2": 0.28125,
+         "Fb": 0.3701041830924148,
+         "HitRate": 0.6116071428571429
+        },
+        {
+         "label": "W",
+         "score": "velocity.W",
+         "Count": 224,
+         "R": 0.9290326152945579,
+         "Fac2": 0.5357142857142857,
+         "Fb": 0.26305197187603707,
+         "HitRate": 0.8080357142857143
+        },
+        {
+         "label": "k",
+         "score": "k",
+         "Count": 224,
+         "R": 0.39882335305432254,
+         "Fac2": 0.5625,
+         "Fb": 0.462822078093149,
+         "HitRate": 0.22321428571428573
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "engine": "openlb",
+     "status": "scored",
+     "runs": [
+      {
+       "run_id": "B.openlb",
+       "configuration": null,
+       "headline": [
+        {
+         "label": "U",
+         "score": "velocity.U",
+         "Count": 224,
+         "R": 0.7903621527054822,
+         "Fac2": 0.375,
+         "Fb": 0.2797426560473676,
+         "HitRate": 0.29017857142857145
+        },
+        {
+         "label": "U, points ≥ 2 dx",
+         "score": "velocity.U.aboveTwoCells",
+         "Count": 95,
+         "R": 0.8998046593051311,
+         "Fac2": 0.6421052631578947,
+         "Fb": -0.07219550722617396,
+         "HitRate": 0.5157894736842106
+        },
+        {
+         "label": "V",
+         "score": "velocity.V",
+         "Count": 224,
+         "R": 0.8314266609213513,
+         "Fac2": 0.12946428571428573,
+         "Fb": 1.3923468570758184,
+         "HitRate": 0.5491071428571429
+        },
+        {
+         "label": "W",
+         "score": "velocity.W",
+         "Count": 224,
+         "R": 0.7741518569255104,
+         "Fac2": 0.23660714285714285,
+         "Fb": 0.37551783964545393,
+         "HitRate": 0.6517857142857143
+        },
+        {
+         "label": "k (resolved)",
+         "score": "k.resolved",
+         "Count": 224,
+         "R": 0.486104098279362,
+         "Fac2": 0.044642857142857144,
+         "Fb": 1.6412235101404349,
+         "HitRate": 0.004464285714285714
+        },
+        {
+         "label": "V, lateral sign flipped (control)",
+         "score": "control.V.lateralSignFlipped",
+         "Count": 224,
+         "R": -0.8314266609213513,
+         "Fac2": 0.13839285714285715,
+         "Fb": 2.8728473653474014,
+         "HitRate": 0.49107142857142855
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "engine": "fluidx3d",
+     "status": "running",
+     "runs": []
+    },
+    {
+     "engine": "ml-surrogate",
+     "status": "scored",
+     "runs": [
+      {
+       "run_id": "B.ml-surrogate",
+       "configuration": null,
+       "headline": [
+        {
+         "label": "|U| (z = H/16 plane)",
+         "score": "speed.vectorMagnitude",
+         "Count": 122,
+         "R": -0.23552778058356127,
+         "Fac2": 0.36065573770491804,
+         "Fb": 0.8205718475077507,
+         "HitRate": 0.1721311475409836
+        },
+        {
+         "label": "|U|, lattice cut at ±250 m",
+         "score": "halfExtent250.forward",
+         "Count": 122,
+         "R": 0.010483695337128963,
+         "Fac2": 0.45901639344262296,
+         "Fb": 0.46258550921835384,
+         "HitRate": 0.1885245901639344
+        },
+        {
+         "label": "wind reversed (control)",
+         "score": "negativeControl.reversedWind",
+         "Count": 122,
+         "R": -0.2355288324845297,
+         "Fac2": 0.36065573770491804,
+         "Fb": 0.8205727007599579,
+         "HitRate": 0.1721311475409836
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "case": "C",
+   "title": "Case C — 3 × 3 block array",
+   "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/C/validation.json",
+   "engines": [
+    {
+     "engine": "openfoam12-realizableKE",
+     "status": "scored",
+     "runs": [
+      {
+       "run_id": "C.openfoam12-realizableKE.0D",
+       "configuration": "0D",
+       "headline": [
+        {
+         "label": "WD 0° √(|U|²+2k)",
+         "score": "vs.wd-0.scalar",
+         "Count": 120,
+         "R": 0.8240637907356205,
+         "Fac2": 0.9083333333333333,
+         "Fb": 0.26640706328562425,
+         "HitRate": 0.5666666666666667
+        },
+        {
+         "label": "WD 0° |U|",
+         "score": "vs.wd-0.vector",
+         "Count": 120,
+         "R": 0.8043612502846543,
+         "Fac2": 0.6583333333333333,
+         "Fb": 0.4659563288173523,
+         "HitRate": 0.30833333333333335
+        },
+        {
+         "label": "WD 22.5° √(|U|²+2k)",
+         "score": "vs.wd22_5.scalar",
+         "Count": 120,
+         "R": 0.857038092760891,
+         "Fac2": 0.9833333333333333,
+         "Fb": 0.10558031012160157,
+         "HitRate": 0.75
+        },
+        {
+         "label": "WD 22.5° |U|",
+         "score": "vs.wd22_5.vector",
+         "Count": 120,
+         "R": 0.8457615459879254,
+         "Fac2": 0.8333333333333334,
+         "Fb": 0.29533050876042855,
+         "HitRate": 0.43333333333333335
+        },
+        {
+         "label": "WD 45° √(|U|²+2k)",
+         "score": "vs.wd45.scalar",
+         "Count": 120,
+         "R": 0.8306206455739256,
+         "Fac2": 0.9416666666666667,
+         "Fb": 0.1207009744156075,
+         "HitRate": 0.7833333333333333
+        },
+        {
+         "label": "WD 45° |U|",
+         "score": "vs.wd45.vector",
+         "Count": 120,
+         "R": 0.8012267274390588,
+         "Fac2": 0.8,
+         "Fb": 0.307488532030836,
+         "HitRate": 0.5333333333333333
+        }
+       ]
+      },
+      {
+       "run_id": "C.openfoam12-realizableKE.1D",
+       "configuration": "1D",
+       "headline": [
+        {
+         "label": "WD 0° √(|U|²+2k)",
+         "score": "vs.wd-0.scalar",
+         "Count": 120,
+         "R": 0.8011073230177375,
+         "Fac2": 0.8583333333333333,
+         "Fb": 0.34068676795143904,
+         "HitRate": 0.43333333333333335
+        },
+        {
+         "label": "WD 0° |U|",
+         "score": "vs.wd-0.vector",
+         "Count": 120,
+         "R": 0.7407544131038393,
+         "Fac2": 0.55,
+         "Fb": 0.550843672445722,
+         "HitRate": 0.2916666666666667
+        },
+        {
+         "label": "WD 22.5° √(|U|²+2k)",
+         "score": "vs.wd22_5.scalar",
+         "Count": 120,
+         "R": 0.8963886238608884,
+         "Fac2": 0.975,
+         "Fb": 0.19162669121550255,
+         "HitRate": 0.675
+        },
+        {
+         "label": "WD 22.5° |U|",
+         "score": "vs.wd22_5.vector",
+         "Count": 120,
+         "R": 0.881620900598696,
+         "Fac2": 0.725,
+         "Fb": 0.3937492446676647,
+         "HitRate": 0.36666666666666664
+        },
+        {
+         "label": "WD 45° √(|U|²+2k)",
+         "score": "vs.wd45.scalar",
+         "Count": 120,
+         "R": 0.8719861039871548,
+         "Fac2": 0.9416666666666667,
+         "Fb": 0.19772157524495876,
+         "HitRate": 0.7333333333333333
+        },
+        {
+         "label": "WD 45° |U|",
+         "score": "vs.wd45.vector",
+         "Count": 120,
+         "R": 0.8725404577567099,
+         "Fac2": 0.85,
+         "Fb": 0.352588911809327,
+         "HitRate": 0.43333333333333335
+        }
+       ]
+      },
+      {
+       "run_id": "C.openfoam12-realizableKE.2D",
+       "configuration": "2D",
+       "headline": [
+        {
+         "label": "WD 0° √(|U|²+2k)",
+         "score": "vs.wd-0.scalar",
+         "Count": 120,
+         "R": 0.8570231375059265,
+         "Fac2": 0.85,
+         "Fb": 0.2508221787945428,
+         "HitRate": 0.49166666666666664
+        },
+        {
+         "label": "WD 0° |U|",
+         "score": "vs.wd-0.vector",
+         "Count": 120,
+         "R": 0.8484561546514743,
+         "Fac2": 0.6916666666666667,
+         "Fb": 0.4433525793404209,
+         "HitRate": 0.31666666666666665
+        },
+        {
+         "label": "WD 22.5° √(|U|²+2k)",
+         "score": "vs.wd22_5.scalar",
+         "Count": 120,
+         "R": 0.9057300250765618,
+         "Fac2": 0.9833333333333333,
+         "Fb": 0.09070121189032898,
+         "HitRate": 0.875
+        },
+        {
+         "label": "WD 22.5° |U|",
+         "score": "vs.wd22_5.vector",
+         "Count": 120,
+         "R": 0.89411078589724,
+         "Fac2": 0.9,
+         "Fb": 0.23997944779807784,
+         "HitRate": 0.6333333333333333
+        },
+        {
+         "label": "WD 45° √(|U|²+2k)",
+         "score": "vs.wd45.scalar",
+         "Count": 120,
+         "R": 0.908772425410936,
+         "Fac2": 0.9583333333333334,
+         "Fb": 0.10289011732052777,
+         "HitRate": 0.8833333333333333
+        },
+        {
+         "label": "WD 45° |U|",
+         "score": "vs.wd45.vector",
+         "Count": 120,
+         "R": 0.9123842184101237,
+         "Fac2": 0.9,
+         "Fb": 0.2428376994180258,
+         "HitRate": 0.6083333333333333
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "engine": "openlb",
+     "status": "not comparable",
+     "runs": []
+    },
+    {
+     "engine": "fluidx3d",
+     "status": "pending",
+     "runs": []
+    },
+    {
+     "engine": "ml-surrogate",
+     "status": "scored",
+     "runs": [
+      {
+       "run_id": "C.ml-surrogate",
+       "configuration": null,
+       "headline": [
+        {
+         "label": "Vs, 9 configurations",
+         "score": "speed.thermistor",
+         "Count": 1080,
+         "R": 0.21201273018920197,
+         "Fac2": 0.44351851851851853,
+         "Fb": 0.665813020633058,
+         "HitRate": 0.18055555555555555
+        },
+        {
+         "label": "Vs, 2D WD 0, lattice cut at ±250 m",
+         "score": "halfExtent250.forward",
+         "Count": 120,
+         "R": 0.07482448030205716,
+         "Fac2": 0.875,
+         "Fb": 0.19197778850787237,
+         "HitRate": 0.4
+        },
+        {
+         "label": "wind reversed (control)",
+         "score": "negativeControl.reversedWind",
+         "Count": 120,
+         "R": -0.440594087174681,
+         "Fac2": 0.725,
+         "Fb": 0.36736468951209117,
+         "HitRate": 0.39166666666666666
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "case": "D",
+   "title": "Case D — high-rise among city blocks",
+   "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/D/validation.json",
+   "engines": [
+    {
+     "engine": "openfoam12-realizableKE",
+     "status": "running",
+     "runs": []
+    },
+    {
+     "engine": "openlb",
+     "status": "not comparable",
+     "runs": []
+    },
+    {
+     "engine": "fluidx3d",
+     "status": "pending",
+     "runs": []
+    },
+    {
+     "engine": "ml-surrogate",
+     "status": "scored",
+     "runs": [
+      {
+       "run_id": "D.ml-surrogate",
+       "configuration": null,
+       "headline": [
+        {
+         "label": "Vs, thermistor, 3 WD",
+         "score": "speed.thermistor",
+         "Count": 198,
+         "R": 0.3254530911631411,
+         "Fac2": 0.3434343434343434,
+         "Fb": 0.6729472162477476,
+         "HitRate": 0.16666666666666666
+        },
+        {
+         "label": "|U|, split fibre, WD 0",
+         "score": "speed.vectorMagnitude",
+         "Count": 33,
+         "R": 0.5869139639464366,
+         "Fac2": 0.5151515151515151,
+         "Fb": 0.23059081368583892,
+         "HitRate": 0.24242424242424243
+        },
+        {
+         "label": "Vs, WD 0, lattice cut at ±250 m",
+         "score": "halfExtent250.forward",
+         "Count": 66,
+         "R": 0.21955158410579595,
+         "Fac2": 0.6363636363636364,
+         "Fb": 0.48879009276870944,
+         "HitRate": 0.2727272727272727
+        },
+        {
+         "label": "wind reversed (control)",
+         "score": "negativeControl.reversedWind",
+         "Count": 66,
+         "R": 0.49183575357421166,
+         "Fac2": 0.4696969696969697,
+         "Fb": 0.5549438762568617,
+         "HitRate": 0.19696969696969696
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "case": "E",
+   "title": "Case E — Niigata district",
+   "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/validation.json",
+   "engines": [
+    {
+     "engine": "openfoam12-realizableKE",
+     "status": "scored",
+     "runs": [
+      {
+       "run_id": "E.openfoam12-realizableKE.SW",
+       "configuration": "SW",
+       "headline": [
+        {
+         "label": "before, √(|U|²+2k)",
+         "score": "vr.bc.SW.rms",
+         "Count": 80,
+         "R": 0.6883055489050339,
+         "Fac2": 0.95,
+         "Fb": 0.12366706969236571,
+         "HitRate": 0.6125
+        },
+        {
+         "label": "before, |U|",
+         "score": "vr.bc.SW.Umag",
+         "Count": 80,
+         "R": 0.6916217165509461,
+         "Fac2": 0.7875,
+         "Fb": 0.26578629570125656,
+         "HitRate": 0.4125
+        },
+        {
+         "label": "after, √(|U|²+2k)",
+         "score": "vr.ac.SW.rms",
+         "Count": 80,
+         "R": 0.8451076242800123,
+         "Fac2": 0.8875,
+         "Fb": 0.22624852163469286,
+         "HitRate": 0.475
+        },
+        {
+         "label": "after, |U|",
+         "score": "vr.ac.SW.Umag",
+         "Count": 80,
+         "R": 0.8351955072350249,
+         "Fac2": 0.7375,
+         "Fb": 0.34077448387636944,
+         "HitRate": 0.3
+        },
+        {
+         "label": "no-construction ceiling control",
+         "score": "noConstruction.SW",
+         "Count": 80,
+         "R": 0.09863310407351605,
+         "Fac2": 0.7875,
+         "Fb": 0.36811269734454166,
+         "HitRate": 0.35
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "engine": "openlb",
+     "status": "not comparable",
+     "runs": []
+    },
+    {
+     "engine": "fluidx3d",
+     "status": "pending",
+     "runs": []
+    },
+    {
+     "engine": "ml-surrogate",
+     "status": "scored",
+     "runs": [
+      {
+       "run_id": "E.ml-surrogate",
+       "configuration": null,
+       "headline": [
+        {
+         "label": "Vs/U(15.9 m), 16 WD, bc + ac",
+         "score": "speed.thermistor",
+         "Count": 2560,
+         "R": 0.43258649693938306,
+         "Fac2": 0.224609375,
+         "Fb": 0.9959871815496533,
+         "HitRate": 0.08203125
+        },
+        {
+         "label": "after construction",
+         "score": "speed.thermistor.after",
+         "Count": 1280,
+         "R": 0.42529090996404545,
+         "Fac2": 0.284375,
+         "Fb": 0.8529452375501221,
+         "HitRate": 0.10546875
+        },
+        {
+         "label": "after − before",
+         "score": "delta.afterMinusBefore",
+         "Count": 1280,
+         "R": 0.3987429913796558,
+         "Fac2": 0.234375,
+         "Fb": 0.07748876886848882,
+         "HitRate": 0.31171875
+        },
+        {
+         "label": "after, lattice cut at ±250 m",
+         "score": "halfExtent250.forward",
+         "Count": 1280,
+         "R": 0.22959251723600266,
+         "Fac2": 0.8359375,
+         "Fb": 0.05336223181287166,
+         "HitRate": 0.38828125
+        },
+        {
+         "label": "wind reversed (control)",
+         "score": "negativeControl.reversedWind",
+         "Count": 1280,
+         "R": 0.4252909041990961,
+         "Fac2": 0.284375,
+         "Fb": 0.8529452375501204,
+         "HitRate": 0.10546875
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,6 @@
+# The figure scripts in validation/ (plot_*.py, render_geometry.py). The versions the committed figures were drawn with.
+numpy==2.5.2
+matplotlib==3.11.2
+ultraplot==2.7.1
+rhino3dm==8.35.0
+xlrd==2.0.2

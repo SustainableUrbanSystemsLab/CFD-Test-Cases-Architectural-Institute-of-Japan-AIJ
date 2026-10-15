@@ -1,0 +1,152 @@
+# How to cite this repository. GitHub turns this file into the "Cite this repository" button.
+# The measurement data belongs to its collectors: cite the benchmark (preferred-citation) and each case's dataset.
+cff-version: 1.2.0
+message: >-
+  If you use this data, please cite the AIJ Urban Wind Environment benchmark (the preferred citation below)
+  and the Zenodo dataset of each case you use. The measurement data is distributed under CC BY 4.0 by its
+  collectors and editors, named per case.
+type: dataset
+title: "AIJ Urban Wind Environment benchmark, Cases A-E: cleaned wind-tunnel data, geometry and Eddy3D validation"
+authors:
+  - name: Sustainable Urban Systems Lab
+repository-code: "https://github.com/SustainableUrbanSystemsLab/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ"
+url: "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/"
+keywords:
+  - computational fluid dynamics
+  - CFD validation
+  - wind tunnel
+  - urban wind environment
+  - pedestrian wind
+  - Architectural Institute of Japan
+preferred-citation:
+  type: article
+  title: >-
+    Comprehensive Experimental Database for Validating CFD Simulations in Urban Wind Environment:
+    Benchmark Cases Curated by the Architectural Institute of Japan
+  authors:
+    - family-names: Kikumoto
+      given-names: H.
+    - family-names: Okaze
+      given-names: T.
+    - family-names: Yoshie
+      given-names: R.
+    - family-names: Tachibana
+      given-names: T.
+    - family-names: Ishihara
+      given-names: T.
+    - family-names: Nonomura
+      given-names: Y.
+    - family-names: Kiyota
+      given-names: N.
+    - family-names: Kondo
+      given-names: H.
+    - family-names: Mochida
+      given-names: A.
+    - family-names: Tominaga
+      given-names: Y.
+  journal: Japan Architectural Review
+  volume: 9
+  issue: 1
+  start: e70083
+  year: 2026
+  doi: 10.1002/2475-8876.70083
+references:
+  - type: article
+    title: AIJ guidelines for practical applications of CFD to pedestrian wind environment around buildings
+    authors:
+      - family-names: Tominaga
+        given-names: Y.
+      - family-names: Mochida
+        given-names: A.
+      - family-names: Yoshie
+        given-names: R.
+      - family-names: Kataoka
+        given-names: H.
+      - family-names: Nozu
+        given-names: T.
+      - family-names: Yoshikawa
+        given-names: M.
+      - family-names: Shirasawa
+        given-names: T.
+    journal: Journal of Wind Engineering and Industrial Aerodynamics
+    volume: 96
+    start: 1749
+    end: 1761
+    year: 2008
+    doi: 10.1016/j.jweia.2008.02.058
+  - type: data
+    title: "AIJ UWE Benchmark Dataset – Case A (112): Wind Tunnel Experiment for Flow around a 1:1:2 Shape Building Model"
+    authors:
+      - family-names: Ishihara
+        given-names: Takeshi
+      - family-names: Hibi
+        given-names: Kazuki
+      - family-names: Tominaga
+        given-names: Yoshihide
+      - family-names: Kikumoto
+        given-names: Hideki
+      - family-names: Okaze
+        given-names: Tsubasa
+    publisher:
+      name: Zenodo
+    date-released: 2025-03-19
+    doi: 10.5281/zenodo.15050147
+    license: CC-BY-4.0
+  - type: data
+    title: "AIJ UWE Benchmark Dataset – Case B (144): Wind Tunnel Experiment for Flow around a 1:4:4 Shape Building Model"
+    authors:
+      - family-names: Tominaga
+        given-names: Yoshihide
+      - family-names: Kikumoto
+        given-names: Hideki
+      - family-names: Okaze
+        given-names: Tsubasa
+    publisher:
+      name: Zenodo
+    date-released: 2025-05-14
+    doi: 10.5281/zenodo.15401455
+    license: CC-BY-4.0
+  - type: data
+    title: "AIJ UWE Benchmark Dataset – Case C (Blocks): Wind Tunnel Experiment for Flow within Simple Building Blocks"
+    authors:
+      - family-names: Nonomura
+        given-names: Yoshitami
+      - family-names: Tominaga
+        given-names: Yoshihide
+      - family-names: Kikumoto
+        given-names: Hideki
+      - family-names: Okaze
+        given-names: Tsubasa
+    publisher:
+      name: Zenodo
+    date-released: 2025-05-14
+    doi: 10.5281/zenodo.15401791
+    license: CC-BY-4.0
+  - type: data
+    title: "AIJ UWE Benchmark Dataset – Case D (Highrise): Wind Tunnel Experiment for Flow around a High-rise Building in City Blocks"
+    authors:
+      - family-names: Tominaga
+        given-names: Yoshihide
+      - family-names: Kikumoto
+        given-names: Hideki
+      - family-names: Okaze
+        given-names: Tsubasa
+    publisher:
+      name: Zenodo
+    date-released: 2025-05-14
+    doi: 10.5281/zenodo.15402668
+    license: CC-BY-4.0
+  - type: data
+    title: "AIJ UWE Benchmark Dataset – Case E (Niigata): Wind Tunnel Experiment for Flow within an Actual Urban Area in Niigata"
+    authors:
+      - family-names: Tominaga
+        given-names: Yoshihide
+      - family-names: Kikumoto
+        given-names: Hideki
+      - family-names: Okaze
+        given-names: Tsubasa
+    publisher:
+      name: Zenodo
+    date-released: 2025-05-16
+    doi: 10.5281/zenodo.15429017
+    license: CC-BY-4.0
