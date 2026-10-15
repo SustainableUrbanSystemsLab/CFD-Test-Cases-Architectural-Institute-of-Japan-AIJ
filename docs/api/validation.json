@@ -1,6 +1,6 @@
 {
  "$schema": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/schemas/validation-summary.schema.json",
- "schema_version": "2.0.0",
+ "schema_version": "2.1.0",
  "data_version": "e9ab32a2c6c9ed8113d4189941840a9469ffee9388137d0df01e1ead270b5395",
  "license": "CC-BY-4.0",
  "description": "Every case and engine in one table. 'scored' means a run exists, not that it agrees: read the scores. Headline scores are the ones to quote; every score, the figures and the per-point pairs are in each case's validation.json.",

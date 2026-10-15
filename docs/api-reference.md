@@ -42,6 +42,10 @@ share it. A–D are model-scale metres with +x along the wind at WD = 0. E is fu
 and meteorological wind directions. Read `frame`, `units` and `known_issues` in `cases/{id}.json` before using any
 number.
 
+**Templated endpoints.** Paths such as `cases/{id}.json` and `schemas/{name}.schema.json` are templates, not
+URLs to fetch. In `index.json` such an endpoint says `templated: true` and lists every concrete file under
+`urls`, for example `.../api/schemas/case.schema.json`. A single-file endpoint carries one `url`.
+
 **Errors.** A path that does not exist returns HTTP 404 with GitHub Pages' HTML page, not JSON. Case ids are
 `A`–`E`. The other path parameters are enumerated in `openapi.json`.
 

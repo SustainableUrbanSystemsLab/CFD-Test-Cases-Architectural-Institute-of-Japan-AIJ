@@ -46,9 +46,15 @@ REPO_URL = "https://github.com/SustainableUrbanSystemsLab/CFD-Test-Cases-Archite
 SITE = "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ"
 API_BASE = SITE + "/api"
 RAW_BASE = "https://raw.githubusercontent.com/SustainableUrbanSystemsLab/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/main/docs/api"
-SCHEMA_VERSION = "2.0.0"
+SCHEMA_VERSION = "2.1.0"
 
 CHANGELOG = [
+    {"version": "2.1.0", "date": "2026-10-15", "changes": [
+        "Correction: index.json gave each templated endpoint (cases/{id}.json, schemas/{name}.schema.json, ...) its "
+        "URI template under `url`, which is not a URL and answered 404 when followed. A templated endpoint now says "
+        "`templated: true` and lists every concrete file under `urls`; `url` is given only for single-file "
+        "endpoints, and no URL anywhere contains a brace. llms.txt lists the concrete files the same way.",
+    ]},
     {"version": "2.0.0", "date": "2026-10-15", "changes": [
         "Breaking: cases/{id}.json `gotchas` is renamed `known_issues`.",
         "Breaking: `licence` is replaced by `license`, the SPDX identifier CC-BY-4.0; index.json `licence_detail` is `license_detail`.",
@@ -836,7 +842,12 @@ def llms_text(percase):
         "",
     ]
     for p, _, _, d in ENDPOINTS:
-        walk.append(f"- {API_BASE}/{p} — {d}")
+        if "{" not in p:
+            walk.append(f"- {API_BASE}/{p} — {d}")
+            continue
+        # A template is not a URL to fetch: name it as a path and list the files it stands for.
+        walk.append(f"- {p} (base URL + path, one file per value) — {d}:")
+        walk += [f"  - {link(rel)}" for rel in expand(p)]
     walk += ["", "## Cases", ""]
     for case in D.CASE_IDS:
         meta = D.CASES[case]
@@ -920,6 +931,30 @@ def write_changelog_include():
         f.write("\n".join(L))
 
 
+def expand(template):
+    """The files a templated path stands for: every file this build wrote that the template matches."""
+    import re
+    rx = re.compile("^" + re.sub(r"\\\{[a-z]+\\\}", "[^/]+", re.escape(template)) + "$")
+    return sorted(r for r in WRITTEN | {"index.json"} if rx.match(r))
+
+
+def link(rel):
+    """The URL a document gives for a file: plain for JSON, versioned (?v=) for downloads."""
+    return url(rel) if rel.endswith(".json") else download(rel)["url"]
+
+
+def endpoint_entry(path, media, schema, description):
+    """A single-file endpoint carries its `url`; a templated one (cases/{id}.json) is not a URL to follow, so
+    it says `templated` and lists every concrete file under `urls` (the template stays in `path`)."""
+    entry = {"path": path, "method": "GET", "media_type": media, "description": description,
+             "schema": schema_url(schema) if schema else None}
+    if "{" in path:
+        entry.update({"templated": True, "urls": [link(rel) for rel in expand(path)]})
+    else:
+        entry.update({"templated": False, "url": url(path)})
+    return entry
+
+
 def write_index():
     """Last: index.json lists every other file under docs/api/ with its size and SHA-256."""
     files = sorted(WRITTEN - {"index.json"})
@@ -935,8 +970,7 @@ def write_index():
         "compatibility": COMPATIBILITY,
         "caching": CACHING,
         "changelog": CHANGELOG,
-        "endpoints": [{"path": p, "url": url(p), "method": "GET", "media_type": m, "description": d,
-                       "schema": schema_url(s) if s else None} for p, m, s, d in ENDPOINTS],
+        "endpoints": [endpoint_entry(p, m, s, d) for p, m, s, d in ENDPOINTS],
         "case_ids": D.CASE_IDS,
         "files": [download(rel) for rel in files],
         "license_detail": D.LICENSE,
@@ -1188,6 +1222,9 @@ def build_pages(percase):
 
 # ----------------------------------------------------------------------------- verify
 
+TEMPLATED_URL = __import__("re").compile(r"https?://[^\s\"'<>]*\{[^\s\"'<>]*")
+
+
 def _strings(obj):
     if isinstance(obj, dict):
         for v in obj.values():
@@ -1262,6 +1299,12 @@ def verify():
                 problems.append(f"{rel}: link to site asset {sv[len(SITE) + 1:]}, which does not exist")
     if len(versions) != 1:
         problems.append(f"documents disagree on schema/data version: {sorted(versions)}")
+
+    # A URI template is not a URL: no served file may offer one where a link is expected.
+    for rel in sorted(r for r in on_disk if r.endswith((".json", ".txt"))):
+        with io.open(os.path.join(API, rel), encoding="utf-8") as f:
+            for bad in TEMPLATED_URL.findall(f.read()):
+                problems.append(f"{rel}: {bad} is a URI template, not a URL to follow")
 
     # openapi.json: a valid OpenAPI 3.1 document whose paths exist
     oa = load("openapi.json")

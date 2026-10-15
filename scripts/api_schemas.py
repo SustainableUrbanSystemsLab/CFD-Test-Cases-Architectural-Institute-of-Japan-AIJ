@@ -79,9 +79,16 @@ DOCUMENTS = {
         "compatibility": {"type": "string"}, "caching": {"type": "string"},
         "changelog": arr(obj(["version", "date", "changes"], {
             "version": {"type": "string"}, "date": {"type": "string", "format": "date"}, "changes": arr({"type": "string"})})),
-        "endpoints": arr(obj(["path", "url", "method", "media_type", "description"], {
-            "path": {"type": "string"}, "url": {"type": "string"}, "method": {"const": "GET"},
-            "media_type": {"type": "string"}, "description": {"type": "string"}, "schema": {"type": ["string", "null"]}})),
+        # A single-file endpoint has a `url`; a templated one (cases/{id}.json) has none, because a URI
+        # template is not something to fetch, and lists every concrete file under `urls` instead.
+        "endpoints": arr({**obj(["path", "method", "media_type", "description", "templated"], {
+            "path": {"type": "string"}, "templated": {"type": "boolean"},
+            "url": dict(URL, pattern=r"^[^{}]*$"), "urls": arr(dict(URL, pattern=r"^[^{}]*$"), minItems=1),
+            "method": {"const": "GET"}, "media_type": {"type": "string"}, "description": {"type": "string"},
+            "schema": {"type": ["string", "null"]}}),
+            "if": {"properties": {"templated": {"const": True}}},
+            "then": {"required": ["urls"], "not": {"required": ["url"]}},
+            "else": {"required": ["url"], "not": {"required": ["urls"]}}}),
         "case_ids": arr(CASE_ID),
         "files": arr(DOWNLOAD),
         "license_detail": obj(["spdx", "url"], {"spdx": {"type": "string"}, "name": {"type": "string"}, "url": URL, "note": {"type": "string"}}),

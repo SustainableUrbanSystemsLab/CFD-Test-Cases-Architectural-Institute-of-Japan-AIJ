@@ -119,17 +119,31 @@
     "type": "object",
     "required": [
      "path",
-     "url",
      "method",
      "media_type",
-     "description"
+     "description",
+     "templated"
     ],
     "properties": {
      "path": {
       "type": "string"
      },
+     "templated": {
+      "type": "boolean"
+     },
      "url": {
-      "type": "string"
+      "type": "string",
+      "format": "uri",
+      "pattern": "^[^{}]*$"
+     },
+     "urls": {
+      "type": "array",
+      "items": {
+       "type": "string",
+       "format": "uri",
+       "pattern": "^[^{}]*$"
+      },
+      "minItems": 1
      },
      "method": {
       "const": "GET"
@@ -144,6 +158,33 @@
       "type": [
        "string",
        "null"
+      ]
+     }
+    },
+    "if": {
+     "properties": {
+      "templated": {
+       "const": true
+      }
+     }
+    },
+    "then": {
+     "required": [
+      "urls"
+     ],
+     "not": {
+      "required": [
+       "url"
+      ]
+     }
+    },
+    "else": {
+     "required": [
+      "url"
+     ],
+     "not": {
+      "required": [
+       "urls"
       ]
      }
     }

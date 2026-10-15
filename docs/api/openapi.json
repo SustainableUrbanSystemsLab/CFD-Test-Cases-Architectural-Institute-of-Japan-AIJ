@@ -3,7 +3,7 @@
  "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
  "info": {
   "title": "AIJ UWE benchmark — cleaned data API",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "summary": "Wind-tunnel reference data of the AIJ UWE benchmark (Cases A-E), cleaned, with Eddy3D's validation against it.",
   "description": "Static files, one GET each; nothing is computed on request. Lengths in metres, velocities in m/s, variances and k in m^2/s^2, in one frame per case. Semantic versioning. Within a major version the API only adds: new fields, new endpoints, new runs. Clients must ignore fields they do not know. A field is renamed or removed only in a new major version, and the changelog says which. GitHub Pages sends JSON with a 10-minute max-age and CSV and ZIP files with a 186-day max-age. Every download URL therefore carries ?v=<first 12 hex digits of the file's SHA-256>: the server ignores the query, and a changed file gets a new URL. Fetch the JSON documents for the current URLs; check downloads against `sha256`.",
   "license": {
@@ -875,17 +875,31 @@
        "type": "object",
        "required": [
         "path",
-        "url",
         "method",
         "media_type",
-        "description"
+        "description",
+        "templated"
        ],
        "properties": {
         "path": {
          "type": "string"
         },
+        "templated": {
+         "type": "boolean"
+        },
         "url": {
-         "type": "string"
+         "type": "string",
+         "format": "uri",
+         "pattern": "^[^{}]*$"
+        },
+        "urls": {
+         "type": "array",
+         "items": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^[^{}]*$"
+         },
+         "minItems": 1
         },
         "method": {
          "const": "GET"
@@ -900,6 +914,33 @@
          "type": [
           "string",
           "null"
+         ]
+        }
+       },
+       "if": {
+        "properties": {
+         "templated": {
+          "const": true
+         }
+        }
+       },
+       "then": {
+        "required": [
+         "urls"
+        ],
+        "not": {
+         "required": [
+          "url"
+         ]
+        }
+       },
+       "else": {
+        "required": [
+         "url"
+        ],
+        "not": {
+         "required": [
+          "urls"
          ]
         }
        }
