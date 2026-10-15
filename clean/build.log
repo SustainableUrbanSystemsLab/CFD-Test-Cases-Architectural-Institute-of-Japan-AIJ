@@ -1,0 +1,106 @@
+[A] RS-caseA.csv header (bare): ['No.', 'x', 'y', 'z', 'U', 'V', 'W', 'u_rms', 'v_rms', 'w_rms', 'k']; units in the published header: metres, m/s, rms m/s, k m2/s2
+[A] transform: u_rms, v_rms, w_rms (m/s) -> uu, vv, ww = rms^2 (m^2/s^2), so A and B carry the same turbulence quantity
+[A] transform: coordinates kept (already metres); V kept (positive toward +y, see check A.lateral_sign); origin kept (building centre)
+[A] approach flow: AF_caseA.csv, 24 heights, rms squared to variances as above
+  [PASS] A row_count_matches_readme  {"rows": 186, "expected": 186, "source": "MP drawings / data paper: 186 points"}
+  [PASS] A point_ids_unique_and_contiguous
+  [PASS] A no_sentinels_or_nan_in_measured_columns
+  [PASS] A k_equals_half_sum_of_variances  {"max_abs_error": 0.0004985000000000683, "note": "k published to 3 dp; rms to 3 dp"}
+  [PASS] A no_sensor_inside_building  {"inside": 0}
+  [PASS] A control_shifted_points_are_detected_inside  {"inside_after_shift": 20, "shift_m": [0.03, 0.04, 0]}
+  [PASS] A extents_sane  {"bbox": [-0.06, 0.26, -0.16, 0.0, 0.01, 0.28], "note": "points on the y <= 0 half, z = 0.01 .. 0.32 (MP drawings)"}
+  [PASS] A lateral_sign_V_negative_on_y_negative_flank  {"points": [{"x": -0.04, "y": -0.05, "z": 0.01, "V": -2.893}]}
+  [PASS] A legacy_workbook_agrees_with_csv  {"rows_compared": 66, "max_abs_diff": 0.0, "note": "LF-caseA.xls 'Results (Ver. sec.)' x/b*0.08 etc. vs RS-caseA.csv"}
+  [PASS] A U_H_from_profile_matches_stated  {"U_H_profile": 4.491, "U_H_stated": 4.49}
+[B] RS_caseB.csv header (bare): ['No.', 'x', 'y', 'z', 'U', 'V', 'W', "<u'2>", "<v'2>", "<w'2>", 'k']; published units: x,y,z MILLIMETRES, velocities m/s, variances m2/s2
+[B] transform: x, y, z millimetres -> metres (x 0.001)
+[B] transform: V -> -V. The published V is positive toward -y: at (-25, -110, 12.5) mm, just outside the y = -100 mm flank where the flow must deflect away from the centreline (toward -y), the file has V = +3.630 m/s; Case A at the same place has V = -2.893 and Case D's split fibre V = +2.055 on its +y flank. Flipping V makes V positive toward +y in every case. (For a y-symmetric building 'flip V' and 'flip y' are the same transform; V is flipped so the coordinates stay the drawing's.)
+[B] approach flow: AF_caseB.csv, 12 heights in metres; the '1/4 power' fit column is dropped (a fit, not a measurement)
+  [PASS] B row_count_matches_readme  {"rows": 224, "expected": 224}
+  [PASS] B point_ids_unique_and_contiguous
+  [PASS] B no_sentinels_or_nan_in_measured_columns
+  [PASS] B k_equals_half_sum_of_variances  {"max_abs_error": 0.000500000000000167}
+  [PASS] B no_sensor_inside_building  {"inside": 0}
+  [PASS] B control_shifted_points_are_detected_inside  {"inside_after_shift": 2, "shift_m": [0.03, 0.05, 0]}
+  [PASS] B extents_sane_after_mm_to_m  {"bbox": [-0.075, 0.55, -0.35, 0.0, 0.005, 0.35], "note": "MP drawings: x -0.075 .. 0.55 m, y -0.35 .. 0, z 0.0125 .. 0.35 m"}
+  [PASS] B lateral_sign_V_negative_on_y_negative_flank_after_flip  {"points": [{"x": -0.025, "y": -0.11, "z": 0.0125, "V": -3.63}]}
+  [PASS] B seven_locations_measured_twice  {"pairs": [{"x": -0.075, "ids": [12, 110], "U": [-1.09, -0.983], "abs_dU": 0.107}, {"x": 0.05, "ids": [43, 147], "U": [-0.797, -0.698], "abs_dU": 0.099}, {"x": 0.1, "ids": [56, 160], "U": [-1.654, -1.603], "abs_dU": 0.051}, {"x": 0.2, "ids": [69, 173], "U": [-1.901, -1.815], "abs_dU": 0.086}, {"x": 0.3, "ids": [82, 186], "U": [-1.167, -1.025], "abs_dU": 0.142}, {"x": 0.4, "ids": [95, 199], "U": [-0.139, -0.02], "abs_dU": 0.119}, {"x": 0.55, "ids": [108, 212], "U": [1.05, 1.179], "abs_dU": 0.129}], "mean_abs_dU": 0.105, "note": "repeat measurements of the same location in two runs; both rows are kept (their point numbers differ). The spread is a free repeatability estimate."}
+  [PASS] B legacy_workbook_agrees_with_csv  {"rows_compared": 224, "max_abs_diff": 0.0, "note": "LF_caseB.xls (mm, published V sign) vs the cleaned table (m, V flipped); the CSV numbers the vertical-section sheet 1..109 and the horizontal-section sheet 110..224"}
+  [PASS] B U_H_from_profile_matches_stated  {"U_H_profile": 5.133, "U_H_stated": 5.1, "note": "profile has a row at exactly z = 0.2 m: 5.133"}
+[C] RS_caseC.csv header (bare): ['No.', 'WD', 'CB', 'x', 'y', 'z', 'Vs']; the published header ends with a trailing comma (empty 8th column, dropped); CB is TEXT
+[C] transform: CB text ('0D','1D','2D') -> config; WD -> wind_direction_deg; coordinates kept (metres); Vs kept
+[C] approach flow: AF_caseC.csv, 16 heights, u_rms squared to uu; no v, w, k published
+  [PASS] C row_count_is_3WD_x_3CB_x_120  {"rows": 1080}
+  [PASS] C nine_configurations_of_120_points  {"combos": {"0D@0.0": 120, "0D@22.5": 120, "0D@45.0": 120, "1D@0.0": 120, "1D@22.5": 120, "1D@45.0": 120, "2D@0.0": 120, "2D@22.5": 120, "2D@45.0": 120}}
+  [PASS] C point_numbers_4_to_132_with_readme_gaps  {"missing": [1, 2, 3, 34, 35, 36, 37, 46, 55, 100, 101, 102], "note": "readme: 'Missing point numbers: 1, 2, 3, 34, 35, 36, 37, 46, 55, 100, 101, 102'"}
+  [PASS] C all_nine_configurations_share_one_point_set
+  [PASS] C all_points_at_z_0.02
+  [PASS] C no_sentinels_or_nan
+  [PASS] C absent_lattice_nodes_are_exactly_the_nine_footprints_at_pitch_0.40  {"absent": 49, "lattice": 169, "measured": 120, "note": "also true for a 0.375 m pitch; the 0.40 m pitch (street = D) is read from MP-z-caseC.png and Figure 3 of the data paper"}
+  [PASS] C no_sensor_inside_building_0D  {"inside": 0, "points": 120}
+  [PASS] C no_sensor_inside_building_1D  {"inside": 0, "points": 120}
+  [PASS] C no_sensor_inside_building_2D  {"inside": 0, "points": 120}
+  [PASS] C points_on_a_building_face_plane_counted  {"points_on_face_plane": 24, "note": "|x| = 0.30 or |y| = 0.30 in the gap between blocks: fluid points on a plane that is a wall elsewhere"}
+  [PASS] C control_shifted_points_are_detected_inside  {"inside_after_shift": 162, "shift_m": [0.2, 0, 0]}
+  [PASS] C WD0_flow_is_along_x_0D  {"WD0_y_mirror_mean_abs_dVs": 0.102, "WD0_x_mirror_mean_abs_dVs": 0.4678, "pairs": 120, "mean_Vs_x<=-0.25": 2.0642, "mean_Vs_x>=0.25": 1.6105}
+  [PASS] C WD45_symmetry_plane_is_y_eq_minus_x_0D  {"antidiagonal": 0.1077, "maindiagonal": 0.522, "note": "so in the CSV frame WD rotates the wind from +x TOWARD -y; Figure 3 of the data paper draws it toward +y (QUESTIONS.md)"}
+  [PASS] C WD0_flow_is_along_x_1D  {"WD0_y_mirror_mean_abs_dVs": 0.1063, "WD0_x_mirror_mean_abs_dVs": 0.4385, "pairs": 120, "mean_Vs_x<=-0.25": 2.0342, "mean_Vs_x>=0.25": 1.4574}
+  [PASS] C WD45_symmetry_plane_is_y_eq_minus_x_1D  {"antidiagonal": 0.1028, "maindiagonal": 0.7725, "note": "so in the CSV frame WD rotates the wind from +x TOWARD -y; Figure 3 of the data paper draws it toward +y (QUESTIONS.md)"}
+  [PASS] C WD0_flow_is_along_x_2D  {"WD0_y_mirror_mean_abs_dVs": 0.0878, "WD0_x_mirror_mean_abs_dVs": 0.6885, "pairs": 120, "mean_Vs_x<=-0.25": 2.1947, "mean_Vs_x>=0.25": 1.45}
+  [PASS] C WD45_symmetry_plane_is_y_eq_minus_x_2D  {"antidiagonal": 0.1303, "maindiagonal": 0.8043, "note": "so in the CSV frame WD rotates the wind from +x TOWARD -y; Figure 3 of the data paper draws it toward +y (QUESTIONS.md)"}
+  [PASS] C legacy_workbook_ratio_x_U(0.02)_equals_csv_Vs_to_0.3pct  {"rows_compared": 1080, "max_abs_diff": 0.006171236052728624, "U_at_0_02": 2.434, "implied_reference_speed_min": 2.4145, "implied_reference_speed_max": 2.4525, "note": "the legacy ratios are NOT exactly Vs / 2.434: Vs / ratio spans 2.4145-2.4525 m/s, i.e. the workbook normalised each value by a slightly different reference (plausibly the reference speed measured during that run). Agreement is within 0.3 % of Vs; do not use the ratios to recover a third decimal of Vs. The CSV's 2-dp Vs is the released value."}
+  [PASS] C U_H_from_profile_matches_stated  {"U_H_profile": 3.654, "U_H_stated": 3.65}
+[D] RS-T_caseD.csv header (bare): ['No.', 'WD', 'x', 'y', 'z', 'Vs']; RS-S_caseD.csv header (bare): ['No.', 'x', 'y', 'z', 'U', 'V', 'W', 'Vs', 'u_rms', 'v_rms', 'w_rms', 'k'] (the published z header is the FULL-WIDTH character U+FF5A 'ｚ[m]', folded to 'z'); unmeasured = -999.9
+[D] transform (thermistor): -999.9 -> NaN; coordinates kept (the Zenodo CSV is already in metres; the LF workbook's are millimetres)
+[D] transform (split fibre): values taken from LF_caseD.xls 'Results (Exp_S)' (U, V, W, variances and k at full precision; k = (uu+vv+ww)/2 there exactly) and cross-checked against RS-S_caseD.csv: U/V/W max |diff| 0.0e+00, rms^2 vs variance max |diff| 1.6e-04 (the CSV rounds rms to 4 dp), k max |diff| 5.0e-04 (the CSV rounds k to 3 dp). The CSV's 'Vs' column and the workbook's 'Scalar Vel.' are |mean velocity vector| = sqrt(U^2+V^2+W^2) (max |diff| 5.0e-04), NOT a thermistor reading: DROPPED rather than put under Vs. The 45 -999.9 rows (points not measured by the split fibre) are omitted
+  [PASS] D split_fibre_csv_agrees_with_workbook  {"rows": 33, "max_abs_diff_UVW": 0.0, "max_abs_diff_rms2_vs_variance": 0.00015615999999996077, "max_abs_diff_k": 0.000500000000000167}
+  [PASS] D split_fibre_Vs_column_is_the_vector_magnitude  {"max_abs_diff": 0.0004956065069425808, "note": "so it is not a thermistor reading and is dropped; thermistor Vs at the same 33 points is in the thermistor rows"}
+[D] approach flow: AF_caseD.csv (Zenodo), 13 heights in metres, U and k; the LF workbook holds the same profile unrounded (checked)
+[D] geometry: BD_caseD.stl -> 83 boxes; raw STL stats {'triangles': 1572, 'bbox_min': [-0.7, -0.675, 0.0], 'bbox_max': [0.7, 0.675, 0.25], 'signed_volume': 0.011158854, 'edges': 1494, 'edges_shared_by_two_faces': 738, 'edges_boundary': 0, 'edges_non_manifold': 756, 'watertight': False}
+  [PASS] D thermistor_rows_78_points_x_3_directions  {"rows": 234, "points": 78}
+  [PASS] D thermistor_66_measured_per_direction  {"measured_per_direction": {"0.0": 66, "22.5": 66, "45.0": 66}, "note": "MP_caseD.png: 12 points in the band around the tower are marked unmeasured"}
+  [PASS] D unmeasured_thermistor_points_are_the_tower_band  {"unmeasured_ids": [26, 27, 28, 29, 32, 33, 36, 37, 40, 41, 42, 43]}
+  [PASS] D split_fibre_33_points_all_measured  {"rows": 33}
+  [PASS] D k_equals_half_sum_of_variances  {"max_abs_error": 0.0}
+  [PASS] D split_fibre_points_are_a_subset_of_the_thermistor_points
+  [PASS] D shared_points_have_identical_coordinates
+  [PASS] D all_points_at_z_0.005
+  [PASS] D no_sensor_inside_building  {"inside": 0, "points": 78}
+  [PASS] D control_shift_x_0.05_is_detected_inside  {"inside_after_transform": 28}
+  [PASS] D control_swap_xy_is_detected_inside  {"inside_after_transform": 15}
+  [PASS] D geometry_matches_readme  {"block_heights": [0.025, 0.25], "boxes": 83, "tower": [{"min": [-0.03125, -0.03125, 0.0], "max": [0.03125, 0.03125, 0.25]}], "array_bbox": [[-0.7, -0.675, 0.0], [0.7, 0.675, 0.25]], "note": "readme: tower 0.0625 x 0.0625 x 0.25 m, blocks 0.1 x 0.1 x 0.025 m; STL and point table share one frame (origin = tower centre)"}
+  [PASS] D rebuilt_volume_equals_analytic  {"volume_m3": 0.0214765625}
+  [PASS] D WD0_thermistor_field_exactly_y_mirror_symmetric  {"WD0.0": {"pairs": 66, "max_abs_dVs": 0.0, "mean_abs_dVs": 0.0}, "WD22.5": {"pairs": 66, "max_abs_dVs": 2.277, "mean_abs_dVs": 0.9872}, "WD45.0": {"pairs": 66, "max_abs_dVs": 3.529, "mean_abs_dVs": 1.4575}, "note": "the 0 deg half was measured and mirrored: 33 independent values; 22.5 and 45 deg are not symmetric, and the y-symmetric array cannot fix their rotation sense (QUESTIONS.md Q2)"}
+  [PASS] D WD0_blows_toward_plus_x  {"U_positive": 18, "U_negative_upwind_of_tower": 8, "note": "split-fibre U > 0 at the stream-like points, < 0 in the windward horseshoe in front of the tower face at x = -0.03125"}
+  [PASS] D lateral_sign_V_diverges_upstream_and_converges_downstream_on_the_plus_y_side  {"points": [{"x": -0.0875, "y": 0.1125, "V": 2.055}, {"x": -0.0625, "y": 0.1125, "V": 1.212}, {"x": 0.0625, "y": 0.1125, "V": -1.217}, {"x": 0.0875, "y": 0.1125, "V": -1.514}, {"x": 0.1125, "y": 0.1125, "V": -1.923}], "note": "on the +y side of the tower the flow is pushed toward +y ahead of it (V > 0 at x < 0) and returns toward the centreline behind it (V < 0 at x > 0): V positive toward +y, the same convention as Case A and as Case B after its flip"}
+  [PASS] D legacy_workbook_agrees_with_zenodo_csv  {"cells_compared": 234, "max_abs_diff": 4.440892098500626e-16, "note": "LF_caseD.xls (mm, '-') vs RS-T_caseD.csv (m, -999.9)"}
+  [PASS] D approach_flow_csv_matches_workbook_to_3dp  {"rows": 13, "max_abs_diff": 0.0004916792738276499}
+  [PASS] D U_H_from_profile_matches_stated  {"U_H_profile": 6.667237799249246, "U_H_stated": 6.65}
+[E] source: LF_caseE.xls (Zenodo; byte-identical cells to the clone's LF_caseE.xls) — it carries the velocity ratios at full precision, while RS_caseE.csv rounds them to 2 dp (checked below). Coordinates: 'Geometry&Points' sheet, 'm in actual scale, origin: centre of the reproducing area'; z = 2.0 m full scale (0.008 m model) from the readme
+[E] transform: wide sheets (80 rows x 16 compass columns x 2 states) -> long rows; compass name -> wind_direction_deg = 22.5 * index (N = 0, clockwise); no numeric change
+[E] approach flow: 'Inflow' sheet z/ZR, U/UR, k/UR^2 de-normalised with ZR = 250.0 m (1 m model), UR = 7.8 m/s (sheet notes); full-scale metres
+[E] geometry: BD_caseE.stl (Zenodo, after construction) is MODEL scale — bbox z max 0.24 m = 60 m / 250; scaled x 250 to full-scale metres; stats {'triangles': 60101, 'bbox_min': [-197.92925, -196.92525, -0.0], 'bbox_max': [197.3875, 198.22625, 60.0], 'signed_volume': 412957.987195016, 'edges': 92778, 'edges_shared_by_two_faces': 87525, 'edges_boundary': 5253, 'edges_non_manifold': 0, 'watertight': False}
+[E] geometry (Eddy3D-derived): case-e.3dm layers 'buildings' (+ 'buildings_new_construction'): ac {'triangles': 8436, 'bbox_min': [-201.5, -201.0, 0.0], 'bbox_max': [203.0, 197.300003, 60.0], 'signed_volume': 153746.549560573, 'edges': 12639, 'edges_shared_by_two_faces': 12624, 'edges_boundary': 0, 'edges_non_manifold': 15, 'watertight': False}, 478/506 shells flipped outward; bc {'triangles': 8400, 'bbox_min': [-201.5, -201.0, 0.0], 'bbox_max': [203.0, 197.300003, 30.0], 'signed_volume': 138719.097502925, 'edges': 12585, 'edges_shared_by_two_faces': 12570, 'edges_boundary': 0, 'edges_non_manifold': 15, 'watertight': False}, 475/503 flipped
+  [PASS] E row_count_80_x_16_x_2  {"rows": 2560, "points": 80}
+  [PASS] E no_sentinels_or_nan
+  [PASS] E zenodo_csv_is_the_workbook_rounded_to_2dp  {"max_abs_diff_ratio": 0.004971340000000102, "max_abs_diff_xyz": 0.0, "csv_rows": 2560}
+  [PASS] E velocity_ratio_is_quantised  {"quantum": 0.019820405000000006, "distinct_levels": 55, "smallest_value": 0.09910202500000002, "smallest_in_quanta": 5, "note": "the published ratios are U/UR rounded to 0.01 then re-normalised by UR/U(15.9 m); the data's own resolution is +/- q/2"}
+  [PASS] E U_ref_from_quantum_agrees_with_profile_at_15.9m  {"U_ref_from_quantum": 3.935338354589625, "U_ref_log_interp": 3.973160091944881, "U_ref_paper": "4.0 (section 3.5: 'the inflow wind velocity at that height (4.0 m/s)')"}
+  [PASS] E zenodo_AF_csv_matches_denormalised_workbook_profile  {"rows": 12, "max_abs_diff": 0.00044000000000010697}
+  [WARN] E no_sensor_inside_building_official_stl_x250  {"inside": 1, "points": 80, "inside_point_ids": [50], "nearest_vertex_min_m": 0.174, "nearest_vertex_median_m": 4.85, "note": "the official STL and the 3dm are different triangulations of the same district; where they disagree by a metre a street-edge sensor can fall inside one of them. Listed in QUESTIONS.md Q3 and manifest known_issues"}
+  [PASS] E no_sensor_inside_building_3dm_ac  {"inside": 0, "points": 80, "inside_point_ids": [], "nearest_vertex_min_m": 1.581, "nearest_vertex_median_m": 5.123}
+  [PASS] E no_sensor_inside_building_3dm_bc  {"inside": 0, "points": 80, "inside_point_ids": [], "nearest_vertex_min_m": 1.581, "nearest_vertex_median_m": 5.408}
+  [PASS] E control_points_rotated_10deg_land_inside_buildings  {"inside_after_rotation": 26, "note": "proves the check can resolve a frame error"}
+  [PASS] E official_stl_x250_matches_3dm_extent  {"official_bbox": [[-197.92925, -196.92525, -0.0], [197.3875, 198.22625, 60.0]], "threedm_bbox": [[-201.5, -201.0, 0.0], [203.0, 197.300003, 60.0]], "note": "same origin and axes to a few metres at the district edge; the two files are different triangulations of the same block"}
+  [PASS] E new_buildings_60_18_18_present_in_official_stl  {"tallest_three_m": [30.0, 30.0, 60.0], "note": "A = 60 m; B and C are 18 m among many 18-30 m roofs"}
+  [PASS] E extents_sane  {"bbox": [-133.0, 125.0, -94.0, 112.0], "note": "points within the 400 m turntable, MP_caseE.png"}
+  [PASS] E construction_signal_present  {"mean_ac_minus_bc": 0.09741419363671876, "sd": 0.19180415795737832, "largest_mean_abs_delta_direction": "SW", "largest": 0.21554690437500007, "smallest_direction": "SSE", "smallest": 0.09340365856250002}
+[A] wrote geometry.stl: 12 triangles, watertight=True, bbox [-0.04, -0.04, 0.0]..[0.04, 0.04, 0.16]
+[B] wrote geometry.stl: 12 triangles, watertight=True, bbox [-0.025, -0.1, 0.0]..[0.025, 0.1, 0.2]
+[C] wrote geometry_0D.stl: 96 triangles, watertight=True, bbox [-0.5, -0.5, 0.0]..[0.5, 0.5, 0.2]
+[C] wrote geometry_1D.stl: 108 triangles, watertight=True, bbox [-0.5, -0.5, 0.0]..[0.5, 0.5, 0.2]
+[C] wrote geometry_2D.stl: 108 triangles, watertight=True, bbox [-0.5, -0.5, 0.0]..[0.5, 0.5, 0.4]
+[D] wrote geometry.stl: 996 triangles, watertight=True, bbox [-0.7, -0.675, 0.0]..[0.7, 0.675, 0.25]
+[E] wrote geometry_ac.stl: 60101 triangles, watertight=False, bbox [-197.92925, -196.92525, -0.0]..[197.3875, 198.22625, 60.0]
+[E] wrote geometry_ac_3dm.stl: 8436 triangles, watertight=False, bbox [-201.5, -201.0, 0.0]..[203.0, 197.300003, 60.0]
+[E] wrote geometry_bc_3dm.stl: 8400 triangles, watertight=False, bbox [-201.5, -201.0, 0.0]..[203.0, 197.300003, 30.0]

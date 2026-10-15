@@ -1,0 +1,89 @@
+{
+ "case_id": "E",
+ "units": "metres (full scale)",
+ "frame": {
+  "origin": "centre of the reproduced area, ground plane ('Geometry&Points' sheet)",
+  "x": "+x EAST (compass rose in MP_caseE.png)",
+  "y": "+y NORTH",
+  "z": "+z up; every point at z = 2.0 m",
+  "wind_direction_rotation": "meteorological FROM-direction: N = 0 blows toward -y, E = 90 toward -x; flow_dir = (-sin WD, -cos WD). The geographic frame is kept because the district is real and both the points and the STL are published in it; the 'x along the wind' convention of A-D does not apply.",
+  "length_scale": "FULL-scale metres (model 1:250); the official STL is model scale and is scaled x250 here"
+ },
+ "files": [
+  {
+   "configuration": "ac",
+   "file": "cases/E/geometry_ac.stl",
+   "format": "ASCII STL, LF, metres, same frame as points.csv",
+   "source": "official BD_caseE.stl (Zenodo) scaled x250 from model to full-scale metres; 60101 triangles, 5253 boundary edges (not watertight as published)",
+   "stats": {
+    "triangles": 60101,
+    "bbox_min": [
+     -197.92925,
+     -196.92525,
+     -0.0
+    ],
+    "bbox_max": [
+     197.3875,
+     198.22625,
+     60.0
+    ],
+    "signed_volume": 412957.987195016,
+    "edges": 92778,
+    "edges_shared_by_two_faces": 87525,
+    "edges_boundary": 5253,
+    "edges_non_manifold": 0,
+    "watertight": false
+   }
+  },
+  {
+   "configuration": "ac_3dm",
+   "file": "cases/E/geometry_ac_3dm.stl",
+   "format": "ASCII STL, LF, metres, same frame as points.csv",
+   "source": "Eddy3D-side reconstruction from case-e.3dm, layers 'buildings' + 'buildings_new_construction', shells oriented outward",
+   "stats": {
+    "triangles": 8436,
+    "bbox_min": [
+     -201.5,
+     -201.0,
+     0.0
+    ],
+    "bbox_max": [
+     203.0,
+     197.300003,
+     60.0
+    ],
+    "signed_volume": 153746.549560573,
+    "edges": 12639,
+    "edges_shared_by_two_faces": 12624,
+    "edges_boundary": 0,
+    "edges_non_manifold": 15,
+    "watertight": false
+   }
+  },
+  {
+   "configuration": "bc_3dm",
+   "file": "cases/E/geometry_bc_3dm.stl",
+   "format": "ASCII STL, LF, metres, same frame as points.csv",
+   "source": "Eddy3D-side reconstruction of the BEFORE-construction state from case-e.3dm, layer 'buildings' only (the sites of A, B, C are empty on that layer); no published source exists for this state",
+   "stats": {
+    "triangles": 8400,
+    "bbox_min": [
+     -201.5,
+     -201.0,
+     0.0
+    ],
+    "bbox_max": [
+     203.0,
+     197.300003,
+     30.0
+    ],
+    "signed_volume": 138719.097502925,
+    "edges": 12585,
+    "edges_shared_by_two_faces": 12570,
+    "edges_boundary": 0,
+    "edges_non_manifold": 15,
+    "watertight": false
+   }
+  }
+ ]
+}

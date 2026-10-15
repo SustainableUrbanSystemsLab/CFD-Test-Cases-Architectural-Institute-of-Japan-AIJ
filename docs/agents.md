@@ -38,8 +38,9 @@ every endpoint and every gotcha, and it is regenerated with the data.
 
 ## Cite
 
-- Kikumoto, H., Tominaga, Y., Okaze, T. et al. (2026). *Comprehensive Experimental Database for Validating CFD
-  Simulations in Urban Environments.* Japan Architectural Review 9(1), e70083.
+- Kikumoto, H., Okaze, T., Yoshie, R., Tachibana, T., Ishihara, T., Nonomura, Y., Kiyota, N., Kondo, H., Mochida, A., Tominaga, Y. (2026).
+  *Comprehensive Experimental Database for Validating CFD Simulations in Urban Wind Environment: Benchmark Cases Curated by the Architectural Institute of Japan.* Japan Architectural Review 9(1), e70083.
+  [doi:10.1002/2475-8876.70083](https://doi.org/10.1002/2475-8876.70083)
 - Tominaga, Y. et al. (2008). *AIJ guidelines for practical applications of CFD to pedestrian wind environment around
   buildings.* JWEIA 96, 1749–1761. https://doi.org/10.1016/j.jweia.2008.02.058
 - Each case's own requested citation and Zenodo DOI are in `/api/cases/{id}.json` (`citation_requested`, `doi`).

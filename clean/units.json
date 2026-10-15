@@ -1,0 +1,153 @@
+{
+ "points": {
+  "case_id": {
+   "unit": "",
+   "meaning": "AIJ UWE case letter: A, B, C, D or E"
+  },
+  "config": {
+   "unit": "",
+   "meaning": "configuration within the case: 'default' (A, B, D); Case C centre building '0D' | '1D' | '2D'; Case E 'bc' (before construction) | 'ac' (after construction)"
+  },
+  "instrument": {
+   "unit": "",
+   "meaning": "'split_fibre' = hot-wire split-fibre probe, vector components; 'thermistor' = omnidirectional scalar speed"
+  },
+  "point_id": {
+   "unit": "",
+   "meaning": "the tunnel's own measurement point number (No.); shared across configurations and directions of a case"
+  },
+  "wind_direction_deg": {
+   "unit": "deg",
+   "meaning": "the case's wind direction label. A-D: the AIJ turntable angle WD (0 = +x). E: meteorological FROM-direction, clockwise from north (N = 0, E = 90). The flow vector per direction is in directions.csv"
+  },
+  "wind_direction": {
+   "unit": "",
+   "meaning": "compass name of the FROM-direction (Case E only; '' elsewhere)"
+  },
+  "x": {
+   "unit": "m",
+   "meaning": "case frame (SCHEMA.md): +x = streamwise at WD = 0 for A-D, +x = east for E; model-scale metres for A-D, full-scale metres for E"
+  },
+  "y": {
+   "unit": "m",
+   "meaning": "case frame: +y lateral (A-D), +y = north (E)"
+  },
+  "z": {
+   "unit": "m",
+   "meaning": "height above the ground plane"
+  },
+  "U": {
+   "unit": "m/s",
+   "meaning": "mean velocity component along +x"
+  },
+  "V": {
+   "unit": "m/s",
+   "meaning": "mean velocity component along +y (positive toward +y in EVERY case; Case B's published sign is flipped, see manifest transform)"
+  },
+  "W": {
+   "unit": "m/s",
+   "meaning": "mean velocity component along +z"
+  },
+  "uu": {
+   "unit": "m^2/s^2",
+   "meaning": "variance of the x-component fluctuation <u'u'> (Case A publishes rms; squared here)"
+  },
+  "vv": {
+   "unit": "m^2/s^2",
+   "meaning": "variance <v'v'>"
+  },
+  "ww": {
+   "unit": "m^2/s^2",
+   "meaning": "variance <w'w'>"
+  },
+  "k": {
+   "unit": "m^2/s^2",
+   "meaning": "turbulent kinetic energy as published (= (uu+vv+ww)/2 wherever all three variances exist; checked)"
+  },
+  "Vs": {
+   "unit": "m/s",
+   "meaning": "mean omnidirectional SCALAR wind speed from a thermistor anemometer. NOT |mean velocity vector| (Case D's split-fibre |U| column is dropped, see log)"
+  },
+  "velocity_ratio": {
+   "unit": "-",
+   "meaning": "Case E: Vs / U_ref with U_ref = the approach-flow speed at z = 15.9 m (full scale); see manifest cases.E.normalisation"
+  }
+ },
+ "approach_flow": {
+  "case_id": {
+   "unit": "",
+   "meaning": "AIJ UWE case letter: A, B, C, D or E"
+  },
+  "z": {
+   "unit": "m",
+   "meaning": "height above ground (model-scale metres A-D, full-scale metres E)"
+  },
+  "U": {
+   "unit": "m/s",
+   "meaning": "mean streamwise velocity"
+  },
+  "uu": {
+   "unit": "m^2/s^2",
+   "meaning": "variance of the x-component fluctuation <u'u'> (Case A publishes rms; squared here)"
+  },
+  "vv": {
+   "unit": "m^2/s^2",
+   "meaning": "variance <v'v'>"
+  },
+  "ww": {
+   "unit": "m^2/s^2",
+   "meaning": "variance <w'w'>"
+  },
+  "k": {
+   "unit": "m^2/s^2",
+   "meaning": "turbulent kinetic energy"
+  }
+ },
+ "directions": {
+  "case_id": {
+   "unit": "",
+   "meaning": "AIJ UWE case letter: A, B, C, D or E"
+  },
+  "config": {
+   "unit": "",
+   "meaning": "configuration within the case: 'default' (A, B, D); Case C centre building '0D' | '1D' | '2D'; Case E 'bc' (before construction) | 'ac' (after construction)"
+  },
+  "instrument": {
+   "unit": "",
+   "meaning": "'split_fibre' = hot-wire split-fibre probe, vector components; 'thermistor' = omnidirectional scalar speed"
+  },
+  "wind_direction_deg": {
+   "unit": "deg",
+   "meaning": "the case's wind direction label. A-D: the AIJ turntable angle WD (0 = +x). E: meteorological FROM-direction, clockwise from north (N = 0, E = 90). The flow vector per direction is in directions.csv"
+  },
+  "wind_direction": {
+   "unit": "",
+   "meaning": "compass name of the FROM-direction (Case E only; '' elsewhere)"
+  },
+  "flow_dir_x": {
+   "unit": "-",
+   "meaning": "x-component of the unit vector the mean wind BLOWS TOWARD, in the case frame"
+  },
+  "flow_dir_y": {
+   "unit": "-",
+   "meaning": "y-component of the same unit vector"
+  },
+  "rows": {
+   "unit": "",
+   "meaning": "rows of points.csv in this (config, direction, instrument)"
+  },
+  "measured": {
+   "unit": "",
+   "meaning": "of those, rows whose measured quantity is not NaN"
+  },
+  "sense_basis": {
+   "unit": "",
+   "meaning": "what fixes the rotation sense of this direction (measured from the data / read from a figure / definition)"
+  },
+  "status": {
+   "unit": "",
+   "meaning": "'settled' | 'unverified' (see QUESTIONS.md)"
+  }
+ },
+ "note": "column headers in every CSV are bare names; this file is the units sidecar; the parquet files carry the same map in their schema metadata"
+}

@@ -42,7 +42,7 @@ Isolated 1:1:2 building, velocity field (split-fibre hot wire).
 
 ## Reference data
 
-Source in this repository: `Case_A_cleaned/RS-caseA.csv` (approach flow: `Case_A_cleaned/AF_caseA.csv`).
+Source in this repository: `case-a/RS-caseA.csv` (approach flow: `case-a/AF_caseA.csv`).
 
 The cleaned table has **186 rows** over **186 distinct points**; columns `point_id`, `config`, `instrument`, `wind_direction_deg`, `x`, `y`, `z`, `U`, `V`, `W`, `uu`, `vv`, `ww`, `k`.
 
@@ -68,18 +68,53 @@ The cleaned table has **186 rows** over **186 distinct points**; columns `point_
 
 ## Validation
 
-**openfoam12-realizableKE** — solved time 3000, scale 1:100, 186 points; reattachment length L_r/H = 1.49. U by U_H, k by U_H^2 (the benchmark's own convention); hit rate D = 0.25, W = 0.05 U_H.
+### OpenFOAM 12, realizable k-epsilon (Eddy3D Outdoor)
 
-| | velocity.U | velocity.V | velocity.W | k |
+Reattachment length L_r/H = 1.49.
+
+| | U | V | W | k |
 |---|---|---|---|---|
 | **R** | +0.955 | +0.961 | +0.708 | +0.480 |
 | **FAC2** | 0.817 | 0.349 | 0.398 | 0.667 |
 | **FB** | +0.185 | -0.207 | -1.501 | +0.478 |
 | **hit rate** | 0.586 | 0.892 | 0.801 | 0.177 |
+| **n** | 186 | 186 | 186 | 186 |
 
-![agreement]({{ '/assets/aij_agreement.png' | relative_url }})
+velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Reproduce: Eddy3D fixture TestAijCaseAContainerE2E; figures validation/plot_aij.py.
 
-![profiles]({{ '/assets/aij_profiles.png' | relative_url }})
+### OpenLB (Eddy3D LBM)
+
+Reattachment length L_r/H = 3.39.
+
+| | U | U, points ≥ 2 dx | V | W | k (resolved) | V, lateral sign flipped (control) |
+|---|---|---|---|---|---|---|
+| **R** | +0.758 | +0.812 | +0.646 | +0.540 | +0.200 | -0.646 |
+| **FAC2** | 0.425 | 0.645 | 0.172 | 0.124 | 0.000 | 0.118 |
+| **FB** | +0.395 | +0.169 | +0.041 | -1.759 | +1.971 | +98.234 |
+| **hit rate** | 0.371 | 0.562 | 0.624 | 0.586 | 0.000 | 0.570 |
+| **n** | 186 | 121 | 186 | 186 | 186 | 186 |
+
+velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Reproduce: Eddy3D fixture TestAijCaseAOpenLbContainerE2E (OpenLB eddy3dWind, CPU image, dx = 1.6 m); figure validation/plot_aij_engines.py.
+
+### Eddy3D ML wind surrogate (pedestrian height)
+
+| | \|U\| (z = 0.01 m plane) | \|U\|, lattice cut at ±250 m | wind reversed (control) |
+|---|---|---|---|
+| **R** | -0.125 | +0.434 | -0.125 |
+| **FAC2** | 0.262 | 0.615 | 0.262 |
+| **FB** | +0.772 | +0.401 | +0.772 |
+| **hit rate** | 0.092 | 0.338 | 0.092 |
+| **n** | 65 | 65 | 65 |
+
+velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Reproduce: Eddy3D fixture Outdoor.ML.Tests/TestAijSurrogateE2E; figure validation/plot_aij_ml.py.
+
+![aij_agreement.png]({{ '/assets/aij_agreement.png' | relative_url }})
+
+![aij_profiles.png]({{ '/assets/aij_profiles.png' | relative_url }})
+
+![aij_engines_agreement.png]({{ '/assets/aij_engines_agreement.png' | relative_url }})
+
+![aij_ml_agreement.png]({{ '/assets/aij_ml_agreement.png' | relative_url }})
 
 How to read these is on the [Validation]({{ '/validation/' | relative_url }}) page.
 

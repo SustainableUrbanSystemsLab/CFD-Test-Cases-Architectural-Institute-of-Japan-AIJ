@@ -1,0 +1,2 @@
+case_id,config,instrument,wind_direction_deg,wind_direction,flow_dir_x,flow_dir_y,rows,measured,sense_basis,status
+B,default,split_fibre,0,,1,0,224,224,definition: +x streamwise (MP drawings; checks lateral_sign_*),settled

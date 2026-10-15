@@ -51,14 +51,16 @@ symmetry convention.
 - **The wind-direction rotation sense is ambiguous between the CSV and the data paper's figure.** In the CSV's own
   frame the WD = 45° field is mirror-symmetric about y = −x to within the experiment's repeatability (0.10–0.13 m/s)
   and not about y = +x (0.5–0.8 m/s), so WD rotates the wind from +x toward −y. Figure 3 of the data paper draws the
-  fan the other way. This release keeps the CSV frame; the question is invisible at WD = 0.
+  fan the other way. This release keeps the CSV frame; the question is invisible at WD = 0. The solved field settles
+  it: scored in the CSV's sense R against the tunnel is 0.83–0.91 at 22.5° and 45°; in the figure's sense it falls to
+  −0.33 … +0.03.
 - 24 of the 120 points sit exactly on a building face plane (|x| = 0.30 or |y| = 0.30), in the gap between blocks.
 - The 0.40 m pitch is read from the drawing and the paper (street = D); the point grid alone bounds it to (0.35, 0.40].
 - Repeatability floor from the mirror-symmetric pairs: mean |ΔVs| 0.088–0.137 m/s (0.024–0.038 U_H).
 
 ## Case D
 
-- All the data lives in `CaseD(Highrise+Blocks).xls`, a BIFF8 workbook (xlrd 2.x reads it; openpyxl cannot).
+- All the data lives in `LF_caseD.xls`, a BIFF8 workbook (xlrd 2.x reads it; openpyxl cannot).
   Coordinates are millimetres.
 - The shipped `BD_caseD.stl` is dirty: 1572 facets, 576 duplicates, all 83 roofs wound inward (signed volume
   0.011159 m³ against the true 0.021477 m³). The API's `geometry.stl` is rebuilt from the 83 shells' boxes: 996
@@ -66,6 +68,11 @@ symmetry convention.
 - Unmeasured thermistor cells are `-` (null in the API). At WD = 0 the 66 measured values are 33 exact mirror pairs.
 - **The rotation sense for 22.5° and 45° cannot be settled from the data** — the array is exactly y-mirror symmetric,
   so +θ and −θ give exact mirror fields. The choice (+x toward +y) rests on Figure 4 of the data paper.
+- The sensor coordinates and the geometry agree: every one of the 78 points is outside every block and inside the
+  array, and shifting the cloud by 12.5 mm (5 m full scale) in x or y puts two points inside a block.
+- The Zenodo record ([10.5281/zenodo.15402668](https://doi.org/10.5281/zenodo.15402668)) also ships CSVs: unmeasured
+  is −999.9 there, and `RS-S_caseD.csv`'s z header is the full-width character `ｚ`. They match the workbook to
+  4 × 10⁻¹⁶; the repository mirrors them under `clean/sources/zenodo_caseD/`.
 - A prior Eddy3D comparison kept in the folder scores R = +0.096 against the thermistor: a frame or geometry error,
   not a validation.
 
@@ -76,9 +83,12 @@ symmetry convention.
   in the folder divided by the wrong reference and came out low by a factor of 2.048.
 - All 2560 published ratios are integer multiples of 0.0198204 (55 distinct levels): the data's own resolution is
   ±0.0099, 3.1 % of the median and about 10 % at the lowest points. No bar tighter than one quantum means anything.
-- The readme describes `AF_caseE.csv`, `RS_caseE.csv` and `BD_caseE.stl`; the repository holds only the `.3dm`,
-  `.ghx`, `.xls` and the MP drawing. Everything served here is extracted from the workbook and the 3dm.
-- `CaseE(Niigata).3dm` is **full-scale metres**; `MP_caseE.png` is drawn at model scale (±0.8 m). Use layers
+- The readme describes `AF_caseE.csv`, `RS_caseE.csv` and `BD_caseE.stl`; the case folder holds only the `.3dm`,
+  `.ghx`, `.xls` and the MP drawing. The Zenodo files are mirrored under `clean/sources/zenodo_caseE/`:
+  `RS_caseE.csv` is the workbook rounded to two decimals, and `BD_caseE.stl` is model scale (×250), not
+  watertight (5,253 open edges), with point 50 at (−45.5, −45.0) 0.17 m inside one of its walls (2.06 m clear in
+  the 3dm). Everything served here is extracted from the workbook and the 3dm.
+- `case-e.3dm` is **full-scale metres**; `MP_caseE.png` is drawn at model scale (±0.8 m). Use layers
   `buildings` and `buildings_new_construction`; the map plate on the Japanese-named layer, the terrain plates and
   `probes` are not buildings. 475 of the 503 building shells are wound inward in the 3dm; the API's STLs are flipped
   outward.

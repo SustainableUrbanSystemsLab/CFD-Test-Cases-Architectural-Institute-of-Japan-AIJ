@@ -45,7 +45,7 @@ nav_order: 3
 
 ## Reference data
 
-Source in this repository: `CaseC_cleaned/RS_caseC.csv` (approach flow: `CaseC_cleaned/AF_caseC.csv`).
+Source in this repository: `case-c/RS_caseC.csv` (approach flow: `case-c/AF_caseC.csv`).
 
 The cleaned table has **1080 rows** over **120 distinct points**; columns `point_id`, `config`, `instrument`, `wind_direction_deg`, `x`, `y`, `z`, `Vs`.
 
@@ -84,7 +84,67 @@ The cleaned table has **1080 rows** over **120 distinct points**; columns `point
 
 ## Validation
 
-**No validation has been run for this case yet.** Nothing on this page is a claim about it. Engine status: openfoam12-realizableKE pending, openlb pending, fluidx3d pending, ml-surrogate pending.
+### OpenFOAM 12, realizable k-epsilon (Eddy3D Outdoor) — configuration 0D
+
+Quantity: Vs (thermistor) scored against sqrt(|U|^2 + 2k) [scalar] and |U| [vector]; both normalised by U_H = U(z = D) = 3.654 m/s.
+
+| | WD 0° √(\|U\|²+2k) | WD 0° \|U\| | WD 22.5° √(\|U\|²+2k) | WD 22.5° \|U\| | WD 45° √(\|U\|²+2k) | WD 45° \|U\| |
+|---|---|---|---|---|---|---|
+| **R** | +0.824 | +0.804 | +0.857 | +0.846 | +0.831 | +0.801 |
+| **FAC2** | 0.908 | 0.658 | 0.983 | 0.833 | 0.942 | 0.800 |
+| **FB** | +0.266 | +0.466 | +0.106 | +0.295 | +0.121 | +0.307 |
+| **hit rate** | 0.567 | 0.308 | 0.750 | 0.433 | 0.783 | 0.533 |
+| **n** | 120 | 120 | 120 | 120 | 120 | 120 |
+
+velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Reproduce: Eddy3D fixture TestAijCaseC0DContainerE2E; figures validation/plot_aij_caseC.py (per-point pairs in validation/results/caseC_openfoam12_realizableKE_pairs.csv).
+
+### OpenFOAM 12, realizable k-epsilon (Eddy3D Outdoor) — configuration 1D
+
+Quantity: Vs (thermistor) scored against sqrt(|U|^2 + 2k) [scalar] and |U| [vector]; both normalised by U_H = U(z = D) = 3.654 m/s.
+
+| | WD 0° √(\|U\|²+2k) | WD 0° \|U\| | WD 22.5° √(\|U\|²+2k) | WD 22.5° \|U\| | WD 45° √(\|U\|²+2k) | WD 45° \|U\| |
+|---|---|---|---|---|---|---|
+| **R** | +0.801 | +0.741 | +0.896 | +0.882 | +0.872 | +0.873 |
+| **FAC2** | 0.858 | 0.550 | 0.975 | 0.725 | 0.942 | 0.850 |
+| **FB** | +0.341 | +0.551 | +0.192 | +0.394 | +0.198 | +0.353 |
+| **hit rate** | 0.433 | 0.292 | 0.675 | 0.367 | 0.733 | 0.433 |
+| **n** | 120 | 120 | 120 | 120 | 120 | 120 |
+
+velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Reproduce: Eddy3D fixture TestAijCaseC1DContainerE2E; figures validation/plot_aij_caseC.py (per-point pairs in validation/results/caseC_openfoam12_realizableKE_pairs.csv).
+
+### OpenFOAM 12, realizable k-epsilon (Eddy3D Outdoor) — configuration 2D
+
+Quantity: Vs (thermistor) scored against sqrt(|U|^2 + 2k) [scalar] and |U| [vector]; both normalised by U_H = U(z = D) = 3.654 m/s.
+
+| | WD 0° √(\|U\|²+2k) | WD 0° \|U\| | WD 22.5° √(\|U\|²+2k) | WD 22.5° \|U\| | WD 45° √(\|U\|²+2k) | WD 45° \|U\| |
+|---|---|---|---|---|---|---|
+| **R** | +0.857 | +0.848 | +0.906 | +0.894 | +0.909 | +0.912 |
+| **FAC2** | 0.850 | 0.692 | 0.983 | 0.900 | 0.958 | 0.900 |
+| **FB** | +0.251 | +0.443 | +0.091 | +0.240 | +0.103 | +0.243 |
+| **hit rate** | 0.492 | 0.317 | 0.875 | 0.633 | 0.883 | 0.608 |
+| **n** | 120 | 120 | 120 | 120 | 120 | 120 |
+
+velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Reproduce: Eddy3D fixture TestAijCaseC2DContainerE2E; figures validation/plot_aij_caseC.py (per-point pairs in validation/results/caseC_openfoam12_realizableKE_pairs.csv).
+
+### Eddy3D ML wind surrogate (pedestrian height)
+
+| | Vs, 9 configurations | Vs, 2D WD 0, lattice cut at ±250 m | wind reversed (control) |
+|---|---|---|---|
+| **R** | +0.212 | +0.075 | -0.441 |
+| **FAC2** | 0.444 | 0.875 | 0.725 |
+| **FB** | +0.666 | +0.192 | +0.367 |
+| **hit rate** | 0.181 | 0.400 | 0.392 |
+| **n** | 1080 | 120 | 120 |
+
+velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Reproduce: Eddy3D fixture Outdoor.ML.Tests/TestAijSurrogateE2E; figure validation/plot_aij_ml.py.
+
+![aij_caseC_agreement.png]({{ '/assets/aij_caseC_agreement.png' | relative_url }})
+
+![aij_caseC_map.png]({{ '/assets/aij_caseC_map.png' | relative_url }})
+
+![aij_ml_agreement.png]({{ '/assets/aij_ml_agreement.png' | relative_url }})
+
+How to read these is on the [Validation]({{ '/validation/' | relative_url }}) page.
 
 ## API
 

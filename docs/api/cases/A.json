@@ -1,7 +1,7 @@
 {
  "schema_version": "1.0.0",
- "generated_from": "4fb5e6e9093d5b925f977d4e0502d8c881fec52d",
- "generated_at": "2026-10-14T03:54:23+00:00",
+ "generated_from": "b5f2ef6d37332bf917f413ffec0e4446ac55ab89",
+ "generated_at": "2026-10-14T22:45:59+00:00",
  "licence": "CC BY 4.0",
  "id": "A",
  "slug": "case-a",
@@ -63,7 +63,7 @@
   "log_law_error_at_H": "+2.0 %"
  },
  "approach_flow": {
-  "source": "Case_A_cleaned/AF_caseA.csv",
+  "source": "case-a/AF_caseA.csv",
   "units": {
    "z": "m",
    "U": "m/s",
@@ -220,7 +220,7 @@
  "points": {
   "endpoint_json": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/A/points.json",
   "endpoint_csv": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/A/points.csv",
-  "source": "Case_A_cleaned/RS-caseA.csv",
+  "source": "clean/cases/A/points.csv",
   "rows": 186,
   "distinct_points": 186,
   "columns": [
@@ -275,12 +275,12 @@
  },
  "validation": {
   "endpoint": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/A/validation.json",
-  "status": "validated",
+  "status": "scored",
   "engines": {
-   "openfoam12-realizableKE": "validated",
-   "openlb": "pending",
-   "fluidx3d": "pending",
-   "ml-surrogate": "n/a"
+   "openfoam12-realizableKE": "scored",
+   "openlb": "scored",
+   "fluidx3d": "running",
+   "ml-surrogate": "scored"
   }
  },
  "gotchas": [
@@ -304,10 +304,10 @@
  "doi_note": null,
  "citation_requested": "Meng, Y., & Hibi, K. (1998). Turbulent measurements of the flow field around a high-rise building. Journal of Wind Engineering, JAWE, 76, 55-64. https://doi.org/10.5359/jawe.1998.76_55",
  "files_in_repository": {
-  "folder": "https://github.com/SustainableUrbanSystemsLab/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/tree/main/Case_A_cleaned",
-  "reference": "Case_A_cleaned/RS-caseA.csv",
-  "approach_flow": "Case_A_cleaned/AF_caseA.csv",
-  "readme": "Case_A_cleaned/readme_caseA.md"
+  "folder": "https://github.com/SustainableUrbanSystemsLab/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/tree/main/case-a",
+  "reference": "case-a/RS-caseA.csv",
+  "approach_flow": "case-a/AF_caseA.csv",
+  "readme": "case-a/readme_caseA.md"
  },
  "render": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/geom_caseA.png",
  "page": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/cases/case-a/"

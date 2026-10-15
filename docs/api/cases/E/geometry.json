@@ -1,7 +1,7 @@
 {
  "schema_version": "1.0.0",
- "generated_from": "4fb5e6e9093d5b925f977d4e0502d8c881fec52d",
- "generated_at": "2026-10-14T03:54:23+00:00",
+ "generated_from": "b5f2ef6d37332bf917f413ffec0e4446ac55ab89",
+ "generated_at": "2026-10-14T22:45:59+00:00",
  "licence": "CC BY 4.0",
  "case": "E",
  "title": "Case E — Niigata district",
@@ -27,7 +27,7 @@
    "file": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/geometry.stl",
    "path": "cases/E/geometry.stl",
    "format": "ASCII STL, LF line endings, outward normals",
-   "source": "triangulated from CaseE(Niigata).3dm via rhino3dm, layers 'buildings' + 'buildings_new_construction'; 478 of 506 shells were wound inward in the 3dm and are flipped outward here",
+   "source": "triangulated from case-e.3dm via rhino3dm, layers 'buildings' + 'buildings_new_construction'; 478 of 506 shells were wound inward in the 3dm and are flipped outward here",
    "stats": {
     "triangles": 8436,
     "bbox_min": [
@@ -54,7 +54,7 @@
    "file": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/geometry_bc.stl",
    "path": "cases/E/geometry_bc.stl",
    "format": "ASCII STL, LF line endings, outward normals",
-   "source": "triangulated from CaseE(Niigata).3dm via rhino3dm, layers 'buildings'; 475 of 503 shells were wound inward in the 3dm and are flipped outward here",
+   "source": "triangulated from case-e.3dm via rhino3dm, layers 'buildings'; 475 of 503 shells were wound inward in the 3dm and are flipped outward here",
    "stats": {
     "triangles": 8400,
     "bbox_min": [

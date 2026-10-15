@@ -39,15 +39,72 @@ ENGINES = [
     {"id": "fluidx3d", "name": "FluidX3D (Eddy3D GPU LBM)", "kind": "LBM"},
     {"id": "ml-surrogate", "name": "Eddy3D ML wind surrogate (pedestrian height)", "kind": "surrogate"},
 ]
-# What the README's "What is not validated yet" table says. n/a = the engine cannot predict the
-# quantity the case measures (the ML surrogate predicts pedestrian-height wind; A and B do not measure it).
-ENGINE_STATUS = {
-    "A": {"openfoam12-realizableKE": "validated", "openlb": "pending", "fluidx3d": "pending", "ml-surrogate": "n/a"},
-    "B": {"openfoam12-realizableKE": "validated", "openlb": "pending", "fluidx3d": "pending", "ml-surrogate": "n/a"},
-    "C": {"openfoam12-realizableKE": "pending", "openlb": "pending", "fluidx3d": "pending", "ml-surrogate": "pending"},
-    "D": {"openfoam12-realizableKE": "pending", "openlb": "pending", "fluidx3d": "pending", "ml-surrogate": "pending"},
-    "E": {"openfoam12-realizableKE": "pending", "openlb": "pending", "fluidx3d": "pending", "ml-surrogate": "pending"},
+# What the README's validation matrix says, per case and engine. "scored" says a run exists and its
+# scores are in validation.json — NOT that it agrees; how well it agrees is in the numbers.
+STATUS_MEANING = {
+    "scored": "a validation run exists and its scores are in cases/{id}/validation.json; whether it agrees is in the numbers",
+    "running": "the solve is in progress; no scores yet",
+    "pending": "not run yet",
+    "not comparable": ("the engine cannot produce the measured quantity at the measured location at a resolution this "
+                       "hardware runs; the measurement behind that is in the README"),
 }
+ENGINE_STATUS = {
+    "A": {"openfoam12-realizableKE": "scored", "openlb": "scored", "fluidx3d": "running", "ml-surrogate": "scored"},
+    "B": {"openfoam12-realizableKE": "scored", "openlb": "scored", "fluidx3d": "running", "ml-surrogate": "scored"},
+    "C": {"openfoam12-realizableKE": "scored", "openlb": "not comparable", "fluidx3d": "pending", "ml-surrogate": "scored"},
+    "D": {"openfoam12-realizableKE": "running", "openlb": "not comparable", "fluidx3d": "pending", "ml-surrogate": "scored"},
+    "E": {"openfoam12-realizableKE": "scored", "openlb": "not comparable", "fluidx3d": "pending", "ml-surrogate": "scored"},
+}
+
+# Every validation run whose results.json is snapshotted in validation/results/: which case, engine and
+# configuration it is, which of its scores are the headline (label -> key), the figures that show it,
+# and how to reproduce it. A file in validation/results/ that is not listed here is an error.
+_FOAM_A_B = {"U": "velocity.U", "V": "velocity.V", "W": "velocity.W", "k": "k"}
+_FOAM_C = {f"WD {wd} {q}": f"vs.{lab}.{key}" for wd, lab in (("0°", "wd-0"), ("22.5°", "wd22_5"), ("45°", "wd45"))
+           for q, key in (("√(|U|²+2k)", "scalar"), ("|U|", "vector"))}
+RUNS = [
+    ("A", "openfoam12-realizableKE", None, "caseA_openfoam12_realizableKE.json", _FOAM_A_B,
+     ["aij_agreement.png", "aij_profiles.png"], "Eddy3D fixture TestAijCaseAContainerE2E; figures validation/plot_aij.py"),
+    ("B", "openfoam12-realizableKE", None, "caseB_openfoam12_realizableKE.json", _FOAM_A_B,
+     ["aij_agreement.png", "aij_profiles.png"], "Eddy3D fixture TestAijCaseBContainerE2E; figures validation/plot_aij.py"),
+    *[("C", "openfoam12-realizableKE", cb, f"caseC_openfoam12_realizableKE_{cb}.json", _FOAM_C,
+       ["aij_caseC_agreement.png", "aij_caseC_map.png"],
+       f"Eddy3D fixture TestAijCaseC{cb}ContainerE2E; figures validation/plot_aij_caseC.py "
+       "(per-point pairs in validation/results/caseC_openfoam12_realizableKE_pairs.csv)") for cb in ("0D", "1D", "2D")],
+    *[(case, "openlb", None, f"case{case}_openlb.json",
+       {"U": "velocity.U", "U, points ≥ 2 dx": "velocity.U.aboveTwoCells", "V": "velocity.V", "W": "velocity.W",
+        "k (resolved)": "k.resolved", "V, lateral sign flipped (control)": "control.V.lateralSignFlipped"},
+       ["aij_engines_agreement.png"],
+       f"Eddy3D fixture TestAijCase{case}OpenLbContainerE2E (OpenLB eddy3dWind, CPU image, dx = 1.6 m); "
+       "figure validation/plot_aij_engines.py") for case in ("A", "B")],
+    ("E", "openfoam12-realizableKE", "SW", "caseE_openfoam12_realizableKE.json",
+     {"before, √(|U|²+2k)": "vr.bc.SW.rms", "before, |U|": "vr.bc.SW.Umag", "after, √(|U|²+2k)": "vr.ac.SW.rms",
+      "after, |U|": "vr.ac.SW.Umag", "no-construction ceiling control": "noConstruction.SW"},
+     ["aij_caseE_agreement.png", "aij_caseE_map.png"],
+     "Eddy3D fixture TestAijCaseEContainerE2E (EDDY3D_AIJ_E_DIRECTIONS=SW, tabulated inlet); figures "
+     "validation/plot_aij_caseE.py (per-point pairs in validation/results/caseE_openfoam12_realizableKE_pairs.csv)"),
+    ("A", "ml-surrogate", None, "caseA_ml.json",
+     {"|U| (z = 0.01 m plane)": "speed.vectorMagnitude", "|U|, lattice cut at ±250 m": "halfExtent250.forward",
+      "wind reversed (control)": "negativeControl.reversedWind"},
+     ["aij_ml_agreement.png"], "Eddy3D fixture Outdoor.ML.Tests/TestAijSurrogateE2E; figure validation/plot_aij_ml.py"),
+    ("B", "ml-surrogate", None, "caseB_ml.json",
+     {"|U| (z = H/16 plane)": "speed.vectorMagnitude", "|U|, lattice cut at ±250 m": "halfExtent250.forward",
+      "wind reversed (control)": "negativeControl.reversedWind"},
+     ["aij_ml_agreement.png"], "Eddy3D fixture Outdoor.ML.Tests/TestAijSurrogateE2E; figure validation/plot_aij_ml.py"),
+    ("C", "ml-surrogate", None, "caseC_ml.json",
+     {"Vs, 9 configurations": "speed.thermistor", "Vs, 2D WD 0, lattice cut at ±250 m": "halfExtent250.forward",
+      "wind reversed (control)": "negativeControl.reversedWind"},
+     ["aij_ml_agreement.png"], "Eddy3D fixture Outdoor.ML.Tests/TestAijSurrogateE2E; figure validation/plot_aij_ml.py"),
+    ("D", "ml-surrogate", None, "caseD_ml.json",
+     {"Vs, thermistor, 3 WD": "speed.thermistor", "|U|, split fibre, WD 0": "speed.vectorMagnitude",
+      "Vs, WD 0, lattice cut at ±250 m": "halfExtent250.forward", "wind reversed (control)": "negativeControl.reversedWind"},
+     ["aij_ml_agreement.png"], "Eddy3D fixture Outdoor.ML.Tests/TestAijSurrogateE2E; figure validation/plot_aij_ml.py"),
+    ("E", "ml-surrogate", None, "caseE_ml.json",
+     {"Vs/U(15.9 m), 16 WD, bc + ac": "speed.thermistor", "after construction": "speed.thermistor.after",
+      "after − before": "delta.afterMinusBefore", "after, lattice cut at ±250 m": "halfExtent250.forward",
+      "wind reversed (control)": "negativeControl.reversedWind"},
+     ["aij_ml_agreement.png"], "Eddy3D fixture Outdoor.ML.Tests/TestAijSurrogateE2E; figure validation/plot_aij_ml.py"),
+]
 
 HEAD = D.git_head()
 NOW = dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat()
@@ -191,33 +248,52 @@ def build_geometry(case):
 
 # ----------------------------------------------------------------------------- validation
 
+RESULTS_DIR = os.path.join(REPO, "validation", "results")
+
+
+def check_runs_registry():
+    """Every snapshot is registered and every registered snapshot exists: nothing is served by accident."""
+    on_disk = {n for n in os.listdir(RESULTS_DIR) if n.endswith(".json")} if os.path.isdir(RESULTS_DIR) else set()
+    listed = {r[3] for r in RUNS}
+    if on_disk != listed:
+        raise SystemExit(f"validation/results/ and RUNS disagree: unregistered {sorted(on_disk - listed)}, "
+                         f"missing {sorted(listed - on_disk)}")
+
+
+def is_metric(v):
+    return isinstance(v, dict) and "Fb" in v and "R" in v
+
+
 def validation_entries(case):
     out = []
-    rdir = os.path.join(REPO, "validation", "results")
-    if not os.path.isdir(rdir):
-        return out
-    for name in sorted(os.listdir(rdir)):
-        if not (name.startswith(f"case{case}_") and name.endswith(".json")):
+    for run_case, engine, config, name, headline, figures, reproduce in RUNS:
+        if run_case != case:
             continue
-        with io.open(os.path.join(rdir, name), encoding="utf-8") as f:
+        with io.open(os.path.join(RESULTS_DIR, name), encoding="utf-8") as f:
             res = json.load(f)
-        engine = name[len(f"case{case}_"):-5]
-        engine_id = {"openfoam12_realizableKE": "openfoam12-realizableKE"}.get(engine, engine)
-        scores = {k: v for k, v in res.items() if isinstance(v, dict)}
+        for label, key in headline.items():
+            if not is_metric(res.get(key)):
+                raise SystemExit(f"{name}: headline '{label}' -> '{key}' is not a score in the file")
         out.append({
-            "engine": engine_id,
-            "solver": res.get("turbulenceModel"), "numerics_level": res.get("numericsLevel"),
-            "scale": res.get("scale"), "solved_time": res.get("solvedTime"),
+            "engine": engine,
+            "configuration": config,
+            "solver": res.get("engine") or res.get("turbulenceModel"), "numerics_level": res.get("numericsLevel"),
+            "scale": res.get("scale"), "solved_time": res.get("solvedTime"), "iterations": res.get("iterations"),
             "points_measured": res.get("points.measured"),
             "lateral_sign_applied_in_fixture": res.get("lateralSign"),
             "recirculation_Lr_over_H": res.get("recirculation.LrOverH"),
-            "normalisation": "U by U_H, k by U_H^2 (the benchmark's own convention); hit rate D = 0.25, W = 0.05 U_H",
+            "quantity": res.get("quantity"),
+            "normalisation": ("velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, "
+                              "as it is published); hit rate D = 0.25, W = 0.05 in those units"),
             "metric_meaning": METRIC_MEANING,
-            "scores": scores,
-            "figures": [f"{SITE}/assets/aij_agreement.png", f"{SITE}/assets/aij_profiles.png"],
-            "reproduce": "validation/plot_aij.py; Eddy3D fixtures TestAijCaseAContainerE2E / TestAijCaseBContainerE2E",
+            "headline": {label: key for label, key in headline.items()},
+            "scores": {k: v for k, v in res.items() if is_metric(v)},
+            "figures": [f"{SITE}/assets/{fig}" for fig in figures],
+            "reproduce": reproduce,
             "source_file": f"validation/results/{name}",
-            "reference_string": res.get("reference"),
+            "source_url": f"{REPO_URL}/blob/main/validation/results/{name}",
+            # The benchmark's citation from one place, not the fixture's free-text reference line.
+            "cite": D.CITATION["benchmark"],
         })
     return out
 
@@ -239,7 +315,8 @@ def build_validation(case):
     status = ENGINE_STATUS[case]
     rel = write_json(f"cases/{case}/validation.json", {
         "case": case, "title": D.CASES[case]["title"],
-        "status": "validated" if entries else "pending",
+        "status": "scored" if entries else "pending",
+        "status_meaning": STATUS_MEANING,
         "engines": [{"engine": e["id"], "status": status[e["id"]]} for e in ENGINES],
         "results": entries,
         "note": (None if entries else "No validation has been run for this case yet; results is an empty list. "
@@ -282,7 +359,7 @@ def build_case(case, points, geometry, validation):
         "approach_flow": {"source": af_src, "units": {"z": "m", "U": "m/s", "k": "m^2/s^2", "u_rms": "m/s"}, "rows": af},
         "points": {"endpoint_json": url(rel_points), "endpoint_csv": url(rel_csv), "source": src, **summ},
         "geometry": {"endpoint": url(rel_geom), "files": [{"configuration": g["configuration"], "file": g["file"], "triangles": g["stats"]["triangles"], "watertight": g["stats"]["watertight"]} for g in gfiles]},
-        "validation": {"endpoint": url(rel_val), "status": "validated" if ventries else "pending", "engines": ENGINE_STATUS[case]},
+        "validation": {"endpoint": url(rel_val), "status": "scored" if ventries else "pending", "engines": ENGINE_STATUS[case]},
         "gotchas": meta["gotchas"],
         "people": meta["people"], "doi": meta["doi"], "doi_note": meta.get("doi_note"),
         "citation_requested": meta["citation_requested"],
@@ -291,6 +368,47 @@ def build_case(case, points, geometry, validation):
         "page": f"{SITE}/cases/{meta['slug']}/",
     })
     return rel, summ, configs
+
+
+def build_geometry_all(files_by_case):
+    """One index of every STL, and one archive of them. The STLs are NOT merged into one scene: each case
+    has its own origin, and A-D are model scale while E is full scale (about 1000 times larger), so a merged
+    file would stack them at the origin, and C's three centre-block variants and E's before/after states
+    are alternatives that cannot share one CFD domain."""
+    import hashlib
+    import zipfile
+    items = []
+    for case in D.CASE_IDS:
+        meta = D.CASES[case]
+        for g in files_by_case[case]:
+            with io.open(os.path.join(API, g["path"]), "rb") as f:
+                body = f.read()
+            items.append({
+                "case": case, "configuration": g["configuration"], "url": g["file"], "path": g["path"],
+                "archive_name": f"AIJ_case{case}_{g['configuration']}.stl",
+                "units": "metres" + (" (full scale)" if case == "E" else " (model scale)"),
+                "frame": {k: meta["frame"][k] for k in ("origin", "x", "y", "z")},
+                "bbox_min": g["stats"]["bbox_min"], "bbox_max": g["stats"]["bbox_max"],
+                "triangles": g["stats"]["triangles"], "watertight": g["stats"]["watertight"],
+                "bytes": len(body), "sha256": hashlib.sha256(body).hexdigest(),
+            })
+    write_json("geometry.json", {
+        "description": ("Every cleaned STL, one entry per case and configuration. Each file is in its own case's frame "
+                        "and units — points.json of the same case lives in that frame — so they are deliberately not one "
+                        "scene: overlaid, the cases would stack at the origin, and Case E is full scale while A-D are "
+                        "model scale. geometry.zip holds the same files under archive_name."),
+        "archive": url("geometry.zip"),
+        "files": items,
+    })
+    # Deterministic archive: fixed timestamps and order, so an unchanged geometry gives an unchanged zip.
+    with zipfile.ZipFile(os.path.join(API, "geometry.zip"), "w", compression=zipfile.ZIP_DEFLATED) as z:
+        for it in items:
+            info = zipfile.ZipInfo(it["archive_name"], date_time=(1980, 1, 1, 0, 0, 0))
+            info.compress_type = zipfile.ZIP_DEFLATED
+            info.external_attr = 0o644 << 16
+            with io.open(os.path.join(API, it["path"]), "rb") as f:
+                z.writestr(info, f.read())
+    return ["geometry.json", "geometry.zip"]
 
 
 def build_cases_index(percase):
@@ -325,6 +443,8 @@ ENDPOINTS = [
     ("cases/{id}/geometry.stl", "cleaned ASCII STL of the default configuration, metres, outward normals"),
     ("cases/{id}/geometry_{configuration}.stl", "the other configurations' STLs (C: 0D, 1D; E: bc)"),
     ("cases/{id}/validation.json", "Eddy3D validation scores per engine (empty list where none has been run) with figure URLs"),
+    ("geometry.json", "every STL of every case in one list: case, configuration, units, frame, bounding box, triangles, sha256, URL"),
+    ("geometry.zip", "every STL in one archive (each file stays in its own case's frame and units: they are not one scene)"),
     ("openapi.json", "OpenAPI 3.1 description of these GETs"),
     ("llms.txt", "plain-text entry point for agents"),
 ]
@@ -344,7 +464,7 @@ def build_index(extra_stl):
         "case_ids": D.CASE_IDS,
         "files": sorted(set([f"cases/{c}.json" for c in D.CASE_IDS]
                             + [f"cases/{c}/{n}" for c in D.CASE_IDS for n in ("points.json", "points.csv", "geometry.json", "geometry.stl", "validation.json")]
-                            + extra_stl + ["index.json", "cases.json", "openapi.json", "llms.txt"])),
+                            + extra_stl + ["index.json", "cases.json", "openapi.json", "llms.txt", "geometry.json", "geometry.zip"])),
         "licence_detail": D.LICENCE,
         "cite": D.CITATION,
         "agents": {
@@ -390,6 +510,8 @@ def build_openapi():
             "/cases/{id}/geometry.stl": {"get": op("Cleaned ASCII STL, default configuration, metres", "model/stl", {"type": "string"}, case_param)},
             "/cases/{id}/geometry_{configuration}.stl": {"get": op("Cleaned ASCII STL of another configuration", "model/stl", {"type": "string"}, cfg_param)},
             "/cases/{id}/validation.json": {"get": op("Eddy3D validation scores per engine", "application/json", {"allOf": [stamped, {"type": "object", "properties": {"results": {"type": "array"}}}]}, case_param)},
+            "/geometry.json": {"get": op("Every STL of every case, with frame, units, bounding box and sha256", "application/json", {"allOf": [stamped, {"type": "object", "properties": {"files": {"type": "array"}}}]})},
+            "/geometry.zip": {"get": op("Every STL in one archive (each in its own case's frame and units)", "application/zip", {"type": "string", "format": "binary"})},
             "/openapi.json": {"get": op("This document", "application/json")},
             "/llms.txt": {"get": op("Plain-text entry point for agents", "text/plain", {"type": "string"})},
         },
@@ -425,8 +547,12 @@ def build_llms(percase):
         "5. GET cases/{id}/geometry.stl — ASCII STL in metres, outward normals, origin at the building / array centre,",
         "   +x along the wind at WD = 0 (Cases A-D). Case E keeps its geographic frame (+x east, +y north, full-scale metres).",
         "   geometry.json lists the boxes where the geometry IS boxes (A, B, C, D), so you need not parse the STL at all.",
-        "6. GET cases/{id}/validation.json — Eddy3D scores per engine. An EMPTY results list means no validation exists",
-        "   for that case: do not infer one. Today only Cases A and B carry results (OpenFOAM 12, realizable k-epsilon).",
+        "6. GET cases/{id}/validation.json — Eddy3D scores per engine and configuration, with a `headline` map naming",
+        "   the scores to quote. An engine whose status is not \"scored\" has NO result for that case: do not infer one.",
+        "   \"scored\" means a run exists, not that it agrees — read the numbers. Status today: "
+        + "; ".join(f"{c}: " + ", ".join(f"{e} {s}" for e, s in ENGINE_STATUS[c].items()) for c in D.CASE_IDS) + ".",
+        "7. All geometry at once: GET geometry.json (every STL with its case, configuration, units, frame and sha256)",
+        "   or geometry.zip. Each STL stays in its own case's frame and units; they are NOT one scene.",
         "",
         "## Endpoints",
         "",
@@ -445,12 +571,17 @@ def build_llms(percase):
             lines.append(f"- [{case}] {g}")
     lines += [
         "",
-        "## Validation method (Cases A and B)",
+        "## Validation method",
         "",
         "Each case is solved through Eddy3D's production case writer (build-case -> run -> probe), not a hand-built",
         "OpenFOAM case; the probe sits at exactly the tunnel's measurement coordinates. Scores are normalised by U_H",
-        "(k by U_H^2); hit rate uses D = 0.25, W = 0.05 U_H. FAC2 is harsh by construction on sign-changing V and W;",
-        "read R and hit rate there. The lateral sign of Case B is corrected before scoring.",
+        "(k by U_H^2; Case E by U at 15.9 m); hit rate uses D = 0.25, W = 0.05 in those units. FAC2 is harsh by",
+        "construction on sign-changing V and W; read R and hit rate there. The lateral sign of Case B is corrected",
+        "before scoring. Cases C-E measure an omnidirectional SCALAR speed (thermistor): the model is scored as",
+        "sqrt(|U|^2 + 2k) and as |U|, the two ends of the bracket the measurement must fall in.",
+        "The ML surrogate predicts |U|/U_ref at 1.8 m; each case is scaled so its measurement plane lands there.",
+        "On the full prediction window it does not respond to the wind direction at all (reversing the wind changes",
+        "the field by < 1e-4 U_ref) — its scores grade the geometry it was given, not a wind it was told.",
         "",
         "## Cite",
         "",
@@ -471,7 +602,7 @@ def copy_assets():
     os.makedirs(ASSETS, exist_ok=True)
     for case in D.CASE_IDS:
         shutil.copyfile(os.path.join(REPO, "validation", "geometry", f"geom_case{case}.png"), os.path.join(ASSETS, f"geom_case{case}.png"))
-    for name in ("aij_agreement.png", "aij_profiles.png"):
+    for name in sorted({fig for run in RUNS for fig in run[5]}):
         shutil.copyfile(os.path.join(REPO, "validation", name), os.path.join(ASSETS, name))
 
 
@@ -560,14 +691,28 @@ def build_pages(percase, validations):
             L.append(f"- {g}")
         L += ["", "## Validation", ""]
         if ventries:
+            names = {e["id"]: e["name"] for e in ENGINES}
+            figures = []
             for e in ventries:
-                L += [f"**{e['engine']}** — solved time {e['solved_time']}, scale 1:{e['scale']}, {e['points_measured']} points; "
-                      f"reattachment length L_r/H = {e['recirculation_Lr_over_H']:.2f}. {e['normalisation']}.", "",
-                      "| | " + " | ".join(e["scores"].keys()) + " |", "|---|" + "---|" * len(e["scores"])]
-                for m, label in (("R", "R"), ("Fac2", "FAC2"), ("Fb", "FB"), ("HitRate", "hit rate")):
-                    L.append(f"| **{label}** | " + " | ".join(f"{s[m]:+.3f}" if m in ("R", "Fb") else f"{s[m]:.3f}" for s in e["scores"].values()) + " |")
-                L += ["", f"![agreement]({{{{ '/assets/aij_agreement.png' | relative_url }}}})", "", f"![profiles]({{{{ '/assets/aij_profiles.png' | relative_url }}}})", "",
-                      "How to read these is on the [Validation]({{ '/validation/' | relative_url }}) page."]
+                title = names[e["engine"]] + (f" — configuration {e['configuration']}" if e["configuration"] else "")
+                L += [f"### {title}", ""]
+                if e["quantity"]:
+                    L += [f"Quantity: {e['quantity']}.", ""]
+                if e["recirculation_Lr_over_H"] is not None:
+                    L += [f"Reattachment length L_r/H = {e['recirculation_Lr_over_H']:.2f}.", ""]
+                scores = {label: e["scores"][key] for label, key in e["headline"].items()}
+                # A bare '|' in a label (|U|) would split the Markdown table's column: escape it.
+                L += ["| | " + " | ".join(lab.replace("|", "\\|") for lab in scores) + " |", "|---|" + "---|" * len(scores)]
+                for m, label in (("R", "R"), ("Fac2", "FAC2"), ("Fb", "FB"), ("HitRate", "hit rate"), ("Count", "n")):
+                    L.append(f"| **{label}** | " + " | ".join(
+                        str(s[m]) if m == "Count" else f"{s[m]:+.3f}" if m in ("R", "Fb") else f"{s[m]:.3f}"
+                        for s in scores.values()) + " |")
+                L += ["", f"{e['normalisation']}. Reproduce: {e['reproduce']}.", ""]
+                figures += [f for f in e["figures"] if f not in figures]
+            for fig in figures:
+                name = fig.rsplit("/", 1)[-1]
+                L += [f"![{name}]({{{{ '/assets/{name}' | relative_url }}}})", ""]
+            L += ["How to read these is on the [Validation]({{ '/validation/' | relative_url }}) page."]
         else:
             L.append("**No validation has been run for this case yet.** Nothing on this page is a claim about it. Engine status: "
                      + ", ".join(f"{k} {v}" for k, v in ENGINE_STATUS[case].items()) + ".")
@@ -632,6 +777,21 @@ def verify():
             gj = json.load(f)
         if gj["files"][0]["stats"]["triangles"] != s["triangles"]:
             problems.append(f"case {case}: geometry.json triangle count disagrees with the STL on disk")
+    import hashlib
+    import zipfile
+    with io.open(os.path.join(API, "geometry.json"), encoding="utf-8") as f:
+        gall = json.load(f)
+    with zipfile.ZipFile(os.path.join(API, "geometry.zip")) as z:
+        names = set(z.namelist())
+        for it in gall["files"]:
+            with io.open(os.path.join(API, it["path"]), "rb") as f:
+                on_disk = hashlib.sha256(f.read()).hexdigest()
+            if on_disk != it["sha256"]:
+                problems.append(f"geometry.json sha256 of {it['path']} disagrees with the file on disk")
+            if it["archive_name"] not in names or hashlib.sha256(z.read(it["archive_name"])).hexdigest() != it["sha256"]:
+                problems.append(f"geometry.zip lacks {it['archive_name']} or holds different bytes")
+        if len(names) != len(gall["files"]):
+            problems.append(f"geometry.zip holds {len(names)} files, geometry.json lists {len(gall['files'])}")
     return problems
 
 
@@ -641,8 +801,9 @@ def main():
     args = ap.parse_args()
     if not args.check:
         os.makedirs(API, exist_ok=True)
+        check_runs_registry()
         copy_assets()
-        percase, validations, extra = {}, {}, []
+        percase, validations, extra, geometry = {}, {}, [], {}
         for case in D.CASE_IDS:
             pts = build_points(case)
             geo = build_geometry(case)
@@ -650,8 +811,10 @@ def main():
             _, summ, configs = build_case(case, pts, geo, val)
             percase[case] = (summ, configs)
             validations[case] = val[0]
+            geometry[case] = geo[0]
             extra += [g["path"] for g in geo[0][1:]]
             print(f"case {case}: {summ['rows']} rows from {pts[1]}; geometry {[(c, s['triangles'], s['watertight']) for c, s, _ in geo[2]]}; validation {len(val[0])} result(s)")
+        build_geometry_all(geometry)
         build_cases_index(percase)
         build_index(extra)
         build_openapi()

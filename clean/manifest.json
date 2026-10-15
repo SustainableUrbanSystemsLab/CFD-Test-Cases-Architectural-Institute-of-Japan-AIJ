@@ -1,0 +1,1629 @@
+{
+ "name": "AIJ UWE benchmark — cleaned release, Cases A-E",
+ "version": "1.0.0",
+ "schema_version": "1.0.0",
+ "licence": {
+  "data": "CC BY 4.0",
+  "url": "https://creativecommons.org/licenses/by/4.0/",
+  "note": "The measurement data belongs to its collectors and distributors, named per case. Cite the benchmark paper and each case's requested citation."
+ },
+ "cite": {
+  "benchmark": "Kikumoto, H., Okaze, T., Yoshie, R. et al. (2026). Comprehensive Experimental Database for Validating CFD Simulations in Urban Wind Environment: Benchmark Cases Curated by the Architectural Institute of Japan. Japan Architectural Review 9(1), e70083. https://doi.org/10.1002/2475-8876.70083",
+  "guidelines": "Tominaga, Y. et al. (2008). AIJ guidelines for practical applications of CFD to pedestrian wind environment around buildings. JWEIA 96, 1749-1761. https://doi.org/10.1016/j.jweia.2008.02.058"
+ },
+ "built_by": "clean/build.py (deterministic; re-run to regenerate; checks.json carries the validity checks, build.log every transform)",
+ "schema": "SCHEMA.md",
+ "readme": "README.md",
+ "open_questions": "QUESTIONS.md",
+ "files": {
+  "points_csv": "points.csv",
+  "points_parquet": "points.parquet",
+  "approach_flow_csv": "approach_flow.csv",
+  "approach_flow_parquet": "approach_flow.parquet",
+  "directions_csv": "directions.csv",
+  "directions_parquet": "directions.parquet",
+  "units": "units.json",
+  "checks": "checks.json",
+  "log": "build.log"
+ },
+ "columns": {
+  "case_id": {
+   "unit": "",
+   "meaning": "AIJ UWE case letter: A, B, C, D or E"
+  },
+  "config": {
+   "unit": "",
+   "meaning": "configuration within the case: 'default' (A, B, D); Case C centre building '0D' | '1D' | '2D'; Case E 'bc' (before construction) | 'ac' (after construction)"
+  },
+  "instrument": {
+   "unit": "",
+   "meaning": "'split_fibre' = hot-wire split-fibre probe, vector components; 'thermistor' = omnidirectional scalar speed"
+  },
+  "point_id": {
+   "unit": "",
+   "meaning": "the tunnel's own measurement point number (No.); shared across configurations and directions of a case"
+  },
+  "wind_direction_deg": {
+   "unit": "deg",
+   "meaning": "the case's wind direction label. A-D: the AIJ turntable angle WD (0 = +x). E: meteorological FROM-direction, clockwise from north (N = 0, E = 90). The flow vector per direction is in directions.csv"
+  },
+  "wind_direction": {
+   "unit": "",
+   "meaning": "compass name of the FROM-direction (Case E only; '' elsewhere)"
+  },
+  "x": {
+   "unit": "m",
+   "meaning": "case frame (SCHEMA.md): +x = streamwise at WD = 0 for A-D, +x = east for E; model-scale metres for A-D, full-scale metres for E"
+  },
+  "y": {
+   "unit": "m",
+   "meaning": "case frame: +y lateral (A-D), +y = north (E)"
+  },
+  "z": {
+   "unit": "m",
+   "meaning": "height above the ground plane"
+  },
+  "U": {
+   "unit": "m/s",
+   "meaning": "mean velocity component along +x"
+  },
+  "V": {
+   "unit": "m/s",
+   "meaning": "mean velocity component along +y (positive toward +y in EVERY case; Case B's published sign is flipped, see manifest transform)"
+  },
+  "W": {
+   "unit": "m/s",
+   "meaning": "mean velocity component along +z"
+  },
+  "uu": {
+   "unit": "m^2/s^2",
+   "meaning": "variance of the x-component fluctuation <u'u'> (Case A publishes rms; squared here)"
+  },
+  "vv": {
+   "unit": "m^2/s^2",
+   "meaning": "variance <v'v'>"
+  },
+  "ww": {
+   "unit": "m^2/s^2",
+   "meaning": "variance <w'w'>"
+  },
+  "k": {
+   "unit": "m^2/s^2",
+   "meaning": "turbulent kinetic energy as published (= (uu+vv+ww)/2 wherever all three variances exist; checked)"
+  },
+  "Vs": {
+   "unit": "m/s",
+   "meaning": "mean omnidirectional SCALAR wind speed from a thermistor anemometer. NOT |mean velocity vector| (Case D's split-fibre |U| column is dropped, see log)"
+  },
+  "velocity_ratio": {
+   "unit": "-",
+   "meaning": "Case E: Vs / U_ref with U_ref = the approach-flow speed at z = 15.9 m (full scale); see manifest cases.E.normalisation"
+  }
+ },
+ "counts": {
+  "rows": 4317,
+  "by_case": {
+   "A": 186,
+   "B": 224,
+   "C": 1080,
+   "D": 267,
+   "E": 2560
+  }
+ },
+ "cases": {
+  "A": {
+   "id": "A",
+   "title": "Case A — flow around a 1:1:2 building",
+   "status": "released",
+   "status_note": null,
+   "doi": "10.5281/zenodo.15050147",
+   "doi_version": "10.5281/zenodo.15050148",
+   "zenodo_record": "https://zenodo.org/records/15050147",
+   "licence": "CC BY 4.0",
+   "data_collectors": [
+    "Takeshi Ishihara (The University of Tokyo)",
+    "Kazuki Hibi (Numerical Flow Design)"
+   ],
+   "editors_distributors": [
+    "Yoshihide Tominaga (Niigata Institute of Technology)",
+    "Hideki Kikumoto (The University of Tokyo)",
+    "Tsubasa Okaze (Institute of Science Tokyo)"
+   ],
+   "contact": "Takeshi Ishihara <ishihara@bridge.t.u-tokyo.ac.jp>",
+   "citation_requested": "Meng, Y., & Hibi, K. (1998). Turbulent measurements of the flow field around a high-rise building. J. Wind Eng. JAWE 76, 55-64. https://doi.org/10.5359/jawe.1998.76_55",
+   "files": {
+    "points_csv": "cases/A/points.csv",
+    "points_parquet": "cases/A/points.parquet",
+    "approach_flow_csv": "cases/A/approach_flow.csv",
+    "approach_flow_parquet": "cases/A/approach_flow.parquet",
+    "directions_csv": "cases/A/directions.csv",
+    "geometry_json": "cases/A/geometry.json",
+    "geometry": [
+     "cases/A/geometry.stl"
+    ]
+   },
+   "columns_present": [
+    "case_id",
+    "config",
+    "instrument",
+    "point_id",
+    "wind_direction_deg",
+    "wind_direction",
+    "x",
+    "y",
+    "z",
+    "U",
+    "V",
+    "W",
+    "uu",
+    "vv",
+    "ww",
+    "k"
+   ],
+   "counts": {
+    "rows": 186,
+    "distinct_points": 186,
+    "by_config": {
+     "default": 186
+    },
+    "by_instrument": {
+     "split_fibre": 186
+    },
+    "by_direction": {
+     "0.0": 186
+    },
+    "nan_per_column": {
+     "Vs": 186,
+     "velocity_ratio": 186
+    }
+   },
+   "configurations": [
+    {
+     "config": "default",
+     "instrument": "split_fibre",
+     "wind_direction_deg": 0.0,
+     "wind_direction": "",
+     "rows": 186,
+     "measured": 186,
+     "status": "settled"
+    }
+   ],
+   "frame": {
+    "origin": "building centre on the ground plane",
+    "x": "+x streamwise (wind at WD = 0 blows toward +x); building x in [-0.04, 0.04]",
+    "y": "+y lateral; building y in [-0.04, 0.04]; points published on the y <= 0 half",
+    "z": "+z up; roof at 0.16",
+    "length_scale": "model metres (the source states no model:full scale ratio)"
+   },
+   "transform_from_published": {
+    "coordinate_scale": 1.0,
+    "lateral_sign": 1,
+    "origin_shift_m": [
+     0,
+     0,
+     0
+    ],
+    "turbulence": "rms squared to variance",
+    "note": "none of x, y, z, U, V, W, k changed"
+   },
+   "inflow": {
+    "U_H_m_s": 4.491,
+    "U_H_stated_m_s": 4.49,
+    "H_m": 0.16,
+    "log_law": {
+     "z_range_m": [
+      0.02,
+      0.32
+     ],
+     "points": 16,
+     "u_star_m_s": 0.34275,
+     "z0_m": 0.0006683422749730811,
+     "z0_mm": 0.6683,
+     "rms_residual_m_s": 0.1593,
+     "rms_residual_rel": 0.0364,
+     "error_at_H_rel": 0.0197
+    },
+    "power_law": {
+     "z_range_m": [
+      0.02,
+      0.32
+     ],
+     "points": 16,
+     "alpha": 0.2025,
+     "max_rel_error": 0.0592
+    },
+    "method": "least squares, kappa = 0.41, z = 0.02 .. 2H on AF_caseA.csv"
+   },
+   "geometry_summary": [
+    {
+     "configuration": "default",
+     "file": "cases/A/geometry.stl",
+     "triangles": 12,
+     "watertight": true,
+     "bbox_min": [
+      -0.04,
+      -0.04,
+      0.0
+     ],
+     "bbox_max": [
+      0.04,
+      0.04,
+      0.16
+     ],
+     "boxes": 1
+    }
+   ],
+   "provenance": [
+    {
+     "path": "case-a/RS-caseA.csv",
+     "sha256": "f7e3c2479ef4edb07731ee41c47b12b68e3e10f021c429ec9c9dddda3e8781ad",
+     "bytes": 11237,
+     "origin": "repository clone of the Zenodo record"
+    },
+    {
+     "path": "case-a/AF_caseA.csv",
+     "sha256": "f626460853d87954215edffc36df79a4525fdd9488943b35a4b9d8ef9b3ae972",
+     "bytes": 883,
+     "origin": "repository clone of the Zenodo record"
+    },
+    {
+     "path": "case-a/LF-caseA.xls",
+     "sha256": "44c7af675e25246a7bcce1e5603515f73c635dd692d97cccd639d03586b845e1",
+     "bytes": 510976,
+     "origin": "repository clone of the Zenodo record"
+    },
+    {
+     "path": "case-a/readme_caseA.md",
+     "sha256": "8f97de6045b69bf4269be142029717b2f4be0718f269a70ae6b362314b7dd0da",
+     "bytes": 4068,
+     "origin": "repository clone of the Zenodo record"
+    }
+   ],
+   "known_issues": {},
+   "extra_measurements": {}
+  },
+  "B": {
+   "id": "B",
+   "title": "Case B — flow around a 1:4:4 slab",
+   "status": "released",
+   "status_note": null,
+   "doi": "10.5281/zenodo.15401455",
+   "doi_version": "10.5281/zenodo.15401456",
+   "zenodo_record": "https://zenodo.org/records/15401455",
+   "licence": "CC BY 4.0",
+   "data_collectors": [
+    "Yoshihide Tominaga (Niigata Institute of Technology)"
+   ],
+   "editors_distributors": [
+    "Yoshihide Tominaga (Niigata Institute of Technology)",
+    "Hideki Kikumoto (The University of Tokyo)",
+    "Tsubasa Okaze (Institute of Science Tokyo)"
+   ],
+   "contact": "Yoshihide Tominaga <tominaga@abe.niit.ac.jp>",
+   "citation_requested": "Miyazaki, T., Tominaga, Y. (2003). Wind tunnel experiment on flow field around a building model with a scale ratio of 4:4:1 placed within the surface boundary layer. Proc. Annual Meeting of Hokuriku Chapter, AIJ, 201-204 (in Japanese). https://www.aij.or.jp/paper/detail.html?productId=313933",
+   "files": {
+    "points_csv": "cases/B/points.csv",
+    "points_parquet": "cases/B/points.parquet",
+    "approach_flow_csv": "cases/B/approach_flow.csv",
+    "approach_flow_parquet": "cases/B/approach_flow.parquet",
+    "directions_csv": "cases/B/directions.csv",
+    "geometry_json": "cases/B/geometry.json",
+    "geometry": [
+     "cases/B/geometry.stl"
+    ]
+   },
+   "columns_present": [
+    "case_id",
+    "config",
+    "instrument",
+    "point_id",
+    "wind_direction_deg",
+    "wind_direction",
+    "x",
+    "y",
+    "z",
+    "U",
+    "V",
+    "W",
+    "uu",
+    "vv",
+    "ww",
+    "k"
+   ],
+   "counts": {
+    "rows": 224,
+    "distinct_points": 224,
+    "by_config": {
+     "default": 224
+    },
+    "by_instrument": {
+     "split_fibre": 224
+    },
+    "by_direction": {
+     "0.0": 224
+    },
+    "nan_per_column": {
+     "Vs": 224,
+     "velocity_ratio": 224
+    }
+   },
+   "configurations": [
+    {
+     "config": "default",
+     "instrument": "split_fibre",
+     "wind_direction_deg": 0.0,
+     "wind_direction": "",
+     "rows": 224,
+     "measured": 224,
+     "status": "settled"
+    }
+   ],
+   "frame": {
+    "origin": "building centre on the ground plane",
+    "x": "+x streamwise (wind at WD = 0 blows toward +x); slab x in [-0.025, 0.025]",
+    "y": "+y lateral; slab y in [-0.10, 0.10]; points published on the y <= 0 half",
+    "z": "+z up; roof at 0.20",
+    "length_scale": "model metres (the source states no model:full scale ratio)"
+   },
+   "transform_from_published": {
+    "coordinate_scale": 0.001,
+    "lateral_sign": -1,
+    "origin_shift_m": [
+     0,
+     0,
+     0
+    ],
+    "turbulence": "variances as published",
+    "note": "x, y, z from mm to m; V sign flipped; nothing else changed"
+   },
+   "inflow": {
+    "U_H_m_s": 5.133,
+    "U_H_stated_m_s": 5.1,
+    "H_m": 0.2,
+    "log_law": {
+     "z_range_m": [
+      0.02,
+      0.4
+     ],
+     "points": 7,
+     "u_star_m_s": 0.39913,
+     "z0_m": 0.0008817132228257489,
+     "z0_mm": 0.8817,
+     "rms_residual_m_s": 0.1732,
+     "rms_residual_rel": 0.038,
+     "error_at_H_rel": 0.0287
+    },
+    "power_law": {
+     "z_range_m": [
+      0.02,
+      0.4
+     ],
+     "points": 7,
+     "alpha": 0.2157,
+     "max_rel_error": 0.0341
+    },
+    "method": "least squares, kappa = 0.41, z = 0.02 .. 2H on AF_caseB.csv"
+   },
+   "geometry_summary": [
+    {
+     "configuration": "default",
+     "file": "cases/B/geometry.stl",
+     "triangles": 12,
+     "watertight": true,
+     "bbox_min": [
+      -0.025,
+      -0.1,
+      0.0
+     ],
+     "bbox_max": [
+      0.025,
+      0.1,
+      0.2
+     ],
+     "boxes": 1
+    }
+   ],
+   "provenance": [
+    {
+     "path": "case-b/RS_caseB.csv",
+     "sha256": "3b12e6955e2681fcab0591deaf960c5833e47b8fc4a42b1ba0a44007309ac4b8",
+     "bytes": 12938,
+     "origin": "repository clone of the Zenodo record"
+    },
+    {
+     "path": "case-b/AF_caseB.csv",
+     "sha256": "c775a3fb8de1abb9598593c47a5e6646d020864132742048b0c2d549840b22fc",
+     "bytes": 543,
+     "origin": "repository clone of the Zenodo record"
+    },
+    {
+     "path": "case-b/LF_caseB.xls",
+     "sha256": "883c055670596f6ae3800b0a951e1c8a338e3c0ba438bb5397bae1a83e3ee214",
+     "bytes": 113664,
+     "origin": "repository clone of the Zenodo record"
+    },
+    {
+     "path": "case-b/readme_caseB.md",
+     "sha256": "dae340cabc7a347f4790a082a4877ca6dde011c13833db193b6fb3c203e531a8",
+     "bytes": 4108,
+     "origin": "repository clone of the Zenodo record"
+    }
+   ],
+   "known_issues": {},
+   "extra_measurements": {}
+  },
+  "C": {
+   "id": "C",
+   "title": "Case C — flow within a 3 x 3 array of blocks",
+   "status": "released",
+   "status_note": null,
+   "doi": "10.5281/zenodo.15401791",
+   "doi_version": "10.5281/zenodo.15401792",
+   "zenodo_record": "https://zenodo.org/records/15401791",
+   "licence": "CC BY 4.0",
+   "data_collectors": [
+    "Yoshitami Nonomura (Yamato University)"
+   ],
+   "editors_distributors": [
+    "Yoshihide Tominaga (Niigata Institute of Technology)",
+    "Hideki Kikumoto (The University of Tokyo)",
+    "Tsubasa Okaze (Institute of Science Tokyo)"
+   ],
+   "contact": "Yoshitami Nonomura <nonomura.yoshitami@yamato-u.ac.jp>",
+   "citation_requested": "Nonomura, Y., Kobayashi, N., Tominaga, Y., Mochida, A. (2003). The cross comparison of CFD results for flow field around building models (part 3). Japan Association for Wind Engineering 95, 83-84 (in Japanese). https://doi.org/10.14887/jaweam.2003.0.41.0",
+   "files": {
+    "points_csv": "cases/C/points.csv",
+    "points_parquet": "cases/C/points.parquet",
+    "approach_flow_csv": "cases/C/approach_flow.csv",
+    "approach_flow_parquet": "cases/C/approach_flow.parquet",
+    "directions_csv": "cases/C/directions.csv",
+    "geometry_json": "cases/C/geometry.json",
+    "geometry": [
+     "cases/C/geometry_0D.stl",
+     "cases/C/geometry_1D.stl",
+     "cases/C/geometry_2D.stl"
+    ]
+   },
+   "columns_present": [
+    "case_id",
+    "config",
+    "instrument",
+    "point_id",
+    "wind_direction_deg",
+    "wind_direction",
+    "x",
+    "y",
+    "z",
+    "Vs"
+   ],
+   "counts": {
+    "rows": 1080,
+    "distinct_points": 120,
+    "by_config": {
+     "0D": 360,
+     "1D": 360,
+     "2D": 360
+    },
+    "by_instrument": {
+     "thermistor": 1080
+    },
+    "by_direction": {
+     "0.0": 360,
+     "22.5": 360,
+     "45.0": 360
+    },
+    "nan_per_column": {
+     "U": 1080,
+     "V": 1080,
+     "W": 1080,
+     "uu": 1080,
+     "vv": 1080,
+     "ww": 1080,
+     "k": 1080,
+     "velocity_ratio": 1080
+    }
+   },
+   "configurations": [
+    {
+     "config": "0D",
+     "instrument": "thermistor",
+     "wind_direction_deg": 0.0,
+     "wind_direction": "",
+     "rows": 120,
+     "measured": 120,
+     "status": "settled"
+    },
+    {
+     "config": "0D",
+     "instrument": "thermistor",
+     "wind_direction_deg": 22.5,
+     "wind_direction": "",
+     "rows": 120,
+     "measured": 120,
+     "status": "settled (from the data; disagrees with Figure 3 of the data paper — QUESTIONS.md Q1)"
+    },
+    {
+     "config": "0D",
+     "instrument": "thermistor",
+     "wind_direction_deg": 45.0,
+     "wind_direction": "",
+     "rows": 120,
+     "measured": 120,
+     "status": "settled (from the data; disagrees with Figure 3 of the data paper — QUESTIONS.md Q1)"
+    },
+    {
+     "config": "1D",
+     "instrument": "thermistor",
+     "wind_direction_deg": 0.0,
+     "wind_direction": "",
+     "rows": 120,
+     "measured": 120,
+     "status": "settled"
+    },
+    {
+     "config": "1D",
+     "instrument": "thermistor",
+     "wind_direction_deg": 22.5,
+     "wind_direction": "",
+     "rows": 120,
+     "measured": 120,
+     "status": "settled (from the data; disagrees with Figure 3 of the data paper — QUESTIONS.md Q1)"
+    },
+    {
+     "config": "1D",
+     "instrument": "thermistor",
+     "wind_direction_deg": 45.0,
+     "wind_direction": "",
+     "rows": 120,
+     "measured": 120,
+     "status": "settled (from the data; disagrees with Figure 3 of the data paper — QUESTIONS.md Q1)"
+    },
+    {
+     "config": "2D",
+     "instrument": "thermistor",
+     "wind_direction_deg": 0.0,
+     "wind_direction": "",
+     "rows": 120,
+     "measured": 120,
+     "status": "settled"
+    },
+    {
+     "config": "2D",
+     "instrument": "thermistor",
+     "wind_direction_deg": 22.5,
+     "wind_direction": "",
+     "rows": 120,
+     "measured": 120,
+     "status": "settled (from the data; disagrees with Figure 3 of the data paper — QUESTIONS.md Q1)"
+    },
+    {
+     "config": "2D",
+     "instrument": "thermistor",
+     "wind_direction_deg": 45.0,
+     "wind_direction": "",
+     "rows": 120,
+     "measured": 120,
+     "status": "settled (from the data; disagrees with Figure 3 of the data paper — QUESTIONS.md Q1)"
+    }
+   ],
+   "frame": {
+    "origin": "array centre on the ground plane (centre of the middle block)",
+    "x": "+x streamwise at WD = 0 (measured: see checks WD0_flow_is_along_x)",
+    "y": "+y lateral",
+    "z": "+z up; every point at z = 0.02 = 0.1 D",
+    "wind_direction_rotation": "In this frame WD rotates the wind from +x TOWARD -y (measured: the WD = 45 field is mirror-symmetric about y = -x at the experiment's repeatability and not about y = +x). flow_dir = (cos WD, -sin WD). Figure 3 of the data paper draws the opposite sense — QUESTIONS.md Q1.",
+    "length_scale": "model metres (the source states no model:full scale ratio)"
+   },
+   "transform_from_published": {
+    "coordinate_scale": 1.0,
+    "lateral_sign": 1,
+    "origin_shift_m": [
+     0,
+     0,
+     0
+    ],
+    "note": "no numeric change; CB text to config, trailing empty column dropped"
+   },
+   "inflow": {
+    "U_H_m_s": 3.654,
+    "U_H_stated_m_s": 3.65,
+    "H_m": 0.2,
+    "U_at_measurement_height_m_s": 2.434,
+    "measurement_height_m": 0.02,
+    "turbulence_intensity_at_H": 0.2192,
+    "log_law": {
+     "z_range_m": [
+      0.02,
+      0.4
+     ],
+     "points": 11,
+     "u_star_m_s": 0.25598,
+     "z0_m": 0.00047971123493566865,
+     "z0_mm": 0.4797,
+     "rms_residual_m_s": 0.0852,
+     "rms_residual_rel": 0.0248,
+     "error_at_H_rel": 0.0308,
+     "error_at_z_0.02_rel": -0.0431
+    },
+    "log_law_alt_window": {
+     "z_range_m": [
+      0.01,
+      0.4
+     ],
+     "points": 12,
+     "u_star_m_s": 0.22853,
+     "z0_m": 0.00023623405831145434,
+     "z0_mm": 0.2362,
+     "rms_residual_m_s": 0.1339,
+     "rms_residual_rel": 0.0399,
+     "error_at_H_rel": 0.0283,
+     "error_at_z_0.02_rel": 0.0165
+    },
+    "power_law": {
+     "z_range_m": [
+      0.02,
+      0.4
+     ],
+     "points": 11,
+     "alpha": 0.1901,
+     "max_rel_error": 0.0346
+    },
+    "method": "least squares, kappa = 0.41; two windows because every point is scored at z = 0.02 m, the lowest tabulated height but one"
+   },
+   "geometry_summary": [
+    {
+     "configuration": "0D",
+     "file": "cases/C/geometry_0D.stl",
+     "triangles": 96,
+     "watertight": true,
+     "bbox_min": [
+      -0.5,
+      -0.5,
+      0.0
+     ],
+     "bbox_max": [
+      0.5,
+      0.5,
+      0.2
+     ],
+     "boxes": 8
+    },
+    {
+     "configuration": "1D",
+     "file": "cases/C/geometry_1D.stl",
+     "triangles": 108,
+     "watertight": true,
+     "bbox_min": [
+      -0.5,
+      -0.5,
+      0.0
+     ],
+     "bbox_max": [
+      0.5,
+      0.5,
+      0.2
+     ],
+     "boxes": 9
+    },
+    {
+     "configuration": "2D",
+     "file": "cases/C/geometry_2D.stl",
+     "triangles": 108,
+     "watertight": true,
+     "bbox_min": [
+      -0.5,
+      -0.5,
+      0.0
+     ],
+     "bbox_max": [
+      0.5,
+      0.5,
+      0.4
+     ],
+     "boxes": 9
+    }
+   ],
+   "provenance": [
+    {
+     "path": "case-c/RS_caseC.csv",
+     "sha256": "e10e08551e700442ee5e117de76afc93b1b386b1e70df62aeeadde2cf0eced8d",
+     "bytes": 33169,
+     "origin": "repository clone of the Zenodo record"
+    },
+    {
+     "path": "case-c/AF_caseC.csv",
+     "sha256": "0d100e7051414afb4e9b46a4ed84237566d2276d09dbb45e11e3610b5820792c",
+     "bytes": 285,
+     "origin": "repository clone of the Zenodo record"
+    },
+    {
+     "path": "case-c/LF-caseC.xls",
+     "sha256": "be0c7bd18ba0b6bba514bc5f246f11d703055bea1c6029c4b35d229ebd22b7d5",
+     "bytes": 1165312,
+     "origin": "repository clone of the Zenodo record"
+    },
+    {
+     "path": "case-c/readme_caseC.md",
+     "sha256": "b5c3dfa1ee1095324ae520cdb0e8d6b4eb7632b9a834b96b5d627a0fe1f3381f",
+     "bytes": 4070,
+     "origin": "repository clone of the Zenodo record"
+    }
+   ],
+   "known_issues": {},
+   "extra_measurements": {
+    "0D": {
+     "WD0_y_mirror_mean_abs_dVs": 0.102,
+     "WD0_x_mirror_mean_abs_dVs": 0.4678,
+     "pairs": 120,
+     "mean_Vs_x<=-0.25": 2.0642,
+     "mean_Vs_x>=0.25": 1.6105,
+     "WD45_antidiagonal_mirror_mean_abs_dVs": 0.1077,
+     "WD45_maindiagonal_mirror_mean_abs_dVs": 0.522
+    },
+    "1D": {
+     "WD0_y_mirror_mean_abs_dVs": 0.1063,
+     "WD0_x_mirror_mean_abs_dVs": 0.4385,
+     "pairs": 120,
+     "mean_Vs_x<=-0.25": 2.0342,
+     "mean_Vs_x>=0.25": 1.4574,
+     "WD45_antidiagonal_mirror_mean_abs_dVs": 0.1028,
+     "WD45_maindiagonal_mirror_mean_abs_dVs": 0.7725
+    },
+    "2D": {
+     "WD0_y_mirror_mean_abs_dVs": 0.0878,
+     "WD0_x_mirror_mean_abs_dVs": 0.6885,
+     "pairs": 120,
+     "mean_Vs_x<=-0.25": 2.1947,
+     "mean_Vs_x>=0.25": 1.45,
+     "WD45_antidiagonal_mirror_mean_abs_dVs": 0.1303,
+     "WD45_maindiagonal_mirror_mean_abs_dVs": 0.8043
+    }
+   }
+  },
+  "D": {
+   "id": "D",
+   "title": "Case D — flow around a high-rise building in city blocks",
+   "status": "released",
+   "status_note": null,
+   "doi": "10.5281/zenodo.15402668",
+   "doi_version": "10.5281/zenodo.15402669",
+   "zenodo_record": "https://zenodo.org/records/15402668",
+   "licence": "CC BY 4.0",
+   "data_collectors": [
+    "Yoshihide Tominaga (Niigata Institute of Technology)"
+   ],
+   "editors_distributors": [
+    "Yoshihide Tominaga (Niigata Institute of Technology)",
+    "Hideki Kikumoto (The University of Tokyo)",
+    "Tsubasa Okaze (Institute of Science Tokyo)"
+   ],
+   "contact": "Yoshihide Tominaga <tominaga@abe.niit.ac.jp>",
+   "citation_requested": "Kikumoto, H., Okaze, T., Yoshie, R. et al. (2026). Comprehensive Experimental Database for Validating CFD Simulations in Urban Wind Environment: Benchmark Cases Curated by the Architectural Institute of Japan. Japan Architectural Review 9(1), e70083, section 3.4. https://doi.org/10.1002/2475-8876.70083",
+   "files": {
+    "points_csv": "cases/D/points.csv",
+    "points_parquet": "cases/D/points.parquet",
+    "approach_flow_csv": "cases/D/approach_flow.csv",
+    "approach_flow_parquet": "cases/D/approach_flow.parquet",
+    "directions_csv": "cases/D/directions.csv",
+    "geometry_json": "cases/D/geometry.json",
+    "geometry": [
+     "cases/D/geometry.stl"
+    ]
+   },
+   "columns_present": [
+    "case_id",
+    "config",
+    "instrument",
+    "point_id",
+    "wind_direction_deg",
+    "wind_direction",
+    "x",
+    "y",
+    "z",
+    "U",
+    "V",
+    "W",
+    "uu",
+    "vv",
+    "ww",
+    "k",
+    "Vs"
+   ],
+   "counts": {
+    "rows": 267,
+    "distinct_points": 78,
+    "by_config": {
+     "default": 267
+    },
+    "by_instrument": {
+     "split_fibre": 33,
+     "thermistor": 234
+    },
+    "by_direction": {
+     "0.0": 111,
+     "22.5": 78,
+     "45.0": 78
+    },
+    "nan_per_column": {
+     "U": 234,
+     "V": 234,
+     "W": 234,
+     "uu": 234,
+     "vv": 234,
+     "ww": 234,
+     "k": 234,
+     "Vs": 69,
+     "velocity_ratio": 267
+    }
+   },
+   "configurations": [
+    {
+     "config": "default",
+     "instrument": "split_fibre",
+     "wind_direction_deg": 0.0,
+     "wind_direction": "",
+     "rows": 33,
+     "measured": 33,
+     "status": "settled"
+    },
+    {
+     "config": "default",
+     "instrument": "thermistor",
+     "wind_direction_deg": 0.0,
+     "wind_direction": "",
+     "rows": 78,
+     "measured": 66,
+     "status": "settled"
+    },
+    {
+     "config": "default",
+     "instrument": "thermistor",
+     "wind_direction_deg": 22.5,
+     "wind_direction": "",
+     "rows": 78,
+     "measured": 66,
+     "status": "unverified — QUESTIONS.md Q2"
+    },
+    {
+     "config": "default",
+     "instrument": "thermistor",
+     "wind_direction_deg": 45.0,
+     "wind_direction": "",
+     "rows": 78,
+     "measured": 66,
+     "status": "unverified — QUESTIONS.md Q2"
+    }
+   ],
+   "frame": {
+    "origin": "tower centre on the ground plane (the array's bounding box is centred on it)",
+    "x": "+x streamwise at WD = 0 (measured: split-fibre U, exact y-mirror symmetry of the 0 deg field)",
+    "y": "+y lateral",
+    "z": "+z up; every point at z = 0.005 = 0.02 H",
+    "wind_direction_rotation": "UNVERIFIED for 22.5 and 45 deg: the array is exactly y-mirror symmetric so the data cannot fix the sense; the scoping read of Figure 4 of the data paper says +x toward +y, i.e. flow_dir = (cos WD, +sin WD) — the OPPOSITE of what Case C's data show for Case C. QUESTIONS.md Q2.",
+    "length_scale": "model metres; scale 1:400 (readme), H = 0.25 m = 100 m full scale"
+   },
+   "transform_from_published": {
+    "coordinate_scale": 1.0,
+    "lateral_sign": 1,
+    "origin_shift_m": [
+     0,
+     0,
+     0
+    ],
+    "note": "Zenodo CSVs are in metres already; -999.9 -> NaN; split-fibre |U| column dropped; variances from the workbook"
+   },
+   "inflow": {
+    "U_H_m_s": 6.6672,
+    "U_H_stated_m_s": 6.65,
+    "H_m": 0.25,
+    "U_at_measurement_height_m_s": 3.833,
+    "measurement_height_m": 0.005,
+    "k_at_measurement_height_m2_s2": 0.529,
+    "k_at_H_m2_s2": 0.7165,
+    "log_law": {
+     "z_range_m": [
+      0.005,
+      0.5
+     ],
+     "points": 9,
+     "u_star_m_s": 0.34007,
+     "z0_m": 9.072440730756916e-05,
+     "z0_mm": 0.0907,
+     "rms_residual_m_s": 0.388,
+     "rms_residual_rel": 0.0733,
+     "error_at_H_rel": -0.0145,
+     "error_at_z_0.005_rel": -0.1324,
+     "inlet_k_m2_s2_atmBoundaryLayer": 0.3855
+    },
+    "log_law_alt_window": {
+     "z_range_m": [
+      0.02,
+      0.5
+     ],
+     "points": 7,
+     "u_star_m_s": 0.44083,
+     "z0_m": 0.0004903198482914012,
+     "z0_mm": 0.4903,
+     "rms_residual_m_s": 0.2626,
+     "rms_residual_rel": 0.0463,
+     "error_at_H_rel": 0.0054,
+     "error_at_z_0.005_rel": -0.3486,
+     "inlet_k_m2_s2_atmBoundaryLayer": 0.6478
+    },
+    "power_law": {
+     "z_range_m": [
+      0.02,
+      0.5
+     ],
+     "points": 7,
+     "alpha": 0.1893,
+     "max_rel_error": 0.0519
+    },
+    "method": "least squares, kappa = 0.41; two windows because the measurement plane z/H = 0.02 lies below the 0.02..2H window used for A/B"
+   },
+   "geometry_summary": [
+    {
+     "configuration": "default",
+     "file": "cases/D/geometry.stl",
+     "triangles": 996,
+     "watertight": true,
+     "bbox_min": [
+      -0.7,
+      -0.675,
+      0.0
+     ],
+     "bbox_max": [
+      0.7,
+      0.675,
+      0.25
+     ],
+     "boxes": 83
+    }
+   ],
+   "provenance": [
+    {
+     "path": "sources/zenodo_caseD/RS-T_caseD.csv",
+     "sha256": "bec06720fec7871b5fff66c4b0a8cb20b9d61d0fa5a440000b12c6c0e21ad3de",
+     "bytes": 8046,
+     "origin": "Zenodo 10.5281/zenodo.15402669 (downloaded; SHA256SUMS.txt beside it)"
+    },
+    {
+     "path": "sources/zenodo_caseD/RS-S_caseD.csv",
+     "sha256": "37de138791884056b9f8895eb33bfb723b027e7f17047bfa026bcc785c7d52ad",
+     "bytes": 6362,
+     "origin": "Zenodo 10.5281/zenodo.15402669 (downloaded; SHA256SUMS.txt beside it)"
+    },
+    {
+     "path": "sources/zenodo_caseD/AF_caseD.csv",
+     "sha256": "36541796c2a39ba8ff2941772b0e4566c300d24a806aee01aa0068626cead29a",
+     "bytes": 247,
+     "origin": "Zenodo 10.5281/zenodo.15402669 (downloaded; SHA256SUMS.txt beside it)"
+    },
+    {
+     "path": "sources/zenodo_caseD/BD_caseD.stl",
+     "sha256": "2acc1f5af0dc4a4799835d2b77be6c67a667d7f8b22abf2a4e393e476bb5802e",
+     "bytes": 206511,
+     "origin": "Zenodo 10.5281/zenodo.15402669 (downloaded; SHA256SUMS.txt beside it)"
+    },
+    {
+     "path": "sources/zenodo_caseD/LF_caseD.xls",
+     "sha256": "55ba922c81894bc7f57bb961adb209b21d363a89fb1373f9236c8f6942e40fd4",
+     "bytes": 116736,
+     "origin": "Zenodo 10.5281/zenodo.15402669 (downloaded; SHA256SUMS.txt beside it)"
+    },
+    {
+     "path": "sources/zenodo_caseD/readme_caseD.md",
+     "sha256": "517977ce5fcd469feff7ae166c4035b1c96251c2c925509e523603b61bfef3b8",
+     "bytes": 4015,
+     "origin": "Zenodo 10.5281/zenodo.15402669 (downloaded; SHA256SUMS.txt beside it)"
+    },
+    {
+     "path": "sources/zenodo_caseD/MP_caseD.png",
+     "sha256": "9550457b123bf3b29be08142021f57f3a489d6fa05796eaeaf6b87d8b85b3cb0",
+     "bytes": 302393,
+     "origin": "Zenodo 10.5281/zenodo.15402669 (downloaded; SHA256SUMS.txt beside it)"
+    }
+   ],
+   "known_issues": {},
+   "extra_measurements": {
+    "raw_stl_stats": {
+     "triangles": 1572,
+     "bbox_min": [
+      -0.7,
+      -0.675,
+      0.0
+     ],
+     "bbox_max": [
+      0.7,
+      0.675,
+      0.25
+     ],
+     "signed_volume": 0.011158854,
+     "edges": 1494,
+     "edges_shared_by_two_faces": 738,
+     "edges_boundary": 0,
+     "edges_non_manifold": 756,
+     "watertight": false
+    },
+    "thermistor_mirror_symmetry": {
+     "0.0": {
+      "pairs": 66,
+      "max_abs_dVs": 0.0,
+      "mean_abs_dVs": 0.0
+     },
+     "22.5": {
+      "pairs": 66,
+      "max_abs_dVs": 2.277,
+      "mean_abs_dVs": 0.9872
+     },
+     "45.0": {
+      "pairs": 66,
+      "max_abs_dVs": 3.529,
+      "mean_abs_dVs": 1.4575
+     }
+    }
+   }
+  },
+  "E": {
+   "id": "E",
+   "title": "Case E — flow within an actual urban area in Niigata",
+   "status": "provisional",
+   "status_note": "Case E: points and inflow are released at full precision from the official workbook and pass every check; what stays provisional is the GEOMETRY of the before-construction state (an Eddy3D reconstruction with no published source) and the open questions in QUESTIONS.md (Q3).",
+   "doi": "10.5281/zenodo.15429017",
+   "doi_version": "10.5281/zenodo.15429018",
+   "zenodo_record": "https://zenodo.org/records/15429017",
+   "licence": "CC BY 4.0",
+   "data_collectors": [
+    "Yoshihide Tominaga (Niigata Institute of Technology)"
+   ],
+   "editors_distributors": [
+    "Yoshihide Tominaga (Niigata Institute of Technology)",
+    "Hideki Kikumoto (The University of Tokyo)",
+    "Tsubasa Okaze (Institute of Science Tokyo)"
+   ],
+   "contact": "Yoshihide Tominaga <tominaga@abe.niit.ac.jp>",
+   "citation_requested": "Tominaga, Y., Mochida, A., Yoshie, R., Kataoka, H., Nozu, T., Yoshikawa, M., Shirasawa, T. (2008). AIJ guidelines for practical applications of CFD to pedestrian wind environment around buildings. JWEIA 96, 1749-1761. https://doi.org/10.1016/j.jweia.2008.02.058",
+   "files": {
+    "points_csv": "cases/E/points.csv",
+    "points_parquet": "cases/E/points.parquet",
+    "approach_flow_csv": "cases/E/approach_flow.csv",
+    "approach_flow_parquet": "cases/E/approach_flow.parquet",
+    "directions_csv": "cases/E/directions.csv",
+    "geometry_json": "cases/E/geometry.json",
+    "geometry": [
+     "cases/E/geometry_ac.stl",
+     "cases/E/geometry_ac_3dm.stl",
+     "cases/E/geometry_bc_3dm.stl"
+    ]
+   },
+   "columns_present": [
+    "case_id",
+    "config",
+    "instrument",
+    "point_id",
+    "wind_direction_deg",
+    "wind_direction",
+    "x",
+    "y",
+    "z",
+    "velocity_ratio"
+   ],
+   "counts": {
+    "rows": 2560,
+    "distinct_points": 80,
+    "by_config": {
+     "ac": 1280,
+     "bc": 1280
+    },
+    "by_instrument": {
+     "thermistor": 2560
+    },
+    "by_direction": {
+     "0.0": 160,
+     "22.5": 160,
+     "45.0": 160,
+     "67.5": 160,
+     "90.0": 160,
+     "112.5": 160,
+     "135.0": 160,
+     "157.5": 160,
+     "180.0": 160,
+     "202.5": 160,
+     "225.0": 160,
+     "247.5": 160,
+     "270.0": 160,
+     "292.5": 160,
+     "315.0": 160,
+     "337.5": 160
+    },
+    "nan_per_column": {
+     "U": 2560,
+     "V": 2560,
+     "W": 2560,
+     "uu": 2560,
+     "vv": 2560,
+     "ww": 2560,
+     "k": 2560,
+     "Vs": 2560
+    }
+   },
+   "configurations": [
+    {
+     "config": "ac",
+     "instrument": "thermistor",
+     "wind_direction_deg": 0.0,
+     "wind_direction": "N",
+     "rows": 80,
+     "measured": 80,
+     "status": "settled"
+    },
+    {
+     "config": "ac",
+     "instrument": "thermistor",
+     "wind_direction_deg": 22.5,
+     "wind_direction": "NNE",
+     "rows": 80,
+     "measured": 80,
+     "status": "settled"
+    },
+    {
+     "config": "ac",
+     "instrument": "thermistor",
+     "wind_direction_deg": 45.0,
+     "wind_direction": "NE",
+     "rows": 80,
+     "measured": 80,
+     "status": "settled"
+    },
+    {
+     "config": "ac",
+     "instrument": "thermistor",
+     "wind_direction_deg": 67.5,
+     "wind_direction": "ENE",
+     "rows": 80,
+     "measured": 80,
+     "status": "settled"
+    },
+    {
+     "config": "ac",
+     "instrument": "thermistor",
+     "wind_direction_deg": 90.0,
+     "wind_direction": "E",
+     "rows": 80,
+     "measured": 80,
+     "status": "settled"
+    },
+    {
+     "config": "ac",
+     "instrument": "thermistor",
+     "wind_direction_deg": 112.5,
+     "wind_direction": "ESE",
+     "rows": 80,
+     "measured": 80,
+     "status": "settled"
+    },
+    {
+     "config": "ac",
+     "instrument": "thermistor",
+     "wind_direction_deg": 135.0,
+     "wind_direction": "SE",
+     "rows": 80,
+     "measured": 80,
+     "status": "settled"
+    },
+    {
+     "config": "ac",
+     "instrument": "thermistor",
+     "wind_direction_deg": 157.5,
+     "wind_direction": "SSE",
+     "rows": 80,
+     "measured": 80,
+     "status": "settled"
+    },
+    {
+     "config": "ac",
+     "instrument": "thermistor",
+     "wind_direction_deg": 180.0,
+     "wind_direction": "S",
+     "rows": 80,
+     "measured": 80,
+     "status": "settled"
+    },
+    {
+     "config": "ac",
+     "instrument": "thermistor",
+     "wind_direction_deg": 202.5,
+     "wind_direction": "SSW",
+     "rows": 80,
+     "measured": 80,
+     "status": "settled"
+    },
+    {
+     "config": "ac",
+     "instrument": "thermistor",
+     "wind_direction_deg": 225.0,
+     "wind_direction": "SW",
+     "rows": 80,
+     "measured": 80,
+     "status": "settled"
+    },
+    {
+     "config": "ac",
+     "instrument": "thermistor",
+     "wind_direction_deg": 247.5,
+     "wind_direction": "WSW",
+     "rows": 80,
+     "measured": 80,
+     "status": "settled"
+    },
+    {
+     "config": "ac",
+     "instrument": "thermistor",
+     "wind_direction_deg": 270.0,
+     "wind_direction": "W",
+     "rows": 80,
+     "measured": 80,
+     "status": "settled"
+    },
+    {
+     "config": "ac",
+     "instrument": "thermistor",
+     "wind_direction_deg": 292.5,
+     "wind_direction": "WNW",
+     "rows": 80,
+     "measured": 80,
+     "status": "settled"
+    },
+    {
+     "config": "ac",
+     "instrument": "thermistor",
+     "wind_direction_deg": 315.0,
+     "wind_direction": "NW",
+     "rows": 80,
+     "measured": 80,
+     "status": "settled"
+    },
+    {
+     "config": "ac",
+     "instrument": "thermistor",
+     "wind_direction_deg": 337.5,
+     "wind_direction": "NNW",
+     "rows": 80,
+     "measured": 80,
+     "status": "settled"
+    },
+    {
+     "config": "bc",
+     "instrument": "thermistor",
+     "wind_direction_deg": 0.0,
+     "wind_direction": "N",
+     "rows": 80,
+     "measured": 80,
+     "status": "settled"
+    },
+    {
+     "config": "bc",
+     "instrument": "thermistor",
+     "wind_direction_deg": 22.5,
+     "wind_direction": "NNE",
+     "rows": 80,
+     "measured": 80,
+     "status": "settled"
+    },
+    {
+     "config": "bc",
+     "instrument": "thermistor",
+     "wind_direction_deg": 45.0,
+     "wind_direction": "NE",
+     "rows": 80,
+     "measured": 80,
+     "status": "settled"
+    },
+    {
+     "config": "bc",
+     "instrument": "thermistor",
+     "wind_direction_deg": 67.5,
+     "wind_direction": "ENE",
+     "rows": 80,
+     "measured": 80,
+     "status": "settled"
+    },
+    {
+     "config": "bc",
+     "instrument": "thermistor",
+     "wind_direction_deg": 90.0,
+     "wind_direction": "E",
+     "rows": 80,
+     "measured": 80,
+     "status": "settled"
+    },
+    {
+     "config": "bc",
+     "instrument": "thermistor",
+     "wind_direction_deg": 112.5,
+     "wind_direction": "ESE",
+     "rows": 80,
+     "measured": 80,
+     "status": "settled"
+    },
+    {
+     "config": "bc",
+     "instrument": "thermistor",
+     "wind_direction_deg": 135.0,
+     "wind_direction": "SE",
+     "rows": 80,
+     "measured": 80,
+     "status": "settled"
+    },
+    {
+     "config": "bc",
+     "instrument": "thermistor",
+     "wind_direction_deg": 157.5,
+     "wind_direction": "SSE",
+     "rows": 80,
+     "measured": 80,
+     "status": "settled"
+    },
+    {
+     "config": "bc",
+     "instrument": "thermistor",
+     "wind_direction_deg": 180.0,
+     "wind_direction": "S",
+     "rows": 80,
+     "measured": 80,
+     "status": "settled"
+    },
+    {
+     "config": "bc",
+     "instrument": "thermistor",
+     "wind_direction_deg": 202.5,
+     "wind_direction": "SSW",
+     "rows": 80,
+     "measured": 80,
+     "status": "settled"
+    },
+    {
+     "config": "bc",
+     "instrument": "thermistor",
+     "wind_direction_deg": 225.0,
+     "wind_direction": "SW",
+     "rows": 80,
+     "measured": 80,
+     "status": "settled"
+    },
+    {
+     "config": "bc",
+     "instrument": "thermistor",
+     "wind_direction_deg": 247.5,
+     "wind_direction": "WSW",
+     "rows": 80,
+     "measured": 80,
+     "status": "settled"
+    },
+    {
+     "config": "bc",
+     "instrument": "thermistor",
+     "wind_direction_deg": 270.0,
+     "wind_direction": "W",
+     "rows": 80,
+     "measured": 80,
+     "status": "settled"
+    },
+    {
+     "config": "bc",
+     "instrument": "thermistor",
+     "wind_direction_deg": 292.5,
+     "wind_direction": "WNW",
+     "rows": 80,
+     "measured": 80,
+     "status": "settled"
+    },
+    {
+     "config": "bc",
+     "instrument": "thermistor",
+     "wind_direction_deg": 315.0,
+     "wind_direction": "NW",
+     "rows": 80,
+     "measured": 80,
+     "status": "settled"
+    },
+    {
+     "config": "bc",
+     "instrument": "thermistor",
+     "wind_direction_deg": 337.5,
+     "wind_direction": "NNW",
+     "rows": 80,
+     "measured": 80,
+     "status": "settled"
+    }
+   ],
+   "frame": {
+    "origin": "centre of the reproduced area, ground plane ('Geometry&Points' sheet)",
+    "x": "+x EAST (compass rose in MP_caseE.png)",
+    "y": "+y NORTH",
+    "z": "+z up; every point at z = 2.0 m",
+    "wind_direction_rotation": "meteorological FROM-direction: N = 0 blows toward -y, E = 90 toward -x; flow_dir = (-sin WD, -cos WD). The geographic frame is kept because the district is real and both the points and the STL are published in it; the 'x along the wind' convention of A-D does not apply.",
+    "length_scale": "FULL-scale metres (model 1:250); the official STL is model scale and is scaled x250 here"
+   },
+   "transform_from_published": {
+    "coordinate_scale": 1.0,
+    "lateral_sign": 1,
+    "origin_shift_m": [
+     0,
+     0,
+     0
+    ],
+    "geometry_scale": 250,
+    "note": "points unchanged (workbook values at full precision); STL x250; the 3dm-derived STLs are reoriented outward"
+   },
+   "inflow": {
+    "U_ref_m_s": 3.9353,
+    "z_ref_m": 15.9,
+    "U_ref_basis": "all 2560 ratios are integer multiples of one quantum q; U_ref = 0.01 UR / q (the sheet re-normalised U/UR, itself quantised at 0.01, by UR/U_ref); log-interpolation of the profile gives the value beside it",
+    "U_ref_log_interp_m_s": 3.9732,
+    "quantum": 0.019820405000000006,
+    "ZR_m": 250.0,
+    "UR_m_s": 7.8,
+    "log_law": {
+     "z_range_m": [
+      1.25,
+      75.0
+     ],
+     "points": 8,
+     "u_star_m_s": 0.28328,
+     "z0_m": 0.034921213470618696,
+     "z0_mm": 34.9212,
+     "rms_residual_m_s": 0.2625,
+     "rms_residual_rel": 0.0667,
+     "note": "does not fit — see rms_residual_rel; a tabulated inlet is the honest choice"
+    },
+    "power_law": {
+     "z_range_m": [
+      1.25,
+      60.0
+     ],
+     "points": 7,
+     "alpha": 0.1582,
+     "max_rel_error": 0.0532
+    },
+    "power_law_whole_profile": {
+     "z_range_m": [
+      1.25,
+      250.0
+     ],
+     "points": 12,
+     "alpha": 0.2013,
+     "max_rel_error": 0.1066
+    },
+    "epsilon_note": "the sheet defines epsilon(z) = Pk(z) = Cmu^0.5 k(z) dU/dz with Cmu = 0.09"
+   },
+   "geometry_summary": [
+    {
+     "configuration": "ac",
+     "file": "cases/E/geometry_ac.stl",
+     "triangles": 60101,
+     "watertight": false,
+     "bbox_min": [
+      -197.92925,
+      -196.92525,
+      -0.0
+     ],
+     "bbox_max": [
+      197.3875,
+      198.22625,
+      60.0
+     ],
+     "boxes": null
+    },
+    {
+     "configuration": "ac_3dm",
+     "file": "cases/E/geometry_ac_3dm.stl",
+     "triangles": 8436,
+     "watertight": false,
+     "bbox_min": [
+      -201.5,
+      -201.0,
+      0.0
+     ],
+     "bbox_max": [
+      203.0,
+      197.300003,
+      60.0
+     ],
+     "boxes": null
+    },
+    {
+     "configuration": "bc_3dm",
+     "file": "cases/E/geometry_bc_3dm.stl",
+     "triangles": 8400,
+     "watertight": false,
+     "bbox_min": [
+      -201.5,
+      -201.0,
+      0.0
+     ],
+     "bbox_max": [
+      203.0,
+      197.300003,
+      30.0
+     ],
+     "boxes": null
+    }
+   ],
+   "provenance": [
+    {
+     "path": "sources/zenodo_caseE/LF_caseE.xls",
+     "sha256": "462c6dbf875fd47630102bf9eab607749d9f713a71ee313e7bc59315aee7441a",
+     "bytes": 132608,
+     "origin": "Zenodo 10.5281/zenodo.15429018 (downloaded; SHA256SUMS.txt beside it)"
+    },
+    {
+     "path": "sources/zenodo_caseE/RS_caseE.csv",
+     "sha256": "d2f687c052c21d734c0de2ade677984d62a348f2660e09dd6d2fc09e7586c799",
+     "bytes": 66145,
+     "origin": "Zenodo 10.5281/zenodo.15429018 (downloaded; SHA256SUMS.txt beside it)"
+    },
+    {
+     "path": "sources/zenodo_caseE/AF_caseE.csv",
+     "sha256": "267ae89113e9f51a8c437543bdc0549c9f352dced7ed571a3e6844082b555f77",
+     "bytes": 222,
+     "origin": "Zenodo 10.5281/zenodo.15429018 (downloaded; SHA256SUMS.txt beside it)"
+    },
+    {
+     "path": "sources/zenodo_caseE/BD_caseE.stl",
+     "sha256": "eef5cae06ea5be7b02f837ba291959e3de25aa47628f5eda1f164f5e4eb549d9",
+     "bytes": 11847740,
+     "origin": "Zenodo 10.5281/zenodo.15429018 (downloaded; SHA256SUMS.txt beside it)"
+    },
+    {
+     "path": "sources/zenodo_caseE/readme_caseE.md",
+     "sha256": "a879d029decf0ebd41362fb4693b246fb9629c518167aa02e82c8d861e86ecb5",
+     "bytes": 3624,
+     "origin": "Zenodo 10.5281/zenodo.15429018 (downloaded; SHA256SUMS.txt beside it)"
+    },
+    {
+     "path": "sources/zenodo_caseE/MP_caseE.png",
+     "sha256": "0fc868d42899783dea655cee10a47c79e148bf5febef6dfed7d293f6b50c96a3",
+     "bytes": 970842,
+     "origin": "Zenodo 10.5281/zenodo.15429018 (downloaded; SHA256SUMS.txt beside it)"
+    },
+    {
+     "path": "case-e/case-e.3dm",
+     "sha256": "769eaaed5de2e2d57746f4fc97681118a1e2a68c98ac1f2019480333873f222f",
+     "bytes": 7865962,
+     "origin": "repository clone of the Zenodo record"
+    }
+   ],
+   "known_issues": {
+    "official_stl_points_inside": {
+     "point_ids": [
+      50
+     ],
+     "nearest_vertex_m": [
+      0.174
+     ]
+    }
+   },
+   "extra_measurements": {
+    "delta_by_direction": {
+     "SW": 0.2155,
+     "SSW": 0.1764,
+     "E": 0.1754,
+     "WSW": 0.1744,
+     "ENE": 0.1705,
+     "NE": 0.1568,
+     "S": 0.1482,
+     "ESE": 0.1467,
+     "W": 0.1452,
+     "NNE": 0.1427,
+     "WNW": 0.141,
+     "NW": 0.1308,
+     "N": 0.1256,
+     "SE": 0.1167,
+     "NNW": 0.105,
+     "SSE": 0.0934
+    }
+   }
+  }
+ }
+}

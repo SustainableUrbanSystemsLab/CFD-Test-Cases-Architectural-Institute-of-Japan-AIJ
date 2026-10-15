@@ -1,0 +1,896 @@
+{
+ "total": 76,
+ "failed": 0,
+ "warnings": 1,
+ "note": "severity 'warning' = a known, documented discrepancy in the published sources (README.md / QUESTIONS.md); it never fails the build",
+ "checks": [
+  {
+   "case": "A",
+   "check": "row_count_matches_readme",
+   "pass": true,
+   "severity": "info",
+   "rows": 186,
+   "expected": 186,
+   "source": "MP drawings / data paper: 186 points"
+  },
+  {
+   "case": "A",
+   "check": "point_ids_unique_and_contiguous",
+   "pass": true,
+   "severity": "info"
+  },
+  {
+   "case": "A",
+   "check": "no_sentinels_or_nan_in_measured_columns",
+   "pass": true,
+   "severity": "info"
+  },
+  {
+   "case": "A",
+   "check": "k_equals_half_sum_of_variances",
+   "pass": true,
+   "severity": "info",
+   "max_abs_error": 0.0004985000000000683,
+   "note": "k published to 3 dp; rms to 3 dp"
+  },
+  {
+   "case": "A",
+   "check": "no_sensor_inside_building",
+   "pass": true,
+   "severity": "info",
+   "inside": 0
+  },
+  {
+   "case": "A",
+   "check": "control_shifted_points_are_detected_inside",
+   "pass": true,
+   "severity": "info",
+   "inside_after_shift": 20,
+   "shift_m": [
+    0.03,
+    0.04,
+    0
+   ]
+  },
+  {
+   "case": "A",
+   "check": "extents_sane",
+   "pass": true,
+   "severity": "info",
+   "bbox": [
+    -0.06,
+    0.26,
+    -0.16,
+    0.0,
+    0.01,
+    0.28
+   ],
+   "note": "points on the y <= 0 half, z = 0.01 .. 0.32 (MP drawings)"
+  },
+  {
+   "case": "A",
+   "check": "lateral_sign_V_negative_on_y_negative_flank",
+   "pass": true,
+   "severity": "info",
+   "points": [
+    {
+     "x": -0.04,
+     "y": -0.05,
+     "z": 0.01,
+     "V": -2.893
+    }
+   ]
+  },
+  {
+   "case": "A",
+   "check": "legacy_workbook_agrees_with_csv",
+   "pass": true,
+   "severity": "info",
+   "rows_compared": 66,
+   "max_abs_diff": 0.0,
+   "note": "LF-caseA.xls 'Results (Ver. sec.)' x/b*0.08 etc. vs RS-caseA.csv"
+  },
+  {
+   "case": "A",
+   "check": "U_H_from_profile_matches_stated",
+   "pass": true,
+   "severity": "info",
+   "U_H_profile": 4.491,
+   "U_H_stated": 4.49
+  },
+  {
+   "case": "B",
+   "check": "row_count_matches_readme",
+   "pass": true,
+   "severity": "info",
+   "rows": 224,
+   "expected": 224
+  },
+  {
+   "case": "B",
+   "check": "point_ids_unique_and_contiguous",
+   "pass": true,
+   "severity": "info"
+  },
+  {
+   "case": "B",
+   "check": "no_sentinels_or_nan_in_measured_columns",
+   "pass": true,
+   "severity": "info"
+  },
+  {
+   "case": "B",
+   "check": "k_equals_half_sum_of_variances",
+   "pass": true,
+   "severity": "info",
+   "max_abs_error": 0.000500000000000167
+  },
+  {
+   "case": "B",
+   "check": "no_sensor_inside_building",
+   "pass": true,
+   "severity": "info",
+   "inside": 0
+  },
+  {
+   "case": "B",
+   "check": "control_shifted_points_are_detected_inside",
+   "pass": true,
+   "severity": "info",
+   "inside_after_shift": 2,
+   "shift_m": [
+    0.03,
+    0.05,
+    0
+   ]
+  },
+  {
+   "case": "B",
+   "check": "extents_sane_after_mm_to_m",
+   "pass": true,
+   "severity": "info",
+   "bbox": [
+    -0.075,
+    0.55,
+    -0.35,
+    0.0,
+    0.005,
+    0.35
+   ],
+   "note": "MP drawings: x -0.075 .. 0.55 m, y -0.35 .. 0, z 0.0125 .. 0.35 m"
+  },
+  {
+   "case": "B",
+   "check": "lateral_sign_V_negative_on_y_negative_flank_after_flip",
+   "pass": true,
+   "severity": "info",
+   "points": [
+    {
+     "x": -0.025,
+     "y": -0.11,
+     "z": 0.0125,
+     "V": -3.63
+    }
+   ]
+  },
+  {
+   "case": "B",
+   "check": "seven_locations_measured_twice",
+   "pass": true,
+   "severity": "info",
+   "pairs": [
+    {
+     "x": -0.075,
+     "ids": [
+      12,
+      110
+     ],
+     "U": [
+      -1.09,
+      -0.983
+     ],
+     "abs_dU": 0.107
+    },
+    {
+     "x": 0.05,
+     "ids": [
+      43,
+      147
+     ],
+     "U": [
+      -0.797,
+      -0.698
+     ],
+     "abs_dU": 0.099
+    },
+    {
+     "x": 0.1,
+     "ids": [
+      56,
+      160
+     ],
+     "U": [
+      -1.654,
+      -1.603
+     ],
+     "abs_dU": 0.051
+    },
+    {
+     "x": 0.2,
+     "ids": [
+      69,
+      173
+     ],
+     "U": [
+      -1.901,
+      -1.815
+     ],
+     "abs_dU": 0.086
+    },
+    {
+     "x": 0.3,
+     "ids": [
+      82,
+      186
+     ],
+     "U": [
+      -1.167,
+      -1.025
+     ],
+     "abs_dU": 0.142
+    },
+    {
+     "x": 0.4,
+     "ids": [
+      95,
+      199
+     ],
+     "U": [
+      -0.139,
+      -0.02
+     ],
+     "abs_dU": 0.119
+    },
+    {
+     "x": 0.55,
+     "ids": [
+      108,
+      212
+     ],
+     "U": [
+      1.05,
+      1.179
+     ],
+     "abs_dU": 0.129
+    }
+   ],
+   "mean_abs_dU": 0.105,
+   "note": "repeat measurements of the same location in two runs; both rows are kept (their point numbers differ). The spread is a free repeatability estimate."
+  },
+  {
+   "case": "B",
+   "check": "legacy_workbook_agrees_with_csv",
+   "pass": true,
+   "severity": "info",
+   "rows_compared": 224,
+   "max_abs_diff": 0.0,
+   "note": "LF_caseB.xls (mm, published V sign) vs the cleaned table (m, V flipped); the CSV numbers the vertical-section sheet 1..109 and the horizontal-section sheet 110..224"
+  },
+  {
+   "case": "B",
+   "check": "U_H_from_profile_matches_stated",
+   "pass": true,
+   "severity": "info",
+   "U_H_profile": 5.133,
+   "U_H_stated": 5.1,
+   "note": "profile has a row at exactly z = 0.2 m: 5.133"
+  },
+  {
+   "case": "C",
+   "check": "row_count_is_3WD_x_3CB_x_120",
+   "pass": true,
+   "severity": "info",
+   "rows": 1080
+  },
+  {
+   "case": "C",
+   "check": "nine_configurations_of_120_points",
+   "pass": true,
+   "severity": "info",
+   "combos": {
+    "0D@0.0": 120,
+    "0D@22.5": 120,
+    "0D@45.0": 120,
+    "1D@0.0": 120,
+    "1D@22.5": 120,
+    "1D@45.0": 120,
+    "2D@0.0": 120,
+    "2D@22.5": 120,
+    "2D@45.0": 120
+   }
+  },
+  {
+   "case": "C",
+   "check": "point_numbers_4_to_132_with_readme_gaps",
+   "pass": true,
+   "severity": "info",
+   "missing": [
+    1,
+    2,
+    3,
+    34,
+    35,
+    36,
+    37,
+    46,
+    55,
+    100,
+    101,
+    102
+   ],
+   "note": "readme: 'Missing point numbers: 1, 2, 3, 34, 35, 36, 37, 46, 55, 100, 101, 102'"
+  },
+  {
+   "case": "C",
+   "check": "all_nine_configurations_share_one_point_set",
+   "pass": true,
+   "severity": "info"
+  },
+  {
+   "case": "C",
+   "check": "all_points_at_z_0.02",
+   "pass": true,
+   "severity": "info"
+  },
+  {
+   "case": "C",
+   "check": "no_sentinels_or_nan",
+   "pass": true,
+   "severity": "info"
+  },
+  {
+   "case": "C",
+   "check": "absent_lattice_nodes_are_exactly_the_nine_footprints_at_pitch_0.40",
+   "pass": true,
+   "severity": "info",
+   "absent": 49,
+   "lattice": 169,
+   "measured": 120,
+   "note": "also true for a 0.375 m pitch; the 0.40 m pitch (street = D) is read from MP-z-caseC.png and Figure 3 of the data paper"
+  },
+  {
+   "case": "C",
+   "check": "no_sensor_inside_building_0D",
+   "pass": true,
+   "severity": "info",
+   "inside": 0,
+   "points": 120
+  },
+  {
+   "case": "C",
+   "check": "no_sensor_inside_building_1D",
+   "pass": true,
+   "severity": "info",
+   "inside": 0,
+   "points": 120
+  },
+  {
+   "case": "C",
+   "check": "no_sensor_inside_building_2D",
+   "pass": true,
+   "severity": "info",
+   "inside": 0,
+   "points": 120
+  },
+  {
+   "case": "C",
+   "check": "points_on_a_building_face_plane_counted",
+   "pass": true,
+   "severity": "info",
+   "points_on_face_plane": 24,
+   "note": "|x| = 0.30 or |y| = 0.30 in the gap between blocks: fluid points on a plane that is a wall elsewhere"
+  },
+  {
+   "case": "C",
+   "check": "control_shifted_points_are_detected_inside",
+   "pass": true,
+   "severity": "info",
+   "inside_after_shift": 162,
+   "shift_m": [
+    0.2,
+    0,
+    0
+   ]
+  },
+  {
+   "case": "C",
+   "check": "WD0_flow_is_along_x_0D",
+   "pass": true,
+   "severity": "info",
+   "WD0_y_mirror_mean_abs_dVs": 0.102,
+   "WD0_x_mirror_mean_abs_dVs": 0.4678,
+   "pairs": 120,
+   "mean_Vs_x<=-0.25": 2.0642,
+   "mean_Vs_x>=0.25": 1.6105
+  },
+  {
+   "case": "C",
+   "check": "WD45_symmetry_plane_is_y_eq_minus_x_0D",
+   "pass": true,
+   "severity": "info",
+   "antidiagonal": 0.1077,
+   "maindiagonal": 0.522,
+   "note": "so in the CSV frame WD rotates the wind from +x TOWARD -y; Figure 3 of the data paper draws it toward +y (QUESTIONS.md)"
+  },
+  {
+   "case": "C",
+   "check": "WD0_flow_is_along_x_1D",
+   "pass": true,
+   "severity": "info",
+   "WD0_y_mirror_mean_abs_dVs": 0.1063,
+   "WD0_x_mirror_mean_abs_dVs": 0.4385,
+   "pairs": 120,
+   "mean_Vs_x<=-0.25": 2.0342,
+   "mean_Vs_x>=0.25": 1.4574
+  },
+  {
+   "case": "C",
+   "check": "WD45_symmetry_plane_is_y_eq_minus_x_1D",
+   "pass": true,
+   "severity": "info",
+   "antidiagonal": 0.1028,
+   "maindiagonal": 0.7725,
+   "note": "so in the CSV frame WD rotates the wind from +x TOWARD -y; Figure 3 of the data paper draws it toward +y (QUESTIONS.md)"
+  },
+  {
+   "case": "C",
+   "check": "WD0_flow_is_along_x_2D",
+   "pass": true,
+   "severity": "info",
+   "WD0_y_mirror_mean_abs_dVs": 0.0878,
+   "WD0_x_mirror_mean_abs_dVs": 0.6885,
+   "pairs": 120,
+   "mean_Vs_x<=-0.25": 2.1947,
+   "mean_Vs_x>=0.25": 1.45
+  },
+  {
+   "case": "C",
+   "check": "WD45_symmetry_plane_is_y_eq_minus_x_2D",
+   "pass": true,
+   "severity": "info",
+   "antidiagonal": 0.1303,
+   "maindiagonal": 0.8043,
+   "note": "so in the CSV frame WD rotates the wind from +x TOWARD -y; Figure 3 of the data paper draws it toward +y (QUESTIONS.md)"
+  },
+  {
+   "case": "C",
+   "check": "legacy_workbook_ratio_x_U(0.02)_equals_csv_Vs_to_0.3pct",
+   "pass": true,
+   "severity": "info",
+   "rows_compared": 1080,
+   "max_abs_diff": 0.006171236052728624,
+   "U_at_0_02": 2.434,
+   "implied_reference_speed_min": 2.4145,
+   "implied_reference_speed_max": 2.4525,
+   "note": "the legacy ratios are NOT exactly Vs / 2.434: Vs / ratio spans 2.4145-2.4525 m/s, i.e. the workbook normalised each value by a slightly different reference (plausibly the reference speed measured during that run). Agreement is within 0.3 % of Vs; do not use the ratios to recover a third decimal of Vs. The CSV's 2-dp Vs is the released value."
+  },
+  {
+   "case": "C",
+   "check": "U_H_from_profile_matches_stated",
+   "pass": true,
+   "severity": "info",
+   "U_H_profile": 3.654,
+   "U_H_stated": 3.65
+  },
+  {
+   "case": "D",
+   "check": "split_fibre_csv_agrees_with_workbook",
+   "pass": true,
+   "severity": "info",
+   "rows": 33,
+   "max_abs_diff_UVW": 0.0,
+   "max_abs_diff_rms2_vs_variance": 0.00015615999999996077,
+   "max_abs_diff_k": 0.000500000000000167
+  },
+  {
+   "case": "D",
+   "check": "split_fibre_Vs_column_is_the_vector_magnitude",
+   "pass": true,
+   "severity": "info",
+   "max_abs_diff": 0.0004956065069425808,
+   "note": "so it is not a thermistor reading and is dropped; thermistor Vs at the same 33 points is in the thermistor rows"
+  },
+  {
+   "case": "D",
+   "check": "thermistor_rows_78_points_x_3_directions",
+   "pass": true,
+   "severity": "info",
+   "rows": 234,
+   "points": 78
+  },
+  {
+   "case": "D",
+   "check": "thermistor_66_measured_per_direction",
+   "pass": true,
+   "severity": "info",
+   "measured_per_direction": {
+    "0.0": 66,
+    "22.5": 66,
+    "45.0": 66
+   },
+   "note": "MP_caseD.png: 12 points in the band around the tower are marked unmeasured"
+  },
+  {
+   "case": "D",
+   "check": "unmeasured_thermistor_points_are_the_tower_band",
+   "pass": true,
+   "severity": "info",
+   "unmeasured_ids": [
+    26,
+    27,
+    28,
+    29,
+    32,
+    33,
+    36,
+    37,
+    40,
+    41,
+    42,
+    43
+   ]
+  },
+  {
+   "case": "D",
+   "check": "split_fibre_33_points_all_measured",
+   "pass": true,
+   "severity": "info",
+   "rows": 33
+  },
+  {
+   "case": "D",
+   "check": "k_equals_half_sum_of_variances",
+   "pass": true,
+   "severity": "info",
+   "max_abs_error": 0.0
+  },
+  {
+   "case": "D",
+   "check": "split_fibre_points_are_a_subset_of_the_thermistor_points",
+   "pass": true,
+   "severity": "info"
+  },
+  {
+   "case": "D",
+   "check": "shared_points_have_identical_coordinates",
+   "pass": true,
+   "severity": "info"
+  },
+  {
+   "case": "D",
+   "check": "all_points_at_z_0.005",
+   "pass": true,
+   "severity": "info"
+  },
+  {
+   "case": "D",
+   "check": "no_sensor_inside_building",
+   "pass": true,
+   "severity": "info",
+   "inside": 0,
+   "points": 78
+  },
+  {
+   "case": "D",
+   "check": "control_shift_x_0.05_is_detected_inside",
+   "pass": true,
+   "severity": "info",
+   "inside_after_transform": 28
+  },
+  {
+   "case": "D",
+   "check": "control_swap_xy_is_detected_inside",
+   "pass": true,
+   "severity": "info",
+   "inside_after_transform": 15
+  },
+  {
+   "case": "D",
+   "check": "geometry_matches_readme",
+   "pass": true,
+   "severity": "info",
+   "block_heights": [
+    0.025,
+    0.25
+   ],
+   "boxes": 83,
+   "tower": [
+    {
+     "min": [
+      -0.03125,
+      -0.03125,
+      0.0
+     ],
+     "max": [
+      0.03125,
+      0.03125,
+      0.25
+     ]
+    }
+   ],
+   "array_bbox": [
+    [
+     -0.7,
+     -0.675,
+     0.0
+    ],
+    [
+     0.7,
+     0.675,
+     0.25
+    ]
+   ],
+   "note": "readme: tower 0.0625 x 0.0625 x 0.25 m, blocks 0.1 x 0.1 x 0.025 m; STL and point table share one frame (origin = tower centre)"
+  },
+  {
+   "case": "D",
+   "check": "rebuilt_volume_equals_analytic",
+   "pass": true,
+   "severity": "info",
+   "volume_m3": 0.0214765625
+  },
+  {
+   "case": "D",
+   "check": "WD0_thermistor_field_exactly_y_mirror_symmetric",
+   "pass": true,
+   "severity": "info",
+   "WD0.0": {
+    "pairs": 66,
+    "max_abs_dVs": 0.0,
+    "mean_abs_dVs": 0.0
+   },
+   "WD22.5": {
+    "pairs": 66,
+    "max_abs_dVs": 2.277,
+    "mean_abs_dVs": 0.9872
+   },
+   "WD45.0": {
+    "pairs": 66,
+    "max_abs_dVs": 3.529,
+    "mean_abs_dVs": 1.4575
+   },
+   "note": "the 0 deg half was measured and mirrored: 33 independent values; 22.5 and 45 deg are not symmetric, and the y-symmetric array cannot fix their rotation sense (QUESTIONS.md Q2)"
+  },
+  {
+   "case": "D",
+   "check": "WD0_blows_toward_plus_x",
+   "pass": true,
+   "severity": "info",
+   "U_positive": 18,
+   "U_negative_upwind_of_tower": 8,
+   "note": "split-fibre U > 0 at the stream-like points, < 0 in the windward horseshoe in front of the tower face at x = -0.03125"
+  },
+  {
+   "case": "D",
+   "check": "lateral_sign_V_diverges_upstream_and_converges_downstream_on_the_plus_y_side",
+   "pass": true,
+   "severity": "info",
+   "points": [
+    {
+     "x": -0.0875,
+     "y": 0.1125,
+     "V": 2.055
+    },
+    {
+     "x": -0.0625,
+     "y": 0.1125,
+     "V": 1.212
+    },
+    {
+     "x": 0.0625,
+     "y": 0.1125,
+     "V": -1.217
+    },
+    {
+     "x": 0.0875,
+     "y": 0.1125,
+     "V": -1.514
+    },
+    {
+     "x": 0.1125,
+     "y": 0.1125,
+     "V": -1.923
+    }
+   ],
+   "note": "on the +y side of the tower the flow is pushed toward +y ahead of it (V > 0 at x < 0) and returns toward the centreline behind it (V < 0 at x > 0): V positive toward +y, the same convention as Case A and as Case B after its flip"
+  },
+  {
+   "case": "D",
+   "check": "legacy_workbook_agrees_with_zenodo_csv",
+   "pass": true,
+   "severity": "info",
+   "cells_compared": 234,
+   "max_abs_diff": 4.440892098500626e-16,
+   "note": "LF_caseD.xls (mm, '-') vs RS-T_caseD.csv (m, -999.9)"
+  },
+  {
+   "case": "D",
+   "check": "approach_flow_csv_matches_workbook_to_3dp",
+   "pass": true,
+   "severity": "info",
+   "rows": 13,
+   "max_abs_diff": 0.0004916792738276499
+  },
+  {
+   "case": "D",
+   "check": "U_H_from_profile_matches_stated",
+   "pass": true,
+   "severity": "info",
+   "U_H_profile": 6.667237799249246,
+   "U_H_stated": 6.65
+  },
+  {
+   "case": "E",
+   "check": "row_count_80_x_16_x_2",
+   "pass": true,
+   "severity": "info",
+   "rows": 2560,
+   "points": 80
+  },
+  {
+   "case": "E",
+   "check": "no_sentinels_or_nan",
+   "pass": true,
+   "severity": "info"
+  },
+  {
+   "case": "E",
+   "check": "zenodo_csv_is_the_workbook_rounded_to_2dp",
+   "pass": true,
+   "severity": "info",
+   "max_abs_diff_ratio": 0.004971340000000102,
+   "max_abs_diff_xyz": 0.0,
+   "csv_rows": 2560
+  },
+  {
+   "case": "E",
+   "check": "velocity_ratio_is_quantised",
+   "pass": true,
+   "severity": "info",
+   "quantum": 0.019820405000000006,
+   "distinct_levels": 55,
+   "smallest_value": 0.09910202500000002,
+   "smallest_in_quanta": 5,
+   "note": "the published ratios are U/UR rounded to 0.01 then re-normalised by UR/U(15.9 m); the data's own resolution is +/- q/2"
+  },
+  {
+   "case": "E",
+   "check": "U_ref_from_quantum_agrees_with_profile_at_15.9m",
+   "pass": true,
+   "severity": "info",
+   "U_ref_from_quantum": 3.935338354589625,
+   "U_ref_log_interp": 3.973160091944881,
+   "U_ref_paper": "4.0 (section 3.5: 'the inflow wind velocity at that height (4.0 m/s)')"
+  },
+  {
+   "case": "E",
+   "check": "zenodo_AF_csv_matches_denormalised_workbook_profile",
+   "pass": true,
+   "severity": "info",
+   "rows": 12,
+   "max_abs_diff": 0.00044000000000010697
+  },
+  {
+   "case": "E",
+   "check": "no_sensor_inside_building_official_stl_x250",
+   "pass": false,
+   "severity": "warning",
+   "inside": 1,
+   "points": 80,
+   "inside_point_ids": [
+    50
+   ],
+   "nearest_vertex_min_m": 0.174,
+   "nearest_vertex_median_m": 4.85,
+   "note": "the official STL and the 3dm are different triangulations of the same district; where they disagree by a metre a street-edge sensor can fall inside one of them. Listed in QUESTIONS.md Q3 and manifest known_issues"
+  },
+  {
+   "case": "E",
+   "check": "no_sensor_inside_building_3dm_ac",
+   "pass": true,
+   "severity": "info",
+   "inside": 0,
+   "points": 80,
+   "inside_point_ids": [],
+   "nearest_vertex_min_m": 1.581,
+   "nearest_vertex_median_m": 5.123
+  },
+  {
+   "case": "E",
+   "check": "no_sensor_inside_building_3dm_bc",
+   "pass": true,
+   "severity": "info",
+   "inside": 0,
+   "points": 80,
+   "inside_point_ids": [],
+   "nearest_vertex_min_m": 1.581,
+   "nearest_vertex_median_m": 5.408
+  },
+  {
+   "case": "E",
+   "check": "control_points_rotated_10deg_land_inside_buildings",
+   "pass": true,
+   "severity": "info",
+   "inside_after_rotation": 26,
+   "note": "proves the check can resolve a frame error"
+  },
+  {
+   "case": "E",
+   "check": "official_stl_x250_matches_3dm_extent",
+   "pass": true,
+   "severity": "info",
+   "official_bbox": [
+    [
+     -197.92925,
+     -196.92525,
+     -0.0
+    ],
+    [
+     197.3875,
+     198.22625,
+     60.0
+    ]
+   ],
+   "threedm_bbox": [
+    [
+     -201.5,
+     -201.0,
+     0.0
+    ],
+    [
+     203.0,
+     197.300003,
+     60.0
+    ]
+   ],
+   "note": "same origin and axes to a few metres at the district edge; the two files are different triangulations of the same block"
+  },
+  {
+   "case": "E",
+   "check": "new_buildings_60_18_18_present_in_official_stl",
+   "pass": true,
+   "severity": "info",
+   "tallest_three_m": [
+    30.0,
+    30.0,
+    60.0
+   ],
+   "note": "A = 60 m; B and C are 18 m among many 18-30 m roofs"
+  },
+  {
+   "case": "E",
+   "check": "extents_sane",
+   "pass": true,
+   "severity": "info",
+   "bbox": [
+    -133.0,
+    125.0,
+    -94.0,
+    112.0
+   ],
+   "note": "points within the 400 m turntable, MP_caseE.png"
+  },
+  {
+   "case": "E",
+   "check": "construction_signal_present",
+   "pass": true,
+   "severity": "info",
+   "mean_ac_minus_bc": 0.09741419363671876,
+   "sd": 0.19180415795737832,
+   "largest_mean_abs_delta_direction": "SW",
+   "largest": 0.21554690437500007,
+   "smallest_direction": "SSE",
+   "smallest": 0.09340365856250002
+  }
+ ]
+}

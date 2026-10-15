@@ -1,7 +1,7 @@
 {
  "schema_version": "1.0.0",
- "generated_from": "4fb5e6e9093d5b925f977d4e0502d8c881fec52d",
- "generated_at": "2026-10-14T03:54:23+00:00",
+ "generated_from": "b5f2ef6d37332bf917f413ffec0e4446ac55ab89",
+ "generated_at": "2026-10-14T22:45:59+00:00",
  "licence": "CC BY 4.0",
  "id": "C",
  "slug": "case-c",
@@ -126,7 +126,7 @@
   "note": "derived during scoping, not published by AIJ; the tunnel profile is closer to a power law than a log law, so a log-law inlet carries a ~2.3 % rms residual over the fitted range"
  },
  "approach_flow": {
-  "source": "CaseC_cleaned/AF_caseC.csv",
+  "source": "case-c/AF_caseC.csv",
   "units": {
    "z": "m",
    "U": "m/s",
@@ -219,7 +219,7 @@
  "points": {
   "endpoint_json": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/C/points.json",
   "endpoint_csv": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/C/points.csv",
-  "source": "CaseC_cleaned/RS_caseC.csv",
+  "source": "clean/cases/C/points.csv",
   "rows": 1080,
   "distinct_points": 120,
   "columns": [
@@ -284,12 +284,12 @@
  },
  "validation": {
   "endpoint": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/C/validation.json",
-  "status": "pending",
+  "status": "scored",
   "engines": {
-   "openfoam12-realizableKE": "pending",
-   "openlb": "pending",
+   "openfoam12-realizableKE": "scored",
+   "openlb": "not comparable",
    "fluidx3d": "pending",
-   "ml-surrogate": "pending"
+   "ml-surrogate": "scored"
   }
  },
  "gotchas": [
@@ -315,10 +315,10 @@
  "doi_note": null,
  "citation_requested": "Nonomura, Y., Kobayashi, N., Tominaga, Y., Mochida, A. (2003). The cross comparison of CFD results for flow field around building models (part 3). Japan Association for Wind Engineering, 95, 83-84 (in Japanese). https://doi.org/10.14887/jaweam.2003.0.41.0",
  "files_in_repository": {
-  "folder": "https://github.com/SustainableUrbanSystemsLab/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/tree/main/CaseC_cleaned",
-  "reference": "CaseC_cleaned/RS_caseC.csv",
-  "approach_flow": "CaseC_cleaned/AF_caseC.csv",
-  "readme": "CaseC_cleaned/readme_caseC.md"
+  "folder": "https://github.com/SustainableUrbanSystemsLab/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/tree/main/case-c",
+  "reference": "case-c/RS_caseC.csv",
+  "approach_flow": "case-c/AF_caseC.csv",
+  "readme": "case-c/readme_caseC.md"
  },
  "render": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/geom_caseC.png",
  "page": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/cases/case-c/"

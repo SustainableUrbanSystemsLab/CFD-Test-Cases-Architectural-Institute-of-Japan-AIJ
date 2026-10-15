@@ -1,7 +1,7 @@
 {
  "schema_version": "1.0.0",
- "generated_from": "4fb5e6e9093d5b925f977d4e0502d8c881fec52d",
- "generated_at": "2026-10-14T03:54:23+00:00",
+ "generated_from": "b5f2ef6d37332bf917f413ffec0e4446ac55ab89",
+ "generated_at": "2026-10-14T22:45:59+00:00",
  "licence": "CC BY 4.0",
  "cases": [
   {
@@ -54,10 +54,10 @@
     "configurations": 1
    },
    "engines": {
-    "openfoam12-realizableKE": "validated",
-    "openlb": "pending",
-    "fluidx3d": "pending",
-    "ml-surrogate": "n/a"
+    "openfoam12-realizableKE": "scored",
+    "openlb": "scored",
+    "fluidx3d": "running",
+    "ml-surrogate": "scored"
    },
    "doi": "10.5281/zenodo.15050147",
    "links": {
@@ -121,10 +121,10 @@
     "configurations": 1
    },
    "engines": {
-    "openfoam12-realizableKE": "validated",
-    "openlb": "pending",
-    "fluidx3d": "pending",
-    "ml-surrogate": "n/a"
+    "openfoam12-realizableKE": "scored",
+    "openlb": "scored",
+    "fluidx3d": "running",
+    "ml-surrogate": "scored"
    },
    "doi": "10.5281/zenodo.15401455",
    "links": {
@@ -186,10 +186,10 @@
     "configurations": 9
    },
    "engines": {
-    "openfoam12-realizableKE": "pending",
-    "openlb": "pending",
+    "openfoam12-realizableKE": "scored",
+    "openlb": "not comparable",
     "fluidx3d": "pending",
-    "ml-surrogate": "pending"
+    "ml-surrogate": "scored"
    },
    "doi": "10.5281/zenodo.15401791",
    "links": {
@@ -267,12 +267,12 @@
     "configurations": 4
    },
    "engines": {
-    "openfoam12-realizableKE": "pending",
-    "openlb": "pending",
+    "openfoam12-realizableKE": "running",
+    "openlb": "not comparable",
     "fluidx3d": "pending",
-    "ml-surrogate": "pending"
+    "ml-surrogate": "scored"
    },
-   "doi": null,
+   "doi": "10.5281/zenodo.15402668",
    "links": {
     "case": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/D.json",
     "points": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/D/points.json",
@@ -365,10 +365,10 @@
     "configurations": 2
    },
    "engines": {
-    "openfoam12-realizableKE": "pending",
-    "openlb": "pending",
+    "openfoam12-realizableKE": "scored",
+    "openlb": "not comparable",
     "fluidx3d": "pending",
-    "ml-surrogate": "pending"
+    "ml-surrogate": "scored"
    },
    "doi": "10.5281/zenodo.15429017",
    "links": {

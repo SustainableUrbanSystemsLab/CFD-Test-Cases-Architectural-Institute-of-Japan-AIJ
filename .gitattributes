@@ -1,3 +1,16 @@
 # The served API files are LF on purpose (a CRLF STL leaves  in the last token for OpenFOAM readers).
 docs/api/** text eol=lf
 scripts/*.py text eol=lf
+
+# Data files are byte-exact on every platform. clean/manifest.json records the SHA-256 of every
+# source file it was built from, so a CRLF checkout on Windows and an LF one on Linux must hash
+# the same: the text data is LF everywhere.
+*.csv text eol=lf
+*.md text eol=lf
+*.stl text eol=lf
+clean/** text=auto eol=lf
+# clean/sources/ mirrors files from Zenodo byte for byte (SHA256SUMS.txt beside them): no
+# end-of-line conversion may touch them, on checkin or on checkout.
+clean/sources/** -text
+# ...except archives, which are binary wherever they live (docs/api/geometry.zip).
+*.zip binary

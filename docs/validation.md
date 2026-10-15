@@ -5,8 +5,8 @@ nav_order: 3
 
 # Validation: Eddy3D vs the tunnel
 
-**Status: Cases A and B, OpenFOAM 12 (realizable k-ε).** Cases C–E and the other solvers are not done yet — see
-"What is not validated yet" below. Nothing on this page is a claim about them.
+**Status.** *Scored* means a run exists and its scores are on this page — not that it agrees; how well it agrees is
+in the numbers and their reading. Anything not marked scored is not a claim; see "What is still running" below.
 
 ## Method
 
@@ -14,6 +14,8 @@ Each case is solved through Eddy3D's production case writer (`build-case → run
 OpenFOAM case, so what is validated is what a user gets. The probe sits at **exactly the tunnel's own measurement
 coordinates**, so no interpolation enters the comparison.
 
+- Cases C–E measure an omnidirectional *scalar* speed with thermistors, so the model is scored as √(\|U\|² + 2k) and
+  as \|U\| — the two ends of the bracket the measurement has to fall in.
 - The tunnel's model-scale geometry is solved at 1:100 (Cases A, B) with the tunnel's own velocities; the log-law
   inlet is fitted to each case's own approach-flow file over z = 0.02 … 2H (`u*`, `z₀` below), and the profile
   shape is scale-invariant for a log law, so U/U_H values carry over unchanged.
@@ -24,7 +26,7 @@ coordinates**, so no interpolation enters the comparison.
 - Case B's lateral velocity is sign-corrected before scoring (see [Data gotchas]({{ '/gotchas/' | relative_url }})).
 - The reattachment length L_r behind the building is read from a wake line at ground level.
 
-## Does the model agree?
+## Cases A and B — does the model agree?
 
 ![Measured vs modelled, Cases A and B]({{ '/assets/aij_agreement.png' | relative_url }})
 
@@ -53,13 +55,136 @@ Reading these honestly:
 - **Case A's W FB of −1.50 and its NMSE are artefacts of a near-zero mean** (mean measured W is ~0.01 m/s), not a
   blow-up. Read R = +0.71 instead.
 
-## Where does it agree?
+## Cases A and B — where does it agree?
 
 ![Centre-plane profiles, Cases A and B]({{ '/assets/aij_profiles.png' | relative_url }})
 
 Vertical profiles of U/U_H on the centre plane at the first three measured stations behind the building, offset
 per station. The model follows the measured profile closely above roof height and in the recovering wake; the
 near-ground deficit immediately behind the building is where the closure does least well.
+
+## Case C — the 3 × 3 block array
+
+All nine configurations (centre block 0D / 1D / 2D × WD 0°, 22.5°, 45°), solved at 1:100 on a cylindrical domain —
+the tunnel's turntable: the array turns with WD, the domain does not — ~310,000 cells per centre-block height,
+3000 iterations per direction, the 120 probes at exactly the tunnel's coordinates.
+
+![Case C, measured vs modelled]({{ '/assets/aij_caseC_agreement.png' | relative_url }})
+
+| centre block | WD | R | FAC2 | FB | hit rate | \|U\| alone: FB / R |
+|---|---|---|---|---|---|---|
+| 0D | 0° | +0.824 | 0.908 | +0.266 | 0.567 | +0.466 / +0.804 |
+| 0D | 22.5° | +0.857 | 0.983 | +0.106 | 0.750 | +0.295 / +0.846 |
+| 0D | 45° | +0.831 | 0.942 | +0.121 | 0.783 | +0.307 / +0.801 |
+| 1D | 0° | +0.801 | 0.858 | +0.341 | 0.433 | +0.551 / +0.741 |
+| 1D | 22.5° | +0.896 | 0.975 | +0.192 | 0.675 | +0.394 / +0.882 |
+| 1D | 45° | +0.872 | 0.942 | +0.198 | 0.733 | +0.353 / +0.873 |
+| 2D | 0° | +0.857 | 0.850 | +0.251 | 0.492 | +0.443 / +0.848 |
+| 2D | 22.5° | +0.906 | 0.983 | +0.091 | 0.875 | +0.240 / +0.894 |
+| 2D | 45° | +0.909 | 0.958 | +0.103 | 0.883 | +0.243 / +0.912 |
+
+![Case C, where the model is slow or fast]({{ '/assets/aij_caseC_map.png' | relative_url }})
+
+- **The pattern is right in every configuration** — R 0.80–0.91, FAC2 0.85–0.98.
+- **The model is slow, worst at WD = 0** (FB +0.25 … +0.34, hit rate 0.43–0.57; at 22.5° and 45° FB +0.09 … +0.20,
+  hit rate 0.68–0.88). The map puts the deficit in the streets running along the wind.
+- **It is not the scalar-vs-vector question.** The tunnel reads above even √(\|U\|² + 2k) at 902 of the 1080 points
+  (84 %); \|U\| alone is lower still.
+- **Most of it arrives with the inflow.** The approach flow reaching the array is 0.83 of the tunnel's at the probe
+  height (0.99 at z = D) and carries 0.46 of its k there. A 17 % slow approach is worth FB ≈ +0.19 by itself.
+- **The frame is checked by the scores.** Scored with the paper figure's rotation sense (the y mirror) R falls to
+  −0.33 … +0.03 at 22.5° and 45°; with upwind and downwind swapped to −0.41 … +0.14 in eight of nine configurations.
+- An independent re-scoring from the probe files and the original `RS_caseC.csv` reproduces every number (largest
+  difference 9 × 10⁻¹⁶).
+
+## Case E — the Niigata district, wind from SW
+
+Before and after the construction of a 60 m tower and two 18 m blocks, each state on a 504 m-radius cylinder
+(about one million cells, 2 m at the buildings), the tunnel's own profile imposed as a table
+(`wind.inlet: "manual"`), the model's speed over its own solved U(15.9 m).
+
+![Case E, measured vs modelled, before, after and the change]({{ '/assets/aij_caseE_agreement.png' | relative_url }})
+
+| | FAC2 | FB | q | R |
+|---|---|---|---|---|
+| before · √(\|U\|²+2k) | 0.95 | +0.12 | 0.61 | 0.69 |
+| before · \|U\| | 0.79 | +0.27 | 0.41 | 0.69 |
+| after · √(\|U\|²+2k) | 0.89 | +0.23 | 0.47 | 0.85 |
+| after · \|U\| | 0.74 | +0.34 | 0.30 | 0.84 |
+| ceiling control: the tunnel's *before*, scored as a model of its *after* | 0.79 | +0.37 | 0.35 | 0.10 |
+
+![Case E, where the model is slow or fast]({{ '/assets/aij_caseE_map.png' | relative_url }})
+
+The construction change (after − before), in which inflow, closure and instrument biases largely cancel, has
+R = 0.84, the sign right at 75 % of the points where the tunnel resolved a change, and about 60 % of the measured
+size — far above the control that ignores the construction. The absolute ratios are low because the approach
+column near the ground decays over the fetch (0.41 and 0.79 of the imposed table at 1.25 m and 2.5 m), and the
+measurement height, 2 m, sits in that layer.
+
+## Cases A and B — every engine on the same points
+
+![Measured vs modelled U and V, Cases A and B, one row per engine]({{ '/assets/aij_engines_agreement.png' | relative_url }})
+
+OpenLB (Eddy3D's `eddy3dWind`: Smagorinsky, third-order regularised D3Q19, CPU image) solved the same two
+experiments with the same fitted inflow and probed the same measured points, at dx = 1.6 m — H/10 for A, H/12.5
+for B, 1.3 and 2.6 million cells, 1.8 h and 4.1 h on four threads. That is a smoke resolution: H/20 costs about
+16 times the cell-steps on this image.
+
+| case · quantity | n | FAC2 | FB | q | R | OpenFOAM FAC2 / q / R |
+|---|---|---|---|---|---|---|
+| A · U/U_H, all points | 186 | 0.43 | +0.40 | 0.37 | 0.76 | 0.82 / 0.59 / 0.96 |
+| A · U/U_H, points ≥ 2 cells above the floor | 121 | 0.65 | +0.17 | 0.56 | 0.81 | — |
+| A · V/U_H | 186 | 0.17 | — | 0.62 | 0.65 | 0.35 / 0.89 / 0.96 |
+| A · W/U_H | 186 | 0.12 | — | 0.59 | 0.54 | 0.40 / 0.80 / 0.71 |
+| B · U/U_H, all points | 224 | 0.38 | +0.28 | 0.29 | 0.79 | 0.70 / 0.56 / 0.96 |
+| B · U/U_H, points ≥ 2 cells above the floor | 95 | 0.64 | −0.07 | 0.52 | 0.90 | — |
+| B · V/U_H | 224 | 0.13 | — | 0.55 | 0.83 | 0.28 / 0.61 / 0.91 |
+| B · W/U_H | 224 | 0.24 | — | 0.65 | 0.77 | 0.54 / 0.81 / 0.93 |
+
+Reading these:
+
+- **The flat band of near-zero model U in the OpenLB row is the floor.** OpenLB meets the ground with a plain
+  no-slip (bounce-back) wall and carries the roughness only in the inlet profile; in the undisturbed column at
+  the windward face its U is 0.29 of the inlet log law one cell up, 0.69 at two, 0.95 at three and 1.02–1.07
+  from four. Case A's lowest plane sits 0.6 cells up, so above two cells FAC2 rises to 0.65 and FB falls to +0.17.
+- **The solve is nearly steady.** The resolved k is 0.7 % (A) and 10 % (B) of the measured one: a steady
+  log-law inflow at H/10 resolves almost no turbulence, so k is not compared, and with nothing to entrain the
+  wakes run long (A: L_r = 3.39 H against OpenFOAM's 1.49) or displaced (B: its field fits best sampled H/2
+  downstream).
+- **Its frame is right:** with the lateral sign flipped V's R becomes −0.65 (A) and −0.83 (B), and U scrambled
+  across the points drops R to 0.10.
+- Each number above was reproduced from the solver's own probe output against the original Zenodo CSVs (largest
+  difference 1 × 10⁻¹⁵).
+- At this spacing Case B first crashed: OpenLB's STL reader segfaults when lattice nodes sit exactly on its
+  octree planes. Eddy3D now moves such a lattice by 10⁻⁴ dx (`LBMCaseXml`), with a regression test that fails
+  without the move.
+
+## ML surrogate
+
+![Measured vs predicted, ML surrogate, Cases A–E]({{ '/assets/aij_ml_agreement.png' | relative_url }})
+
+Eddy3D's Wind Predictor (the public `Yel-2.0` network) predicts \|U_mean\|/U_ref at one height, 1.8 m. Each case is
+scaled so its measurement plane lands there — A ×180, B ×144, C ×90, D ×360, E ×0.9 — its buildings are rasterised
+onto the model's 504 × 504 lattice of 2 m cells with the shipped grid code, the prediction is read at the tunnel's
+own sensor coordinates, and U_ref is converted to U_H with each case's approach-flow file. Same metric code and
+settings as the OpenFOAM rows.
+
+| case · quantity | n | FB | FAC2 | R | hit rate | OpenFOAM, same points and quantity |
+|---|---|---|---|---|---|---|
+| A · \|U\|/U_H, z = 0.01 m plane | 65 | +0.77 | 0.26 | −0.13 | 0.09 | FB +0.27, FAC2 0.85, R +0.90, hit rate 0.45 |
+| B · \|U\|/U_H, z = H/16 plane | 122 | +0.82 | 0.36 | −0.24 | 0.17 | FB +0.12, FAC2 0.84, R +0.87, hit rate 0.57 |
+| C · Vs/U_H, 9 configurations | 1080 | +0.67 | 0.44 | +0.21 | 0.18 | √(\|U\|²+2k): FB +0.18, FAC2 0.93, R +0.87, hit rate 0.69 |
+| D · Vs/U_H, thermistor, 3 WD | 198 | +0.67 | 0.34 | +0.33 | 0.17 | solving |
+| D · \|U\|/U_H, split fibre, WD 0 | 33 | +0.23 | 0.52 | +0.59 | 0.24 | solving |
+| E · Vs/U(15.9 m), 16 WD, before + after | 2560 | +1.00 | 0.22 | +0.43 | 0.08 | — |
+| E · the same, SW only (both states) | 160 | +1.07 | 0.20 | +0.53 | 0.04 | \|U\|: FB +0.31, FAC2 0.76, R +0.81, hit rate 0.36 |
+
+**It predicts roughly half the tunnel's speed everywhere, and it does not respond to the wind direction.** Reversing
+the wind changes the predicted field by at most 1 × 10⁻⁴ U_ref over all 254,016 cells, in every case: the network
+responds to spatial contrast in a channel, never to its level, and on a lattice that fills the window the direction
+channels are constant planes. Cut the lattice at ±250 m and the direction enters through the step at its edge — but
+on A, B and D the reversed wind then scores as well as the right one or better. These numbers grade the geometry
+the model was given, not a wind it was told.
 
 ## Inflow
 
@@ -76,31 +201,45 @@ log-law inlet is least right. The fits are in `/api/cases/{id}.json` under `infl
 
 ## Reproducing the figures
 
-`validation/plot_aij.py` (UltraPlot) builds both figures from the solved studies and the reference CSVs. The Eddy3D
-fixtures are `TestAijCaseAContainerE2E` and `TestAijCaseBContainerE2E`. The scores they wrote are snapshotted in
-`validation/results/` and served unchanged by `/api/cases/{id}/validation.json`.
+`validation/plot_aij.py` (Cases A and B), `validation/plot_aij_caseC.py` and `validation/plot_aij_ml.py` (UltraPlot)
+build the figures. The Eddy3D fixtures are `TestAijCaseAContainerE2E`, `TestAijCaseBContainerE2E`,
+`TestAijCaseC{0D,1D,2D}ContainerE2E` and `Outdoor.ML.Tests/TestAijSurrogateE2E`. The scores they wrote are
+snapshotted in `validation/results/` with the per-point pairs beside them, and served unchanged by
+`/api/cases/{id}/validation.json`.
 
-## What is not validated yet
+## What is still running
 
 | | A | B | C | D | E |
 |---|---|---|---|---|---|
-| OpenFOAM | ✅ | ✅ | — | — | — |
-| OpenLB | — | — | — | — | — |
-| FluidX3D | — | — | — | — | — |
-| ML surrogate | n/a | n/a | — | — | — |
+| OpenFOAM 12, realizable k-ε | scored | scored | scored | solving | scored, SW |
+| OpenLB | scored | scored | not comparable at dx = 1.6 m | not comparable at dx = 1.6 m | not comparable at dx = 1.6 m |
+| FluidX3D | running | running | pending | pending | pending |
+| ML surrogate | scored | scored | scored | scored | scored |
 
-Cases C–E need their geometry built (C is parametric, D ships an STL, E is a Rhino model of a real district) — the
-API now serves cleaned STLs for all three, which is the first step, not the validation. The ML surrogate predicts
-**pedestrian-height** wind, which Cases A and B do not measure, so there is nothing to compare for those two —
-marked n/a rather than pending.
+**Why OpenLB is not scored on C–E — measured, not assumed.** Cases C, D and E measure only at pedestrian height,
+and a point is scoreable on OpenLB only once it sits three to four cells above its no-slip floor. On the A and B
+runs at dx = 1.6 m, read in the undisturbed column at the heights the other cases measure at:
 
-Two things that will shape the C/D/E validations when they come, both measured on the data rather than assumed:
+| the other case's height | cells above the floor | U / inlet log law (A run, B run) |
+|---|---|---|
+| Case D, z/H = 0.02 | below the first fluid node | 0.11, 0.13 — no prediction |
+| Case C, z = 0.1 D | 1–1.25 | 0.29, 0.40 |
+| Case E, 2 m among ~6 m buildings (z/H ≈ 0.33) | 3.3–4.1 | 1.00, 1.06 |
+
+A 2 m pedestrian plane therefore needs dx ≤ 0.5 m: 3.2 times finer in every direction, about 33 times the cells
+and 105 times the cell-steps over the same domain — and the Case C array and the Niigata district are larger
+domains than Case A's. This CPU image does not run that in useful time.
+That is a statement about this resolution and this machine; a GPU run at dx ≤ 0.5 m would decide it. FluidX3D has
+the same kind of floor: on an empty domain at the finest lattice that fits on the GPU, the flow at Case A's lowest
+plane arrives 42 % below the fitted log law; its own measurement at the C–E heights is pending.
+
+Two things that shape the C/D/E validations, both measured on the data rather than assumed:
 
 - **Scalar vs vector speed.** C, D and E measure with thermistor anemometers, which report a mean *omnidirectional
   scalar* speed; steady RANS gives the magnitude of the mean velocity, which is lower by construction. Case D is the
   only case where both instruments overlap: over its 33 shared points the thermistor reads 1.34× |U| (ratio of means),
   and √(|U|² + 2k) from the split-fibre data matches the thermistor to FB +0.058 where |U| alone gives +0.292. A
-  Case C/D/E score will therefore be reported as the bracket |U| ≤ Vs ≤ √(|U|² + 2k), not as one number.
+  Case C/D/E score is therefore reported at both ends of the bracket \|U\| ≤ Vs ≤ √(\|U\|² + 2k).
 - **The inlet is a log law, the tunnels' profiles are not.** Fitted power-law exponents are 0.19 (C, D) and 0.16–0.20
   (E) against the papers' 0.28 / 0.25; a log-law fit misses the single measurement height by −4 … −11 % depending on
   the fitting window, and sets the inlet k 26–48 % below the tunnel's (Case D). These are declared systematics, and

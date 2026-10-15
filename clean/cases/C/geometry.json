@@ -1,0 +1,410 @@
+{
+ "case_id": "C",
+ "units": "metres (model scale)",
+ "frame": {
+  "origin": "array centre on the ground plane (centre of the middle block)",
+  "x": "+x streamwise at WD = 0 (measured: see checks WD0_flow_is_along_x)",
+  "y": "+y lateral",
+  "z": "+z up; every point at z = 0.02 = 0.1 D",
+  "wind_direction_rotation": "In this frame WD rotates the wind from +x TOWARD -y (measured: the WD = 45 field is mirror-symmetric about y = -x at the experiment's repeatability and not about y = +x). flow_dir = (cos WD, -sin WD). Figure 3 of the data paper draws the opposite sense — QUESTIONS.md Q1.",
+  "length_scale": "model metres (the source states no model:full scale ratio)"
+ },
+ "files": [
+  {
+   "configuration": "0D",
+   "file": "cases/C/geometry_0D.stl",
+   "format": "ASCII STL, LF, metres, same frame as points.csv",
+   "source": "generated: nine 0.2 m cubes on a 0.4 m pitch (street = D), centre block 0D; pitch verified against the point grid below",
+   "stats": {
+    "triangles": 96,
+    "bbox_min": [
+     -0.5,
+     -0.5,
+     0.0
+    ],
+    "bbox_max": [
+     0.5,
+     0.5,
+     0.2
+    ],
+    "signed_volume": 0.064,
+    "edges": 144,
+    "edges_shared_by_two_faces": 144,
+    "edges_boundary": 0,
+    "edges_non_manifold": 0,
+    "watertight": true
+   },
+   "boxes": [
+    {
+     "min": [
+      -0.5,
+      -0.5,
+      0.0
+     ],
+     "max": [
+      -0.3,
+      -0.3,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      -0.5,
+      -0.1,
+      0.0
+     ],
+     "max": [
+      -0.3,
+      0.1,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      -0.5,
+      0.3,
+      0.0
+     ],
+     "max": [
+      -0.3,
+      0.5,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      -0.1,
+      -0.5,
+      0.0
+     ],
+     "max": [
+      0.1,
+      -0.3,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      -0.1,
+      0.3,
+      0.0
+     ],
+     "max": [
+      0.1,
+      0.5,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      0.3,
+      -0.5,
+      0.0
+     ],
+     "max": [
+      0.5,
+      -0.3,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      0.3,
+      -0.1,
+      0.0
+     ],
+     "max": [
+      0.5,
+      0.1,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      0.3,
+      0.3,
+      0.0
+     ],
+     "max": [
+      0.5,
+      0.5,
+      0.2
+     ]
+    }
+   ],
+   "box_count": 8
+  },
+  {
+   "configuration": "1D",
+   "file": "cases/C/geometry_1D.stl",
+   "format": "ASCII STL, LF, metres, same frame as points.csv",
+   "source": "generated: nine 0.2 m cubes on a 0.4 m pitch (street = D), centre block 1D; pitch verified against the point grid below",
+   "stats": {
+    "triangles": 108,
+    "bbox_min": [
+     -0.5,
+     -0.5,
+     0.0
+    ],
+    "bbox_max": [
+     0.5,
+     0.5,
+     0.2
+    ],
+    "signed_volume": 0.072,
+    "edges": 162,
+    "edges_shared_by_two_faces": 162,
+    "edges_boundary": 0,
+    "edges_non_manifold": 0,
+    "watertight": true
+   },
+   "boxes": [
+    {
+     "min": [
+      -0.5,
+      -0.5,
+      0.0
+     ],
+     "max": [
+      -0.3,
+      -0.3,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      -0.5,
+      -0.1,
+      0.0
+     ],
+     "max": [
+      -0.3,
+      0.1,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      -0.5,
+      0.3,
+      0.0
+     ],
+     "max": [
+      -0.3,
+      0.5,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      -0.1,
+      -0.5,
+      0.0
+     ],
+     "max": [
+      0.1,
+      -0.3,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      -0.1,
+      -0.1,
+      0.0
+     ],
+     "max": [
+      0.1,
+      0.1,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      -0.1,
+      0.3,
+      0.0
+     ],
+     "max": [
+      0.1,
+      0.5,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      0.3,
+      -0.5,
+      0.0
+     ],
+     "max": [
+      0.5,
+      -0.3,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      0.3,
+      -0.1,
+      0.0
+     ],
+     "max": [
+      0.5,
+      0.1,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      0.3,
+      0.3,
+      0.0
+     ],
+     "max": [
+      0.5,
+      0.5,
+      0.2
+     ]
+    }
+   ],
+   "box_count": 9
+  },
+  {
+   "configuration": "2D",
+   "file": "cases/C/geometry_2D.stl",
+   "format": "ASCII STL, LF, metres, same frame as points.csv",
+   "source": "generated: nine 0.2 m cubes on a 0.4 m pitch (street = D), centre block 2D; pitch verified against the point grid below",
+   "stats": {
+    "triangles": 108,
+    "bbox_min": [
+     -0.5,
+     -0.5,
+     0.0
+    ],
+    "bbox_max": [
+     0.5,
+     0.5,
+     0.4
+    ],
+    "signed_volume": 0.08,
+    "edges": 162,
+    "edges_shared_by_two_faces": 162,
+    "edges_boundary": 0,
+    "edges_non_manifold": 0,
+    "watertight": true
+   },
+   "boxes": [
+    {
+     "min": [
+      -0.5,
+      -0.5,
+      0.0
+     ],
+     "max": [
+      -0.3,
+      -0.3,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      -0.5,
+      -0.1,
+      0.0
+     ],
+     "max": [
+      -0.3,
+      0.1,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      -0.5,
+      0.3,
+      0.0
+     ],
+     "max": [
+      -0.3,
+      0.5,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      -0.1,
+      -0.5,
+      0.0
+     ],
+     "max": [
+      0.1,
+      -0.3,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      -0.1,
+      -0.1,
+      0.0
+     ],
+     "max": [
+      0.1,
+      0.1,
+      0.4
+     ]
+    },
+    {
+     "min": [
+      -0.1,
+      0.3,
+      0.0
+     ],
+     "max": [
+      0.1,
+      0.5,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      0.3,
+      -0.5,
+      0.0
+     ],
+     "max": [
+      0.5,
+      -0.3,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      0.3,
+      -0.1,
+      0.0
+     ],
+     "max": [
+      0.5,
+      0.1,
+      0.2
+     ]
+    },
+    {
+     "min": [
+      0.3,
+      0.3,
+      0.0
+     ],
+     "max": [
+      0.5,
+      0.5,
+      0.2
+     ]
+    }
+   ],
+   "box_count": 9
+  }
+ ]
+}

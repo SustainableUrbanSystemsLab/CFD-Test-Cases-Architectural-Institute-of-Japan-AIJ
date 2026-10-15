@@ -1,0 +1,234 @@
+{
+ "schema_version": "1.0.0",
+ "generated_from": "b5f2ef6d37332bf917f413ffec0e4446ac55ab89",
+ "generated_at": "2026-10-14T22:45:59+00:00",
+ "licence": "CC BY 4.0",
+ "description": "Every cleaned STL, one entry per case and configuration. Each file is in its own case's frame and units — points.json of the same case lives in that frame — so they are deliberately not one scene: overlaid, the cases would stack at the origin, and Case E is full scale while A-D are model scale. geometry.zip holds the same files under archive_name.",
+ "archive": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/geometry.zip",
+ "files": [
+  {
+   "case": "A",
+   "configuration": "default",
+   "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/A/geometry.stl",
+   "path": "cases/A/geometry.stl",
+   "archive_name": "AIJ_caseA_default.stl",
+   "units": "metres (model scale)",
+   "frame": {
+    "origin": "building centre on the ground plane",
+    "x": "+x streamwise (the wind at WD = 0 blows toward +x); building spans x in [-0.04, 0.04]",
+    "y": "+y lateral; building spans y in [-0.04, 0.04]; points published on the y <= 0 half by the tunnel's symmetry convention",
+    "z": "+z up from the ground; roof at z = 0.16"
+   },
+   "bbox_min": [
+    -0.04,
+    -0.04,
+    0.0
+   ],
+   "bbox_max": [
+    0.04,
+    0.04,
+    0.16
+   ],
+   "triangles": 12,
+   "watertight": true,
+   "bytes": 1756,
+   "sha256": "89acdfbbff84039fd8ef98ca472cdb4953e63b01504740b0fc0b57259005ea12"
+  },
+  {
+   "case": "B",
+   "configuration": "default",
+   "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/B/geometry.stl",
+   "path": "cases/B/geometry.stl",
+   "archive_name": "AIJ_caseB_default.stl",
+   "units": "metres (model scale)",
+   "frame": {
+    "origin": "building centre on the ground plane",
+    "x": "+x streamwise (the wind at WD = 0 blows toward +x); slab spans x in [-0.025, 0.025]",
+    "y": "+y lateral; slab spans y in [-0.10, 0.10]; points published on the y <= 0 half by the tunnel's symmetry convention",
+    "z": "+z up from the ground; roof at z = 0.20"
+   },
+   "bbox_min": [
+    -0.025,
+    -0.1,
+    0.0
+   ],
+   "bbox_max": [
+    0.025,
+    0.1,
+    0.2
+   ],
+   "triangles": 12,
+   "watertight": true,
+   "bytes": 1738,
+   "sha256": "e6de70eeb17dfa4d7312223dc3dcc58e996e2573b37fb77d7820b52b7bca354b"
+  },
+  {
+   "case": "C",
+   "configuration": "2D",
+   "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/C/geometry.stl",
+   "path": "cases/C/geometry.stl",
+   "archive_name": "AIJ_caseC_2D.stl",
+   "units": "metres (model scale)",
+   "frame": {
+    "origin": "array centre on the ground plane (centre of the middle block)",
+    "x": "+x streamwise at WD = 0 (checked three ways on the data: y -> -y is a symmetry, the x <= -0.25 band is faster than x >= +0.25 in every configuration, and the regression slope of Vs is most negative within 0.8-4.3 deg of +x)",
+    "y": "+y lateral",
+    "z": "+z up; all points at z = 0.02"
+   },
+   "bbox_min": [
+    -0.5,
+    -0.5,
+    0.0
+   ],
+   "bbox_max": [
+    0.5,
+    0.5,
+    0.4
+   ],
+   "triangles": 108,
+   "watertight": true,
+   "bytes": 14576,
+   "sha256": "b8c31c57c453a6cfc97023ad274c1f36b5250bff6662c5fb1d97d7129e52f751"
+  },
+  {
+   "case": "C",
+   "configuration": "0D",
+   "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/C/geometry_0D.stl",
+   "path": "cases/C/geometry_0D.stl",
+   "archive_name": "AIJ_caseC_0D.stl",
+   "units": "metres (model scale)",
+   "frame": {
+    "origin": "array centre on the ground plane (centre of the middle block)",
+    "x": "+x streamwise at WD = 0 (checked three ways on the data: y -> -y is a symmetry, the x <= -0.25 band is faster than x >= +0.25 in every configuration, and the regression slope of Vs is most negative within 0.8-4.3 deg of +x)",
+    "y": "+y lateral",
+    "z": "+z up; all points at z = 0.02"
+   },
+   "bbox_min": [
+    -0.5,
+    -0.5,
+    0.0
+   ],
+   "bbox_max": [
+    0.5,
+    0.5,
+    0.2
+   ],
+   "triangles": 96,
+   "watertight": true,
+   "bytes": 12961,
+   "sha256": "0f08bcd4dd6bd11414a66f1d8d4f80986864e80e72043019e855f04041d2db4a"
+  },
+  {
+   "case": "C",
+   "configuration": "1D",
+   "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/C/geometry_1D.stl",
+   "path": "cases/C/geometry_1D.stl",
+   "archive_name": "AIJ_caseC_1D.stl",
+   "units": "metres (model scale)",
+   "frame": {
+    "origin": "array centre on the ground plane (centre of the middle block)",
+    "x": "+x streamwise at WD = 0 (checked three ways on the data: y -> -y is a symmetry, the x <= -0.25 band is faster than x >= +0.25 in every configuration, and the regression slope of Vs is most negative within 0.8-4.3 deg of +x)",
+    "y": "+y lateral",
+    "z": "+z up; all points at z = 0.02"
+   },
+   "bbox_min": [
+    -0.5,
+    -0.5,
+    0.0
+   ],
+   "bbox_max": [
+    0.5,
+    0.5,
+    0.2
+   ],
+   "triangles": 108,
+   "watertight": true,
+   "bytes": 14576,
+   "sha256": "ac92c8ed427cf8f16d5ce9839449dad4bc5cc96c6690e90586b7a7f703652d13"
+  },
+  {
+   "case": "D",
+   "configuration": "default",
+   "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/D/geometry.stl",
+   "path": "cases/D/geometry.stl",
+   "archive_name": "AIJ_caseD_default.stl",
+   "units": "metres (model scale)",
+   "frame": {
+    "origin": "tower centre on the ground plane (the array's bounding box is centred on it)",
+    "x": "+x streamwise at WD = 0 (the 0 deg thermistor field is exactly y-mirror symmetric; the split-fibre U is positive at the stream-like points and negative in the tower's windward horseshoe)",
+    "y": "+y lateral",
+    "z": "+z up; all points at z = 0.005"
+   },
+   "bbox_min": [
+    -0.7,
+    -0.675,
+    0.0
+   ],
+   "bbox_max": [
+    0.7,
+    0.675,
+    0.25
+   ],
+   "triangles": 996,
+   "watertight": true,
+   "bytes": 144878,
+   "sha256": "5318955312711ea5419c67d2a8fe6c28868f9bce02ce9e3661e9a79228d6f257"
+  },
+  {
+   "case": "E",
+   "configuration": "ac",
+   "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/geometry.stl",
+   "path": "cases/E/geometry.stl",
+   "archive_name": "AIJ_caseE_ac.stl",
+   "units": "metres (full scale)",
+   "frame": {
+    "origin": "centre of the reproduced area, ground plane",
+    "x": "+x EAST (full-scale metres)",
+    "y": "+y NORTH (compass rose in MP_caseE.png)",
+    "z": "+z up; all points at z = 2.0"
+   },
+   "bbox_min": [
+    -201.5,
+    -201.0,
+    0.0
+   ],
+   "bbox_max": [
+    203.0,
+    197.300003,
+    60.0
+   ],
+   "triangles": 8436,
+   "watertight": false,
+   "bytes": 1211403,
+   "sha256": "f59d27738a49edb8a51724c56a6c159ffc53f66f7cd2c05291c6f55ab8f5e5ce"
+  },
+  {
+   "case": "E",
+   "configuration": "bc",
+   "url": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/geometry_bc.stl",
+   "path": "cases/E/geometry_bc.stl",
+   "archive_name": "AIJ_caseE_bc.stl",
+   "units": "metres (full scale)",
+   "frame": {
+    "origin": "centre of the reproduced area, ground plane",
+    "x": "+x EAST (full-scale metres)",
+    "y": "+y NORTH (compass rose in MP_caseE.png)",
+    "z": "+z up; all points at z = 2.0"
+   },
+   "bbox_min": [
+    -201.5,
+    -201.0,
+    0.0
+   ],
+   "bbox_max": [
+    203.0,
+    197.300003,
+    30.0
+   ],
+   "triangles": 8400,
+   "watertight": false,
+   "bytes": 1206272,
+   "sha256": "25d8af3a7617893a8077d4ed23661caeece421dac3fd048506ceb6b6df2d3552"
+  }
+ ]
+}

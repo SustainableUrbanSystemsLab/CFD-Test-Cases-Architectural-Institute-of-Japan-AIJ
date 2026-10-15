@@ -1,0 +1,53 @@
+{
+ "case_id": "A",
+ "units": "metres (model scale)",
+ "frame": {
+  "origin": "building centre on the ground plane",
+  "x": "+x streamwise (wind at WD = 0 blows toward +x); building x in [-0.04, 0.04]",
+  "y": "+y lateral; building y in [-0.04, 0.04]; points published on the y <= 0 half",
+  "z": "+z up; roof at 0.16",
+  "length_scale": "model metres (the source states no model:full scale ratio)"
+ },
+ "files": [
+  {
+   "configuration": "default",
+   "file": "cases/A/geometry.stl",
+   "format": "ASCII STL, LF, metres, same frame as points.csv",
+   "source": "generated from the readme's stated dimensions b = 0.08 m, H = 2b = 0.16 m, centred on the origin (MP-z_caseA.png)",
+   "stats": {
+    "triangles": 12,
+    "bbox_min": [
+     -0.04,
+     -0.04,
+     0.0
+    ],
+    "bbox_max": [
+     0.04,
+     0.04,
+     0.16
+    ],
+    "signed_volume": 0.001024,
+    "edges": 18,
+    "edges_shared_by_two_faces": 18,
+    "edges_boundary": 0,
+    "edges_non_manifold": 0,
+    "watertight": true
+   },
+   "boxes": [
+    {
+     "min": [
+      -0.04,
+      -0.04,
+      0.0
+     ],
+     "max": [
+      0.04,
+      0.04,
+      0.16
+     ]
+    }
+   ],
+   "box_count": 1
+  }
+ ]
+}

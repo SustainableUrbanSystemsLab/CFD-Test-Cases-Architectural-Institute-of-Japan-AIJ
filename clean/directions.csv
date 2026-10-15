@@ -1,0 +1,48 @@
+case_id,config,instrument,wind_direction_deg,wind_direction,flow_dir_x,flow_dir_y,rows,measured,sense_basis,status
+A,default,split_fibre,0,,1,0,186,186,definition: +x streamwise (MP drawings; checks lateral_sign_*),settled
+B,default,split_fibre,0,,1,0,224,224,definition: +x streamwise (MP drawings; checks lateral_sign_*),settled
+C,0D,thermistor,0,,1,0,120,120,measured: y-mirror symmetry + windward band faster (checks WD0_flow_is_along_x_*),settled
+C,0D,thermistor,22.5,,0.923879533,-0.382683432,120,120,"measured: WD0 field y-mirror symmetric and faster upwind; WD45 field mirror-symmetric about y = -x, not y = +x (checks WD45_symmetry_plane_*)",settled (from the data; disagrees with Figure 3 of the data paper — QUESTIONS.md Q1)
+C,0D,thermistor,45,,0.707106781,-0.707106781,120,120,"measured: WD0 field y-mirror symmetric and faster upwind; WD45 field mirror-symmetric about y = -x, not y = +x (checks WD45_symmetry_plane_*)",settled (from the data; disagrees with Figure 3 of the data paper — QUESTIONS.md Q1)
+C,1D,thermistor,0,,1,0,120,120,measured: y-mirror symmetry + windward band faster (checks WD0_flow_is_along_x_*),settled
+C,1D,thermistor,22.5,,0.923879533,-0.382683432,120,120,"measured: WD0 field y-mirror symmetric and faster upwind; WD45 field mirror-symmetric about y = -x, not y = +x (checks WD45_symmetry_plane_*)",settled (from the data; disagrees with Figure 3 of the data paper — QUESTIONS.md Q1)
+C,1D,thermistor,45,,0.707106781,-0.707106781,120,120,"measured: WD0 field y-mirror symmetric and faster upwind; WD45 field mirror-symmetric about y = -x, not y = +x (checks WD45_symmetry_plane_*)",settled (from the data; disagrees with Figure 3 of the data paper — QUESTIONS.md Q1)
+C,2D,thermistor,0,,1,0,120,120,measured: y-mirror symmetry + windward band faster (checks WD0_flow_is_along_x_*),settled
+C,2D,thermistor,22.5,,0.923879533,-0.382683432,120,120,"measured: WD0 field y-mirror symmetric and faster upwind; WD45 field mirror-symmetric about y = -x, not y = +x (checks WD45_symmetry_plane_*)",settled (from the data; disagrees with Figure 3 of the data paper — QUESTIONS.md Q1)
+C,2D,thermistor,45,,0.707106781,-0.707106781,120,120,"measured: WD0 field y-mirror symmetric and faster upwind; WD45 field mirror-symmetric about y = -x, not y = +x (checks WD45_symmetry_plane_*)",settled (from the data; disagrees with Figure 3 of the data paper — QUESTIONS.md Q1)
+D,default,split_fibre,0,,1,0,33,33,"measured: split-fibre U > 0, exact y-mirror symmetry of the 0 deg field",settled
+D,default,thermistor,0,,1,0,78,66,"measured: split-fibre U > 0, exact y-mirror symmetry of the 0 deg field",settled
+D,default,thermistor,22.5,,0.923879533,0.382683432,78,66,read from Figure 4 of the data paper (scoping); the y-symmetric array makes the sense undecidable from the data,unverified — QUESTIONS.md Q2
+D,default,thermistor,45,,0.707106781,0.707106781,78,66,read from Figure 4 of the data paper (scoping); the y-symmetric array makes the sense undecidable from the data,unverified — QUESTIONS.md Q2
+E,ac,thermistor,0,N,0,-1,80,80,"definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control",settled
+E,ac,thermistor,22.5,NNE,-0.382683432,-0.923879533,80,80,"definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control",settled
+E,ac,thermistor,45,NE,-0.707106781,-0.707106781,80,80,"definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control",settled
+E,ac,thermistor,67.5,ENE,-0.923879533,-0.382683432,80,80,"definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control",settled
+E,ac,thermistor,90,E,-1,0,80,80,"definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control",settled
+E,ac,thermistor,112.5,ESE,-0.923879533,0.382683432,80,80,"definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control",settled
+E,ac,thermistor,135,SE,-0.707106781,0.707106781,80,80,"definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control",settled
+E,ac,thermistor,157.5,SSE,-0.382683432,0.923879533,80,80,"definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control",settled
+E,ac,thermistor,180,S,0,1,80,80,"definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control",settled
+E,ac,thermistor,202.5,SSW,0.382683432,0.923879533,80,80,"definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control",settled
+E,ac,thermistor,225,SW,0.707106781,0.707106781,80,80,"definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control",settled
+E,ac,thermistor,247.5,WSW,0.923879533,0.382683432,80,80,"definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control",settled
+E,ac,thermistor,270,W,1,0,80,80,"definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control",settled
+E,ac,thermistor,292.5,WNW,0.923879533,-0.382683432,80,80,"definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control",settled
+E,ac,thermistor,315,NW,0.707106781,-0.707106781,80,80,"definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control",settled
+E,ac,thermistor,337.5,NNW,0.382683432,-0.923879533,80,80,"definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control",settled
+E,bc,thermistor,0,N,0,-1,80,80,"definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control",settled
+E,bc,thermistor,22.5,NNE,-0.382683432,-0.923879533,80,80,"definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control",settled
+E,bc,thermistor,45,NE,-0.707106781,-0.707106781,80,80,"definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control",settled
+E,bc,thermistor,67.5,ENE,-0.923879533,-0.382683432,80,80,"definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control",settled
+E,bc,thermistor,90,E,-1,0,80,80,"definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control",settled
+E,bc,thermistor,112.5,ESE,-0.923879533,0.382683432,80,80,"definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control",settled
+E,bc,thermistor,135,SE,-0.707106781,0.707106781,80,80,"definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control",settled
+E,bc,thermistor,157.5,SSE,-0.382683432,0.923879533,80,80,"definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control",settled
+E,bc,thermistor,180,S,0,1,80,80,"definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control",settled
+E,bc,thermistor,202.5,SSW,0.382683432,0.923879533,80,80,"definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control",settled
+E,bc,thermistor,225,SW,0.707106781,0.707106781,80,80,"definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control",settled
+E,bc,thermistor,247.5,WSW,0.923879533,0.382683432,80,80,"definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control",settled
+E,bc,thermistor,270,W,1,0,80,80,"definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control",settled
+E,bc,thermistor,292.5,WNW,0.923879533,-0.382683432,80,80,"definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control",settled
+E,bc,thermistor,315,NW,0.707106781,-0.707106781,80,80,"definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control",settled
+E,bc,thermistor,337.5,NNW,0.382683432,-0.923879533,80,80,"definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control",settled

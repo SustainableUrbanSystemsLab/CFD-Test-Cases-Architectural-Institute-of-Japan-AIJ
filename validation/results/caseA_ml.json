@@ -1,0 +1,160 @@
+{
+  "case": "AIJ UWE Case A (112) \u2014 1:1:2 building, horizontal plane z/b = 0.125",
+  "reference": "Ishihara, T. \u0026 Hibi, K.; AIJ UWE Benchmark Dataset Case A; Kikumoto et al. (2026) Japan Architectural Review",
+  "engine": "ML surrogate \u2014 Eddy3D Wind Predictor, Yel-2.0.onnx (1 output channel, |U_mean|/U_ref) on ONNX Runtime CPU",
+  "turbulenceModel": "n/a (ML surrogate)",
+  "h_pred_m": 1.8,
+  "h_pred.note": "Z_relative channel = pedestrian level, default 1.8 m in DatasetCuratorCMP and WindPredictorCMP; U_over_Uref channel = ln(1.8)/ln(10) = 0.26",
+  "scale": 180,
+  "measurementHeight.tunnel_m": 0.01,
+  "measurementHeight.scaled_m": 1.8,
+  "zRef.model_m": 10,
+  "zRef.tunnel_m": 0.05555555555555555,
+  "uRef.tunnel_mps": 3.590556617813351,
+  "U_H_mps": 4.491,
+  "uRefOverUH": 0.7995004715683258,
+  "uRef.note": "model output is |U_mean|/U_ref with U_ref the approach speed at zRef = 10 m above the SCALED ground = 10/scale m in the tunnel; converted to U_H by U_AF(10/scale)/U_H from the case\u0027s approach-flow file",
+  "directionConvention": "tunnel blows along \u002Bx (U \u003E 0 streamwise) \u2192 \u03B8 = 270 (wind from the west); the model\u0027s channels 6/7 = (\u2212sin \u03B8, \u2212cos \u03B8) = (\u002B1, 0)",
+  "hitRate": "D = 0.25, W = 0.05 U_H",
+  "lattice": "all 504\u00D7504 cells of the model window (2 m), scene origin at the window centre",
+  "window.buildingFraction": 0.0002519526329050139,
+  "window.filledFraction": 1,
+  "buildings": 1,
+  "points.measured": 65,
+  "speed.vectorMagnitude": {
+    "Count": 65,
+    "MeanObserved": 0.525546439798715,
+    "MeanPredicted": 0.2328989686395,
+    "Fb": 0.7717034552607615,
+    "Nmse": 1.8364553635585432,
+    "Nad": 0.530933520707191,
+    "Fac2": 0.26153846153846155,
+    "HitRate": 0.09230769230769231,
+    "Mg": 2.198969135520307,
+    "Vg": 5.977028165221301,
+    "GeometricPairs": 58,
+    "R": -0.1252913701124984
+  },
+  "speed.scalarRms": {
+    "Count": 65,
+    "MeanObserved": 0.6407285008058057,
+    "MeanPredicted": 0.2328989686395,
+    "Fb": 0.9336463113396603,
+    "Nmse": 1.7730762826573554,
+    "Nad": 0.5360297578310534,
+    "Fac2": 0.18461538461538463,
+    "HitRate": 0.015384615384615385,
+    "Mg": 3.009991306021048,
+    "Vg": 6.618220568190777,
+    "GeometricPairs": 58,
+    "R": -0.06426802497884812
+  },
+  "speed.vectorMagnitude.noUrefConversion": {
+    "Count": 65,
+    "MeanObserved": 0.525546439798715,
+    "MeanPredicted": 0.2913056050894353,
+    "Fb": 0.5735208381374713,
+    "Nmse": 1.4845786443531641,
+    "Nad": 0.4713723766976782,
+    "Fac2": 0.2923076923076923,
+    "HitRate": 0.16923076923076924,
+    "Mg": 1.7580768608126796,
+    "Vg": 4.416476131902615,
+    "GeometricPairs": 58,
+    "R": -0.12529137011249838
+  },
+  "tunnel.rmsOverMean.median": 1.1567028967423634,
+  "latticeSensitivity.halfExtent_m": 250,
+  "latticeSensitivity.meanAbsDeltaOverUH": 0.2084922869286801,
+  "latticeSensitivity.meanPredFullWindow": 0.2328989686395,
+  "latticeSensitivity.meanPredHalfExtent": 0.35010105298463134,
+  "negativeControl.reversedWind": {
+    "Count": 65,
+    "MeanObserved": 0.525546439798715,
+    "MeanPredicted": 0.2328989547786181,
+    "Fb": 0.7717035059147103,
+    "Nmse": 1.8364580957643648,
+    "Nad": 0.5309339873818429,
+    "Fac2": 0.26153846153846155,
+    "HitRate": 0.09230769230769231,
+    "Mg": 2.198964544792727,
+    "Vg": 5.976970868535327,
+    "GeometricPairs": 58,
+    "R": -0.12529194701305824
+  },
+  "negativeControl.reversedWind.theta": 90,
+  "directionBlindness.fullWindow.maxAbsDeltaField": 7.498264E-05,
+  "directionBlindness.fullWindow.meanAbsDeltaField": 2.189746E-06,
+  "halfExtent250.forward": {
+    "Count": 65,
+    "MeanObserved": 0.525546439798715,
+    "MeanPredicted": 0.35010105298463134,
+    "Fb": 0.4007214964012751,
+    "Nmse": 0.49941483957408955,
+    "Nad": 0.27159824796558774,
+    "Fac2": 0.6153846153846154,
+    "HitRate": 0.3384615384615385,
+    "Mg": 1.3562229466447324,
+    "Vg": 1.943978304004014,
+    "GeometricPairs": 63,
+    "R": 0.433641499610416
+  },
+  "halfExtent250.reversedWind": {
+    "Count": 65,
+    "MeanObserved": 0.525546439798715,
+    "MeanPredicted": 0.4780042462871974,
+    "Fb": 0.09474796673587757,
+    "Nmse": 0.42788900510262506,
+    "Nad": 0.26183412160261105,
+    "Fac2": 0.6153846153846154,
+    "HitRate": 0.2923076923076923,
+    "Mg": 1.0608843501179859,
+    "Vg": 2.58972906925614,
+    "GeometricPairs": 61,
+    "R": 0.3160231401496742
+  },
+  "halfExtent250.maxAbsDeltaField": 1.2617553,
+  "negativeControl.note": "the same scene and sensors with the wind direction reversed (\u03B8 \u002B 180): on the full-window lattice (negativeControl.*) and on a \u00B1250 m lattice (halfExtent250.*)",
+  "modelResponse": {
+    "ch6/7 direction zeroed": {
+      "maxAbsDelta": 7.805228233337402E-05,
+      "meanAbsDelta": 2.460043788232724E-06
+    },
+    "ch6/7 direction = 100": {
+      "maxAbsDelta": 0.14434528350830078,
+      "meanAbsDelta": 0.006560352630913258
+    },
+    "ch6/7 direction random noise": {
+      "maxAbsDelta": 1.41584312915802,
+      "meanAbsDelta": 0.08648102730512619
+    },
+    "ch2 Z_relative 1.8 -\u003E 3.6": {
+      "maxAbsDelta": 0.00010472536087036133,
+      "meanAbsDelta": 3.2670927794242743E-06
+    },
+    "ch5 U/Uref 0.26 -\u003E 0.5": {
+      "maxAbsDelta": 9.593367576599121E-05,
+      "meanAbsDelta": 3.18642787533463E-06
+    },
+    "ch3 SDF zeroed": {
+      "maxAbsDelta": 2.06014347076416,
+      "meanAbsDelta": 0.1587572544813156
+    },
+    "ch4 height zeroed": {
+      "maxAbsDelta": 1.7789230346679688,
+      "meanAbsDelta": 0.04514458030462265
+    },
+    "ch0/1 X/Y meshgrid zeroed": {
+      "maxAbsDelta": 1.9760425090789795,
+      "meanAbsDelta": 0.1370769441127777
+    },
+    "no building": {
+      "maxAbsDelta": 1.9395253658294678,
+      "meanAbsDelta": 0.1864701211452484
+    }
+  },
+  "modelResponse.note": "max/mean |\u0394(U/Uref)| over the 254,016 cells against the case\u0027s own input; a channel whose perturbation moves nothing is one the model does not read",
+  "model": "C:\\Users\\pkastner3\\Eddy3D\\Models\\Yel-2.0.onnx",
+  "inference.runs": 16,
+  "inference.secondsTotal": 51.8702792
+}

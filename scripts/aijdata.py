@@ -8,7 +8,7 @@ Sources, in order of preference:
 1. `clean/` — the canonical cleaned release (Parquet + CSV + manifest.json, built by `clean/build.py`).
    When `clean/manifest.json` names a CSV for a case, the points table is read from it and the
    output records `points_source` as that path.
-2. The raw per-case folders in this repository (`Case_A_cleaned/RS-caseA.csv`, …, the BIFF8
+2. The raw per-case folders in this repository (`case-a/RS-caseA.csv`, …, the BIFF8
    workbooks for D and E). This is the fallback that makes the build work before `clean/` is
    complete, and it applies the same cleaning rules the README documents.
 
@@ -56,9 +56,11 @@ LICENCE = {
 }
 
 CITATION = {
-    "benchmark": ("Kikumoto, H., Tominaga, Y., Okaze, T. et al. (2026). Comprehensive Experimental "
-                  "Database for Validating CFD Simulations in Urban Environments. Japan Architectural "
-                  "Review 9(1), e70083."),
+    "benchmark": ("Kikumoto, H., Okaze, T., Yoshie, R., Tachibana, T., Ishihara, T., Nonomura, Y., Kiyota, N., "
+                  "Kondo, H., Mochida, A., Tominaga, Y. (2026). Comprehensive Experimental Database for "
+                  "Validating CFD Simulations in Urban Wind Environment: Benchmark Cases Curated by the "
+                  "Architectural Institute of Japan. Japan Architectural Review 9(1), e70083. "
+                  "https://doi.org/10.1002/2475-8876.70083"),
     "guidelines": ("Tominaga, Y., Mochida, A., Yoshie, R., Kataoka, H., Nozu, T., Yoshikawa, M., "
                    "Shirasawa, T. (2008). AIJ guidelines for practical applications of CFD to pedestrian "
                    "wind environment around buildings. J. Wind Eng. Ind. Aerodyn. 96, 1749-1761. "
@@ -74,10 +76,10 @@ CASES = {
     "A": {
         "id": "A", "slug": "case-a", "title": "Case A — 1:1:2 building",
         "short": "Isolated 1:1:2 building, velocity field (split-fibre hot wire).",
-        "folder": "Case_A_cleaned",
-        "reference_file": "Case_A_cleaned/RS-caseA.csv",
-        "approach_flow_file": "Case_A_cleaned/AF_caseA.csv",
-        "readme": "Case_A_cleaned/readme_caseA.md",
+        "folder": "case-a",
+        "reference_file": "case-a/RS-caseA.csv",
+        "approach_flow_file": "case-a/AF_caseA.csv",
+        "readme": "case-a/readme_caseA.md",
         "render": "validation/geometry/geom_caseA.png",
         "configuration": {
             "building": "1:1:2 (width : depth : height) prism",
@@ -120,10 +122,10 @@ CASES = {
     "B": {
         "id": "B", "slug": "case-b", "title": "Case B — 1:4:4 slab",
         "short": "Isolated 1:4:4 slab, velocity field (split-fibre hot wire).",
-        "folder": "Case_B_cleaned",
-        "reference_file": "Case_B_cleaned/RS_caseB.csv",
-        "approach_flow_file": "Case_B_cleaned/AF_caseB.csv",
-        "readme": "Case_B_cleaned/readme_caseB.md",
+        "folder": "case-b",
+        "reference_file": "case-b/RS_caseB.csv",
+        "approach_flow_file": "case-b/AF_caseB.csv",
+        "readme": "case-b/readme_caseB.md",
         "render": "validation/geometry/geom_caseB.png",
         "configuration": {
             "building": "1:4:4 (depth : width : height) slab",
@@ -166,10 +168,10 @@ CASES = {
     "C": {
         "id": "C", "slug": "case-c", "title": "Case C — 3 × 3 block array",
         "short": "3 x 3 array of 0.20 m cubes, centre block at 0D / 1D / 2D, pedestrian-height scalar speed (thermistor), 3 wind directions.",
-        "folder": "CaseC_cleaned",
-        "reference_file": "CaseC_cleaned/RS_caseC.csv",
-        "approach_flow_file": "CaseC_cleaned/AF_caseC.csv",
-        "readme": "CaseC_cleaned/readme_caseC.md",
+        "folder": "case-c",
+        "reference_file": "case-c/RS_caseC.csv",
+        "approach_flow_file": "case-c/AF_caseC.csv",
+        "readme": "case-c/readme_caseC.md",
         "render": "validation/geometry/geom_caseC.png",
         "configuration": {
             "array": "3 x 3 cubes, D = 0.20 m, block centres at x, y in {-0.4, 0, +0.4} m (pitch 0.40 m = 2D, street width D)",
@@ -227,9 +229,9 @@ CASES = {
     "D": {
         "id": "D", "slug": "case-d", "title": "Case D — high-rise among city blocks",
         "short": "1:1:4 tower in a regular array of 82 low blocks, pedestrian-height scalar speed (thermistor, 3 wind directions) plus a 33-point split-fibre velocity field at WD = 0.",
-        "folder": "CaseD_cleaned",
-        "reference_file": "CaseD_cleaned/CaseD(Highrise+Blocks).xls",
-        "approach_flow_file": "CaseD_cleaned/CaseD(Highrise+Blocks).xls [sheet Inflow]",
+        "folder": "case-d",
+        "reference_file": "case-d/LF_caseD.xls",
+        "approach_flow_file": "case-d/LF_caseD.xls [sheet Inflow]",
         "readme": None,
         "render": "validation/geometry/geom_caseD.png",
         "configuration": {
@@ -258,12 +260,12 @@ CASES = {
             "coordinate_scale_applied": 0.001,
         },
         "people": {
-            "data_collectors": ["see the data paper"],
-            "editors_distributors": ["Yoshihide Tominaga (Niigata Institute of Technology)", "Hideki Kikumoto (The University of Tokyo)", "Tsubasa Okaze (Institute of Science Tokyo)"],
-            "contact": None,
+            "data_collectors": ["Yoshihide Tominaga (Niigata Institute of Technology)"],
+            "editors_distributors": ["Hideki Kikumoto (The University of Tokyo)", "Tsubasa Okaze (Institute of Science Tokyo)"],
+            "contact": "Yoshihide Tominaga <tominaga@abe.niit.ac.jp>",
         },
-        "doi": None,
-        "doi_note": "Case D ships here without its Zenodo readme; the DOI is given in the data paper.",
+        "doi": "10.5281/zenodo.15402668",
+        "doi_note": "The case folder ships without the Zenodo record's readme and CSVs; they are mirrored byte for byte under clean/sources/zenodo_caseD/ (people and DOI from that readme and the data paper's reference 50).",
         "citation_requested": "Kikumoto, H. et al. (2026). Japan Architectural Review 9(1), e70083, section 3.4.",
         "inflow_fit": {
             "method": "log law, kappa = 0.41, least squares on the workbook's 13-point profile (z = 5 ... 1200 mm); two windows, because the measurement plane z/H = 0.02 sits below the 0.02 ... 2H window used for Cases A and B",
@@ -275,21 +277,21 @@ CASES = {
             "note": "derived during scoping, not published by AIJ; a log-law inlet cannot be right at both the measurement plane and the upper profile",
         },
         "gotchas": [
-            "All of Case D's data lives in CaseD(Highrise+Blocks).xls, a genuine OLE2/BIFF8 workbook (read it with xlrd 2.x; openpyxl cannot). Sheets: 'Geometry&Points', 'Inflow', 'Results (Exp_S)' (split fibre, WD = 0), 'Results (Exp_T)' (thermistor, 0 / 22.5 / 45 deg).",
+            "All of Case D's data lives in LF_caseD.xls, a genuine OLE2/BIFF8 workbook (read it with xlrd 2.x; openpyxl cannot). Sheets: 'Geometry&Points', 'Inflow', 'Results (Exp_S)' (split fibre, WD = 0), 'Results (Exp_T)' (thermistor, 0 / 22.5 / 45 deg).",
             "Coordinates are millimetres in the workbook; the API serves metres.",
             "The shipped BD_caseD.stl is dirty: 1572 facets of which 576 are duplicates, and all 83 roofs are wound inward (signed volume 0.011159 m^3 against the true 0.021477 m^3). The API's geometry.stl is rebuilt from the 83 shells' bounding boxes: 996 facets, watertight, volume 0.021477 m^3.",
             "The thermistor reads a SCALAR speed. Over the 33 points where both instruments overlap at WD = 0, the ratio of mean thermistor speed to mean |U| is 1.342 (the mean of the per-point ratios is 1.50). sqrt(|U|^2 + 2k) from the split-fibre data matches the thermistor to FB +0.058, R 0.947; |U| alone to FB +0.292, R 0.872.",
             "Unmeasured thermistor cells are '-' in the workbook (null here). At WD = 0 the 66 measured values are 33 exact mirror pairs, so only 33 are independent; at 22.5 and 45 deg all 66 are independent.",
-            "A prior Eddy3D comparison kept in the folder ('Eddy3D vs AIJ.xlsx') scores R = +0.096 against the thermistor: a frame or geometry error, not a closure result. It is not a validation.",
+            "A prior Eddy3D comparison kept in the folder (case-d-eddy3d-prior-comparison.xlsx) scores R = +0.096 against the thermistor: a frame or geometry error, not a closure result. It is not a validation.",
         ],
     },
     "E": {
         "id": "E", "slug": "case-e", "title": "Case E — Niigata district",
         "short": "Real district in Niigata at 1:250, before and after a 60 m high-rise and two 18 m mid-rises; pedestrian-height velocity ratio (thermistor), 16 wind directions.",
-        "folder": "Case E_cleaned",
-        "reference_file": "Case E_cleaned/CaseE(Niigata).xls",
-        "approach_flow_file": "Case E_cleaned/CaseE(Niigata).xls [sheet Inflow]",
-        "readme": "Case E_cleaned/readme_caseE_cleaned.md",
+        "folder": "case-e",
+        "reference_file": "case-e/LF_caseE.xls",
+        "approach_flow_file": "case-e/LF_caseE.xls [sheet Inflow]",
+        "readme": "case-e/readme_caseE.md",
         "render": "validation/geometry/geom_caseE.png",
         "configuration": {
             "district": "Niigata City urban area near the Shinano River; dense low-rise stock (median top 6 m, max 30 m)",
@@ -335,7 +337,7 @@ CASES = {
             "The velocity ratio is normalised by the inflow velocity at 15.9 m (= 3.935 m/s), NOT by U_H and NOT by UR = 7.8 m/s. A prior Eddy3D comparison in the folder divided by the wrong reference and came out low by a factor of 2.048 (FAC2 0.338 -> 0.863 once rescaled, R unchanged at 0.661).",
             "All 2560 published ratios are integer multiples of 0.0198204 (55 distinct levels): the data's own resolution is +/-0.0099, 3.1 % of the median value and about 10 % at the lowest points.",
             "The readme describes AF_caseE.csv, RS_caseE.csv and BD_caseE.stl, but this repository holds only the .3dm, .ghx, .xls and the MP drawing; everything here is extracted from the workbook and the 3dm.",
-            "CaseE(Niigata).3dm is FULL-SCALE metres (MP_caseE.png is drawn at model scale, +/-0.8 m). Use layers 'buildings' (5,015 meshes, before construction) and 'buildings_new_construction' (3 prisms); exclude the map plate on the Japanese-named general layer, the terrain plates (the site is flat) and 'probes'.",
+            "case-e.3dm is FULL-SCALE metres (MP_caseE.png is drawn at model scale, +/-0.8 m). Use layers 'buildings' (5,015 meshes, before construction) and 'buildings_new_construction' (3 prisms); exclude the map plate on the Japanese-named general layer, the terrain plates (the site is flat) and 'probes'.",
             "Do not take the measurement coordinates from the 3dm's 'probes' layer: its 80 spheres sit a median 2.31 m (max 21 m) from the workbook's points, which are authoritative (all 80 fall in open space, min 0.83 m from a building edge).",
             "The measured quantity is a scalar (thermistor) speed; a RANS |U| is biased low against it in a dense canopy. The construction signal (ac - bc) is largest for SW (mean |d| 0.2155) and smallest for SSE (0.093).",
         ],
@@ -696,7 +698,7 @@ def shells_from_tris(tris, tol=1e-9):
 
 def boxes_d():
     """The 83 shells of BD_caseD.stl, each reduced to its bounding box (they are all boxes)."""
-    tris = read_ascii_stl(os.path.join(REPO, "CaseD_cleaned", "BD_caseD.stl"))
+    tris = read_ascii_stl(os.path.join(REPO, "case-d", "BD_caseD.stl"))
     boxes = []
     for shell in shells_from_tris(tris):
         pts = [p for t in shell for p in t]
@@ -715,7 +717,7 @@ def boxes_d():
 def mesh_e(state):
     """Triangles of the Niigata district from the 3dm: 'bc' = buildings, 'ac' = + new construction."""
     import rhino3dm
-    f = rhino3dm.File3dm.Read(os.path.join(REPO, "Case E_cleaned", "CaseE(Niigata).3dm"))
+    f = rhino3dm.File3dm.Read(os.path.join(REPO, "case-e", "case-e.3dm"))
     layers = {l.Index: l.Name for l in f.Layers}
     wanted = {"buildings"} if state == "bc" else {"buildings", "buildings_new_construction"}
     tris = []
@@ -828,7 +830,7 @@ def case_geometry(case):
         for state in ("bc", "ac"):
             tris, shells, flipped = orient_outward(mesh_e(state))
             out.append((state, tris, None,
-                        "triangulated from CaseE(Niigata).3dm via rhino3dm, layers "
+                        "triangulated from case-e.3dm via rhino3dm, layers "
                         + ("'buildings'" if state == "bc" else "'buildings' + 'buildings_new_construction'")
                         + f"; {flipped} of {shells} shells were wound inward in the 3dm and are flipped outward here"))
         return out

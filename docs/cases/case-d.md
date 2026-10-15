@@ -45,11 +45,11 @@ nav_order: 4
 
 ## Reference data
 
-Source in this repository: `CaseD_cleaned/CaseD(Highrise+Blocks).xls` (approach flow: `CaseD_cleaned/CaseD(Highrise+Blocks).xls [sheet Inflow]`).
+Source in this repository: `case-d/LF_caseD.xls` (approach flow: `case-d/LF_caseD.xls [sheet Inflow]`).
 
 The cleaned table has **267 rows** over **78 distinct points**; columns `point_id`, `config`, `instrument`, `wind_direction_deg`, `x`, `y`, `z`, `U`, `V`, `W`, `uu`, `vv`, `ww`, `k`, `Vs`.
 
-Unmeasured cells (null): U 234, V 234, W 234, uu 234, vv 234, ww 234, k 234, Vs 36.
+Unmeasured cells (null): U 234, V 234, W 234, uu 234, vv 234, ww 234, k 234, Vs 69.
 
 | configuration | points |
 |---|---|
@@ -71,16 +71,30 @@ Unmeasured cells (null): U 234, V 234, W 234, uu 234, vv 234, ww 234, k 234, Vs 
 
 ## Things to know before comparing
 
-- All of Case D's data lives in CaseD(Highrise+Blocks).xls, a genuine OLE2/BIFF8 workbook (read it with xlrd 2.x; openpyxl cannot). Sheets: 'Geometry&Points', 'Inflow', 'Results (Exp_S)' (split fibre, WD = 0), 'Results (Exp_T)' (thermistor, 0 / 22.5 / 45 deg).
+- All of Case D's data lives in LF_caseD.xls, a genuine OLE2/BIFF8 workbook (read it with xlrd 2.x; openpyxl cannot). Sheets: 'Geometry&Points', 'Inflow', 'Results (Exp_S)' (split fibre, WD = 0), 'Results (Exp_T)' (thermistor, 0 / 22.5 / 45 deg).
 - Coordinates are millimetres in the workbook; the API serves metres.
 - The shipped BD_caseD.stl is dirty: 1572 facets of which 576 are duplicates, and all 83 roofs are wound inward (signed volume 0.011159 m^3 against the true 0.021477 m^3). The API's geometry.stl is rebuilt from the 83 shells' bounding boxes: 996 facets, watertight, volume 0.021477 m^3.
 - The thermistor reads a SCALAR speed. Over the 33 points where both instruments overlap at WD = 0, the ratio of mean thermistor speed to mean |U| is 1.342 (the mean of the per-point ratios is 1.50). sqrt(|U|^2 + 2k) from the split-fibre data matches the thermistor to FB +0.058, R 0.947; |U| alone to FB +0.292, R 0.872.
 - Unmeasured thermistor cells are '-' in the workbook (null here). At WD = 0 the 66 measured values are 33 exact mirror pairs, so only 33 are independent; at 22.5 and 45 deg all 66 are independent.
-- A prior Eddy3D comparison kept in the folder ('Eddy3D vs AIJ.xlsx') scores R = +0.096 against the thermistor: a frame or geometry error, not a closure result. It is not a validation.
+- A prior Eddy3D comparison kept in the folder (case-d-eddy3d-prior-comparison.xlsx) scores R = +0.096 against the thermistor: a frame or geometry error, not a closure result. It is not a validation.
 
 ## Validation
 
-**No validation has been run for this case yet.** Nothing on this page is a claim about it. Engine status: openfoam12-realizableKE pending, openlb pending, fluidx3d pending, ml-surrogate pending.
+### Eddy3D ML wind surrogate (pedestrian height)
+
+| | Vs, thermistor, 3 WD | \|U\|, split fibre, WD 0 | Vs, WD 0, lattice cut at ±250 m | wind reversed (control) |
+|---|---|---|---|---|
+| **R** | +0.325 | +0.587 | +0.220 | +0.492 |
+| **FAC2** | 0.343 | 0.515 | 0.636 | 0.470 |
+| **FB** | +0.673 | +0.231 | +0.489 | +0.555 |
+| **hit rate** | 0.167 | 0.242 | 0.273 | 0.197 |
+| **n** | 198 | 33 | 66 | 66 |
+
+velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Reproduce: Eddy3D fixture Outdoor.ML.Tests/TestAijSurrogateE2E; figure validation/plot_aij_ml.py.
+
+![aij_ml_agreement.png]({{ '/assets/aij_ml_agreement.png' | relative_url }})
+
+How to read these is on the [Validation]({{ '/validation/' | relative_url }}) page.
 
 ## API
 
@@ -95,8 +109,8 @@ Unmeasured cells (null): U 234, V 234, W 234, uu 234, vv 234, ww 234, k 234, Vs 
 
 ## Attribution
 
-- Data collectors: see the data paper
-- Editors and distributors: Yoshihide Tominaga (Niigata Institute of Technology), Hideki Kikumoto (The University of Tokyo), Tsubasa Okaze (Institute of Science Tokyo)
-- DOI: Case D ships here without its Zenodo readme; the DOI is given in the data paper.
+- Data collectors: Yoshihide Tominaga (Niigata Institute of Technology)
+- Editors and distributors: Hideki Kikumoto (The University of Tokyo), Tsubasa Okaze (Institute of Science Tokyo)
+- DOI: [10.5281/zenodo.15402668](https://doi.org/10.5281/zenodo.15402668)
 - Citation requested: Kikumoto, H. et al. (2026). Japan Architectural Review 9(1), e70083, section 3.4.
 - Licence: CC BY 4.0

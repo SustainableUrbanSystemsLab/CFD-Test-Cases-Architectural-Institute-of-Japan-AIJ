@@ -1,0 +1,6 @@
+# python >= 3.10;  pip install -r clean/requirements.txt
+numpy>=1.26
+pandas>=2.1
+pyarrow>=15
+xlrd>=2.0          # BIFF8 .xls workbooks (openpyxl cannot read them)
+rhino3dm>=8.0      # Case E: case-e.3dm

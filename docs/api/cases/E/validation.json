@@ -1,19 +1,25 @@
 {
  "schema_version": "1.0.0",
- "generated_from": "4fb5e6e9093d5b925f977d4e0502d8c881fec52d",
- "generated_at": "2026-10-14T03:54:23+00:00",
+ "generated_from": "b5f2ef6d37332bf917f413ffec0e4446ac55ab89",
+ "generated_at": "2026-10-14T22:45:59+00:00",
  "licence": "CC BY 4.0",
  "case": "E",
  "title": "Case E — Niigata district",
- "status": "pending",
+ "status": "scored",
+ "status_meaning": {
+  "scored": "a validation run exists and its scores are in cases/{id}/validation.json; whether it agrees is in the numbers",
+  "running": "the solve is in progress; no scores yet",
+  "pending": "not run yet",
+  "not comparable": "the engine cannot produce the measured quantity at the measured location at a resolution this hardware runs; the measurement behind that is in the README"
+ },
  "engines": [
   {
    "engine": "openfoam12-realizableKE",
-   "status": "pending"
+   "status": "scored"
   },
   {
    "engine": "openlb",
-   "status": "pending"
+   "status": "not comparable"
   },
   {
    "engine": "fluidx3d",
@@ -21,9 +27,309 @@
   },
   {
    "engine": "ml-surrogate",
-   "status": "pending"
+   "status": "scored"
   }
  ],
- "results": [],
- "note": "No validation has been run for this case yet; results is an empty list. Nothing on this page is a claim about this case."
+ "results": [
+  {
+   "engine": "openfoam12-realizableKE",
+   "configuration": "SW",
+   "solver": "realizableKE",
+   "numerics_level": 3,
+   "scale": null,
+   "solved_time": null,
+   "iterations": 2000,
+   "points_measured": 80,
+   "lateral_sign_applied_in_fixture": null,
+   "recirculation_Lr_over_H": null,
+   "quantity": null,
+   "normalisation": "velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units",
+   "metric_meaning": {
+    "Count": "number of measured points scored",
+    "MeanObserved": "mean of the measured, normalised quantity",
+    "MeanPredicted": "mean of the modelled, normalised quantity",
+    "Fb": "fractional bias, 2 (mean_obs - mean_pred) / (mean_obs + mean_pred); positive = model low",
+    "Nmse": "normalised mean square error",
+    "Nad": "normalised absolute difference",
+    "Fac2": "fraction of points within a factor of two (harsh near zero for sign-changing V and W)",
+    "HitRate": "fraction of points within D = 0.25 relative or W = 0.05 U_H absolute",
+    "Mg": "geometric mean bias",
+    "Vg": "geometric variance",
+    "GeometricPairs": "pairs with both values positive (used for Mg/Vg)",
+    "R": "Pearson correlation coefficient"
+   },
+   "headline": {
+    "before, √(|U|²+2k)": "vr.bc.SW.rms",
+    "before, |U|": "vr.bc.SW.Umag",
+    "after, √(|U|²+2k)": "vr.ac.SW.rms",
+    "after, |U|": "vr.ac.SW.Umag",
+    "no-construction ceiling control": "noConstruction.SW"
+   },
+   "scores": {
+    "vr.bc.SW.Umag": {
+     "Count": 80,
+     "MeanObserved": 0.344875,
+     "MeanPredicted": 0.26396441376874086,
+     "Fb": 0.26578629570125656,
+     "Nmse": 0.19643360471354168,
+     "Nad": 0.18412431771694426,
+     "Fac2": 0.7875,
+     "HitRate": 0.4125,
+     "Mg": 1.4359927185314754,
+     "Vg": 1.395687791585509,
+     "GeometricPairs": 80,
+     "R": 0.6916217165509461
+    },
+    "vr.bc.SW.rms": {
+     "Count": 80,
+     "MeanObserved": 0.344875,
+     "MeanPredicted": 0.3047089294620857,
+     "Fb": 0.12366706969236571,
+     "Nmse": 0.11291853478267075,
+     "Nad": 0.13045593843931233,
+     "Fac2": 0.95,
+     "HitRate": 0.6125,
+     "Mg": 1.1653984253360408,
+     "Vg": 1.1532849689336704,
+     "GeometricPairs": 80,
+     "R": 0.6883055489050339
+    },
+    "vr.bc.SW.Umag.byImposedUref": {
+     "Count": 80,
+     "MeanObserved": 0.344875,
+     "MeanPredicted": 0.26354788928372114,
+     "Fb": 0.2673374462029952,
+     "Nmse": 0.19719851957339515,
+     "Nad": 0.18447496072282416,
+     "Fac2": 0.7875,
+     "HitRate": 0.4125,
+     "Mg": 1.4382622344407234,
+     "Vg": 1.3972873051901344,
+     "GeometricPairs": 80,
+     "R": 0.6916217165509461
+    },
+    "vr.ac.SW.Umag": {
+     "Count": 80,
+     "MeanObserved": 0.5004652375000003,
+     "MeanPredicted": 0.3547478399618145,
+     "Fb": 0.34077448387636944,
+     "Nmse": 0.23879736931048956,
+     "Nad": 0.1939069401420948,
+     "Fac2": 0.7375,
+     "HitRate": 0.3,
+     "Mg": 1.6581114951581428,
+     "Vg": 1.7095130413178274,
+     "GeometricPairs": 80,
+     "R": 0.8351955072350249
+    },
+    "vr.ac.SW.rms": {
+     "Count": 80,
+     "MeanObserved": 0.5004652375000003,
+     "MeanPredicted": 0.39874297332907277,
+     "Fb": 0.22624852163469286,
+     "Nmse": 0.14702621814711517,
+     "Nad": 0.14757791892180894,
+     "Fac2": 0.8875,
+     "HitRate": 0.475,
+     "Mg": 1.3364627033509924,
+     "Vg": 1.2294157057746793,
+     "GeometricPairs": 80,
+     "R": 0.8451076242800123
+    },
+    "vr.ac.SW.Umag.byImposedUref": {
+     "Count": 80,
+     "MeanObserved": 0.5004652375000003,
+     "MeanPredicted": 0.35391366450050155,
+     "Fb": 0.3430599062227607,
+     "Nmse": 0.2403955819645469,
+     "Nad": 0.19449629687603537,
+     "Fac2": 0.7375,
+     "HitRate": 0.3,
+     "Mg": 1.6620196684221895,
+     "Vg": 1.713597687604131,
+     "GeometricPairs": 80,
+     "R": 0.835195507235025
+    },
+    "noConstruction.SW": {
+     "Count": 80,
+     "MeanObserved": 0.5004652375000003,
+     "MeanPredicted": 0.344875,
+     "Fb": 0.36811269734454166,
+     "Nmse": 0.5507570089400655,
+     "Nad": 0.2549824945485336,
+     "Fac2": 0.7875,
+     "HitRate": 0.35,
+     "Mg": 1.3839123100602013,
+     "Vg": 1.5228425698771928,
+     "GeometricPairs": 80,
+     "R": 0.09863310407351605
+    }
+   },
+   "figures": [
+    "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/aij_caseE_agreement.png",
+    "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/aij_caseE_map.png"
+   ],
+   "reproduce": "Eddy3D fixture TestAijCaseEContainerE2E (EDDY3D_AIJ_E_DIRECTIONS=SW, tabulated inlet); figures validation/plot_aij_caseE.py (per-point pairs in validation/results/caseE_openfoam12_realizableKE_pairs.csv)",
+   "source_file": "validation/results/caseE_openfoam12_realizableKE.json",
+   "source_url": "https://github.com/SustainableUrbanSystemsLab/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/blob/main/validation/results/caseE_openfoam12_realizableKE.json",
+   "cite": "Kikumoto, H., Okaze, T., Yoshie, R., Tachibana, T., Ishihara, T., Nonomura, Y., Kiyota, N., Kondo, H., Mochida, A., Tominaga, Y. (2026). Comprehensive Experimental Database for Validating CFD Simulations in Urban Wind Environment: Benchmark Cases Curated by the Architectural Institute of Japan. Japan Architectural Review 9(1), e70083. https://doi.org/10.1002/2475-8876.70083"
+  },
+  {
+   "engine": "ml-surrogate",
+   "configuration": null,
+   "solver": "ML surrogate — Eddy3D Wind Predictor, Yel-2.0.onnx (1 output channel, |U_mean|/U_ref) on ONNX Runtime CPU",
+   "numerics_level": null,
+   "scale": 0.9,
+   "solved_time": null,
+   "iterations": null,
+   "points_measured": 2560,
+   "lateral_sign_applied_in_fixture": null,
+   "recirculation_Lr_over_H": null,
+   "quantity": null,
+   "normalisation": "velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units",
+   "metric_meaning": {
+    "Count": "number of measured points scored",
+    "MeanObserved": "mean of the measured, normalised quantity",
+    "MeanPredicted": "mean of the modelled, normalised quantity",
+    "Fb": "fractional bias, 2 (mean_obs - mean_pred) / (mean_obs + mean_pred); positive = model low",
+    "Nmse": "normalised mean square error",
+    "Nad": "normalised absolute difference",
+    "Fac2": "fraction of points within a factor of two (harsh near zero for sign-changing V and W)",
+    "HitRate": "fraction of points within D = 0.25 relative or W = 0.05 U_H absolute",
+    "Mg": "geometric mean bias",
+    "Vg": "geometric variance",
+    "GeometricPairs": "pairs with both values positive (used for Mg/Vg)",
+    "R": "Pearson correlation coefficient"
+   },
+   "headline": {
+    "Vs/U(15.9 m), 16 WD, bc + ac": "speed.thermistor",
+    "after construction": "speed.thermistor.after",
+    "after − before": "delta.afterMinusBefore",
+    "after, lattice cut at ±250 m": "halfExtent250.forward",
+    "wind reversed (control)": "negativeControl.reversedWind"
+   },
+   "scores": {
+    "speed.thermistor": {
+     "Count": 2560,
+     "MeanObserved": 0.38079177421875066,
+     "MeanPredicted": 0.1276106335936737,
+     "Fb": 0.9959871815496533,
+     "Nmse": 1.8751051716780902,
+     "Nad": 0.5181796431715073,
+     "Fac2": 0.224609375,
+     "HitRate": 0.08203125,
+     "Mg": 4.184716947482098,
+     "Vg": 30.845675040206686,
+     "GeometricPairs": 2336,
+     "R": 0.43258649693938306
+    },
+    "speed.thermistor.before": {
+     "Count": 1280,
+     "MeanObserved": 0.3320846742187498,
+     "MeanPredicted": 0.08253701000106714,
+     "Fb": 1.2037366771458187,
+     "Nmse": 2.8841824382698005,
+     "Nad": 0.6059039621433976,
+     "Fac2": 0.16484375,
+     "HitRate": 0.05859375,
+     "Mg": 5.3908636165236565,
+     "Vg": 84.40220950862943,
+     "GeometricPairs": 1136,
+     "R": 0.20690236248463562
+    },
+    "speed.thermistor.after": {
+     "Count": 1280,
+     "MeanObserved": 0.42949887421875055,
+     "MeanPredicted": 0.17268425718628036,
+     "Fb": 0.8529452375501221,
+     "Nmse": 1.391184103045047,
+     "Nad": 0.457778740219783,
+     "Fac2": 0.284375,
+     "HitRate": 0.10546875,
+     "Mg": 3.292608421155396,
+     "Vg": 11.894602068209199,
+     "GeometricPairs": 1200,
+     "R": 0.42529090996404545
+    },
+    "delta.afterMinusBefore": {
+     "Count": 1280,
+     "MeanObserved": 0.09741420000000003,
+     "MeanPredicted": 0.09014724718521291,
+     "Fb": 0.07748876886848882,
+     "Nmse": 4.0195115574401035,
+     "Nad": 0.7249025732408018,
+     "Fac2": 0.234375,
+     "HitRate": 0.31171875,
+     "Mg": 1.8708220161607225,
+     "Vg": 6.057928002389404,
+     "GeometricPairs": 635,
+     "R": 0.3987429913796558
+    },
+    "negativeControl.reversedWind": {
+     "Count": 1280,
+     "MeanObserved": 0.4294988742187498,
+     "MeanPredicted": 0.17268425718628036,
+     "Fb": 0.8529452375501204,
+     "Nmse": 1.3911841079323048,
+     "Nad": 0.4577787147384673,
+     "Fac2": 0.284375,
+     "HitRate": 0.10546875,
+     "Mg": 3.2926084211553928,
+     "Vg": 11.894598573690393,
+     "GeometricPairs": 1200,
+     "R": 0.4252909041990961
+    },
+    "halfExtent250.forward": {
+     "Count": 1280,
+     "MeanObserved": 0.42949887421875055,
+     "MeanPredicted": 0.407175469089015,
+     "Fb": 0.05336223181287166,
+     "Nmse": 0.2562876649530291,
+     "Nad": 0.19525413284090684,
+     "Fac2": 0.8359375,
+     "HitRate": 0.38828125,
+     "Mg": 1.0087804164565588,
+     "Vg": 1.313430122742443,
+     "GeometricPairs": 1280,
+     "R": 0.22959251723600266
+    },
+    "halfExtent250.reversedWind": {
+     "Count": 1280,
+     "MeanObserved": 0.42949887421875055,
+     "MeanPredicted": 0.4071754690890151,
+     "Fb": 0.053362231812871384,
+     "Nmse": 0.2575052680712631,
+     "Nad": 0.1970367501690872,
+     "Fac2": 0.83671875,
+     "HitRate": 0.37109375,
+     "Mg": 1.0087804164565588,
+     "Vg": 1.2950136727313248,
+     "GeometricPairs": 1280,
+     "R": 0.22558726249561425
+    },
+    "alternative.scale1_pedestrianLevel2m.after": {
+     "Count": 1280,
+     "MeanObserved": 0.42949887421875055,
+     "MeanPredicted": 0.17679969442118176,
+     "Fb": 0.8335799979354444,
+     "Nmse": 1.2799146271870372,
+     "Nad": 0.439632464840884,
+     "Fac2": 0.3109375,
+     "HitRate": 0.11796875,
+     "Mg": 3.321398703640399,
+     "Vg": 11.963187921551599,
+     "GeometricPairs": 1232,
+     "R": 0.47779259161897275
+    }
+   },
+   "figures": [
+    "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/aij_ml_agreement.png"
+   ],
+   "reproduce": "Eddy3D fixture Outdoor.ML.Tests/TestAijSurrogateE2E; figure validation/plot_aij_ml.py",
+   "source_file": "validation/results/caseE_ml.json",
+   "source_url": "https://github.com/SustainableUrbanSystemsLab/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/blob/main/validation/results/caseE_ml.json",
+   "cite": "Kikumoto, H., Okaze, T., Yoshie, R., Tachibana, T., Ishihara, T., Nonomura, Y., Kiyota, N., Kondo, H., Mochida, A., Tominaga, Y. (2026). Comprehensive Experimental Database for Validating CFD Simulations in Urban Wind Environment: Benchmark Cases Curated by the Architectural Institute of Japan. Japan Architectural Review 9(1), e70083. https://doi.org/10.1002/2475-8876.70083"
+  }
+ ],
+ "note": null
 }

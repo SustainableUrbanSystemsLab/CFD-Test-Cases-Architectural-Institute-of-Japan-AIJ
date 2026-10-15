@@ -598,6 +598,77 @@
     ]
    }
   },
+  "/geometry.json": {
+   "get": {
+    "summary": "Every STL of every case, with frame, units, bounding box and sha256",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/json": {
+        "schema": {
+         "allOf": [
+          {
+           "type": "object",
+           "required": [
+            "schema_version",
+            "generated_from",
+            "licence"
+           ],
+           "properties": {
+            "schema_version": {
+             "type": "string"
+            },
+            "generated_from": {
+             "type": [
+              "string",
+              "null"
+             ],
+             "description": "git commit of the data"
+            },
+            "generated_at": {
+             "type": "string",
+             "format": "date-time"
+            },
+            "licence": {
+             "type": "string"
+            }
+           }
+          },
+          {
+           "type": "object",
+           "properties": {
+            "files": {
+             "type": "array"
+            }
+           }
+          }
+         ]
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/geometry.zip": {
+   "get": {
+    "summary": "Every STL in one archive (each in its own case's frame and units)",
+    "responses": {
+     "200": {
+      "description": "OK",
+      "content": {
+       "application/zip": {
+        "schema": {
+         "type": "string",
+         "format": "binary"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
   "/openapi.json": {
    "get": {
     "summary": "This document",

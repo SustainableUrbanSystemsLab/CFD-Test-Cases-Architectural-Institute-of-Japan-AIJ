@@ -45,7 +45,7 @@ Real district in Niigata at 1:250, before and after a 60 m high-rise and two 18 
 
 ## Reference data
 
-Source in this repository: `Case E_cleaned/CaseE(Niigata).xls` (approach flow: `Case E_cleaned/CaseE(Niigata).xls [sheet Inflow]`).
+Source in this repository: `case-e/LF_caseE.xls` (approach flow: `case-e/LF_caseE.xls [sheet Inflow]`).
 
 The cleaned table has **2560 rows** over **80 distinct points**; columns `point_id`, `config`, `instrument`, `wind_direction`, `wind_direction_deg`, `x`, `y`, `z`, `velocity_ratio`.
 
@@ -69,13 +69,43 @@ The cleaned table has **2560 rows** over **80 distinct points**; columns `point_
 - The velocity ratio is normalised by the inflow velocity at 15.9 m (= 3.935 m/s), NOT by U_H and NOT by UR = 7.8 m/s. A prior Eddy3D comparison in the folder divided by the wrong reference and came out low by a factor of 2.048 (FAC2 0.338 -> 0.863 once rescaled, R unchanged at 0.661).
 - All 2560 published ratios are integer multiples of 0.0198204 (55 distinct levels): the data's own resolution is +/-0.0099, 3.1 % of the median value and about 10 % at the lowest points.
 - The readme describes AF_caseE.csv, RS_caseE.csv and BD_caseE.stl, but this repository holds only the .3dm, .ghx, .xls and the MP drawing; everything here is extracted from the workbook and the 3dm.
-- CaseE(Niigata).3dm is FULL-SCALE metres (MP_caseE.png is drawn at model scale, +/-0.8 m). Use layers 'buildings' (5,015 meshes, before construction) and 'buildings_new_construction' (3 prisms); exclude the map plate on the Japanese-named general layer, the terrain plates (the site is flat) and 'probes'.
+- case-e.3dm is FULL-SCALE metres (MP_caseE.png is drawn at model scale, +/-0.8 m). Use layers 'buildings' (5,015 meshes, before construction) and 'buildings_new_construction' (3 prisms); exclude the map plate on the Japanese-named general layer, the terrain plates (the site is flat) and 'probes'.
 - Do not take the measurement coordinates from the 3dm's 'probes' layer: its 80 spheres sit a median 2.31 m (max 21 m) from the workbook's points, which are authoritative (all 80 fall in open space, min 0.83 m from a building edge).
 - The measured quantity is a scalar (thermistor) speed; a RANS |U| is biased low against it in a dense canopy. The construction signal (ac - bc) is largest for SW (mean |d| 0.2155) and smallest for SSE (0.093).
 
 ## Validation
 
-**No validation has been run for this case yet.** Nothing on this page is a claim about it. Engine status: openfoam12-realizableKE pending, openlb pending, fluidx3d pending, ml-surrogate pending.
+### OpenFOAM 12, realizable k-epsilon (Eddy3D Outdoor) — configuration SW
+
+| | before, √(\|U\|²+2k) | before, \|U\| | after, √(\|U\|²+2k) | after, \|U\| | no-construction ceiling control |
+|---|---|---|---|---|---|
+| **R** | +0.688 | +0.692 | +0.845 | +0.835 | +0.099 |
+| **FAC2** | 0.950 | 0.787 | 0.887 | 0.738 | 0.787 |
+| **FB** | +0.124 | +0.266 | +0.226 | +0.341 | +0.368 |
+| **hit rate** | 0.613 | 0.412 | 0.475 | 0.300 | 0.350 |
+| **n** | 80 | 80 | 80 | 80 | 80 |
+
+velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Reproduce: Eddy3D fixture TestAijCaseEContainerE2E (EDDY3D_AIJ_E_DIRECTIONS=SW, tabulated inlet); figures validation/plot_aij_caseE.py (per-point pairs in validation/results/caseE_openfoam12_realizableKE_pairs.csv).
+
+### Eddy3D ML wind surrogate (pedestrian height)
+
+| | Vs/U(15.9 m), 16 WD, bc + ac | after construction | after − before | after, lattice cut at ±250 m | wind reversed (control) |
+|---|---|---|---|---|---|
+| **R** | +0.433 | +0.425 | +0.399 | +0.230 | +0.425 |
+| **FAC2** | 0.225 | 0.284 | 0.234 | 0.836 | 0.284 |
+| **FB** | +0.996 | +0.853 | +0.077 | +0.053 | +0.853 |
+| **hit rate** | 0.082 | 0.105 | 0.312 | 0.388 | 0.105 |
+| **n** | 2560 | 1280 | 1280 | 1280 | 1280 |
+
+velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Reproduce: Eddy3D fixture Outdoor.ML.Tests/TestAijSurrogateE2E; figure validation/plot_aij_ml.py.
+
+![aij_caseE_agreement.png]({{ '/assets/aij_caseE_agreement.png' | relative_url }})
+
+![aij_caseE_map.png]({{ '/assets/aij_caseE_map.png' | relative_url }})
+
+![aij_ml_agreement.png]({{ '/assets/aij_ml_agreement.png' | relative_url }})
+
+How to read these is on the [Validation]({{ '/validation/' | relative_url }}) page.
 
 ## API
 

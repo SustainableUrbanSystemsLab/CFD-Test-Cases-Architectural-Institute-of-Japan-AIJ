@@ -21,14 +21,16 @@ Every JSON file carries `schema_version`, `generated_from` (the git commit of th
 | Endpoint | What it returns |
 |---|---|
 | [`GET /api/index.json`]({{ '/api/index.json' | relative_url }}) | every endpoint, versions, licence, how to cite, the agent walk |
-| [`GET /api/cases.json`]({{ '/api/cases.json' | relative_url }}) | the five cases: id, title, configuration facts, units, frame, counts, which engines are validated, links |
+| [`GET /api/cases.json`]({{ '/api/cases.json' | relative_url }}) | the five cases: id, title, configuration facts, units, frame, counts, engine status, links |
 | `GET /api/cases/{id}.json` | one case in full: configurations (Case C's 9, Case E's pre/post), inflow fit and the measured approach-flow profile, reference-point summary, geometry files, validation status, gotchas, attribution |
 | `GET /api/cases/{id}/points.json` | the cleaned measurement table: SI units, one frame per case, `null` for unmeasured; `columns` and `column_meaning` say what each field is |
 | `GET /api/cases/{id}/points.csv` | the same table as CSV (empty cell = null) |
 | `GET /api/cases/{id}/geometry.json` | frame, configurations, the **box list** where the geometry is boxes (A, B, C, D), per-file STL statistics (triangles, bbox, volume, edge-manifold census) |
 | `GET /api/cases/{id}/geometry.stl` | cleaned ASCII STL of the default configuration, metres, outward normals, origin at the building / array centre |
 | `GET /api/cases/{id}/geometry_{configuration}.stl` | the other configurations: `C/geometry_0D.stl`, `C/geometry_1D.stl` (`geometry.stl` is 2D), `E/geometry_bc.stl` (`geometry.stl` is after construction) |
-| `GET /api/cases/{id}/validation.json` | Eddy3D scores per engine with the figure URLs; `results` is an **empty list** where no validation has been run |
+| `GET /api/cases/{id}/validation.json` | Eddy3D scores per engine and configuration: every score of the run, the `headline` map of the ones to quote, figure URLs and the fixture that produced them; `results` is an **empty list** where no validation has been run. Engine status is `scored` (a run exists — not that it agrees), `running`, `pending` or `not comparable` |
+| [`GET /api/geometry.json`]({{ '/api/geometry.json' | relative_url }}) | every STL of every case in one list: case, configuration, units, frame, bounding box, triangles, sha256, URL |
+| [`GET /api/geometry.zip`]({{ '/api/geometry.zip' | relative_url }}) | every STL in one archive. Each file stays in its own case's frame and units — the same frame as that case's `points.json` — so they are deliberately not merged into one scene: overlaid they would stack at the origin, Case E is full scale while A–D are model scale, and C's three centre blocks and E's before/after are alternatives, not neighbours |
 | [`GET /api/openapi.json`]({{ '/api/openapi.json' | relative_url }}) | OpenAPI 3.1 description of the above |
 | [`GET /api/llms.txt`]({{ '/api/llms.txt' | relative_url }}) | plain-text entry point for agents |
 
@@ -38,11 +40,11 @@ Every JSON file carries `schema_version`, `generated_from` (the git commit of th
 
 | Case | points | geometry | validation |
 |---|---|---|---|
-| A | 186 rows: U, V, W, uu, vv, ww, k (variances; metres) | 1 box, 12 triangles, generated from the stated 0.08 × 0.08 × 0.16 m | OpenFOAM 12 realizable k-ε: R, FAC2, FB, hit rate, NMSE, NAD, MG, VG per quantity |
-| B | 224 rows: U, V, W, uu, vv, ww, k (mm → m; V sign flipped to +y) | 1 box, 12 triangles, 0.05 × 0.20 × 0.20 m | OpenFOAM 12 realizable k-ε, as A |
-| C | 1080 rows: Vs over 9 configurations (`config` 0D/1D/2D × `wind_direction_deg` 0/22.5/45) | 3 STLs (0D: 8 cubes, 1D/2D: 9 boxes) + box lists | none yet (`results: []`) |
-| D | 267 rows: 234 thermistor (78 points × 3 directions, 36 unmeasured) + 33 split-fibre with U, V, W, uu, vv, ww, k; mm → m | 83 boxes, 996 triangles, watertight, rebuilt from the dirty shipped STL | none yet |
-| E | 2560 rows: velocity ratio over `config` bc/ac × 16 compass directions × 80 points; full-scale metres | 2 STLs from the 3dm (bc 8400, ac 8436 triangles), outward-oriented; not watertight (touching buildings share 15 edges) | none yet |
+| A | 186 rows: U, V, W, uu, vv, ww, k (variances; metres) | 1 box, 12 triangles, generated from the stated 0.08 × 0.08 × 0.16 m | OpenFOAM 12 realizable k-ε: R, FAC2, FB, hit rate, NMSE, NAD, MG, VG per quantity; ML surrogate on the z = 0.01 m plane |
+| B | 224 rows: U, V, W, uu, vv, ww, k (mm → m; V sign flipped to +y) | 1 box, 12 triangles, 0.05 × 0.20 × 0.20 m | OpenFOAM 12 realizable k-ε, as A; ML surrogate on the z = H/16 plane |
+| C | 1080 rows: Vs over 9 configurations (`config` 0D/1D/2D × `wind_direction_deg` 0/22.5/45) | 3 STLs (0D: 8 cubes, 1D/2D: 9 boxes) + box lists | OpenFOAM 12 realizable k-ε per configuration (√(\|U\|²+2k) and \|U\| at each WD, with mirror controls); ML surrogate |
+| D | 267 rows: 234 thermistor (78 points × 3 directions, 36 unmeasured) + 33 split-fibre with U, V, W, uu, vv, ww, k; mm → m | 83 boxes, 996 triangles, watertight, rebuilt from the dirty shipped STL | ML surrogate; OpenFOAM solving |
+| E | 2560 rows: velocity ratio over `config` bc/ac × 16 compass directions × 80 points; full-scale metres | 2 STLs from the 3dm (bc 8400, ac 8436 triangles), outward-oriented; not watertight (touching buildings share 15 edges) | ML surrogate; OpenFOAM solving |
 
 ## Examples
 
@@ -59,7 +61,8 @@ curl -s -o caseB.csv $BASE/cases/B/points.csv
 curl -s -o caseD.stl $BASE/cases/D/geometry.stl
 curl -s $BASE/cases/D/geometry.json | jq '.files[0].boxes | length'      # 83
 curl -s $BASE/cases/A/validation.json | jq '.results[0].scores["velocity.U"] | {R, Fac2, Fb, HitRate}'
-curl -s $BASE/cases/C/validation.json | jq '.results'                     # [] — not validated yet
+curl -s $BASE/cases/C/validation.json | jq '.results[] | {engine, configuration, headline}'
+curl -s -o aij_geometry.zip $BASE/geometry.zip                          # every STL; geometry.json gives each one's frame
 ```
 
 ### Python
