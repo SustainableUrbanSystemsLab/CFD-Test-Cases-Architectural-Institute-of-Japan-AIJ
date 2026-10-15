@@ -2,9 +2,9 @@
 
 Two figures, each answering one question:
 
-  aij_agreement.png   Does the model agree with the tunnel?  Measured vs modelled, one panel
+  cases-ab-openfoam-agreement.png   Does the model agree with the tunnel?  Measured vs modelled, one panel
                       per quantity per case, with the 1:1 line and the factor-of-two band.
-  aij_profiles.png    WHERE does it agree?  Centre-plane vertical profiles of U/U_H at the
+  cases-ab-openfoam-profiles.png    WHERE does it agree?  Centre-plane vertical profiles of U/U_H at the
                       measurement stations, measured points against the modelled line.
 
 Colours are slots 1-2 of the validated categorical palette (blue #2a78d6, orange #eb6834);
@@ -22,7 +22,7 @@ import numpy as np
 import ultraplot as uplt
 
 VAL = r"C:/Eddy3DVal"
-OUT = r"C:/Eddy3DRel/figs"
+OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "figures")
 os.makedirs(OUT, exist_ok=True)
 
 BLUE = "#2a78d6"     # slot 1 - the model
@@ -124,8 +124,8 @@ for row, (_t, _r, _f, _c, _l, _s, title, _H, _U, _b) in enumerate(CASES):
 
 fig.format(suptitle="AIJ UWE benchmark — Eddy3D (OpenFOAM 12, realizable k-ε) vs wind tunnel",
            abc=False, gridcolor="#e3e3e0", gridlinewidth=0.6)
-fig.save(os.path.join(OUT, "aij_agreement.png"), dpi=220)
-print("wrote aij_agreement.png")
+fig.save(os.path.join(OUT, "cases-ab-openfoam-agreement.png"), dpi=220)
+print("wrote cases-ab-openfoam-agreement.png")
 
 
 # ----------------------------------------------------------------------------- figure 2
@@ -176,5 +176,5 @@ axs2[0].legend(loc="lr", ncols=1, frame=False, fontsize=7.5)
 
 fig2.format(suptitle="AIJ UWE benchmark — centre-plane profiles behind the building (y = 0)",
             gridcolor="#e3e3e0", gridlinewidth=0.6)
-fig2.save(os.path.join(OUT, "aij_profiles.png"), dpi=220)
-print("wrote aij_profiles.png")
+fig2.save(os.path.join(OUT, "cases-ab-openfoam-profiles.png"), dpi=220)
+print("wrote cases-ab-openfoam-profiles.png")

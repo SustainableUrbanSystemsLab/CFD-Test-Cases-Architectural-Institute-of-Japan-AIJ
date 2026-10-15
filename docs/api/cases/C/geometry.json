@@ -1,7 +1,7 @@
 {
  "schema_version": "1.0.0",
- "generated_from": "b5f2ef6d37332bf917f413ffec0e4446ac55ab89",
- "generated_at": "2026-10-14T22:45:59+00:00",
+ "generated_from": "ba59418628c8a195787e9c303f0d70eb7f52cd62",
+ "generated_at": "2026-10-15T00:57:00+00:00",
  "licence": "CC BY 4.0",
  "case": "C",
  "title": "Case C — 3 × 3 block array",
@@ -49,6 +49,8 @@
     "watertight": true
    },
    "bbox_matches_stated_dimensions": true,
+   "render": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/geometry/case-c-2d.png",
+   "render_caption": "2D: the centre block twice as tall, 2D = 0.40 m.",
    "boxes": [
     {
      "min": [
@@ -188,6 +190,8 @@
     "watertight": true
    },
    "bbox_matches_stated_dimensions": true,
+   "render": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/geometry/case-c-0d.png",
+   "render_caption": "0D: the centre block removed.",
    "boxes": [
     {
      "min": [
@@ -315,6 +319,8 @@
     "watertight": true
    },
    "bbox_matches_stated_dimensions": true,
+   "render": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/geometry/case-c-1d.png",
+   "render_caption": "1D: the centre block as tall as its neighbours, D = 0.20 m.",
    "boxes": [
     {
      "min": [
@@ -429,5 +435,5 @@
    "analytic_volume": 0.072
   }
  ],
- "render": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/geom_caseC.png"
+ "render": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/geometry/case-c-2d.png"
 }

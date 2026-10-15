@@ -1,0 +1,60 @@
+// Figures. One image with its caption is a <figure>; several side by side are a Markdown table marked
+// {: .figures } whose header row is blank (see figure() and figure_table() in scripts/build_api.py).
+// Images fill their column; captions sit under them in secondary ink.
+
+figure.figure {
+  margin: 1.5rem 0 2rem;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+figure.figure figcaption,
+table.figures .caption,
+p.caption {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: $grey-dk-100;
+}
+
+p.caption {
+  margin: -0.5rem 0 2rem;
+}
+
+.table-wrapper:has(> table.figures) {
+  overflow: visible;
+  box-shadow: none;
+}
+
+table.figures {
+  table-layout: fixed;
+  width: 100%;
+  min-width: 0;
+  margin: 1rem 0;
+  border-collapse: separate;
+  border-spacing: 1rem 0;
+
+  thead {
+    display: none;
+  }
+
+  td {
+    min-width: 0;
+    padding: 0 0 1.25rem;
+    vertical-align: top;
+    text-align: left;
+    background-color: transparent;
+    border: 0;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}

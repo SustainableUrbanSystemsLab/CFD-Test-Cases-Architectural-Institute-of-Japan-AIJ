@@ -1,8 +1,8 @@
 """Cases A and B, solver against solver: the same measured points scored for every engine that solved them.
 
-  aij_engines_agreement.png   Measured against modelled U/U_H and V/U_H, Cases A and B, one ROW per engine
-                              (small multiples: each panel carries one engine, in that engine's colour, with
-                              its scores printed beside it).
+  figures/cases-ab-engine-comparison.png
+      Measured against modelled U/U_H and V/U_H, Cases A and B, one ROW per engine (small multiples:
+      each panel carries one engine, in that engine's colour, with its scores printed beside it).
 
 Engines and their colours (fixed across every figure in this repository): OpenFOAM 12 realizable k-epsilon
 slot 1 blue; OpenLB slot 4 yellow; FluidX3D slot 5 magenta. Yellow and magenta sit below 3:1 contrast on
@@ -139,5 +139,5 @@ for r, (engine, label, colour) in enumerate(engines):
                    fontsize=8, color=INK)
 fig.format(suptitle="AIJ UWE Cases A and B — every engine on the same measured points", abc=False,
            gridcolor="#e3e3e0", gridlinewidth=0.6)
-fig.save(os.path.join(HERE, "aij_engines_agreement.png"), dpi=220)
-print("wrote aij_engines_agreement.png with", [e[0] for e in engines])
+fig.save(os.path.join(HERE, "figures", "cases-ab-engine-comparison.png"), dpi=220)
+print("wrote cases-ab-engine-comparison.png with", [e[0] for e in engines])

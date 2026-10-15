@@ -9,8 +9,8 @@ from the published files and never edited by hand; the documents (this README, `
 `QUESTIONS.md`) and `build.py` itself are written by hand.
 
 If you are an agent: read this file, then `manifest.json`, then the table. Read the *frame* and the
-*gotchas* of a case before its numbers — they differ per case and three of them silently corrupt a
-comparison (section 4).
+*known data issues* of a case before its numbers — they differ per case, and three of them invalidate a
+comparison if they are not accounted for (section 4).
 
 ## 1. Files
 
@@ -58,7 +58,7 @@ e = pts.query("case_id == 'E'").pivot_table(index=["point_id", "wind_direction"]
 dirs = pd.read_csv("clean/directions.csv")
 dirs.query("case_id == 'C' and wind_direction_deg == 45")[["flow_dir_x", "flow_dir_y", "status"]]
 
-# Frame, units, inflow, gotchas, provenance of one case
+# Frame, units, inflow and provenance of one case
 m["cases"]["D"]["frame"]; m["cases"]["D"]["inflow"]["log_law"]; m["cases"]["D"]["provenance"]
 ```
 
@@ -83,7 +83,7 @@ legacy-workbook and WD = 45° symmetry checks all go red (negative control run 2
 | D | 1:1:4 tower (62.5 × 62.5 × 250 mm) in 82 blocks (100 × 100 × 25 mm), U_H 6.65 | thermistor Vs (78 pts × 3 dirs) + split fibre (33 pts, 0°) at z = 5 mm | 267 | 1 × {0, 22.5, 45°} | tower centre | model m, 1:400 |
 | E | Niigata district 1:250, before/after a 60 m + two 18 m buildings | thermistor velocity ratio at z = 2 m, 80 pts | 2,560 | {bc, ac} × 16 compass | area centre, +x east +y north | **full-scale** m |
 
-## 4. Gotchas — what the published files do that this release undoes, and what it cannot
+## 4. Known data issues — what the published files do that this release corrects, and what it cannot
 
 **A**
 - Turbulence is published as **rms**; the table holds **variances** (rms²) so A and B share one column meaning. k = ½ Σ variances to 2e-3 (publication rounding).

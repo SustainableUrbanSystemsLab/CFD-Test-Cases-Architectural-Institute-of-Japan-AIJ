@@ -26,6 +26,7 @@ REPO = D.REPO
 DOCS = os.path.join(REPO, "docs")
 API = os.path.join(DOCS, "api")
 ASSETS = os.path.join(DOCS, "assets")
+FIGURES = os.path.join(REPO, "validation", "figures")
 
 REPO_URL = "https://github.com/SustainableUrbanSystemsLab/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ"
 SITE = "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ"
@@ -64,47 +65,68 @@ _FOAM_C = {f"WD {wd} {q}": f"vs.{lab}.{key}" for wd, lab in (("0°", "wd-0"), ("
            for q, key in (("√(|U|²+2k)", "scalar"), ("|U|", "vector"))}
 RUNS = [
     ("A", "openfoam12-realizableKE", None, "caseA_openfoam12_realizableKE.json", _FOAM_A_B,
-     ["aij_agreement.png", "aij_profiles.png"], "Eddy3D fixture TestAijCaseAContainerE2E; figures validation/plot_aij.py"),
+     ["cases-ab-openfoam-agreement.png", "cases-ab-openfoam-profiles.png"], "Eddy3D fixture TestAijCaseAContainerE2E; figures validation/plot_cases_ab_openfoam.py"),
     ("B", "openfoam12-realizableKE", None, "caseB_openfoam12_realizableKE.json", _FOAM_A_B,
-     ["aij_agreement.png", "aij_profiles.png"], "Eddy3D fixture TestAijCaseBContainerE2E; figures validation/plot_aij.py"),
+     ["cases-ab-openfoam-agreement.png", "cases-ab-openfoam-profiles.png"], "Eddy3D fixture TestAijCaseBContainerE2E; figures validation/plot_cases_ab_openfoam.py"),
     *[("C", "openfoam12-realizableKE", cb, f"caseC_openfoam12_realizableKE_{cb}.json", _FOAM_C,
-       ["aij_caseC_agreement.png", "aij_caseC_map.png"],
-       f"Eddy3D fixture TestAijCaseC{cb}ContainerE2E; figures validation/plot_aij_caseC.py "
+       ["case-c-openfoam-agreement.png", "case-c-openfoam-bias-map.png"],
+       f"Eddy3D fixture TestAijCaseC{cb}ContainerE2E; figures validation/plot_case_c_openfoam.py "
        "(per-point pairs in validation/results/caseC_openfoam12_realizableKE_pairs.csv)") for cb in ("0D", "1D", "2D")],
     *[(case, "openlb", None, f"case{case}_openlb.json",
        {"U": "velocity.U", "U, points ≥ 2 dx": "velocity.U.aboveTwoCells", "V": "velocity.V", "W": "velocity.W",
         "k (resolved)": "k.resolved", "V, lateral sign flipped (control)": "control.V.lateralSignFlipped"},
-       ["aij_engines_agreement.png"],
+       ["cases-ab-engine-comparison.png"],
        f"Eddy3D fixture TestAijCase{case}OpenLbContainerE2E (OpenLB eddy3dWind, CPU image, dx = 1.6 m); "
-       "figure validation/plot_aij_engines.py") for case in ("A", "B")],
+       "figure validation/plot_cases_ab_engines.py") for case in ("A", "B")],
     ("E", "openfoam12-realizableKE", "SW", "caseE_openfoam12_realizableKE.json",
      {"before, √(|U|²+2k)": "vr.bc.SW.rms", "before, |U|": "vr.bc.SW.Umag", "after, √(|U|²+2k)": "vr.ac.SW.rms",
       "after, |U|": "vr.ac.SW.Umag", "no-construction ceiling control": "noConstruction.SW"},
-     ["aij_caseE_agreement.png", "aij_caseE_map.png"],
+     ["case-e-openfoam-agreement.png", "case-e-openfoam-bias-map.png"],
      "Eddy3D fixture TestAijCaseEContainerE2E (EDDY3D_AIJ_E_DIRECTIONS=SW, tabulated inlet); figures "
-     "validation/plot_aij_caseE.py (per-point pairs in validation/results/caseE_openfoam12_realizableKE_pairs.csv)"),
+     "validation/plot_case_e_openfoam.py (per-point pairs in validation/results/caseE_openfoam12_realizableKE_pairs.csv)"),
     ("A", "ml-surrogate", None, "caseA_ml.json",
      {"|U| (z = 0.01 m plane)": "speed.vectorMagnitude", "|U|, lattice cut at ±250 m": "halfExtent250.forward",
       "wind reversed (control)": "negativeControl.reversedWind"},
-     ["aij_ml_agreement.png"], "Eddy3D fixture Outdoor.ML.Tests/TestAijSurrogateE2E; figure validation/plot_aij_ml.py"),
+     ["ml-surrogate-agreement.png"], "Eddy3D fixture Outdoor.ML.Tests/TestAijSurrogateE2E; figure validation/plot_ml_surrogate.py"),
     ("B", "ml-surrogate", None, "caseB_ml.json",
      {"|U| (z = H/16 plane)": "speed.vectorMagnitude", "|U|, lattice cut at ±250 m": "halfExtent250.forward",
       "wind reversed (control)": "negativeControl.reversedWind"},
-     ["aij_ml_agreement.png"], "Eddy3D fixture Outdoor.ML.Tests/TestAijSurrogateE2E; figure validation/plot_aij_ml.py"),
+     ["ml-surrogate-agreement.png"], "Eddy3D fixture Outdoor.ML.Tests/TestAijSurrogateE2E; figure validation/plot_ml_surrogate.py"),
     ("C", "ml-surrogate", None, "caseC_ml.json",
      {"Vs, 9 configurations": "speed.thermistor", "Vs, 2D WD 0, lattice cut at ±250 m": "halfExtent250.forward",
       "wind reversed (control)": "negativeControl.reversedWind"},
-     ["aij_ml_agreement.png"], "Eddy3D fixture Outdoor.ML.Tests/TestAijSurrogateE2E; figure validation/plot_aij_ml.py"),
+     ["ml-surrogate-agreement.png"], "Eddy3D fixture Outdoor.ML.Tests/TestAijSurrogateE2E; figure validation/plot_ml_surrogate.py"),
     ("D", "ml-surrogate", None, "caseD_ml.json",
      {"Vs, thermistor, 3 WD": "speed.thermistor", "|U|, split fibre, WD 0": "speed.vectorMagnitude",
       "Vs, WD 0, lattice cut at ±250 m": "halfExtent250.forward", "wind reversed (control)": "negativeControl.reversedWind"},
-     ["aij_ml_agreement.png"], "Eddy3D fixture Outdoor.ML.Tests/TestAijSurrogateE2E; figure validation/plot_aij_ml.py"),
+     ["ml-surrogate-agreement.png"], "Eddy3D fixture Outdoor.ML.Tests/TestAijSurrogateE2E; figure validation/plot_ml_surrogate.py"),
     ("E", "ml-surrogate", None, "caseE_ml.json",
      {"Vs/U(15.9 m), 16 WD, bc + ac": "speed.thermistor", "after construction": "speed.thermistor.after",
       "after − before": "delta.afterMinusBefore", "after, lattice cut at ±250 m": "halfExtent250.forward",
       "wind reversed (control)": "negativeControl.reversedWind"},
-     ["aij_ml_agreement.png"], "Eddy3D fixture Outdoor.ML.Tests/TestAijSurrogateE2E; figure validation/plot_aij_ml.py"),
+     ["ml-surrogate-agreement.png"], "Eddy3D fixture Outdoor.ML.Tests/TestAijSurrogateE2E; figure validation/plot_ml_surrogate.py"),
 ]
+
+# One caption per validation figure, used on the case pages and served with each result.
+FIGURE_CAPTIONS = {
+    "cases-ab-openfoam-agreement.png": ("Cases A and B, OpenFOAM 12 (realizable k-ε): measured against modelled U, V, W and k at "
+                                        "every measured point, normalised by U_H, with the 1:1 line and the factor-of-two band."),
+    "cases-ab-openfoam-profiles.png": ("Cases A and B, OpenFOAM 12: centre-plane vertical profiles of U/U_H at the measurement "
+                                       "stations, measured points against the modelled line."),
+    "case-c-openfoam-agreement.png": ("Case C, OpenFOAM 12: measured Vs/U_H against the modelled √(|U|²+2k)/U_H (filled) and "
+                                      "|U|/U_H (hollow), one panel per configuration (centre block × wind direction)."),
+    "case-c-openfoam-bias-map.png": ("Case C, OpenFOAM 12: log₂(model / tunnel) of the scalar speed at each of the 120 points "
+                                     "on the plan of the array, per configuration — where the model is slow and where it is fast."),
+    "case-e-openfoam-agreement.png": ("Case E, OpenFOAM 12, wind from SW: measured velocity ratio against the modelled "
+                                      "√(|U|²+2k)/U_ref (filled) and |U|/U_ref (hollow), before and after construction, and the "
+                                      "change the construction makes."),
+    "case-e-openfoam-bias-map.png": ("Case E, OpenFOAM 12, wind from SW: log₂(model / tunnel) of the scalar speed at the 80 "
+                                     "points on the plan of the district, before and after construction."),
+    "cases-ab-engine-comparison.png": ("Cases A and B, every engine on the same points: measured against modelled U/U_H and "
+                                       "V/U_H, one row per engine."),
+    "ml-surrogate-agreement.png": ("Eddy3D ML surrogate (Yel-2.0): measured against predicted pedestrian-height speed, one "
+                                   "panel per case, with the 1:1 line and the factor-of-two band."),
+}
 
 HEAD = D.git_head()
 NOW = dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat()
@@ -127,6 +149,11 @@ def write_json(rel, obj):
 
 def url(rel):
     return f"{API_BASE}/{rel}"
+
+
+def render_url(case, configuration=None):
+    """The site URL of a configuration's render (the case's default configuration if None)."""
+    return f"{SITE}/assets/geometry/{D.render_file(case, configuration)}"
 
 
 # ----------------------------------------------------------------------------- points
@@ -208,7 +235,7 @@ def expected_bbox(case, cfg):
 def build_geometry(case):
     meta = D.CASES[case]
     entries = D.case_geometry(case)
-    default_cfg = {"A": "default", "B": "default", "C": "2D", "D": "default", "E": "ac"}[case]
+    default_cfg = D.DEFAULT_CONFIGURATION[case]
     files, checks = [], []
     for cfg, tris, boxes, note in entries:
         stats = D.stl_stats(tris)
@@ -223,7 +250,8 @@ def build_geometry(case):
         if boxes is not None and not stats["watertight"]:
             raise SystemExit(f"geometry check failed for {case}/{cfg}: box geometry is not edge-manifold")
         entry = {"configuration": cfg, "file": url(rel), "path": rel, "format": "ASCII STL, LF line endings, outward normals",
-                 "source": note, "stats": stats, "bbox_matches_stated_dimensions": ok if lo is not None else None}
+                 "source": note, "stats": stats, "bbox_matches_stated_dimensions": ok if lo is not None else None,
+                 "render": render_url(case, cfg), "render_caption": D.RENDER_CAPTIONS[(case, cfg)]}
         if boxes is not None:
             entry["boxes"] = boxes
             entry["box_count"] = len(boxes)
@@ -241,7 +269,7 @@ def build_geometry(case):
         "configurations": [e["configuration"] for e in files],
         "is_boxes": files[0].get("boxes") is not None,
         "files": files,
-        "render": f"{SITE}/assets/geom_case{case}.png",
+        "render": render_url(case),
     })
     return files, rel, checks
 
@@ -288,7 +316,7 @@ def validation_entries(case):
             "metric_meaning": METRIC_MEANING,
             "headline": {label: key for label, key in headline.items()},
             "scores": {k: v for k, v in res.items() if is_metric(v)},
-            "figures": [f"{SITE}/assets/{fig}" for fig in figures],
+            "figures": [f"{SITE}/assets/figures/{fig}" for fig in figures],
             "reproduce": reproduce,
             "source_file": f"validation/results/{name}",
             "source_url": f"{REPO_URL}/blob/main/validation/results/{name}",
@@ -364,7 +392,7 @@ def build_case(case, points, geometry, validation):
         "people": meta["people"], "doi": meta["doi"], "doi_note": meta.get("doi_note"),
         "citation_requested": meta["citation_requested"],
         "files_in_repository": {"folder": f"{REPO_URL}/tree/main/{meta['folder'].replace(' ', '%20')}", "reference": meta["reference_file"], "approach_flow": meta["approach_flow_file"], "readme": meta["readme"]},
-        "render": f"{SITE}/assets/geom_case{case}.png",
+        "render": render_url(case),
         "page": f"{SITE}/cases/{meta['slug']}/",
     })
     return rel, summ, configs
@@ -426,7 +454,7 @@ def build_cases_index(percase):
             "doi": meta["doi"],
             "links": {"case": url(f"cases/{case}.json"), "points": url(f"cases/{case}/points.json"), "points_csv": url(f"cases/{case}/points.csv"),
                       "geometry": url(f"cases/{case}/geometry.json"), "geometry_stl": url(f"cases/{case}/geometry.stl"),
-                      "validation": url(f"cases/{case}/validation.json"), "page": f"{SITE}/cases/{meta['slug']}/", "render": f"{SITE}/assets/geom_case{case}.png"},
+                      "validation": url(f"cases/{case}/validation.json"), "page": f"{SITE}/cases/{meta['slug']}/", "render": render_url(case)},
         })
     return write_json("cases.json", {"cases": items})
 
@@ -599,94 +627,176 @@ def build_llms(percase):
 # ----------------------------------------------------------------------------- assets
 
 def copy_assets():
-    os.makedirs(ASSETS, exist_ok=True)
-    for case in D.CASE_IDS:
-        shutil.copyfile(os.path.join(REPO, "validation", "geometry", f"geom_case{case}.png"), os.path.join(ASSETS, f"geom_case{case}.png"))
-    for name in sorted({fig for run in RUNS for fig in run[5]}):
-        shutil.copyfile(os.path.join(REPO, "validation", name), os.path.join(ASSETS, name))
-
-
-def render_stl_check(case="D"):
-    """Draw one cleaned STL with matplotlib so a human can look at it."""
-    import matplotlib
-    matplotlib.use("Agg")
-    import matplotlib.pyplot as plt
-    from mpl_toolkits.mplot3d.art3d import Poly3DCollection
-    tris = D.read_ascii_stl(os.path.join(API, f"cases/{case}/geometry.stl"))
-    fig = plt.figure(figsize=(8, 5.5), dpi=130)
-    ax = fig.add_subplot(111, projection="3d")
-    coll = Poly3DCollection(tris, facecolor="#9aa3ad", edgecolor="#3a3f45", linewidths=0.25, alpha=0.95)
-    ax.add_collection3d(coll)
-    s = D.stl_stats(tris)
-    lo, hi = s["bbox_min"], s["bbox_max"]
-    span = max(h - l for h, l in zip(hi, lo))
-    mid = [(h + l) / 2 for h, l in zip(hi, lo)]
-    ax.set_xlim(mid[0] - span / 2, mid[0] + span / 2)
-    ax.set_ylim(mid[1] - span / 2, mid[1] + span / 2)
-    ax.set_zlim(0, span / 4)
-    ax.set_box_aspect((1, 1, 0.25))
-    ax.view_init(elev=28, azim=-55)
-    ax.set_xlabel("x (m)"); ax.set_ylabel("y (m)"); ax.set_zlabel("z (m)")
-    ax.set_title(f"api/cases/{case}/geometry.stl — {s['triangles']} triangles, watertight = {s['watertight']}, volume {s['signed_volume']:.6g} m³", fontsize=9)
-    out = os.path.join(REPO, "validation", "geometry", f"stl_check_case{case}.png")
-    fig.savefig(out, bbox_inches="tight")
-    plt.close(fig)
-    return out
+    """docs/assets/geometry/ = every render, docs/assets/figures/ = every figure a run names; nothing else."""
+    wanted = {
+        "geometry": {D.render_file(c, cfg) for c in D.CASE_IDS for (cc, cfg) in D.RENDER_CAPTIONS if cc == c},
+        "figures": {fig for run in RUNS for fig in run[5]},
+    }
+    for sub_dir, names in wanted.items():
+        src = os.path.join(FIGURES, "geometry") if sub_dir == "geometry" else FIGURES
+        dst = os.path.join(ASSETS, sub_dir)
+        os.makedirs(dst, exist_ok=True)
+        for stale in set(os.listdir(dst)) - names:
+            os.remove(os.path.join(dst, stale))
+        for name in sorted(names):
+            shutil.copyfile(os.path.join(src, name), os.path.join(dst, name))
 
 
 # ----------------------------------------------------------------------------- site pages
 
+# Row labels for the case pages' tables: the API keeps its snake_case keys, the pages read as prose.
+LABELS = {
+    "D_m": "Block size D (m)", "H_m": "Height H (m)", "Re": "Reynolds number", "Re_D": "Reynolds number Re_D",
+    "Re_H": "Reynolds number Re_H", "U_H_m_s": "U_H (m/s)", "U_H_note": "U_H, note", "array": "Array",
+    "array_extent_m": "Array extent (m)", "b_m": "Width b (m)", "blocks": "Blocks", "building": "Building",
+    "centre_building": "Centre building", "configurations": "Configurations", "configurations_note": "Configurations, note",
+    "depth_m": "Depth (m)", "district": "District", "instrument": "Instrument", "measurement_height_m": "Measurement height (m)",
+    "measurement_height_note": "Measurement height, note", "measurement_planes": "Measurement planes",
+    "new_buildings": "New buildings", "normalisation": "Normalisation", "pitch_note": "Pitch, note", "points": "Points",
+    "roads": "Roads", "scale": "Scale", "scale_note": "Scale, note", "states": "States", "tower": "Tower",
+    "tunnel": "Wind tunnel", "values": "Values", "width_m": "Width (m)", "wind_directions": "Wind directions",
+    "wind_directions_deg": "Wind directions (°)",
+    "coordinate_scale_applied": "Coordinate scale applied", "lateral_sign_applied": "Lateral sign applied",
+    "origin": "Origin", "wind_direction_rotation": "Wind direction convention",
+    "U_H_measured_m_s": "U_H, measured (m/s)", "U_ref_15_9m_m_s": "U_ref at 15.9 m (m/s)", "log_law": "Log law",
+    "log_law_error_at_H": "Log-law error at H", "method": "Method", "note": "Note", "power_law_exponent": "Power-law exponent",
+    "power_law_exponent_fitted": "Power-law exponent, fitted", "power_law_exponent_paper": "Power-law exponent, data paper",
+    "turbulence_intensity_at_D": "Turbulence intensity at D", "u_star_m_s": "Friction velocity u* (m/s)",
+    "z0_mm": "Roughness length z₀ (mm)", "length": "Length", "variance": "Variance", "velocity": "Velocity",
+    "velocity_ratio": "Velocity ratio",
+}
+
+
+def _label(k):
+    return LABELS.get(k, k.replace("_", " "))
+
+
+def _config_part(k, v):
+    """'2D', 'WD 22.5°', 'split fibre', 'before construction': one part of a configuration's name."""
+    if k == "wind_direction_deg":
+        return f"WD {v:g}°"
+    if k == "config":
+        return {"bc": "before construction", "ac": "after construction", "default": "default"}.get(v, v)
+    return str(v).replace("_", " ")
+
+
 def _md_value(v):
     if isinstance(v, dict):
-        return "<br>".join(f"**{k}**: {_md_value(x)}" for k, x in v.items())
+        return "<br>".join(f"**{_label(k)}**: {_md_value(x)}" for k, x in v.items())
     if isinstance(v, list):
         return ", ".join(str(x) for x in v)
     return str(v)
+
+
+def _asset(rel):
+    return f"{{{{ '{rel}' | relative_url }}}}"
+
+
+def figure(src, alt, caption):
+    """One image with its caption, as HTML (<figure>), so the caption stays attached to the image."""
+    return ['<figure class="figure">', f'<img src="{_asset(src)}" alt="{alt}">', f"<figcaption>{caption}</figcaption>", "</figure>", ""]
+
+
+def figure_table(cells, columns, caption=None):
+    """Images side by side in a Markdown table marked {: .figures } (see docs/_sass/custom/custom.scss):
+    cells are (src, alt, caption, link or None); the header row is blank and hidden by the stylesheet."""
+    L = ["|" + " |" * columns, "|" + "---|" * columns]
+    for i in range(0, len(cells), columns):
+        row = []
+        for src, alt, cap, link in cells[i:i + columns]:
+            img = f"![{alt}]({_asset(src)})"
+            if link:
+                img = f"[{img}]({_asset(link)})"
+            row.append(f"{img}<br><span class=\"caption\">{cap.replace('|', '&#124;')}</span>")
+        row += [" "] * (columns - len(row))
+        L.append("| " + " | ".join(row) + " |")
+    L += ["{: .figures }", ""]
+    if caption:
+        L += [f'<p class="caption">{caption}</p>', ""]
+    return L
+
+
+GALLERY_CAPTIONS = {
+    "A": "Isolated building · {points} points · U, V, W and k",
+    "B": "Isolated slab · {points} points · U, V, W and k",
+    "C": "Centre block at 0D, 1D or 2D (2D shown) · {rows} scalar speeds at pedestrian height, 3 wind directions",
+    "D": "A tower among 82 low blocks · {rows} measurements: scalar speed at 3 wind directions, velocity at 33 points",
+    "E": "Before and after a 60 m high-rise (after shown) · {rows} velocity ratios over 16 wind directions",
+}
+
+
+def build_gallery(percase):
+    """docs/_includes/case-gallery.md: the five cases, two to a row, each render linked to its page."""
+    cells = []
+    for case in D.CASE_IDS:
+        meta = D.CASES[case]
+        summ, _ = percase[case]
+        cap = GALLERY_CAPTIONS[case].format(points=f"{summ['distinct_points']:,}", rows=f"{summ['rows']:,}")
+        cells.append((f"/assets/geometry/{D.render_file(case)}", meta["title"], f"<strong>{meta['title']}</strong><br>{cap}",
+                      f"/cases/{meta['slug']}/"))
+    os.makedirs(os.path.join(DOCS, "_includes"), exist_ok=True)
+    with io.open(os.path.join(DOCS, "_includes", "case-gallery.md"), "w", encoding="utf-8", newline="\n") as f:
+        f.write("\n".join(["<!-- Generated by scripts/build_api.py; edit GALLERY_CAPTIONS there. -->", ""] + figure_table(cells, 2)))
 
 
 def build_pages(percase, validations):
     """docs/cases/<slug>.md, one per case, from the same facts the API serves."""
     out_dir = os.path.join(DOCS, "cases")
     os.makedirs(out_dir, exist_ok=True)
+    build_gallery(percase)
     for n, case in enumerate(D.CASE_IDS, start=1):
         meta = D.CASES[case]
         summ, configs = percase[case]
         ventries = validations[case]
         L = ["---", f"title: \"{meta['title']}\"", "parent: Cases", f"nav_order: {n}", "---", "",
-             f"# {meta['title']}", "", meta["short"], "",
-             f"![{meta['title']}]({{{{ '/assets/geom_case{case}.png' | relative_url }}}})", "",
-             "## Configuration", "", "| | |", "|---|---|"]
+             f"# {meta['title']}", "", meta["short"], ""]
+        fig_no = 1
+        cfgs = [cfg for (c, cfg) in D.RENDER_CAPTIONS if c == case]
+        if len(cfgs) == 1:
+            L += figure(f"/assets/geometry/{D.render_file(case)}", meta["title"],
+                        f"<strong>Figure {fig_no}.</strong> {D.RENDER_CAPTIONS[(case, cfgs[0])]}")
+        else:
+            label = {"C": "The three configurations of the centre block, on one scale; 120 measurement points each, "
+                          "at three wind directions.",
+                     "E": "The two states, on one scale (full-scale metres, +x east, +y north); the arrow marks SW, the "
+                          "direction Eddy3D is scored at."}[case]
+            L += figure_table([(f"/assets/geometry/{D.render_file(case, cfg)}", f"{meta['title']}, {cfg}",
+                                D.RENDER_CAPTIONS[(case, cfg)], None) for cfg in cfgs],
+                              3 if case == "C" else 1,  # C's three states side by side; E's are wide, so they stack
+                              f"<strong>Figure {fig_no}.</strong> {label}")
+        fig_no += 1
+        L += ["## Configuration", "", "| Parameter | Value |", "|---|---|"]
         for k, v in meta["configuration"].items():
-            L.append(f"| {k} | {_md_value(v)} |")
-        L += ["", "## Frame and units", "", "| | |", "|---|---|"]
+            L.append(f"| {_label(k)} | {_md_value(v)} |")
+        L += ["", "## Frame and units", "", "| Property | Definition |", "|---|---|"]
         for k, v in meta["frame"].items():
-            L.append(f"| {k} | {_md_value(v)} |")
+            L.append(f"| {_label(k)} | {_md_value(v)} |")
         for k, v in meta["units"].items():
-            L.append(f"| unit: {k} | {v} |")
+            L.append(f"| Unit of {'k' if k == 'k' else _label(k).lower()} | {v} |")
         L += ["", "## Reference data", "",
               f"Source in this repository: `{meta['reference_file']}`" + (f" (approach flow: `{meta['approach_flow_file']}`)" if meta["approach_flow_file"] else "") + ".",
               "", f"The cleaned table has **{summ['rows']} rows** over **{summ['distinct_points']} distinct points**; columns `{'`, `'.join(summ['columns'])}`.", ""]
         if summ["nulls"]:
             L.append("Unmeasured cells (null): " + ", ".join(f"{k} {v}" for k, v in summ["nulls"].items()) + ".")
             L.append("")
-        L += ["| configuration | points |", "|---|---|"]
+        L += ["| Configuration | Points |", "|---|---|"]
         for c in configs:
-            key = ", ".join(f"{k} {v}" for k, v in c.items() if k not in ("points", "measured", "points_per_direction", "wind_directions"))
+            key = ", ".join(_config_part(k, v) for k, v in c.items() if k not in ("points", "measured", "points_per_direction", "wind_directions"))
             val = c.get("points", c.get("points_per_direction"))
             if "measured" in c:
                 val = f"{val} ({c['measured']} measured)"
             if "wind_directions" in c:
-                key += f", 16 directions"
+                key += ", 16 wind directions"
                 val = f"{val} per direction"
             L.append(f"| {key} | {val} |")
-        L += ["", "### Inflow", "", "| | |", "|---|---|"]
+        L += ["", "### Inflow", "", "| Property | Value |", "|---|---|"]
         for k, v in meta["inflow_fit"].items():
             if k == "windows":
                 for w in v:
-                    L.append("| window | " + "; ".join(f"{a} {b}" for a, b in w.items()) + " |")
+                    L.append("| Fit window | " + "; ".join(f"{_label(a)} {b}" for a, b in w.items()) + " |")
             else:
-                L.append(f"| {k} | {_md_value(v)} |")
-        L += ["", "## Things to know before comparing", ""]
+                L.append(f"| {_label(k)} | {_md_value(v)} |")
+        L += ["", "## Known data issues", ""]
         for g in meta["gotchas"]:
             L.append(f"- {g}")
         L += ["", "## Validation", ""]
@@ -702,7 +812,7 @@ def build_pages(percase, validations):
                     L += [f"Reattachment length L_r/H = {e['recirculation_Lr_over_H']:.2f}.", ""]
                 scores = {label: e["scores"][key] for label, key in e["headline"].items()}
                 # A bare '|' in a label (|U|) would split the Markdown table's column: escape it.
-                L += ["| | " + " | ".join(lab.replace("|", "\\|") for lab in scores) + " |", "|---|" + "---|" * len(scores)]
+                L += ["| Metric | " + " | ".join(lab.replace("|", "\\|") for lab in scores) + " |", "|---|" + "---|" * len(scores)]
                 for m, label in (("R", "R"), ("Fac2", "FAC2"), ("Fb", "FB"), ("HitRate", "hit rate"), ("Count", "n")):
                     L.append(f"| **{label}** | " + " | ".join(
                         str(s[m]) if m == "Count" else f"{s[m]:+.3f}" if m in ("R", "Fb") else f"{s[m]:.3f}"
@@ -711,12 +821,13 @@ def build_pages(percase, validations):
                 figures += [f for f in e["figures"] if f not in figures]
             for fig in figures:
                 name = fig.rsplit("/", 1)[-1]
-                L += [f"![{name}]({{{{ '/assets/{name}' | relative_url }}}})", ""]
+                L += figure(f"/assets/figures/{name}", name, f"<strong>Figure {fig_no}.</strong> {FIGURE_CAPTIONS[name]}")
+                fig_no += 1
             L += ["How to read these is on the [Validation]({{ '/validation/' | relative_url }}) page."]
         else:
             L.append("**No validation has been run for this case yet.** Nothing on this page is a claim about it. Engine status: "
                      + ", ".join(f"{k} {v}" for k, v in ENGINE_STATUS[case].items()) + ".")
-        L += ["", "## API", "", "| endpoint | |", "|---|---|"]
+        L += ["", "## API", "", "| Resource | Endpoint |", "|---|---|"]
         for name, rel in (("case", f"cases/{case}.json"), ("points (JSON)", f"cases/{case}/points.json"), ("points (CSV)", f"cases/{case}/points.csv"),
                           ("geometry", f"cases/{case}/geometry.json"), ("geometry STL", f"cases/{case}/geometry.stl"), ("validation", f"cases/{case}/validation.json")):
             L.append(f"| {name} | [`/api/{rel}`]({{{{ '/api/{rel}' | relative_url }}}}) |")
@@ -820,7 +931,6 @@ def main():
         build_openapi()
         build_llms(percase)
         build_pages(percase, validations)
-        print("rendered", render_stl_check("D"))
     problems = verify()
     for p in problems:
         print("PROBLEM:", p)

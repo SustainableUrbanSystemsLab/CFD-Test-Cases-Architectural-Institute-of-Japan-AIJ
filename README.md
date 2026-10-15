@@ -5,19 +5,24 @@ packaged case by case, together with Eddy3D's validation against it. The same ma
 website and as a static API that scripts and agents can query: cleaned measurement tables in SI units
 and one frame per case, cleaned STL geometry in metres, and the validation scores.
 
-<p>
-<a href="validation/geometry/geom_caseA.png"><img src="validation/geometry/geom_caseA.png" width="19%" alt="Case A"></a>
-<a href="validation/geometry/geom_caseB.png"><img src="validation/geometry/geom_caseB.png" width="19%" alt="Case B"></a>
-<a href="validation/geometry/geom_caseC.png"><img src="validation/geometry/geom_caseC.png" width="19%" alt="Case C"></a>
-<a href="validation/geometry/geom_caseD.png"><img src="validation/geometry/geom_caseD.png" width="19%" alt="Case D"></a>
-<a href="validation/geometry/geom_caseE.png"><img src="validation/geometry/geom_caseE.png" width="19%" alt="Case E"></a>
-</p>
+<table>
+<tr>
+<td valign="top"><a href="validation/figures/geometry/case-a.png"><img src="validation/figures/geometry/case-a.png" width="270" alt="Case A — 1:1:2 building"></a><br><b>Case A</b> — 1:1:2 building<br><sub>186 points · U, V, W, k</sub></td>
+<td valign="top"><a href="validation/figures/geometry/case-b.png"><img src="validation/figures/geometry/case-b.png" width="270" alt="Case B — 1:4:4 slab"></a><br><b>Case B</b> — 1:4:4 slab<br><sub>224 points · U, V, W, k</sub></td>
+<td valign="top"><a href="validation/figures/geometry/case-c-2d.png"><img src="validation/figures/geometry/case-c-2d.png" width="270" alt="Case C — 3 × 3 block array"></a><br><b>Case C</b> — 3 × 3 block array<br><sub>1,080 scalar speeds · 9 configurations (2D shown)</sub></td>
+</tr>
+<tr>
+<td valign="top"><a href="validation/figures/geometry/case-d.png"><img src="validation/figures/geometry/case-d.png" width="270" alt="Case D — high-rise among city blocks"></a><br><b>Case D</b> — high-rise among city blocks<br><sub>78 points × 3 directions · 33 velocity points</sub></td>
+<td valign="top"><a href="validation/figures/geometry/case-e-after.png"><img src="validation/figures/geometry/case-e-after.png" width="270" alt="Case E — Niigata district"></a><br><b>Case E</b> — Niigata district<br><sub>80 points × 16 directions · before and after (after shown)</sub></td>
+<td></td>
+</tr>
+</table>
 
 **Site:** https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/ ·
 **API:** [`/api/index.json`](https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/index.json) ·
 [`/api/llms.txt`](https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/llms.txt) for agents ·
 [OpenAPI](https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/openapi.json)
-(the same files are in [`docs/api/`](docs/api/) on this branch)
+(the same files are in [`docs/api/`](docs/api/))
 
 | Case | Configuration | Measurements | Reference file |
 |---|---|---|---|
@@ -47,7 +52,8 @@ it agrees is in the numbers and their reading. Anything not marked scored is not
 <details>
 <summary><b>Case A — 1:1:2 building</b> · 186 points, U/V/W/k · scored: OpenFOAM 12, OpenLB, ML</summary>
 
-<p><img src="validation/geometry/geom_caseA.png" width="60%" alt="Case A geometry"></p>
+<p><img src="validation/figures/geometry/case-a.png" width="80%" alt="Case A geometry"><br>
+<em>Isolated 1:1:2 building, b = 0.08 m, H = 0.16 m (model scale); the wind blows along +x.</em></p>
 
 **Configuration.** A 1:1:2 (width : depth : height) prism, b = 0.08 m, H = 2b = 0.16 m, centred on the origin.
 Re_H ≈ 24,000 on H and the approach wind speed at H, U_H = 4.491 m/s. Hot-wire split-fibre probes
@@ -97,7 +103,8 @@ cells above its no-slip floor; a nearly steady solve with a 3.39 H wake. See *ev
 <details>
 <summary><b>Case B — 1:4:4 slab</b> · 224 points, U/V/W/k · scored: OpenFOAM 12, OpenLB, ML</summary>
 
-<p><img src="validation/geometry/geom_caseB.png" width="60%" alt="Case B geometry"></p>
+<p><img src="validation/figures/geometry/case-b.png" width="80%" alt="Case B geometry"><br>
+<em>Isolated 1:4:4 slab, 0.05 m along the wind, 0.20 m across, 0.20 m tall (model scale); the wind blows along +x.</em></p>
 
 **Configuration.** A 1:4:4 (depth : width : height) slab, 0.05 m deep (along the wind) × 0.20 m wide × 0.20 m
 high, centred on the origin. Re_H ≈ 72,000 on H and U_H = 5.133 m/s. Hot-wire split-fibre probe, 100 Hz, 60 s per
@@ -109,7 +116,7 @@ point. Tunnel: Niigata Institute of Technology, Kashiwazaki. Data collector: Yos
 **millimetres**, velocities m/s, turbulence as **variances**. Approach flow in `AF_caseB.csv` (12 heights,
 z = 0.005 … 1.0 m, with a 1/4-power fit column). Point layouts: `MP-y_caseB.png`, `MP-z_caseB.png`. Frame: +x
 streamwise, +z up; slab spans x ∈ [−0.025, 0.025], y ∈ [−0.10, 0.10], z ∈ [0, 0.20]; points on the y ≤ 0 half.
-**The published V is positive toward −y** (see *Data gotchas*); the API flips it so that A and B agree.
+**The published V is positive toward −y** (see *Known data issues*); the API flips it so that A and B agree.
 
 **Inflow fit** (log law over z = 0.02 … 2H): u\* = 0.399 m/s, z₀ = 0.882 mm, U_H measured 5.133 m/s, log-law
 error +2.9 %.
@@ -143,7 +150,15 @@ at least two cells above its floor; its wake sits about H/2 downstream of the tu
 <details>
 <summary><b>Case C — 3 × 3 block array</b> · 1080 points, scalar speed at pedestrian height, 9 configurations · scored: OpenFOAM 12, ML</summary>
 
-<p><img src="validation/geometry/geom_caseC.png" width="60%" alt="Case C geometry"></p>
+<table>
+<tr>
+<td valign="top"><img src="validation/figures/geometry/case-c-0d.png" width="270" alt="Case C, 0D"><br><sub>0D: the centre block removed.</sub></td>
+<td valign="top"><img src="validation/figures/geometry/case-c-1d.png" width="270" alt="Case C, 1D"><br><sub>1D: the centre block as tall as its neighbours, D = 0.20 m.</sub></td>
+<td valign="top"><img src="validation/figures/geometry/case-c-2d.png" width="270" alt="Case C, 2D"><br><sub>2D: the centre block twice as tall, 2D = 0.40 m.</sub></td>
+</tr>
+</table>
+
+<em>The three configurations of the centre block, on one scale; 120 measurement points each, at three wind directions.</em>
 
 **Configuration.** Nine cubes of side D = 0.20 m on a 0.40 m pitch (street width = D), array footprint
 1.0 × 1.0 m, centred on the origin. The centre building is tested at three heights — 0D (absent), 1D (0.2 m, as
@@ -183,7 +198,7 @@ the windward street's pedestrian speed over 0D (mean Vs 2.398 vs 1.172 m/s) whil
 3000 iterations per direction, the 120 probes at exactly the tunnel's coordinates. Scored against Vs/U_H as
 √(|U|² + 2k) (headline) and as |U|; hit rate D = 0.25, W = 0.05 U_H.
 
-![Case C, measured vs modelled, nine configurations](validation/aij_caseC_agreement.png)
+![Case C, measured vs modelled, nine configurations](validation/figures/case-c-openfoam-agreement.png)
 
 | centre block | WD | R | FAC2 | FB | hit rate | \|U\| alone: FB / R |
 |---|---|---|---|---|---|---|
@@ -197,7 +212,7 @@ the windward street's pedestrian speed over 0D (mean Vs 2.398 vs 1.172 m/s) whil
 | 2D | 22.5° | +0.906 | 0.983 | +0.091 | 0.875 | +0.240 / +0.894 |
 | 2D | 45° | +0.909 | 0.958 | +0.103 | 0.883 | +0.243 / +0.912 |
 
-![Case C, where the model is slow or fast](validation/aij_caseC_map.png)
+![Case C, where the model is slow or fast](validation/figures/case-c-openfoam-bias-map.png)
 
 Reading these:
 
@@ -230,7 +245,8 @@ FB +0.67, FAC2 0.44, R +0.21, hit rate 0.18 — see *ML surrogate* under *Valida
 <details>
 <summary><b>Case D — high-rise among city blocks</b> · 78 points × 3 directions (thermistor) + 33 points U/V/W/k · scored: ML; OpenFOAM solving</summary>
 
-<p><img src="validation/geometry/geom_caseD.png" width="60%" alt="Case D geometry"></p>
+<p><img src="validation/figures/geometry/case-d.png" width="80%" alt="Case D geometry"><br>
+<em>A 0.25 m tower (blue) among 82 low blocks over 1.40 m × 1.35 m (1:400 model scale); the arrow is WD = 0°.</em></p>
 
 **Configuration.** One 1:1:4 tower, 0.25H × 0.25H × H = 62.5 × 62.5 × 250 mm, replacing the centre block of a
 regular array of 82 blocks of 0.4H × 0.4H × 0.1H = 100 × 100 × 25 mm; roads 0.1H / 0.2H / 0.3H = 25 / 50 / 75 mm
@@ -285,14 +301,20 @@ quantity it predicts. See *ML surrogate* under *Validation method*.
 [`geometry.json`](docs/api/cases/D/geometry.json) (83 boxes) · [`geometry.stl`](docs/api/cases/D/geometry.stl) ·
 [`validation.json`](docs/api/cases/D/validation.json)
 
-<p><img src="validation/geometry/stl_check_caseD.png" width="60%" alt="The cleaned Case D STL, rendered at build time"></p>
 
 </details>
 
 <details>
 <summary><b>Case E — Niigata district</b> · 80 points × 16 directions × before/after, velocity ratio · scored: OpenFOAM 12 (SW), ML</summary>
 
-<p><img src="validation/geometry/geom_caseE.png" width="60%" alt="Case E geometry"></p>
+<table>
+<tr>
+<td valign="top"><img src="validation/figures/geometry/case-e-before.png" width="410" alt="Case E, bc"><br><sub>Before construction: the existing district, about 400 m across (full scale).</sub></td>
+<td valign="top"><img src="validation/figures/geometry/case-e-after.png" width="410" alt="Case E, ac"><br><sub>After construction: the 60 m high-rise and the two 18 m mid-rises (blue) added.</sub></td>
+</tr>
+</table>
+
+<em>The two states, on one scale (full-scale metres, +x east, +y north); the arrow marks SW, the direction Eddy3D is scored at.</em>
 
 **Configuration.** A real district in Niigata City near the Shinano River — dense low-rise stock (median top 6 m,
 max 30 m) — at 1:250, measured before and after the construction of a 60 m high-rise (A) and two 18 m mid-rises
@@ -337,7 +359,7 @@ buildings), the workbook's measured profile imposed through a tabulated inlet th
 case (`wind.inlet: "manual"`), 2000 iterations. The model's speed is divided by its own solved U(15.9 m), which
 arrives at 0.998 of the imposed value in both states.
 
-![Case E, measured vs modelled, before, after and the change](validation/aij_caseE_agreement.png)
+![Case E, measured vs modelled, before, after and the change](validation/figures/case-e-openfoam-agreement.png)
 
 | | FAC2 | FB | q | R |
 |---|---|---|---|---|
@@ -347,7 +369,7 @@ arrives at 0.998 of the imposed value in both states.
 | after · \|U\| | 0.74 | +0.34 | 0.30 | 0.84 |
 | ceiling control: the tunnel's *before*, scored as a model of its *after* | 0.79 | +0.37 | 0.35 | 0.10 |
 
-![Case E, where the model is slow or fast](validation/aij_caseE_map.png)
+![Case E, where the model is slow or fast](validation/figures/case-e-openfoam-bias-map.png)
 
 - **The construction change is the result to read.** After − before at the 80 points, the quantity in which inflow,
   closure and instrument biases largely cancel: R = 0.84, the sign right at 57 of the 76 points where the tunnel
@@ -385,7 +407,7 @@ ends of the bracket the measurement has to fall in. Case C's figures and reading
 
 ### Cases A and B — does the model agree?
 
-![Measured vs modelled, Cases A and B](validation/aij_agreement.png)
+![Measured vs modelled, Cases A and B](validation/figures/cases-ab-openfoam-agreement.png)
 
 Measured against modelled for each quantity, with the 1:1 line and, where the quantity does not
 change sign, the factor-of-two band.
@@ -414,7 +436,7 @@ Reading these honestly:
 
 ### Cases A and B — where does it agree?
 
-![Centre-plane profiles, Cases A and B](validation/aij_profiles.png)
+![Centre-plane profiles, Cases A and B](validation/figures/cases-ab-openfoam-profiles.png)
 
 Vertical profiles of U/U_H on the centre plane at the first three measured stations behind the
 building, offset per station. The model follows the measured profile closely above roof height and
@@ -423,7 +445,7 @@ closure does least well.
 
 ### Cases A and B — every engine on the same points
 
-![Measured vs modelled U and V, Cases A and B, one row per engine](validation/aij_engines_agreement.png)
+![Measured vs modelled U and V, Cases A and B, one row per engine](validation/figures/cases-ab-engine-comparison.png)
 
 OpenLB (Eddy3D's `eddy3dWind`: Smagorinsky, third-order regularised D3Q19, CPU image) solved the same two
 experiments with the same fitted inflow and probed the same measured points, at dx = 1.6 m — H/10 for A, H/12.5
@@ -461,7 +483,7 @@ Reading these:
 
 ### ML surrogate
 
-![Measured vs predicted, ML surrogate, Cases A–E](validation/aij_ml_agreement.png)
+![Measured vs predicted, ML surrogate, Cases A–E](validation/figures/ml-surrogate-agreement.png)
 
 Eddy3D's Wind Predictor (the public `Yel-2.0` network) predicts |U_mean|/U_ref at one height, 1.8 m. Each case is
 therefore scaled so its measurement plane lands there — A ×180, B ×144, C ×90, D ×360, E ×0.9 — its buildings are
@@ -511,8 +533,8 @@ of it at 1.25 m and 2.5 m and right from 5 m up. Cases C–E all measure in that
 
 ### Reproducing the figures
 
-`validation/plot_aij.py` (Cases A and B), `validation/plot_aij_engines.py` (A and B, every engine),
-`validation/plot_aij_caseC.py`, `validation/plot_aij_caseE.py` and `validation/plot_aij_ml.py`
+`validation/plot_cases_ab_openfoam.py` (Cases A and B), `validation/plot_cases_ab_engines.py` (A and B, every engine),
+`validation/plot_case_c_openfoam.py`, `validation/plot_case_e_openfoam.py` and `validation/plot_ml_surrogate.py`
 (UltraPlot) build the figures. The Eddy3D fixtures are `TestAijCaseAContainerE2E`, `TestAijCaseBContainerE2E`,
 `TestAijCaseC{0D,1D,2D}ContainerE2E`, `TestAijCaseEContainerE2E` and, for the ML surrogate, `Outdoor.ML.Tests/TestAijSurrogateE2E`. Their
 `results.json` files are snapshotted in `validation/results/` and served unchanged by the API, with the per-point
@@ -547,7 +569,7 @@ plane arrives 42 % below the fitted log law; its own measurement at the C–E he
 </details>
 
 <details>
-<summary><b>Data gotchas</b> · what in the published files silently corrupts a comparison</summary>
+<summary><b>Known data issues</b> · what in the published files changes a comparison if it is not accounted for</summary>
 
 Both of the first two were found by scoring the files rather than reading them, and both would quietly corrupt a
 comparison:

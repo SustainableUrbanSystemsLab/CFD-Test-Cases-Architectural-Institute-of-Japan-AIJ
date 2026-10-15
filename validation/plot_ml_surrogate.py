@@ -1,8 +1,8 @@
 """Validation figure for the Eddy3D ML wind surrogate (Yel-2.0) against AIJ UWE Cases A-E.
 
-  aij_ml_agreement.png   Does the surrogate agree with the tunnel?  Measured against predicted
-                         pedestrian-height speed, one panel per case, with the 1:1 line and the
-                         factor-of-two band.
+  figures/ml-surrogate-agreement.png
+      Does the surrogate agree with the tunnel?  Measured against predicted pedestrian-height speed, one
+      panel per case, with the 1:1 line and the factor-of-two band.
 
 The model predicts |U_mean|/U_ref at one height (1.8 m), so each tunnel case was scaled until its
 measurement plane sits there (A x180, B x144, C x90, D x360, E x0.9) and the prediction was read at
@@ -109,5 +109,5 @@ for i, (case, title, key) in enumerate(PANELS):
 
 fig.format(suptitle="AIJ UWE benchmark — Eddy3D ML wind surrogate (Yel-2.0) vs wind tunnel, pedestrian height",
            abc=False, gridcolor="#e3e3e0", gridlinewidth=0.6)
-fig.save(os.path.join(HERE, "aij_ml_agreement.png"), dpi=220)
-print("wrote aij_ml_agreement.png")
+fig.save(os.path.join(HERE, "figures", "ml-surrogate-agreement.png"), dpi=220)
+print("wrote ml-surrogate-agreement.png")

@@ -23,12 +23,15 @@ coordinates**, so no interpolation enters the comparison.
 - Metrics per quantity: Pearson **R**; **FAC2**, the fraction of points within a factor of two; **FB**, the fractional
   bias 2(ō − p̄)/(ō + p̄), positive when the model is low; and the **hit rate**, the fraction within D = 0.25 relative
   or W = 0.05 U_H absolute. NMSE, NAD, MG, VG are in the API's `validation.json`.
-- Case B's lateral velocity is sign-corrected before scoring (see [Data gotchas]({{ '/gotchas/' | relative_url }})).
+- Case B's lateral velocity is sign-corrected before scoring (see [Known data issues]({{ '/known-data-issues/' | relative_url }})).
 - The reattachment length L_r behind the building is read from a wake line at ground level.
 
 ## Cases A and B — does the model agree?
 
-![Measured vs modelled, Cases A and B]({{ '/assets/aij_agreement.png' | relative_url }})
+<figure class="figure">
+<img src="{{ '/assets/figures/cases-ab-openfoam-agreement.png' | relative_url }}" alt="Measured vs modelled, Cases A and B">
+<figcaption><strong>Figure 1.</strong> Measured vs modelled, Cases A and B.</figcaption>
+</figure>
 
 Measured against modelled for each quantity, with the 1:1 line and, where the quantity does not change sign, the
 factor-of-two band.
@@ -57,7 +60,10 @@ Reading these honestly:
 
 ## Cases A and B — where does it agree?
 
-![Centre-plane profiles, Cases A and B]({{ '/assets/aij_profiles.png' | relative_url }})
+<figure class="figure">
+<img src="{{ '/assets/figures/cases-ab-openfoam-profiles.png' | relative_url }}" alt="Centre-plane profiles, Cases A and B">
+<figcaption><strong>Figure 2.</strong> Centre-plane profiles, Cases A and B.</figcaption>
+</figure>
 
 Vertical profiles of U/U_H on the centre plane at the first three measured stations behind the building, offset
 per station. The model follows the measured profile closely above roof height and in the recovering wake; the
@@ -69,7 +75,10 @@ All nine configurations (centre block 0D / 1D / 2D × WD 0°, 22.5°, 45°), sol
 the tunnel's turntable: the array turns with WD, the domain does not — ~310,000 cells per centre-block height,
 3000 iterations per direction, the 120 probes at exactly the tunnel's coordinates.
 
-![Case C, measured vs modelled]({{ '/assets/aij_caseC_agreement.png' | relative_url }})
+<figure class="figure">
+<img src="{{ '/assets/figures/case-c-openfoam-agreement.png' | relative_url }}" alt="Case C, measured vs modelled">
+<figcaption><strong>Figure 3.</strong> Case C, measured vs modelled.</figcaption>
+</figure>
 
 | centre block | WD | R | FAC2 | FB | hit rate | \|U\| alone: FB / R |
 |---|---|---|---|---|---|---|
@@ -83,7 +92,10 @@ the tunnel's turntable: the array turns with WD, the domain does not — ~310,00
 | 2D | 22.5° | +0.906 | 0.983 | +0.091 | 0.875 | +0.240 / +0.894 |
 | 2D | 45° | +0.909 | 0.958 | +0.103 | 0.883 | +0.243 / +0.912 |
 
-![Case C, where the model is slow or fast]({{ '/assets/aij_caseC_map.png' | relative_url }})
+<figure class="figure">
+<img src="{{ '/assets/figures/case-c-openfoam-bias-map.png' | relative_url }}" alt="Case C, where the model is slow or fast">
+<figcaption><strong>Figure 4.</strong> Case C, where the model is slow or fast.</figcaption>
+</figure>
 
 - **The pattern is right in every configuration** — R 0.80–0.91, FAC2 0.85–0.98.
 - **The model is slow, worst at WD = 0** (FB +0.25 … +0.34, hit rate 0.43–0.57; at 22.5° and 45° FB +0.09 … +0.20,
@@ -103,7 +115,10 @@ Before and after the construction of a 60 m tower and two 18 m blocks, each stat
 (about one million cells, 2 m at the buildings), the tunnel's own profile imposed as a table
 (`wind.inlet: "manual"`), the model's speed over its own solved U(15.9 m).
 
-![Case E, measured vs modelled, before, after and the change]({{ '/assets/aij_caseE_agreement.png' | relative_url }})
+<figure class="figure">
+<img src="{{ '/assets/figures/case-e-openfoam-agreement.png' | relative_url }}" alt="Case E, measured vs modelled, before, after and the change">
+<figcaption><strong>Figure 5.</strong> Case E, measured vs modelled, before, after and the change.</figcaption>
+</figure>
 
 | | FAC2 | FB | q | R |
 |---|---|---|---|---|
@@ -113,7 +128,10 @@ Before and after the construction of a 60 m tower and two 18 m blocks, each stat
 | after · \|U\| | 0.74 | +0.34 | 0.30 | 0.84 |
 | ceiling control: the tunnel's *before*, scored as a model of its *after* | 0.79 | +0.37 | 0.35 | 0.10 |
 
-![Case E, where the model is slow or fast]({{ '/assets/aij_caseE_map.png' | relative_url }})
+<figure class="figure">
+<img src="{{ '/assets/figures/case-e-openfoam-bias-map.png' | relative_url }}" alt="Case E, where the model is slow or fast">
+<figcaption><strong>Figure 6.</strong> Case E, where the model is slow or fast.</figcaption>
+</figure>
 
 The construction change (after − before), in which inflow, closure and instrument biases largely cancel, has
 R = 0.84, the sign right at 75 % of the points where the tunnel resolved a change, and about 60 % of the measured
@@ -123,7 +141,10 @@ measurement height, 2 m, sits in that layer.
 
 ## Cases A and B — every engine on the same points
 
-![Measured vs modelled U and V, Cases A and B, one row per engine]({{ '/assets/aij_engines_agreement.png' | relative_url }})
+<figure class="figure">
+<img src="{{ '/assets/figures/cases-ab-engine-comparison.png' | relative_url }}" alt="Measured vs modelled U and V, Cases A and B, one row per engine">
+<figcaption><strong>Figure 7.</strong> Measured vs modelled U and V, Cases A and B, one row per engine.</figcaption>
+</figure>
 
 OpenLB (Eddy3D's `eddy3dWind`: Smagorinsky, third-order regularised D3Q19, CPU image) solved the same two
 experiments with the same fitted inflow and probed the same measured points, at dx = 1.6 m — H/10 for A, H/12.5
@@ -161,7 +182,10 @@ Reading these:
 
 ## ML surrogate
 
-![Measured vs predicted, ML surrogate, Cases A–E]({{ '/assets/aij_ml_agreement.png' | relative_url }})
+<figure class="figure">
+<img src="{{ '/assets/figures/ml-surrogate-agreement.png' | relative_url }}" alt="Measured vs predicted, ML surrogate, Cases A–E">
+<figcaption><strong>Figure 8.</strong> Measured vs predicted, ML surrogate, Cases A–E.</figcaption>
+</figure>
 
 Eddy3D's Wind Predictor (the public `Yel-2.0` network) predicts \|U_mean\|/U_ref at one height, 1.8 m. Each case is
 scaled so its measurement plane lands there — A ×180, B ×144, C ×90, D ×360, E ×0.9 — its buildings are rasterised
@@ -201,7 +225,7 @@ log-law inlet is least right. The fits are in `/api/cases/{id}.json` under `infl
 
 ## Reproducing the figures
 
-`validation/plot_aij.py` (Cases A and B), `validation/plot_aij_caseC.py` and `validation/plot_aij_ml.py` (UltraPlot)
+`validation/plot_cases_ab_openfoam.py` (Cases A and B), `validation/plot_case_c_openfoam.py` and `validation/plot_ml_surrogate.py` (UltraPlot)
 build the figures. The Eddy3D fixtures are `TestAijCaseAContainerE2E`, `TestAijCaseBContainerE2E`,
 `TestAijCaseC{0D,1D,2D}ContainerE2E` and `Outdoor.ML.Tests/TestAijSurrogateE2E`. The scores they wrote are
 snapshotted in `validation/results/` with the per-point pairs beside them, and served unchanged by

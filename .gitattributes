@@ -2,6 +2,12 @@
 docs/api/** text eol=lf
 scripts/*.py text eol=lf
 
+# Source and site configuration: LF everywhere, so a Windows checkout and CI diff the same bytes.
+*.py text eol=lf
+*.yml text eol=lf
+*.scss text eol=lf
+*.json text eol=lf
+
 # Data files are byte-exact on every platform. clean/manifest.json records the SHA-256 of every
 # source file it was built from, so a CRLF checkout on Windows and an LF one on Linux must hash
 # the same: the text data is LF everywhere.

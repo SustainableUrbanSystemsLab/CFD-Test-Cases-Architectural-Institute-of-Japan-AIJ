@@ -68,6 +68,31 @@ CITATION = {
     "per_case": "Each case lists its own data collectors, Zenodo DOI and requested citation.",
 }
 
+# ----------------------------------------------------------------------------- renders
+# validation/render_geometry.py draws one image per geometry configuration; the API, the site and the
+# README link to them under these names and caption them with these words.
+
+DEFAULT_CONFIGURATION = {"A": "default", "B": "default", "C": "2D", "D": "default", "E": "ac"}
+
+
+def render_file(case, configuration=None):
+    """case-a.png, case-c-2d.png, case-e-after.png: the render of one configuration (default if None)."""
+    cfg = configuration or DEFAULT_CONFIGURATION[case]
+    suffix = {"default": "", "bc": "-before", "ac": "-after"}.get(cfg, f"-{cfg.lower()}")
+    return f"case-{case.lower()}{suffix}.png"
+
+
+RENDER_CAPTIONS = {
+    ("A", "default"): "Isolated 1:1:2 building, b = 0.08 m, H = 0.16 m (model scale); the wind blows along +x.",
+    ("B", "default"): "Isolated 1:4:4 slab, 0.05 m along the wind, 0.20 m across, 0.20 m tall (model scale); the wind blows along +x.",
+    ("C", "0D"): "0D: the centre block removed.",
+    ("C", "1D"): "1D: the centre block as tall as its neighbours, D = 0.20 m.",
+    ("C", "2D"): "2D: the centre block twice as tall, 2D = 0.40 m.",
+    ("D", "default"): "A 0.25 m tower (blue) among 82 low blocks over 1.40 m × 1.35 m (1:400 model scale); the arrow is WD = 0°.",
+    ("E", "bc"): "Before construction: the existing district, about 400 m across (full scale).",
+    ("E", "ac"): "After construction: the 60 m high-rise and the two 18 m mid-rises (blue) added.",
+}
+
 # ----------------------------------------------------------------------------- case facts
 # Numbers here are the ones the README states; where a value was measured during scoping rather
 # than published by AIJ, the entry says so ("derived").
@@ -80,7 +105,7 @@ CASES = {
         "reference_file": "case-a/RS-caseA.csv",
         "approach_flow_file": "case-a/AF_caseA.csv",
         "readme": "case-a/readme_caseA.md",
-        "render": "validation/geometry/geom_caseA.png",
+        "render": "validation/figures/geometry/case-a.png",  # the default configuration; see render_file
         "configuration": {
             "building": "1:1:2 (width : depth : height) prism",
             "b_m": 0.08, "H_m": 0.16,
@@ -126,7 +151,7 @@ CASES = {
         "reference_file": "case-b/RS_caseB.csv",
         "approach_flow_file": "case-b/AF_caseB.csv",
         "readme": "case-b/readme_caseB.md",
-        "render": "validation/geometry/geom_caseB.png",
+        "render": "validation/figures/geometry/case-b.png",  # the default configuration; see render_file
         "configuration": {
             "building": "1:4:4 (depth : width : height) slab",
             "depth_m": 0.05, "width_m": 0.20, "H_m": 0.20,
@@ -172,7 +197,7 @@ CASES = {
         "reference_file": "case-c/RS_caseC.csv",
         "approach_flow_file": "case-c/AF_caseC.csv",
         "readme": "case-c/readme_caseC.md",
-        "render": "validation/geometry/geom_caseC.png",
+        "render": "validation/figures/geometry/case-c-2d.png",  # the default configuration; see render_file
         "configuration": {
             "array": "3 x 3 cubes, D = 0.20 m, block centres at x, y in {-0.4, 0, +0.4} m (pitch 0.40 m = 2D, street width D)",
             "D_m": 0.20,
@@ -233,7 +258,7 @@ CASES = {
         "reference_file": "case-d/LF_caseD.xls",
         "approach_flow_file": "case-d/LF_caseD.xls [sheet Inflow]",
         "readme": None,
-        "render": "validation/geometry/geom_caseD.png",
+        "render": "validation/figures/geometry/case-d.png",  # the default configuration; see render_file
         "configuration": {
             "tower": "0.25H x 0.25H x H = 62.5 x 62.5 x 250 mm (1:1:4)",
             "H_m": 0.25,
@@ -292,7 +317,7 @@ CASES = {
         "reference_file": "case-e/LF_caseE.xls",
         "approach_flow_file": "case-e/LF_caseE.xls [sheet Inflow]",
         "readme": "case-e/readme_caseE.md",
-        "render": "validation/geometry/geom_caseE.png",
+        "render": "validation/figures/geometry/case-e-after.png",  # the default configuration; see render_file
         "configuration": {
             "district": "Niigata City urban area near the Shinano River; dense low-rise stock (median top 6 m, max 30 m)",
             "scale": "1:250",

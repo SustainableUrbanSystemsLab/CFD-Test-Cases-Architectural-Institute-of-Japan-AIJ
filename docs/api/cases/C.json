@@ -1,7 +1,7 @@
 {
  "schema_version": "1.0.0",
- "generated_from": "b5f2ef6d37332bf917f413ffec0e4446ac55ab89",
- "generated_at": "2026-10-14T22:45:59+00:00",
+ "generated_from": "ba59418628c8a195787e9c303f0d70eb7f52cd62",
+ "generated_at": "2026-10-15T00:57:00+00:00",
  "licence": "CC BY 4.0",
  "id": "C",
  "slug": "case-c",
@@ -320,6 +320,6 @@
   "approach_flow": "case-c/AF_caseC.csv",
   "readme": "case-c/readme_caseC.md"
  },
- "render": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/geom_caseC.png",
+ "render": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/assets/geometry/case-c-2d.png",
  "page": "https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/cases/case-c/"
 }

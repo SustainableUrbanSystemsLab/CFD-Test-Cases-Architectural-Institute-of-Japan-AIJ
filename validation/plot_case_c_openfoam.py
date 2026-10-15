@@ -2,11 +2,13 @@
 
 Two figures, each answering one question:
 
-  aij_caseC_agreement.png   Does the model agree with the tunnel?  Measured Vs/U_H against the
-                            modelled scalar speed sqrt(|U|^2 + 2k)/U_H (filled) and the vector
-                            |U|/U_H (hollow), one panel per configuration (centre block x WD).
-  aij_caseC_map.png         WHERE does it agree?  log2(model / tunnel) of the scalar speed at each
-                            of the 120 points, on the plan of the array, per configuration.
+  figures/case-c-openfoam-agreement.png
+      Does the model agree with the tunnel?  Measured Vs/U_H against the modelled scalar speed
+      sqrt(|U|^2 + 2k)/U_H (filled) and the vector |U|/U_H (hollow), one panel per configuration (centre
+      block x WD).
+  figures/case-c-openfoam-bias-map.png
+      WHERE does it agree?  log2(model / tunnel) of the scalar speed at each of the 120 points, on the
+      plan of the array, per configuration.
 
 The thermistor reads an omnidirectional scalar speed, so the honest comparison is the bracket
 |U| <= Vs <= sqrt(|U|^2 + 2k): the filled and hollow marks of one point should straddle the 1:1 line.
@@ -21,7 +23,7 @@ Probe frame: the fixtures solve the CSV frame turned so that the WD = 0 wind blo
 in the CSV frame (the data's own mirror symmetry; see the README).
 
 Colours: slot 1 of the validated categorical palette (blue #2a78d6) is the OpenFOAM model, as in
-aij_agreement.png; the map's diverging scale is the palette's blue <-> red pair around its neutral
+cases-ab-openfoam-agreement.png; the map's diverging scale is the palette's blue <-> red pair around its neutral
 gray (#f0efec). Reference geometry (1:1 line, FAC2 band, blocks) is recessive grey.
 """
 from __future__ import annotations
@@ -152,8 +154,8 @@ for r, cb in enumerate(CONFIGS):
 axs[0, 0].legend(loc="lr", ncols=1, frame=False, fontsize=6.5)
 fig.format(suptitle="AIJ UWE Case C — Eddy3D (OpenFOAM 12, realizable k-ε) vs wind tunnel, z = 0.1 D",
            abc=False, gridcolor="#e3e3e0", gridlinewidth=0.6)
-fig.save(os.path.join(HERE, "aij_caseC_agreement.png"), dpi=220)
-print("wrote aij_caseC_agreement.png")
+fig.save(os.path.join(HERE, "figures", "case-c-openfoam-agreement.png"), dpi=220)
+print("wrote case-c-openfoam-agreement.png")
 
 # ----------------------------------------------------------------------------- figure 2
 cmap = LinearSegmentedColormap.from_list("aij_diverging", [RED, MID, BLUE])
@@ -186,5 +188,5 @@ fig2.colorbar(sc, loc="b", ticks=[-1, -0.5, 0, 0.5, 1], length=0.7,
               label="log$_2$(Eddy3D √(|U|²+2k) / tunnel Vs):  −1 = half the tunnel's speed,  0 = equal,  +1 = twice")
 fig2.format(suptitle="AIJ UWE Case C — where the model is slow (red) or fast (blue), z = 0.1 D",
             gridcolor="#e3e3e0", gridlinewidth=0.5)
-fig2.save(os.path.join(HERE, "aij_caseC_map.png"), dpi=220)
-print("wrote aij_caseC_map.png")
+fig2.save(os.path.join(HERE, "figures", "case-c-openfoam-bias-map.png"), dpi=220)
+print("wrote case-c-openfoam-bias-map.png")

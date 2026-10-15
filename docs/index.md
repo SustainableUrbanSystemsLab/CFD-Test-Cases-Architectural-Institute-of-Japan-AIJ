@@ -9,13 +9,7 @@ Wind-tunnel reference data from the **AIJ UWE** (Architectural Institute of Japa
 benchmark, cleaned and packaged case by case, together with Eddy3D's validation against it. Everything here
 is also served as a [static API]({{ '/api-reference/' | relative_url }}) for scripts and agents.
 
-<div style="display:flex;gap:6px;flex-wrap:wrap;margin:1em 0">
-<a href="{{ '/cases/case-a/' | relative_url }}"><img src="{{ '/assets/geom_caseA.png' | relative_url }}" alt="Case A" style="width:19%;min-width:140px"></a>
-<a href="{{ '/cases/case-b/' | relative_url }}"><img src="{{ '/assets/geom_caseB.png' | relative_url }}" alt="Case B" style="width:19%;min-width:140px"></a>
-<a href="{{ '/cases/case-c/' | relative_url }}"><img src="{{ '/assets/geom_caseC.png' | relative_url }}" alt="Case C" style="width:19%;min-width:140px"></a>
-<a href="{{ '/cases/case-d/' | relative_url }}"><img src="{{ '/assets/geom_caseD.png' | relative_url }}" alt="Case D" style="width:19%;min-width:140px"></a>
-<a href="{{ '/cases/case-e/' | relative_url }}"><img src="{{ '/assets/geom_caseE.png' | relative_url }}" alt="Case E" style="width:19%;min-width:140px"></a>
-</div>
+{% include case-gallery.md %}
 
 | Case | Configuration | Measurements | Scored |
 |---|---|---|---|
@@ -33,9 +27,9 @@ planes (measured, on the Validation page). Anything not marked scored is not a c
 ## Where to go
 
 - **[Cases]({{ '/cases/' | relative_url }})** — one page per case: geometry render, configuration facts, the reference data's
-  layout and frame, the inflow fit, what to know before comparing, and the validation results where they exist.
+  layout and frame, the inflow fit, the known data issues, and the validation results where they exist.
 - **[Validation]({{ '/validation/' | relative_url }})** — how Eddy3D is scored against the tunnel, the scores for A, B and C, the ML surrogate, and what is still running.
-- **[Data gotchas]({{ '/gotchas/' | relative_url }})** — the things in the published files that silently corrupt a comparison (units, signs, frames, scalar vs vector speed).
+- **[Known data issues]({{ '/known-data-issues/' | relative_url }})** — what in the published files changes a comparison if it is not accounted for (units, signs, frames, scalar vs vector speed), and how the cleaned tables correct it.
 - **[API]({{ '/api-reference/' | relative_url }})** — every endpoint with `curl` and Python examples: cleaned points (SI, one frame), cleaned STL geometry in metres (per case, or all of it in one archive), validation scores.
 - **[For agents]({{ '/agents/' | relative_url }})** — the walk through the API, and [`/api/llms.txt`]({{ '/api/llms.txt' | relative_url }}).
 

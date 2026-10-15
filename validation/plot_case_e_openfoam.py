@@ -2,12 +2,13 @@
 
 Two figures, each answering one question:
 
-  aij_caseE_agreement.png   Does the model agree with the tunnel?  Measured velocity ratio against the
-                            modelled sqrt(|U|^2 + 2k)/U_ref (filled) and |U|/U_ref (hollow), before
-                            and after construction, and the CHANGE the construction makes — the
-                            quantity in which inflow, closure and instrument biases largely cancel.
-  aij_caseE_map.png         WHERE does it agree?  log2(model / tunnel) of the scalar speed at the 80
-                            points on the plan of the district, before and after construction.
+  figures/case-e-openfoam-agreement.png
+      Does the model agree with the tunnel?  Measured velocity ratio against the modelled sqrt(|U|^2 +
+      2k)/U_ref (filled) and |U|/U_ref (hollow), before and after construction, and the CHANGE the
+      construction makes — the quantity in which inflow, closure and instrument biases largely cancel.
+  figures/case-e-openfoam-bias-map.png
+      WHERE does it agree?  log2(model / tunnel) of the scalar speed at the 80 points on the plan of the
+      district, before and after construction.
 
 U_ref is the solved approach speed at 15.9 m (the meteorological station height the benchmark
 normalises by), read per state and direction by the fixture; the tunnel's ratios are as published.
@@ -153,8 +154,8 @@ ax.format(xlim=(-lim, lim), ylim=(-lim, lim), xlabel="tunnel: after − before",
           title="what the construction changes", titleloc="l", titlesize=8)
 fig.format(suptitle="AIJ UWE Case E — Eddy3D (OpenFOAM 12, realizable k-ε, tabulated inlet) vs wind tunnel, z = 2 m",
            abc=False, gridcolor="#e3e3e0", gridlinewidth=0.6)
-fig.save(os.path.join(HERE, "aij_caseE_agreement.png"), dpi=220)
-print("wrote aij_caseE_agreement.png")
+fig.save(os.path.join(HERE, "figures", "case-e-openfoam-agreement.png"), dpi=220)
+print("wrote case-e-openfoam-agreement.png")
 
 # ----------------------------------------------------------------------------- figure 2
 cmap = LinearSegmentedColormap.from_list("aij_diverging", [RED, MID, BLUE])
@@ -189,5 +190,5 @@ fig2.colorbar(sc, loc="b", ticks=[-1, -0.5, 0, 0.5, 1], length=0.7,
               label="log$_2$(Eddy3D √(|U|²+2k) / tunnel):  −1 = half the tunnel's speed,  0 = equal,  +1 = twice")
 fig2.format(suptitle="AIJ UWE Case E — where the model is slow (red) or fast (blue), z = 2 m",
             gridcolor="#e3e3e0", gridlinewidth=0.5)
-fig2.save(os.path.join(HERE, "aij_caseE_map.png"), dpi=220)
-print("wrote aij_caseE_map.png")
+fig2.save(os.path.join(HERE, "figures", "case-e-openfoam-bias-map.png"), dpi=220)
+print("wrote case-e-openfoam-bias-map.png")

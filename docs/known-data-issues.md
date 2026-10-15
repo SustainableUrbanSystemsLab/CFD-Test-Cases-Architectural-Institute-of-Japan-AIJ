@@ -1,9 +1,13 @@
 ---
-title: Data gotchas
+title: Known data issues
 nav_order: 4
+redirect_from:
+  - /gotchas/
 ---
 
-# Things in the published files that silently corrupt a comparison
+# Known issues in the published data files
+
+Each item below changes the result of a comparison if it is not accounted for.
 
 All of these were found by scoring or measuring the files rather than reading them. The cleaned tables served by
 the API already apply the corrections (units, signs, frames); the raw files in the repository do not. Each case page

@@ -8,6 +8,7 @@ remote_theme: just-the-docs/just-the-docs
 plugins:
   - jekyll-remote-theme
   - jekyll-include-cache
+  - jekyll-redirect-from
 
 permalink: pretty
 search_enabled: true
