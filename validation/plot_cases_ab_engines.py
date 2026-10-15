@@ -11,10 +11,16 @@ engines (only slots 1-3 are validated against each other for overlapping marks).
 
 Inputs: the measured tables clean/cases/{A,B}/points.csv; each engine's probes at those points under
 C:/Eddy3DVal (OpenFOAM: aij_{A,B}_realizableKE_L3/reference.probe.csv, case frame wind along +y, so
-U = U_y, V = -U_x; OpenLB: aij_{A,B}_openlb_dx1.6/case/results/probes.csv, identity frame; FluidX3D: see
-FLUIDX3D below). The pairs are snapshotted to validation/results/case{A,B}_<engine>_pairs.csv and the
-figure is drawn from the snapshots, so it rebuilds from this repository alone. Scores come from each
-engine's results.json snapshot (validation/results/case{A,B}_<engine>.json).
+U = U_y, V = -U_x; OpenLB: aij_{A,B}_openlb_dx1.6/case/results/probes.csv, identity frame; FluidX3D:
+aij_{A,B}_fluidx3d_H64/model-lattice.csv, identity frame, already divided by U_H). The pairs are snapshotted
+to validation/results/case{A,B}_<engine>_pairs.csv and the figure is drawn from the snapshots, so it rebuilds
+from this repository alone. Scores come from each engine's results.json snapshot
+(validation/results/case{A,B}_<engine>.json).
+
+FluidX3D is scored on the heights where its own empty-domain control reproduces the imposed log law within
+5 % (its bounce-back ground carries no roughness wall function, so the flow just above it is slower than the
+tunnel's approach flow). Its panels draw those points filled and the excluded near-ground points hollow, and
+print the scores of the filled ones.
 """
 from __future__ import annotations
 
@@ -74,7 +80,21 @@ def probe_openlb(case, pts):
 
 
 def probe_fluidx3d(case, pts):
-    raise FileNotFoundError  # wired up when the FluidX3D strand's probe format is known
+    out = {}
+    with io.open(os.path.join(VAL, f"aij_{case}_fluidx3d_H64", "model-lattice.csv"), encoding="utf-8") as f:
+        for r in csv.DictReader(f):
+            out[(round(float(r["x"]), 5), round(float(r["y"]), 5), round(float(r["z"]), 5))] = tuple(
+                float(r[f"{q}/Uh"]) * UH[case] for q in "UVW")
+    return [out[(round(p["x"], 5), round(p["y"], 5), round(p["z"], 5))] for p in pts]
+
+
+def scores(case, engine, q):
+    """(score, comparable heights or None): FluidX3D's headline is its comparable-heights subset."""
+    with io.open(os.path.join(RESULTS, f"case{case}_{engine}.json"), encoding="utf-8") as f:
+        res = json.load(f)
+    if f"velocity.{q}" in res:
+        return res[f"velocity.{q}"], None
+    return res[f"velocity.{q}.comparable"]["score"], set(res["control.comparableHeights"]["heights"])
 
 
 PROBES = {"openfoam12_realizableKE": probe_openfoam, "openlb": probe_openlb, "fluidx3d": probe_fluidx3d}
@@ -127,10 +147,13 @@ for r, (engine, label, colour) in enumerate(engines):
             line = np.array([max(lo, 1e-6), hi])
             ax.plot(line, 2 * line, color=MUTED, lw=0.7, ls=":", zorder=1)
             ax.plot(line, 0.5 * line, color=MUTED, lw=0.7, ls=":", zorder=1)
-        ax.scatter(o, m, s=9, color=colour, edgecolor=SURFACE, linewidth=0.25, zorder=3)
-        with io.open(os.path.join(RESULTS, f"case{case}_{engine}.json"), encoding="utf-8") as f:
-            s = json.load(f)[f"velocity.{q}"]
-        ax.text(0.05, 0.95, f"R {s['R']:+.2f}\nFAC2 {s['Fac2']:.2f}\nq {s['HitRate']:.2f}", transform=ax.transAxes,
+        s, heights = scores(case, engine, q)
+        keep = np.array([heights is None or round(p["z"], 5) in heights for p in pr])
+        ax.scatter(o[keep], m[keep], s=9, color=colour, edgecolor=SURFACE, linewidth=0.25, zorder=3)
+        if not keep.all():
+            ax.scatter(o[~keep], m[~keep], s=9, facecolor="none", edgecolor=colour, linewidth=0.6, zorder=2)
+        note = f"\nn {s['Count']} filled" if heights is not None else ""
+        ax.text(0.05, 0.95, f"R {s['R']:+.2f}\nFAC2 {s['Fac2']:.2f}\nq {s['HitRate']:.2f}{note}", transform=ax.transAxes,
                 va="top", ha="left", fontsize=6.3, color=INK)
         ax.format(xlim=(lo, hi), ylim=(lo, hi), xlabel="tunnel" if r == len(engines) - 1 else None,
                   ylabel="model" if c == 0 else None, title=f"Case {case} — {q}/U$_H$" if r == 0 else None,

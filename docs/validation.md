@@ -148,7 +148,7 @@ measurement height, 2 m, sits in that layer.
 
 OpenLB (Eddy3D's `eddy3dWind`: Smagorinsky, third-order regularised D3Q19, CPU image) solved the same two
 experiments with the same fitted inflow and probed the same measured points, at dx = 1.6 m — H/10 for A, H/12.5
-for B, 1.3 and 2.6 million cells, 1.8 h and 4.1 h on four threads. That is a smoke resolution: H/20 costs about
+for B, 1.3 and 2.6 million cells, 1.8 h and 4.1 h on four threads. That is a screening resolution: H/20 costs about
 16 times the cell-steps on this image.
 
 | case · quantity | n | FAC2 | FB | q | R | OpenFOAM FAC2 / q / R |
@@ -179,6 +179,36 @@ Reading these:
 - At this spacing Case B first crashed: OpenLB's STL reader segfaults when lattice nodes sit exactly on its
   octree planes. Eddy3D now moves such a lattice by 10⁻⁴ dx (`LBMCaseXml`), with a regression test that fails
   without the move.
+
+**FluidX3D** (Eddy3D's GPU lattice-Boltzmann engine: D3Q19 with Smagorinsky LES) solved both experiments at dx =
+H/64 (2.5 mm and 3.125 mm; 117 and 121 million cells) with the same fitted log-law inflow, averaging over 200 H/U_H
+after 40 of spin-up (A) and over 500 after 100 (B). Each run has an empty-domain control on the same lattice, and a
+point is scored only at a height where that control holds the imposed log law within 5 %: 116 of Case A's 186 points
+and 88 of Case B's 224.
+
+| case · quantity, comparable heights | n | FAC2 | FB | q | R | OpenFOAM on the same points: FAC2 / q / R |
+|---|---|---|---|---|---|---|
+| A · U/U_H | 116 | 0.60 | +0.41 | 0.57 | 0.84 | 0.85 / 0.73 / 0.95 |
+| A · V/U_H | 116 | 0.26 | — | 0.75 | 0.85 | 0.27 / 0.90 / 0.95 |
+| A · W/U_H | 116 | 0.22 | — | 0.41 | 0.59 | 0.49 / 0.79 / 0.93 |
+| B · U/U_H | 88 | 0.64 | +0.26 | 0.57 | 0.95 | 0.78 / 0.68 / 0.97 |
+| B · W/U_H | 88 | 0.48 | — | 0.32 | 0.85 | 0.78 / 0.69 / 0.95 |
+
+Reading these:
+
+- **The excluded points are the floor again.** FluidX3D meets the ground with a bounce-back wall and no roughness
+  wall function. In the empty domain the flow at Case A's lowest plane (z = 0.01 m, 4 cells up) reads 0.52 of the
+  imposed log law on average, and 0.86 at z = 0.04 m; Case B's three lowest heights read 0.77, 0.58 and 0.93. Those
+  points are scored separately (`velocity.*.excluded`) and drawn hollow in the figure.
+- **On Case A, the approach flow alone scores better on U.** On the comparable points, the empty-domain flow, with
+  no building at all, scores U FAC2 0.77, FB −0.26 and hit rate 0.59, against the solved field's 0.60, +0.41 and
+  0.57. Only the correlation shows the building's effect (0.84 against 0.51). On Case B the solved field beats its
+  approach flow on every U statistic (FAC2 0.64 against 0.56, R 0.95 against 0.81).
+- **Case B's V is not a headline score.** All 88 comparable points lie on the centre plane, where the mean V is zero
+  by symmetry.
+- **Its frame is right:** with the lateral sign flipped, Case A's V correlation becomes −0.85.
+- Every number above was reproduced from the solver's own probe output against the cleaned tables, with the
+  comparable set derived independently (largest difference 3 × 10⁻¹²).
 
 ## ML surrogate
 
@@ -237,7 +267,7 @@ snapshotted in `validation/results/` with the per-point pairs beside them, and s
 |---|---|---|---|---|---|
 | OpenFOAM 12, realizable k-ε | scored | scored | scored | solving | scored, SW |
 | OpenLB | scored | scored | not comparable at dx = 1.6 m | not comparable at dx = 1.6 m | not comparable at dx = 1.6 m |
-| FluidX3D | running | running | pending | pending | pending |
+| FluidX3D | scored | scored | not comparable (no ground wall function) | not comparable (no ground wall function) | not comparable (no ground wall function) |
 | ML surrogate | scored | scored | scored | scored | scored |
 
 **Why OpenLB is not scored on C–E — measured, not assumed.** Cases C, D and E measure only at pedestrian height,
@@ -253,9 +283,22 @@ runs at dx = 1.6 m, read in the undisturbed column at the heights the other case
 A 2 m pedestrian plane therefore needs dx ≤ 0.5 m: 3.2 times finer in every direction, about 33 times the cells
 and 105 times the cell-steps over the same domain — and the Case C array and the Niigata district are larger
 domains than Case A's. This CPU image does not run that in useful time.
-That is a statement about this resolution and this machine; a GPU run at dx ≤ 0.5 m would decide it. FluidX3D has
-the same kind of floor: on an empty domain at the finest lattice that fits on the GPU, the flow at Case A's lowest
-plane arrives 42 % below the fitted log law; its own measurement at the C–E heights is pending.
+That is a statement about this resolution and this machine; a GPU run at dx ≤ 0.5 m would decide it.
+
+**Why FluidX3D is not scored on C–E — measured on its own lattice.** The cause is the ground, not the resolution. In
+the empty-domain run at H/64, 4–6 H downstream of the inlet (where the buildings stand), the flow at the heights the
+other cases measure at reads, as a fraction of the imposed log law (mean across a span of ±H):
+
+| the other case's height | cells above the floor at H/64 | U / log law |
+|---|---|---|
+| Case D, z/H = 0.02 | 1.3 | 0.37–0.53 |
+| Case C, z/H = 0.10 | 6.4 | 0.58–0.68 |
+| Case E, 2 m among ~6 m buildings (z/H ≈ 0.33) | 21 | 0.91–0.99 |
+
+Refining makes it worse, not better. At H/32 the same height reads 0.74–0.80 (3.2 cells up); at H/64 the near-wall
+flow forms stationary streaks, and across the span the ratio at z/H = 0.10 runs from 0.24 to 0.88 (4 H downstream).
+Case E's height comes closest (0.91–0.99 at Case A's lattice), but the Niigata district fits on this GPU only at
+about 1.6 cells per 2 m (an estimate from the lattice sizes, not a run). Scoring C–E on FluidX3D needs a ground wall function in the engine.
 
 Two things that shape the C/D/E validations, both measured on the data rather than assumed:
 

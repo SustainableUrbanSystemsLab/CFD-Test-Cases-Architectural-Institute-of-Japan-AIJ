@@ -1,0 +1,1255 @@
+{
+  "case": "AIJ UWE Case A (112) \u2014 1:1:2 building, velocity field, FluidX3D (GPU LBM, Smagorinsky LES)",
+  "reference": "Ishihara, T. & Hibi, K.; AIJ UWE Benchmark Dataset Case A (Zenodo 10.5281/zenodo.15050147, CC BY 4.0); Kikumoto et al. (2026) Japan Architectural Review, Comprehensive Experimental Database for Validating CFD Simulations in Urban Environments",
+  "engine": "FluidX3D 8986874e626e (D3Q19 SRT + Smagorinsky, FP16S, TYPE_E log-law faces, bounce-back ground)",
+  "scale": "model (1:1), H = 0.16 m, identity frame: U=U_x, V=U_y, W=U_z",
+  "coordinateScale": 1,
+  "lateralSign": 1,
+  "lattice": {
+    "cellsPerH": 64,
+    "dx": 0.0025,
+    "domainH": {
+      "up": 4,
+      "down": 6,
+      "side": 4,
+      "top": 5
+    },
+    "Lx": 1.6800000000000002,
+    "Ly": 1.36,
+    "Lz": 0.8,
+    "origin": {
+      "x": -0.6787500000000001,
+      "y": -0.6787500000000001,
+      "z": -0.00125
+    },
+    "estimatedCells": 116981760,
+    "steps": {
+      "building": 153600,
+      "control": 153600
+    },
+    "nuLbmAir": 0.00013181919394344245,
+    "nuLbmUsed": 0.00013181919394344245,
+    "viscosityFloored": false,
+    "ReH": 48551.35135135134,
+    "nearGround": "lowest measured plane z = 0.01 m is 4.0 cells above the bounce-back wall face"
+  },
+  "time": {
+    "building": {
+      "spinUpConvectiveTimes": 40,
+      "averageConvectiveTimes": 200,
+      "spinUpSeconds": 1.4250723669561347,
+      "simSeconds": 8.550434201736808,
+      "meanSamples": 200
+    },
+    "control": {
+      "spinUpConvectiveTimes": 40,
+      "averageConvectiveTimes": 200,
+      "spinUpSeconds": 1.4250723669561347,
+      "simSeconds": 8.550434201736808,
+      "meanSamples": 200
+    },
+    "dt": 5.5666889334224006e-05,
+    "convectiveTime": 0.035626809173903366
+  },
+  "inflow": {
+    "Uh": 4.491,
+    "z0": 0.000668,
+    "uStar": 0.3360888268931647,
+    "fit": "AF_caseA.csv, z = 0.02-0.30 m (16 points): u* = 0.3427 m/s, z0 = 0.668 mm; profile anchored through the measured U_H"
+  },
+  "points.measured": 186,
+  "control.run": "{\"commit\":\"8986874e626e0aebd317ab16c420b39e30dfa273\",\"emptyDomain\":true,\"stlRule\":\"buried-cell\",\"dx\":0.0025,\"Lx\":1.6800000000000002,\"Ly\":1.36,\"Lz\":0.8,\"origin\":{\"X\":-0.6787500000000001,\"Y\":-0.6787500000000001,\"Z\":-0.00125},\"SimSeconds\":8.550434201736808,\"MeanStartSeconds\":1.4250723669561347,\"MeanSamples\":200,\"Uref\":4.491,\"Zref\":0.16,\"Z0\":0.000668}",
+  "control.voxelisation": {
+    "Nx": 672,
+    "Ny": 544,
+    "Nz": 320,
+    "SolidAboveGround": 0,
+    "GroundRowSolid": 365568,
+    "EquilibriumCells": 1137672
+  },
+  "control.ratioByZ": {
+    "0.01": {
+      "n": 65,
+      "cellsAboveWall": 4,
+      "zOverH": 0.0625,
+      "meanRatio": 0.5227535727764304,
+      "min": 0.20290234285762918,
+      "max": 0.8051332350363054
+    },
+    "0.04": {
+      "n": 5,
+      "cellsAboveWall": 16,
+      "zOverH": 0.25,
+      "meanRatio": 0.8599421420847613,
+      "min": 0.7888064013636026,
+      "max": 0.9727789674481688
+    },
+    "0.08": {
+      "n": 5,
+      "cellsAboveWall": 32,
+      "zOverH": 0.5,
+      "meanRatio": 0.9995508835584683,
+      "min": 0.9944656692487762,
+      "max": 1.005083566435887
+    },
+    "0.1": {
+      "n": 60,
+      "cellsAboveWall": 40,
+      "zOverH": 0.625,
+      "meanRatio": 1.006519356662462,
+      "min": 1.0000888290010215,
+      "max": 1.0096371728439295
+    },
+    "0.12": {
+      "n": 5,
+      "cellsAboveWall": 48,
+      "zOverH": 0.75,
+      "meanRatio": 1.0066936009099472,
+      "min": 1.003961990639763,
+      "max": 1.009151747309799
+    },
+    "0.14": {
+      "n": 5,
+      "cellsAboveWall": 56.00000000000001,
+      "zOverH": 0.8750000000000001,
+      "meanRatio": 1.0068198455893265,
+      "min": 1.0049507270334725,
+      "max": 1.008587848720573
+    },
+    "0.16": {
+      "n": 5,
+      "cellsAboveWall": 64,
+      "zOverH": 1,
+      "meanRatio": 1.0064575991209037,
+      "min": 1.0051510828264942,
+      "max": 1.0074783714649487
+    },
+    "0.17": {
+      "n": 9,
+      "cellsAboveWall": 68,
+      "zOverH": 1.0625,
+      "meanRatio": 1.0074557461150446,
+      "min": 1.0058870860632123,
+      "max": 1.0081196730793944
+    },
+    "0.19": {
+      "n": 9,
+      "cellsAboveWall": 76,
+      "zOverH": 1.1875,
+      "meanRatio": 1.0067897835199897,
+      "min": 1.0057714432895881,
+      "max": 1.0071289538317127
+    },
+    "0.22": {
+      "n": 9,
+      "cellsAboveWall": 88,
+      "zOverH": 1.375,
+      "meanRatio": 1.0066304988970574,
+      "min": 1.00610754452556,
+      "max": 1.0068232951006513
+    },
+    "0.28": {
+      "n": 9,
+      "cellsAboveWall": 112.00000000000001,
+      "zOverH": 1.7500000000000002,
+      "meanRatio": 1.0056587244843733,
+      "min": 1.0055593405911842,
+      "max": 1.005742595616615
+    }
+  },
+  "control.comparableHeights": {
+    "rule": "every point at the height within 5% of the imposed log law in the empty-domain control",
+    "heights": [
+      0.08,
+      0.1,
+      0.12,
+      0.14,
+      0.16,
+      0.17,
+      0.19,
+      0.22,
+      0.28
+    ],
+    "points": 116,
+    "excludedHeights": [
+      0.01,
+      0.04
+    ]
+  },
+  "control.UhSimulatedOverMeasured": 1.0073760309136544,
+  "control.halfWindow": {
+    "HalfSamples": 100,
+    "FinalSamples": 200,
+    "AllPoints": {
+      "U": {
+        "n": 186,
+        "medianAbsDiffOverUh": 0.0004962673964465389,
+        "p90AbsDiffOverUh": 0.02905117578852614,
+        "maxAbsDiffOverUh": 0.048833510785983046,
+        "rmsDiffOverUh": 0.014944824900246316
+      },
+      "V": {
+        "n": 186,
+        "medianAbsDiffOverUh": 0.0008868270107169387,
+        "p90AbsDiffOverUh": 0.009707718000124509,
+        "maxAbsDiffOverUh": 0.025951869468916307,
+        "rmsDiffOverUh": 0.005437374528924664
+      },
+      "W": {
+        "n": 186,
+        "medianAbsDiffOverUh": 0.00041792747997821875,
+        "p90AbsDiffOverUh": 0.005681558607906797,
+        "maxAbsDiffOverUh": 0.015557243004922408,
+        "rmsDiffOverUh": 0.0031775245244987822
+      }
+    },
+    "ScoredSet": {
+      "U": {
+        "n": 116,
+        "medianAbsDiffOverUh": 0.00024048901432422137,
+        "p90AbsDiffOverUh": 0.0006383841936531484,
+        "maxAbsDiffOverUh": 0.0027751662475816977,
+        "rmsDiffOverUh": 0.00047283739643870054
+      },
+      "V": {
+        "n": 116,
+        "medianAbsDiffOverUh": 0.0005947358022989498,
+        "p90AbsDiffOverUh": 0.0010333214750655815,
+        "maxAbsDiffOverUh": 0.0021180727041509545,
+        "rmsDiffOverUh": 0.0007073093834819635
+      },
+      "W": {
+        "n": 116,
+        "medianAbsDiffOverUh": 0.000275254761375049,
+        "p90AbsDiffOverUh": 0.0007656613164491151,
+        "maxAbsDiffOverUh": 0.0028719970439250687,
+        "rmsDiffOverUh": 0.0005302849668232451
+      }
+    },
+    "Excluded": {
+      "U": {
+        "n": 70,
+        "medianAbsDiffOverUh": 0.02019762398935964,
+        "p90AbsDiffOverUh": 0.040755429052345686,
+        "maxAbsDiffOverUh": 0.048833510785983046,
+        "rmsDiffOverUh": 0.024353572474225718
+      },
+      "V": {
+        "n": 70,
+        "medianAbsDiffOverUh": 0.0062547309419123225,
+        "p90AbsDiffOverUh": 0.015170029147818878,
+        "maxAbsDiffOverUh": 0.025951869468916307,
+        "rmsDiffOverUh": 0.008816433136390418
+      },
+      "W": {
+        "n": 70,
+        "medianAbsDiffOverUh": 0.00315705174092882,
+        "p90AbsDiffOverUh": 0.008019459819779143,
+        "maxAbsDiffOverUh": 0.015557243004922408,
+        "rmsDiffOverUh": 0.005134421239278335
+      }
+    }
+  },
+  "building.run": "{\"commit\":\"8986874e626e0aebd317ab16c420b39e30dfa273\",\"emptyDomain\":false,\"stlRule\":\"voxeliser-v3\",\"dx\":0.0025,\"Lx\":1.6800000000000002,\"Ly\":1.36,\"Lz\":0.8,\"origin\":{\"X\":-0.6787500000000001,\"Y\":-0.6787500000000001,\"Z\":-0.00125},\"SimSeconds\":8.550434201736808,\"MeanStartSeconds\":1.4250723669561347,\"MeanSamples\":200,\"Uref\":4.491,\"Zref\":0.16,\"Z0\":0.000668}",
+  "voxelisation": {
+    "Nx": 672,
+    "Ny": 544,
+    "Nz": 320,
+    "Spacing": 0.0025,
+    "cells": 116981760,
+    "SolidAboveGround": 65536,
+    "EquilibriumCells": 1137672,
+    "building": {
+      "i0": 256,
+      "i1": 287,
+      "j0": 256,
+      "j1": 287,
+      "k0": 1,
+      "k1": 64,
+      "extentCells": {
+        "x": 32,
+        "y": 32,
+        "z": 64
+      },
+      "worldX": {
+        "min": -0.04000000000000006,
+        "max": 0.03999999999999995
+      },
+      "worldY": {
+        "min": -0.04000000000000006,
+        "max": 0.03999999999999995
+      },
+      "worldZTop": 0.16
+    }
+  },
+  "probe.insideBuildingSpeed": 0,
+  "probe.freeStreamSpeedSameHeight": 3.9094775828436807,
+  "building.halfWindow": {
+    "HalfSamples": 100,
+    "FinalSamples": 200,
+    "AllPoints": {
+      "U": {
+        "n": 186,
+        "medianAbsDiffOverUh": 0.005732378166519857,
+        "p90AbsDiffOverUh": 0.03323542915136983,
+        "maxAbsDiffOverUh": 0.06683512384072361,
+        "rmsDiffOverUh": 0.01862408088474409
+      },
+      "V": {
+        "n": 186,
+        "medianAbsDiffOverUh": 0.004510519556849237,
+        "p90AbsDiffOverUh": 0.027290636752787055,
+        "maxAbsDiffOverUh": 0.07298165396025122,
+        "rmsDiffOverUh": 0.0166049754413849
+      },
+      "W": {
+        "n": 186,
+        "medianAbsDiffOverUh": 0.004292499600424226,
+        "p90AbsDiffOverUh": 0.029248119199383475,
+        "maxAbsDiffOverUh": 0.06641738906426471,
+        "rmsDiffOverUh": 0.01659406056777701
+      }
+    },
+    "ScoredSet": {
+      "U": {
+        "n": 116,
+        "medianAbsDiffOverUh": 0.0028649315593025516,
+        "p90AbsDiffOverUh": 0.033936354424368965,
+        "maxAbsDiffOverUh": 0.05349632501071236,
+        "rmsDiffOverUh": 0.01777596022122608
+      },
+      "V": {
+        "n": 116,
+        "medianAbsDiffOverUh": 0.0015856724906819406,
+        "p90AbsDiffOverUh": 0.02520307689072371,
+        "maxAbsDiffOverUh": 0.07298165396025122,
+        "rmsDiffOverUh": 0.01688003623263874
+      },
+      "W": {
+        "n": 116,
+        "medianAbsDiffOverUh": 0.0025684807328888106,
+        "p90AbsDiffOverUh": 0.030781862550346623,
+        "maxAbsDiffOverUh": 0.06641738906426471,
+        "rmsDiffOverUh": 0.01755942125337214
+      }
+    },
+    "Excluded": {
+      "U": {
+        "n": 70,
+        "medianAbsDiffOverUh": 0.009346073997283485,
+        "p90AbsDiffOverUh": 0.028985877446888124,
+        "maxAbsDiffOverUh": 0.06683512384072361,
+        "rmsDiffOverUh": 0.01995031541097971
+      },
+      "V": {
+        "n": 70,
+        "medianAbsDiffOverUh": 0.007932827451484513,
+        "p90AbsDiffOverUh": 0.027903044055894364,
+        "maxAbsDiffOverUh": 0.04627729306319753,
+        "rmsDiffOverUh": 0.016138842522272764
+      },
+      "W": {
+        "n": 70,
+        "medianAbsDiffOverUh": 0.0053470211065817595,
+        "p90AbsDiffOverUh": 0.026258772784071023,
+        "maxAbsDiffOverUh": 0.05144429310369947,
+        "rmsDiffOverUh": 0.014856854843202785
+      }
+    }
+  },
+  "recirculation.z=0.05H": {
+    "LrOverH": 0.04600060629167971,
+    "Found": true,
+    "Truncated": false,
+    "cellsAboveWall": 3.2
+  },
+  "recirculation.z=0.25H": {
+    "LrOverH": 1.3026914357376707,
+    "Found": true,
+    "Truncated": false,
+    "cellsAboveWall": 16
+  },
+  "velocity.U.all": {
+    "comparable": false,
+    "note": "all 186 points \u2014 the OpenFOAM row's set; carries the 70 excluded points below",
+    "score": {
+      "Count": 186,
+      "MeanObserved": 0.6348264031048957,
+      "MeanPredicted": 0.4358431286569889,
+      "Fb": 0.37169877080645347,
+      "Nmse": 0.4272249998478467,
+      "Nad": 0.22556815886124224,
+      "Fac2": 0.5967741935483871,
+      "HitRate": 0.45161290322580644,
+      "Mg": 1.4155330454803041,
+      "Vg": 1.7933019113314437,
+      "GeometricPairs": 134,
+      "R": 0.8059358902576077
+    },
+    "halfWindows": {
+      "hitRate": {
+        "h1": 0.46236559139784944,
+        "h2": 0.45698924731182794
+      },
+      "fac2": {
+        "h1": 0.6021505376344086,
+        "h2": 0.5860215053763441
+      },
+      "fb": {
+        "h1": 0.3690414717978691,
+        "h2": 0.374362037770792
+      }
+    }
+  },
+  "velocity.V.all": {
+    "comparable": false,
+    "note": "all 186 points \u2014 the OpenFOAM row's set; carries the 70 excluded points below",
+    "score": {
+      "Count": 186,
+      "MeanObserved": -0.040433315855127216,
+      "MeanPredicted": -0.0597557864686221,
+      "Fb": -0.38572000677392215,
+      "Nmse": 2.8466752857610262,
+      "Nad": -0.563939466742258,
+      "Fac2": 0.3172043010752688,
+      "HitRate": 0.6182795698924731,
+      "Mg": 0.5167858931775432,
+      "Vg": 18.86268879052752,
+      "GeometricPairs": 36,
+      "R": 0.871678939327195
+    },
+    "halfWindows": {
+      "hitRate": {
+        "h1": 0.6182795698924731,
+        "h2": 0.6236559139784946
+      },
+      "fac2": {
+        "h1": 0.3010752688172043,
+        "h2": 0.3010752688172043
+      },
+      "fb": {
+        "h1": -0.3765423235789347,
+        "h2": -0.3947945072608651
+      }
+    }
+  },
+  "velocity.W.all": {
+    "comparable": false,
+    "note": "all 186 points \u2014 the OpenFOAM row's set; carries the 70 excluded points below",
+    "score": {
+      "Count": 186,
+      "MeanObserved": 0.0013814965654127787,
+      "MeanPredicted": 0.016991469917446246,
+      "Fb": -1.6992327686001845,
+      "Nmse": 486.0768141551517,
+      "Nad": 4.215371230940339,
+      "Fac2": 0.20967741935483872,
+      "HitRate": 0.44086021505376344,
+      "Mg": 0.6473481252317752,
+      "Vg": 21.821612301458032,
+      "GeometricPairs": 47,
+      "R": 0.4159411888130104
+    },
+    "halfWindows": {
+      "hitRate": {
+        "h1": 0.45161290322580644,
+        "h2": 0.44623655913978494
+      },
+      "fac2": {
+        "h1": 0.1989247311827957,
+        "h2": 0.21505376344086022
+      },
+      "fb": {
+        "h1": -1.6867319206317675,
+        "h2": -1.7107742175172118
+      }
+    }
+  },
+  "velocity.U.comparable": {
+    "comparable": true,
+    "note": "THE HEADLINE: 116 points at the heights where the empty-domain control reproduces the imposed log law within 5% (0.08, 0.1, 0.12, 0.14, 0.16, 0.17, 0.19, 0.22, 0.28 m)",
+    "score": {
+      "Count": 116,
+      "MeanObserved": 0.7488885817612239,
+      "MeanPredicted": 0.49644692767244153,
+      "Fb": 0.4054195069143799,
+      "Nmse": 0.4094047240054601,
+      "Nad": 0.20875268517020665,
+      "Fac2": 0.603448275862069,
+      "HitRate": 0.5689655172413793,
+      "Mg": 1.4323758800401165,
+      "Vg": 1.840022492734752,
+      "GeometricPairs": 81,
+      "R": 0.8396962666036109
+    },
+    "halfWindows": {
+      "hitRate": {
+        "h1": 0.5775862068965517,
+        "h2": 0.5689655172413793
+      },
+      "fac2": {
+        "h1": 0.6120689655172413,
+        "h2": 0.5948275862068966
+      },
+      "fb": {
+        "h1": 0.4010261665650307,
+        "h2": 0.40982895439471306
+      }
+    }
+  },
+  "velocity.V.comparable": {
+    "comparable": true,
+    "note": "THE HEADLINE: 116 points at the heights where the empty-domain control reproduces the imposed log law within 5% (0.08, 0.1, 0.12, 0.14, 0.16, 0.17, 0.19, 0.22, 0.28 m)",
+    "score": {
+      "Count": 116,
+      "MeanObserved": -0.022174617434101915,
+      "MeanPredicted": -0.04565202882841337,
+      "Fb": -0.692276935039507,
+      "Nmse": 4.0108386445981346,
+      "Nad": -0.5782256673174445,
+      "Fac2": 0.25862068965517243,
+      "HitRate": 0.75,
+      "Mg": 0.9842650654417309,
+      "Vg": 4.630864897101905,
+      "GeometricPairs": 16,
+      "R": 0.8451363279073251
+    },
+    "halfWindows": {
+      "hitRate": {
+        "h1": 0.75,
+        "h2": 0.75
+      },
+      "fac2": {
+        "h1": 0.2413793103448276,
+        "h2": 0.25862068965517243
+      },
+      "fb": {
+        "h1": -0.701899141874707,
+        "h2": -0.6825110131892588
+      }
+    }
+  },
+  "velocity.W.comparable": {
+    "comparable": true,
+    "note": "THE HEADLINE: 116 points at the heights where the empty-domain control reproduces the imposed log law within 5% (0.08, 0.1, 0.12, 0.14, 0.16, 0.17, 0.19, 0.22, 0.28 m)",
+    "score": {
+      "Count": 116,
+      "MeanObserved": 0.0035492440820337943,
+      "MeanPredicted": 0.0405457690223352,
+      "Fb": -1.6780366910305209,
+      "Nmse": 69.25315143389064,
+      "Nad": 1.775750776701192,
+      "Fac2": 0.22413793103448276,
+      "HitRate": 0.41379310344827586,
+      "Mg": 1.1745300886376433,
+      "Vg": 8.646059578312155,
+      "GeometricPairs": 32,
+      "R": 0.5906000850070593
+    },
+    "halfWindows": {
+      "hitRate": {
+        "h1": 0.41379310344827586,
+        "h2": 0.4051724137931034
+      },
+      "fac2": {
+        "h1": 0.21551724137931033,
+        "h2": 0.23275862068965517
+      },
+      "fb": {
+        "h1": -1.6716010783597623,
+        "h2": -1.6842249151782687
+      }
+    }
+  },
+  "velocity.U.excluded": {
+    "comparable": false,
+    "note": "70 points at heights the approach flow does not reach intact \u2014 the empty-domain control reads 0.523 [0.203, 0.805] at z = 0.01 m (4.0 cells); 0.860 [0.789, 0.973] at z = 0.04 m (16.0 cells) of the log law there with NO building; not a validation of the case",
+    "score": {
+      "Count": 70,
+      "MeanObserved": 0.4458090784744095,
+      "MeanPredicted": 0.33541397600281075,
+      "Fb": 0.28262121000889573,
+      "Nmse": 0.41368368358420976,
+      "Nad": 0.2699883451602254,
+      "Fac2": 0.5857142857142857,
+      "HitRate": 0.2571428571428571,
+      "Mg": 1.3901739483629962,
+      "Vg": 1.7241804099204034,
+      "GeometricPairs": 53,
+      "R": 0.7619456981268835
+    },
+    "halfWindows": {
+      "hitRate": {
+        "h1": 0.2714285714285714,
+        "h2": 0.2714285714285714
+      },
+      "fac2": {
+        "h1": 0.5857142857142857,
+        "h2": 0.5714285714285714
+      },
+      "fb": {
+        "h1": 0.2843318462738127,
+        "h2": 0.2809131338682578
+      }
+    }
+  },
+  "velocity.V.excluded": {
+    "comparable": false,
+    "note": "70 points at heights the approach flow does not reach intact \u2014 the empty-domain control reads 0.523 [0.203, 0.805] at z = 0.01 m (4.0 cells); 0.860 [0.789, 0.973] at z = 0.04 m (16.0 cells) of the log law there with NO building; not a validation of the case",
+    "score": {
+      "Count": 70,
+      "MeanObserved": -0.07069058752425487,
+      "MeanPredicted": -0.08312772770096798,
+      "Fb": -0.1617120842664604,
+      "Nmse": 1.9650348765501546,
+      "Nad": -0.5535002242515452,
+      "Fac2": 0.4142857142857143,
+      "HitRate": 0.4,
+      "Mg": 0.3086522970689365,
+      "Vg": 58.01720336390132,
+      "GeometricPairs": 20,
+      "R": 0.9123399833523637
+    },
+    "halfWindows": {
+      "hitRate": {
+        "h1": 0.4,
+        "h2": 0.4142857142857143
+      },
+      "fac2": {
+        "h1": 0.4,
+        "h2": 0.37142857142857144
+      },
+      "fb": {
+        "h1": -0.1333377652835439,
+        "h2": -0.1892367077897588
+      }
+    }
+  },
+  "velocity.W.excluded": {
+    "comparable": false,
+    "note": "70 points at heights the approach flow does not reach intact \u2014 the empty-domain control reads 0.523 [0.203, 0.805] at z = 0.01 m (4.0 cells); 0.860 [0.789, 0.973] at z = 0.04 m (16.0 cells) of the log law there with NO building; not a validation of the case",
+    "score": {
+      "Count": 70,
+      "MeanObserved": -0.002210770747844896,
+      "MeanPredicted": -0.022041368599226827,
+      "Fb": -1.6353689517932226,
+      "Nmse": 283.2621137805319,
+      "Nad": -3.1352092364116873,
+      "Fac2": 0.18571428571428572,
+      "HitRate": 0.4857142857142857,
+      "Mg": 0.1816304071453894,
+      "Vg": 157.2654083959892,
+      "GeometricPairs": 15,
+      "R": -0.026989237593216753
+    },
+    "halfWindows": {
+      "hitRate": {
+        "h1": 0.5142857142857142,
+        "h2": 0.5142857142857142
+      },
+      "fac2": {
+        "h1": 0.17142857142857143,
+        "h2": 0.18571428571428572
+      },
+      "fb": {
+        "h1": -1.6429674936007075,
+        "h2": -1.6274399450427126
+      }
+    }
+  },
+  "velocity.U.z=0.625H": {
+    "comparable": true,
+    "note": "60 points on the upper horizontal plane (z/b = 1.25)",
+    "score": {
+      "Count": 60,
+      "MeanObserved": 0.7056965783418688,
+      "MeanPredicted": 0.5198763230150403,
+      "Fb": 0.30323819190371326,
+      "Nmse": 0.26495882887539995,
+      "Nad": 0.1615109847362438,
+      "Fac2": 0.65,
+      "HitRate": 0.6166666666666667,
+      "Mg": 1.3444508993730806,
+      "Vg": 1.665079916976477,
+      "GeometricPairs": 44,
+      "R": 0.8903484975150845
+    },
+    "halfWindows": {
+      "hitRate": {
+        "h1": 0.6333333333333333,
+        "h2": 0.6166666666666667
+      },
+      "fac2": {
+        "h1": 0.65,
+        "h2": 0.65
+      },
+      "fb": {
+        "h1": 0.3018145642551884,
+        "h2": 0.30466358161419815
+      }
+    }
+  },
+  "velocity.V.z=0.625H": {
+    "comparable": true,
+    "note": "60 points on the upper horizontal plane (z/b = 1.25)",
+    "score": {
+      "Count": 60,
+      "MeanObserved": -0.03933793512951828,
+      "MeanPredicted": -0.08743201119175815,
+      "Fb": -0.7587614802699968,
+      "Nmse": 2.2373885832053904,
+      "Nad": -0.5235454730626022,
+      "Fac2": 0.43333333333333335,
+      "HitRate": 0.5166666666666667,
+      "Mg": 1.1654948108668206,
+      "Vg": 3.323786558378125,
+      "GeometricPairs": 15,
+      "R": 0.8595860043889655
+    },
+    "halfWindows": {
+      "hitRate": {
+        "h1": 0.5333333333333333,
+        "h2": 0.5166666666666667
+      },
+      "fac2": {
+        "h1": 0.45,
+        "h2": 0.4166666666666667
+      },
+      "fb": {
+        "h1": -0.7684359795672854,
+        "h2": -0.7489337822832446
+      }
+    }
+  },
+  "velocity.W.z=0.625H": {
+    "comparable": true,
+    "note": "60 points on the upper horizontal plane (z/b = 1.25)",
+    "score": {
+      "Count": 60,
+      "MeanObserved": 0.0024159429971053223,
+      "MeanPredicted": -0.004845301658773241,
+      "Fb": -5.977910771638165,
+      "Nmse": -399.968443846796,
+      "Nad": -22.352162967332173,
+      "Fac2": 0.16666666666666666,
+      "HitRate": 0.55,
+      "Mg": 3.8507942722258344,
+      "Vg": 41.832119587202406,
+      "GeometricPairs": 12,
+      "R": -0.36587240792042935
+    },
+    "halfWindows": {
+      "hitRate": {
+        "h1": 0.55,
+        "h2": 0.5333333333333333
+      },
+      "fac2": {
+        "h1": 0.15,
+        "h2": 0.16666666666666666
+      },
+      "fb": {
+        "h1": -6.685745790000561,
+        "h2": -5.4558634260749805
+      }
+    }
+  },
+  "velocity.U.centre y=0": {
+    "comparable": false,
+    "note": "76 centre-plane points, 11 of them at z = 0.01 m \u2014 includes excluded heights",
+    "score": {
+      "Count": 76,
+      "MeanObserved": 0.6075806583928094,
+      "MeanPredicted": 0.32426592547673083,
+      "Fb": 0.6080716242787515,
+      "Nmse": 0.8990961505792721,
+      "Nad": 0.32034190103320753,
+      "Fac2": 0.4868421052631579,
+      "HitRate": 0.4473684210526316,
+      "Mg": 1.5995203424499982,
+      "Vg": 2.293739035299684,
+      "GeometricPairs": 40,
+      "R": 0.82622406973996
+    },
+    "halfWindows": {
+      "hitRate": {
+        "h1": 0.4473684210526316,
+        "h2": 0.4605263157894737
+      },
+      "fac2": {
+        "h1": 0.5,
+        "h2": 0.47368421052631576
+      },
+      "fb": {
+        "h1": 0.5957741178447891,
+        "h2": 0.6204862044758935
+      }
+    }
+  },
+  "velocity.V.centre y=0": {
+    "comparable": false,
+    "note": "76 centre-plane points, 11 of them at z = 0.01 m \u2014 includes excluded heights",
+    "score": {
+      "Count": 76,
+      "MeanObserved": -0.0063548148929437834,
+      "MeanPredicted": -0.0008407356074276742,
+      "Fb": 1.5326358380033478,
+      "Nmse": 59.30968434962752,
+      "Nad": -1.8672170282999054,
+      "Fac2": 0.10526315789473684,
+      "HitRate": 0.9868421052631579,
+      "Mg": 0.24150190554010273,
+      "Vg": 27.003034934654153,
+      "GeometricPairs": 2,
+      "R": -0.16975982723532856
+    },
+    "halfWindows": {
+      "hitRate": {
+        "h1": 0.9736842105263158,
+        "h2": 0.9868421052631579
+      },
+      "fac2": {
+        "h1": 0.06578947368421052,
+        "h2": 0.07894736842105263
+      },
+      "fb": {
+        "h1": 1.3806309427034487,
+        "h2": 1.698953625447393
+      }
+    }
+  },
+  "velocity.W.centre y=0": {
+    "comparable": false,
+    "note": "76 centre-plane points, 11 of them at z = 0.01 m \u2014 includes excluded heights",
+    "score": {
+      "Count": 76,
+      "MeanObserved": 0.0012100223839491668,
+      "MeanPredicted": 0.06192362649578264,
+      "Fb": -1.923335818193925,
+      "Nmse": 176.06347348203533,
+      "Nad": 1.4885376120444604,
+      "Fac2": 0.2894736842105263,
+      "HitRate": 0.3157894736842105,
+      "Mg": 0.6527281029247423,
+      "Vg": 3.3642895365006313,
+      "GeometricPairs": 26,
+      "R": 0.7104399263124453
+    },
+    "halfWindows": {
+      "hitRate": {
+        "h1": 0.32894736842105265,
+        "h2": 0.3157894736842105
+      },
+      "fac2": {
+        "h1": 0.27631578947368424,
+        "h2": 0.2894736842105263
+      },
+      "fb": {
+        "h1": -1.9206730870193616,
+        "h2": -1.925825597347997
+      }
+    }
+  },
+  "k": "not comparable: the TYPE_E inlet imposes a steady log law (zero fluctuations against the tunnel's I_u of 17-18 % at z = H) and FluidX3D exports no SGS k \u2014 a resolved-only k from the mean frames would compare two different quantities",
+  "excluded": {
+    "nearGround": {
+      "count": 70,
+      "heights": {
+        "0.01": 65,
+        "0.04": 5
+      },
+      "reason": "the approach flow is not intact at these heights: FluidX3D's bounce-back ground carries no roughness wall function, and the empty-domain control on the same lattice reads 0.523 [0.203, 0.805] at z = 0.01 m (4.0 cells); 0.860 [0.789, 0.973] at z = 0.04 m (16.0 cells) of the imposed log law there (bar: every point within 5%); scored in velocity.*.excluded with comparable=false"
+    },
+    "k": {
+      "count": 186,
+      "reason": "laminar inlet, no SGS k exported"
+    }
+  },
+  "negativeControl.wrongLateralSign": {
+    "what": "the measured V multiplied by the opposite lateral sign",
+    "set": "the 116 comparable points",
+    "components": {
+      "U": {
+        "control": {
+          "Count": 116,
+          "MeanObserved": 0.7488885817612239,
+          "MeanPredicted": 0.49644692767244153,
+          "Fb": 0.4054195069143799,
+          "Nmse": 0.4094047240054601,
+          "Nad": 0.20875268517020665,
+          "Fac2": 0.603448275862069,
+          "HitRate": 0.5689655172413793,
+          "Mg": 1.4323758800401165,
+          "Vg": 1.840022492734752,
+          "GeometricPairs": 81,
+          "R": 0.8396962666036109
+        },
+        "solved": {
+          "Count": 116,
+          "MeanObserved": 0.7488885817612239,
+          "MeanPredicted": 0.49644692767244153,
+          "Fb": 0.4054195069143799,
+          "Nmse": 0.4094047240054601,
+          "Nad": 0.20875268517020665,
+          "Fac2": 0.603448275862069,
+          "HitRate": 0.5689655172413793,
+          "Mg": 1.4323758800401165,
+          "Vg": 1.840022492734752,
+          "GeometricPairs": 81,
+          "R": 0.8396962666036109
+        },
+        "solvedBetter": {
+          "R": false,
+          "hitRate": false,
+          "fac2": false,
+          "absFb": false,
+          "nmse": false
+        }
+      },
+      "V": {
+        "control": {
+          "Count": 116,
+          "MeanObserved": 0.022174617434101915,
+          "MeanPredicted": -0.04565202882841337,
+          "Fb": -5.778034479469877,
+          "Nmse": -44.53854522843916,
+          "Nad": -4.512862365705467,
+          "Fac2": 0.10344827586206896,
+          "HitRate": 0.6206896551724138,
+          "Mg": 2.2662398056708533,
+          "Vg": 178.18479414149883,
+          "GeometricPairs": 14,
+          "R": -0.8451363279073251
+        },
+        "solved": {
+          "Count": 116,
+          "MeanObserved": -0.022174617434101915,
+          "MeanPredicted": -0.04565202882841337,
+          "Fb": -0.692276935039507,
+          "Nmse": 4.0108386445981346,
+          "Nad": -0.5782256673174445,
+          "Fac2": 0.25862068965517243,
+          "HitRate": 0.75,
+          "Mg": 0.9842650654417309,
+          "Vg": 4.630864897101905,
+          "GeometricPairs": 16,
+          "R": 0.8451363279073251
+        },
+        "solvedBetter": {
+          "R": true,
+          "hitRate": true,
+          "fac2": true,
+          "absFb": true,
+          "nmse": false
+        }
+      },
+      "W": {
+        "control": {
+          "Count": 116,
+          "MeanObserved": 0.0035492440820337943,
+          "MeanPredicted": 0.0405457690223352,
+          "Fb": -1.6780366910305209,
+          "Nmse": 69.25315143389064,
+          "Nad": 1.775750776701192,
+          "Fac2": 0.22413793103448276,
+          "HitRate": 0.41379310344827586,
+          "Mg": 1.1745300886376433,
+          "Vg": 8.646059578312155,
+          "GeometricPairs": 32,
+          "R": 0.5906000850070593
+        },
+        "solved": {
+          "Count": 116,
+          "MeanObserved": 0.0035492440820337943,
+          "MeanPredicted": 0.0405457690223352,
+          "Fb": -1.6780366910305209,
+          "Nmse": 69.25315143389064,
+          "Nad": 1.775750776701192,
+          "Fac2": 0.22413793103448276,
+          "HitRate": 0.41379310344827586,
+          "Mg": 1.1745300886376433,
+          "Vg": 8.646059578312155,
+          "GeometricPairs": 32,
+          "R": 0.5906000850070593
+        },
+        "solvedBetter": {
+          "R": false,
+          "hitRate": false,
+          "fac2": false,
+          "absFb": false,
+          "nmse": false
+        }
+      }
+    }
+  },
+  "negativeControl.streamwiseMirror": {
+    "what": "the solved mean probed at (-x, y, z): upstream and wake swapped",
+    "set": "the 116 comparable points",
+    "components": {
+      "U": {
+        "control": {
+          "Count": 116,
+          "MeanObserved": 0.7488885817612239,
+          "MeanPredicted": 0.7422401871285954,
+          "Fb": 0.008917264251535217,
+          "Nmse": 0.24059466283270095,
+          "Nad": 0.17692596006552144,
+          "Fac2": 0.6896551724137931,
+          "HitRate": 0.5517241379310345,
+          "Mg": 0.8976820269157751,
+          "Vg": 1.5607786612249244,
+          "GeometricPairs": 93,
+          "R": 0.5508931004033774
+        },
+        "solved": {
+          "Count": 116,
+          "MeanObserved": 0.7488885817612239,
+          "MeanPredicted": 0.49644692767244153,
+          "Fb": 0.4054195069143799,
+          "Nmse": 0.4094047240054601,
+          "Nad": 0.20875268517020665,
+          "Fac2": 0.603448275862069,
+          "HitRate": 0.5689655172413793,
+          "Mg": 1.4323758800401165,
+          "Vg": 1.840022492734752,
+          "GeometricPairs": 81,
+          "R": 0.8396962666036109
+        },
+        "solvedBetter": {
+          "R": true,
+          "hitRate": true,
+          "fac2": false,
+          "absFb": false,
+          "nmse": false
+        }
+      },
+      "V": {
+        "control": {
+          "Count": 116,
+          "MeanObserved": -0.022174617434101915,
+          "MeanPredicted": -0.056213986565980915,
+          "Fb": -0.8684774927703276,
+          "Nmse": 12.903472002510075,
+          "Nad": -0.8889678583514509,
+          "Fac2": 0.12931034482758622,
+          "HitRate": 0.6293103448275862,
+          "Mg": 1.810987802426378,
+          "Vg": 4.158152694901318,
+          "GeometricPairs": 7,
+          "R": 0.2285055166747425
+        },
+        "solved": {
+          "Count": 116,
+          "MeanObserved": -0.022174617434101915,
+          "MeanPredicted": -0.04565202882841337,
+          "Fb": -0.692276935039507,
+          "Nmse": 4.0108386445981346,
+          "Nad": -0.5782256673174445,
+          "Fac2": 0.25862068965517243,
+          "HitRate": 0.75,
+          "Mg": 0.9842650654417309,
+          "Vg": 4.630864897101905,
+          "GeometricPairs": 16,
+          "R": 0.8451363279073251
+        },
+        "solvedBetter": {
+          "R": true,
+          "hitRate": true,
+          "fac2": true,
+          "absFb": true,
+          "nmse": true
+        }
+      },
+      "W": {
+        "control": {
+          "Count": 116,
+          "MeanObserved": 0.0035492440820337943,
+          "MeanPredicted": 0.045408069270770436,
+          "Fb": -1.710013165431963,
+          "Nmse": 138.87110258076726,
+          "Nad": 2.1575443721758245,
+          "Fac2": 0.11206896551724138,
+          "HitRate": 0.33620689655172414,
+          "Mg": 1.1970823940376842,
+          "Vg": 4.979661747919482,
+          "GeometricPairs": 26,
+          "R": -0.08220422563205532
+        },
+        "solved": {
+          "Count": 116,
+          "MeanObserved": 0.0035492440820337943,
+          "MeanPredicted": 0.0405457690223352,
+          "Fb": -1.6780366910305209,
+          "Nmse": 69.25315143389064,
+          "Nad": 1.775750776701192,
+          "Fac2": 0.22413793103448276,
+          "HitRate": 0.41379310344827586,
+          "Mg": 1.1745300886376433,
+          "Vg": 8.646059578312155,
+          "GeometricPairs": 32,
+          "R": 0.5906000850070593
+        },
+        "solvedBetter": {
+          "R": true,
+          "hitRate": true,
+          "fac2": true,
+          "absFb": true,
+          "nmse": true
+        }
+      }
+    }
+  },
+  "negativeControl.noBuilding": {
+    "what": "the empty-domain control's mean at the measured points: the approach flow alone",
+    "set": "the 116 comparable points",
+    "components": {
+      "U": {
+        "control": {
+          "Count": 116,
+          "MeanObserved": 0.7488885817612239,
+          "MeanPredicted": 0.9686472870692149,
+          "Fb": -0.2558999893931023,
+          "Nmse": 0.23868825911203692,
+          "Nad": 0.16894163642891458,
+          "Fac2": 0.7672413793103449,
+          "HitRate": 0.5862068965517241,
+          "Mg": 0.6935523580184394,
+          "Vg": 2.5594109019781803,
+          "GeometricPairs": 108,
+          "R": 0.5098054949686938
+        },
+        "solved": {
+          "Count": 116,
+          "MeanObserved": 0.7488885817612239,
+          "MeanPredicted": 0.49644692767244153,
+          "Fb": 0.4054195069143799,
+          "Nmse": 0.4094047240054601,
+          "Nad": 0.20875268517020665,
+          "Fac2": 0.603448275862069,
+          "HitRate": 0.5689655172413793,
+          "Mg": 1.4323758800401165,
+          "Vg": 1.840022492734752,
+          "GeometricPairs": 81,
+          "R": 0.8396962666036109
+        },
+        "solvedBetter": {
+          "R": true,
+          "hitRate": false,
+          "fac2": false,
+          "absFb": false,
+          "nmse": false
+        }
+      },
+      "V": {
+        "control": {
+          "Count": 116,
+          "MeanObserved": -0.022174617434101915,
+          "MeanPredicted": -0.0026173064912661903,
+          "Fb": 1.5777162758089853,
+          "Nmse": 174.71507089529226,
+          "Nad": -2.0892681716156,
+          "Fac2": 0.05172413793103448,
+          "HitRate": 0.6810344827586207,
+          "Mg": "NaN",
+          "Vg": "NaN",
+          "GeometricPairs": 0,
+          "R": 0.2610387845793587
+        },
+        "solved": {
+          "Count": 116,
+          "MeanObserved": -0.022174617434101915,
+          "MeanPredicted": -0.04565202882841337,
+          "Fb": -0.692276935039507,
+          "Nmse": 4.0108386445981346,
+          "Nad": -0.5782256673174445,
+          "Fac2": 0.25862068965517243,
+          "HitRate": 0.75,
+          "Mg": 0.9842650654417309,
+          "Vg": 4.630864897101905,
+          "GeometricPairs": 16,
+          "R": 0.8451363279073251
+        },
+        "solvedBetter": {
+          "R": true,
+          "hitRate": true,
+          "fac2": true,
+          "absFb": true,
+          "nmse": true
+        }
+      },
+      "W": {
+        "control": {
+          "Count": 116,
+          "MeanObserved": 0.0035492440820337943,
+          "MeanPredicted": 0.008353204558720302,
+          "Fb": -0.8072222148033811,
+          "Nmse": 328.9799873350338,
+          "Nad": 5.616554924238612,
+          "Fac2": 0.034482758620689655,
+          "HitRate": 0.5172413793103449,
+          "Mg": 5.012486371354659,
+          "Vg": 39.95542130438129,
+          "GeometricPairs": 51,
+          "R": 0.25966602433415475
+        },
+        "solved": {
+          "Count": 116,
+          "MeanObserved": 0.0035492440820337943,
+          "MeanPredicted": 0.0405457690223352,
+          "Fb": -1.6780366910305209,
+          "Nmse": 69.25315143389064,
+          "Nad": 1.775750776701192,
+          "Fac2": 0.22413793103448276,
+          "HitRate": 0.41379310344827586,
+          "Mg": 1.1745300886376433,
+          "Vg": 8.646059578312155,
+          "GeometricPairs": 32,
+          "R": 0.5906000850070593
+        },
+        "solvedBetter": {
+          "R": true,
+          "hitRate": false,
+          "fac2": true,
+          "absFb": false,
+          "nmse": true
+        }
+      }
+    }
+  },
+  "negativeControl.wrongLateralSign.discriminating": {
+    "comparablePointsWithLateralFlow": 37,
+    "bar": "at least 10 comparable points off the symmetry plane with |V| > W = 0.05 U_H",
+    "allPointsVote": {
+      "withLateralSign": {
+        "Count": 186,
+        "MeanObserved": -0.040433315855127216,
+        "MeanPredicted": -0.0597557864686221,
+        "Fb": -0.38572000677392215,
+        "Nmse": 2.8466752857610262,
+        "Nad": -0.563939466742258,
+        "Fac2": 0.3172043010752688,
+        "HitRate": 0.6182795698924731,
+        "Mg": 0.5167858931775432,
+        "Vg": 18.86268879052752,
+        "GeometricPairs": 36,
+        "R": 0.871678939327195
+      },
+      "flipped": {
+        "Count": 186,
+        "MeanObserved": 0.040433315855127216,
+        "MeanPredicted": -0.0597557864686221,
+        "Fb": -10.370216555410558,
+        "Nmse": -33.22818513718331,
+        "Nad": -8.35854611089851,
+        "Fac2": 0.08602150537634409,
+        "HitRate": 0.4946236559139785,
+        "Mg": 1.3553642080832353,
+        "Vg": 141.70335802905248,
+        "GeometricPairs": 28,
+        "R": -0.871678939327195
+      }
+    }
+  },
+  "control.wallMinutes": 50.635874206666664,
+  "building.wallMinutes": 49.77510299833333,
+  "provenance": "solved by the fixture (results.original-run.json where present); re-scored from the same mean frames with the committed fixture via EDDY3D_VALIDATION_REUSE=1 (see STAMP-NOTE.txt where present)"
+}

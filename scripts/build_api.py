@@ -89,15 +89,16 @@ STATUS_MEANING = {
     "scored": "a validation run exists and its scores are in cases/{id}/validation.json; whether it agrees is in the numbers",
     "running": "the solve is in progress; no scores yet",
     "pending": "not run yet",
-    "not comparable": ("the engine cannot produce the measured quantity at the measured location at a resolution this "
-                       "hardware runs; the measurement behind that is in the README"),
+    "not comparable": ("the engine cannot produce the measured quantity at the measured location: OpenLB at the resolution "
+                       "this hardware runs, FluidX3D without a ground wall function; the measurement behind each is on the "
+                       "Validation page"),
 }
 ENGINE_STATUS = {
-    "A": {"openfoam12-realizableKE": "scored", "openlb": "scored", "fluidx3d": "running", "ml-surrogate": "scored"},
-    "B": {"openfoam12-realizableKE": "scored", "openlb": "scored", "fluidx3d": "running", "ml-surrogate": "scored"},
-    "C": {"openfoam12-realizableKE": "scored", "openlb": "not comparable", "fluidx3d": "pending", "ml-surrogate": "scored"},
-    "D": {"openfoam12-realizableKE": "running", "openlb": "not comparable", "fluidx3d": "pending", "ml-surrogate": "scored"},
-    "E": {"openfoam12-realizableKE": "scored", "openlb": "not comparable", "fluidx3d": "pending", "ml-surrogate": "scored"},
+    "A": {"openfoam12-realizableKE": "scored", "openlb": "scored", "fluidx3d": "scored", "ml-surrogate": "scored"},
+    "B": {"openfoam12-realizableKE": "scored", "openlb": "scored", "fluidx3d": "scored", "ml-surrogate": "scored"},
+    "C": {"openfoam12-realizableKE": "scored", "openlb": "not comparable", "fluidx3d": "not comparable", "ml-surrogate": "scored"},
+    "D": {"openfoam12-realizableKE": "running", "openlb": "not comparable", "fluidx3d": "not comparable", "ml-surrogate": "scored"},
+    "E": {"openfoam12-realizableKE": "scored", "openlb": "not comparable", "fluidx3d": "not comparable", "ml-surrogate": "scored"},
 }
 
 # ----------------------------------------------------------------------------- runs
@@ -139,6 +140,19 @@ RUNS = [
           ["cases-ab-engine-comparison.png"],
           f"Eddy3D fixture TestAijCase{c}OpenLbContainerE2E (OpenLB eddy3dWind, CPU image, dx = 1.6 m); "
           "figure validation/plot_cases_ab_engines.py", f"case{c}_openlb_pairs.csv", PAIRS_AB) for c in ("A", "B")],
+    # FluidX3D is scored on the heights where its own empty-domain control holds the imposed log law within 5 %
+    # (its bounce-back ground has no roughness wall function); the approach flow alone is the control to beat.
+    # Case B's V is not a headline: every comparable point lies on the centre plane, where mean V is zero.
+    *[run(c, "fluidx3d", None, f"case{c}_fluidx3d.json",
+          {"U, comparable heights": "velocity.U.comparable",
+           **({"V, comparable heights": "velocity.V.comparable"} if c == "A" else {}),
+           "W, comparable heights": "velocity.W.comparable", "U, all points": "velocity.U.all",
+           "U, approach flow alone (control)": "negativeControl.noBuilding.components.U.control"},
+          ["cases-ab-engine-comparison.png"],
+          f"Eddy3D fixture TestAijCase{c}FluidX3DE2E (Eddy3DCli.Tests/Validation/TestAijVelocityFluidX3DE2E; FluidX3D "
+          f"GPU lattice Boltzmann, D3Q19 Smagorinsky LES, dx = H/64, {'40 + 200' if c == 'A' else '100 + 500'} H/U_H "
+          "spin-up + averaging, with an empty-domain control on the same lattice); figure validation/plot_cases_ab_engines.py",
+          f"case{c}_fluidx3d_pairs.csv", PAIRS_AB) for c in ("A", "B")],
     run("E", "openfoam12-realizableKE", "SW", "caseE_openfoam12_realizableKE.json",
         {"before, √(|U|²+2k)": "vr.bc.SW.rms", "before, |U|": "vr.bc.SW.Umag", "after, √(|U|²+2k)": "vr.ac.SW.rms",
          "after, |U|": "vr.ac.SW.Umag", "no-construction ceiling control": "noConstruction.SW"},
@@ -187,7 +201,9 @@ FIGURE_CAPTIONS = {
     "case-e-openfoam-bias-map.png": ("Case E, OpenFOAM 12, wind from SW: log₂(model / tunnel) of the scalar speed at the 80 "
                                      "points on the plan of the district, before and after construction."),
     "cases-ab-engine-comparison.png": ("Cases A and B, every engine on the same points: measured against modelled U/U_H and "
-                                       "V/U_H, one row per engine."),
+                                       "V/U_H, one row per engine (OpenFOAM 12; OpenLB at dx = 1.6 m; FluidX3D at H/64). FluidX3D "
+                                       "is scored on the filled points, the heights where its empty-domain control holds the "
+                                       "imposed log law; the hollow points near the ground are excluded."),
     "ml-surrogate-agreement.png": ("Eddy3D ML surrogate (Yel-2.0): measured against predicted pedestrian-height speed, one "
                                    "panel per case, with the 1:1 line and the factor-of-two band."),
 }
@@ -201,6 +217,7 @@ METRIC_MEANING = {
     "HitRate": "fraction of points within D = 0.25 relative or W = 0.05 U_H absolute",
     "Mg": "geometric mean bias", "Vg": "geometric variance", "GeometricPairs": "pairs with both values positive (used for Mg/Vg)",
     "R": "Pearson correlation coefficient",
+    "null": "a metric that is undefined for the data (for example Mg and Vg when no pair has both values positive)",
 }
 
 COLUMN_MEANING = {
@@ -457,6 +474,36 @@ def is_metric(v):
     return isinstance(v, dict) and "Fb" in v and "R" in v
 
 
+def defined(metric):
+    """A metric with every undefined value (NaN or an infinity, which some fixtures write as the strings
+    "NaN", "Infinity") as None: JSON has no NaN, and a string where a number belongs breaks clients."""
+    out = {}
+    for k, v in metric.items():
+        if isinstance(v, str) and v in ("NaN", "Infinity", "-Infinity"):
+            v = None
+        elif isinstance(v, float) and (v != v or v in (float("inf"), float("-inf"))):
+            v = None
+        out[k] = v
+    return out
+
+
+def flat_scores(res, prefix=""):
+    """Every score in a results.json as {dotted key: metrics}. A score nested as {"score": {...}} takes its
+    parent's key (velocity.U.comparable); other nesting joins the keys
+    (negativeControl.noBuilding.components.U.control)."""
+    out = {}
+    for k, v in res.items():
+        key = f"{prefix}{k}"
+        if is_metric(v):
+            out[key] = defined(v)
+        elif isinstance(v, dict):
+            if is_metric(v.get("score")):
+                out[key] = defined(v["score"])
+            else:
+                out.update(flat_scores(v, key + "."))
+    return out
+
+
 def validation_entries(case):
     out = []
     for r in RUNS:
@@ -464,8 +511,9 @@ def validation_entries(case):
             continue
         with io.open(os.path.join(RESULTS_DIR, r["results"]), encoding="utf-8") as f:
             res = json.load(f)
+        scores = flat_scores(res)
         for label, key in r["headline"].items():
-            if not is_metric(res.get(key)):
+            if key not in scores:
                 raise SystemExit(f"{r['results']}: headline '{label}' -> '{key}' is not a score in the file")
         out.append({
             "run_id": r["run_id"],
@@ -475,13 +523,14 @@ def validation_entries(case):
             "scale": res.get("scale"), "solved_time": res.get("solvedTime"), "iterations": res.get("iterations"),
             "points_measured": res.get("points.measured"),
             "lateral_sign_applied_in_fixture": res.get("lateralSign"),
-            "recirculation_Lr_over_H": res.get("recirculation.LrOverH"),
+            "recirculation_Lr_over_H": res.get("recirculation.LrOverH",
+                                               (res.get("recirculation.z=0.05H") or {}).get("LrOverH")),
             "quantity": res.get("quantity"),
             "normalisation": ("velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, "
                               "as it is published); hit rate D = 0.25, W = 0.05 in those units"),
             "metric_meaning": METRIC_MEANING,
             "headline": dict(r["headline"]),
-            "scores": {k: v for k, v in res.items() if is_metric(v)},
+            "scores": scores,
             "figures": [{"url": f"{SITE}/assets/figures/{fig}", "caption": FIGURE_CAPTIONS[fig]} for fig in r["figures"]],
             "pairs": download(f"cases/{case}/pairs/{r['engine']}.csv"),
             "pairs_columns": r["pairs_columns"],

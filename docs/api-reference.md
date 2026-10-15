@@ -76,16 +76,17 @@ certificate type. The body is ASCII STL regardless; read it as such.
 | [`GET /api/llms.txt`]({{ '/api/llms.txt' | relative_url }}) | plain-text entry point for agents (also at [`/llms.txt`]({{ '/llms.txt' | relative_url }})) |
 
 An engine's status for a case is `scored` (a run exists and its scores are served; whether it agrees is in the
-numbers), `running`, `pending`, or `not comparable` (it cannot produce the measured quantity at the measured
-location at a resolution this hardware runs; the measurement behind that is on the [Validation]({{ '/validation/' | relative_url }}) page).
+numbers), `running`, `pending`, or `not comparable`: it cannot produce the measured quantity at the measured
+location. For OpenLB that is at the resolution this hardware runs; for FluidX3D it is without a ground wall
+function. The measurements behind both are on the [Validation]({{ '/validation/' | relative_url }}) page.
 An engine that is not `scored` has no result for that case.
 
 ## What each case serves today
 
 | Case | Points | Geometry | Validation |
 |---|---|---|---|
-| A | 186 rows: U, V, W, uu, vv, ww, k (variances; metres) | 1 box, 12 triangles: 0.08 × 0.08 × 0.16 m | OpenFOAM 12 realizable k-ε; OpenLB at dx = 1.6 m; ML surrogate |
-| B | 224 rows: U, V, W, uu, vv, ww, k (converted from mm; V sign-unified to +y) | 1 box, 12 triangles: 0.05 × 0.20 × 0.20 m | OpenFOAM 12 realizable k-ε; OpenLB at dx = 1.6 m; ML surrogate |
+| A | 186 rows: U, V, W, uu, vv, ww, k (variances; metres) | 1 box, 12 triangles: 0.08 × 0.08 × 0.16 m | OpenFOAM 12 realizable k-ε; OpenLB at dx = 1.6 m; FluidX3D at H/64; ML surrogate |
+| B | 224 rows: U, V, W, uu, vv, ww, k (converted from mm; V sign-unified to +y) | 1 box, 12 triangles: 0.05 × 0.20 × 0.20 m | OpenFOAM 12 realizable k-ε; OpenLB at dx = 1.6 m; FluidX3D at H/64; ML surrogate |
 | C | 1,080 rows: Vs over 9 configurations (`config` 0D/1D/2D × `wind_direction_deg` 0/22.5/45) | 3 STLs (0D: 8 cubes; 1D, 2D: 9 boxes) with box lists | OpenFOAM 12 realizable k-ε, each configuration (√(\|U\|²+2k) and \|U\| at each wind direction); ML surrogate |
 | D | 267 rows: 234 thermistor (78 points × 3 directions, 36 unmeasured) and 33 split-fibre with U, V, W, uu, vv, ww, k | 83 boxes, 996 triangles, watertight, rebuilt from the shipped STL | ML surrogate; OpenFOAM solving |
 | E | 2,560 rows: velocity ratio over `config` bc/ac × 16 directions × 80 points; full-scale metres | 2 STLs from the 3dm (before: 8,400 triangles; after: 8,436), outward-oriented; not watertight (touching buildings share edges) | OpenFOAM 12 realizable k-ε, wind from SW, before and after; ML surrogate |

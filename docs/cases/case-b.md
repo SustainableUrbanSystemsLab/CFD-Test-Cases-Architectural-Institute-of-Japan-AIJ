@@ -100,6 +100,20 @@ Reattachment length L_r/H = 2.71.
 
 velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Per-point values: [`/api/cases/B/pairs/openlb.csv`]({{ '/api/cases/B/pairs/openlb.csv' | relative_url }}). Reproduce: Eddy3D fixture TestAijCaseBOpenLbContainerE2E (OpenLB eddy3dWind, CPU image, dx = 1.6 m); figure validation/plot_cases_ab_engines.py.
 
+### FluidX3D (Eddy3D GPU LBM)
+
+Reattachment length L_r/H = 2.63.
+
+| Metric | U, comparable heights | W, comparable heights | U, all points | U, approach flow alone (control) |
+|---|---|---|---|---|
+| **R** | +0.947 | +0.845 | +0.905 | +0.807 |
+| **FAC2** | 0.636 | 0.477 | 0.638 | 0.557 |
+| **FB** | +0.260 | +0.114 | +0.172 | -0.541 |
+| **hit rate** | 0.568 | 0.318 | 0.411 | 0.398 |
+| **n** | 88 | 88 | 224 | 88 |
+
+velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15.9 m, as it is published); hit rate D = 0.25, W = 0.05 in those units. Per-point values: [`/api/cases/B/pairs/fluidx3d.csv`]({{ '/api/cases/B/pairs/fluidx3d.csv' | relative_url }}). Reproduce: Eddy3D fixture TestAijCaseBFluidX3DE2E (Eddy3DCli.Tests/Validation/TestAijVelocityFluidX3DE2E; FluidX3D GPU lattice Boltzmann, D3Q19 Smagorinsky LES, dx = H/64, 100 + 500 H/U_H spin-up + averaging, with an empty-domain control on the same lattice); figure validation/plot_cases_ab_engines.py.
+
 ### Eddy3D ML wind surrogate (pedestrian height)
 
 | Metric | \|U\| (z = H/16 plane) | \|U\|, lattice cut at ±250 m | wind reversed (control) |
@@ -124,7 +138,7 @@ velocities by U_H, k by U_H^2 (the benchmark's own convention; Case E by U at 15
 
 <figure class="figure">
 <img src="{{ '/assets/figures/cases-ab-engine-comparison.png' | relative_url }}" alt="cases-ab-engine-comparison.png">
-<figcaption><strong>Figure 4.</strong> Cases A and B, every engine on the same points: measured against modelled U/U_H and V/U_H, one row per engine.</figcaption>
+<figcaption><strong>Figure 4.</strong> Cases A and B, every engine on the same points: measured against modelled U/U_H and V/U_H, one row per engine (OpenFOAM 12; OpenLB at dx = 1.6 m; FluidX3D at H/64). FluidX3D is scored on the filled points, the heights where its empty-domain control holds the imposed log law; the hollow points near the ground are excluded.</figcaption>
 </figure>
 
 <figure class="figure">
