@@ -23,17 +23,14 @@ import os
 import numpy as np
 import ultraplot as uplt
 
+import plotstyle as style
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
 STUDY = r"C:/Eddy3DVal/aij_D_realizableKE_L3"
 RESULTS = os.path.join(HERE, "results")
 PAIRS = os.path.join(RESULTS, "caseD_openfoam12_realizableKE_pairs.csv")
 SCORES = os.path.join(RESULTS, "caseD_openfoam12_realizableKE.json")
-
-BLUE = "#2a78d6"     # slot 1 - the OpenFOAM model
-INK = "#2b2b2b"
-MUTED = "#8a8a88"
-SURFACE = "#fcfcfb"
 
 SCALE = 400.0        # the fixture solves at full scale, 1:400
 HEADINGS = [0.0, 22.5, 45.0]
@@ -108,38 +105,35 @@ pairs = read_pairs()
 with io.open(SCORES, encoding="utf-8") as f:
     res = json.load(f)
 
+style.apply()
 solved = [h for h in HEADINGS if any(p["instrument"] == "thermistor" and p["wind_direction_deg"] == h for p in pairs)]
-fig, axs = uplt.subplots(ncols=len(solved) + 1, refwidth=2.0, refaspect=1, share=False, wspace=2.6)
+fig, axs = uplt.subplots(ncols=len(solved) + 1, refwidth=2.5, refaspect=1, share=True)
 lo, hi = 0.0, 1.2
-line = np.array([lo, hi])
 for c, h in enumerate(solved + ["split"]):
     ax = axs[c]
     if h == "split":
         pts = [p for p in pairs if p["instrument"] == "split_fibre"]
-        title, score, xlabel = "Split fibre, WD = 0°", res["splitfibre.speed"], "tunnel |U|/U$_H$"
+        title, score, xlabel = "Split fibre, WD = 0°", res["splitfibre.speed"], "Tunnel |U|/U$_H$ [–]"
     else:
         pts = [p for p in pairs if p["instrument"] == "thermistor" and p["wind_direction_deg"] == h]
-        title, score, xlabel = f"Thermistor, WD = {h:g}°", res[f"vs.{h:g}.corrected"], "tunnel Vs/U$_H$"
+        title, score, xlabel = f"Thermistor, WD = {h:g}°", res[f"vs.{h:g}.corrected"], "Tunnel Vs/U$_H$ [–]"
     o = np.array([p["measured_over_UH"] for p in pts])
-    ps = np.array([p["scalar_over_UH"] for p in pts])
-    pv = np.array([p["vector_over_UH"] for p in pts])
-    ax.plot(line, line, color=MUTED, lw=1.0, zorder=1)
-    ax.plot(line, 2 * line, color=MUTED, lw=0.7, ls=":", zorder=1)
-    ax.plot(line, 0.5 * line, color=MUTED, lw=0.7, ls=":", zorder=1)
+    scalar = np.array([p["scalar_over_UH"] for p in pts])
+    vector = np.array([p["vector_over_UH"] for p in pts])
+    style.one_to_one(ax, lo, hi)
     if h == "split":
         # the instrument measures |U| itself: compare the model's |U|, filled
-        ax.scatter(o, pv, s=12, color=BLUE, edgecolor=SURFACE, linewidth=0.3, zorder=3)
+        ax.scatter(o, vector, s=22, color=style.OPENFOAM, edgecolor=style.SURFACE, linewidth=0.4, zorder=3)
     else:
-        ax.scatter(o, pv, s=12, facecolor="none", edgecolor=BLUE, linewidth=0.6, alpha=0.7, zorder=2,
-                   label="Eddy3D |U|" if c == 0 else None)
-        ax.scatter(o, ps, s=12, color=BLUE, edgecolor=SURFACE, linewidth=0.3, zorder=3,
-                   label="Eddy3D √(|U|²+2k)" if c == 0 else None)
-    ax.text(0.05, 0.95, f"R {score['R']:+.2f}\nFAC2 {score['Fac2']:.2f}\nFB {score['Fb']:+.2f}\nq {score['HitRate']:.2f}\nn {score['Count']}",
-            transform=ax.transAxes, va="top", ha="left", fontsize=6.5, color=INK)
-    ax.format(xlim=(lo, hi), ylim=(lo, hi), xlabel=xlabel, ylabel="Eddy3D / U$_H$" if c == 0 else None,
-              title=title, titleloc="l", titlesize=8.5)
-axs[0].legend(loc="lr", ncols=1, frame=False, fontsize=6.5)
-fig.format(suptitle="AIJ UWE Case D — Eddy3D (OpenFOAM 12, realizable k-ε) vs wind tunnel, z/H = 0.02",
-           abc=False, gridcolor="#e3e3e0", gridlinewidth=0.6)
-fig.save(os.path.join(HERE, "figures", "case-d-openfoam-agreement.png"), dpi=220)
-print("wrote case-d-openfoam-agreement.png for headings", solved)
+        ax.scatter(o, vector, s=22, facecolor="none", edgecolor=style.OPENFOAM, linewidth=0.8, alpha=0.8, zorder=2)
+        ax.scatter(o, scalar, s=22, color=style.OPENFOAM, edgecolor=style.SURFACE, linewidth=0.4, zorder=3)
+    style.stats(ax, f"R {score['R']:+.2f}\nFAC2 {score['Fac2']:.2f}\nFB {score['Fb']:+.2f}\nn {score['Count']}")
+    ax.format(xlim=(lo, hi), ylim=(lo, hi), title=title)
+style.outer_ticks(axs, 1, len(solved) + 1)
+style.finish(fig, "AIJ UWE Case D — Eddy3D (OpenFOAM 12, realizable k-ε) vs wind tunnel, z/H = 0.02",
+             handles=[style.marker(style.OPENFOAM, "Eddy3D √(|U|²+2k)"),
+                      style.marker(style.OPENFOAM, "Eddy3D |U|", filled=False),
+                      style.line(style.REFERENCE, "1:1", lw=1.0), style.line(style.REFERENCE, "factor of two", lw=0.8, ls=":")],
+             xlabel="Tunnel speed/U$_H$ [–]  (thermistor Vs; split fibre |U|)", ylabel="Eddy3D speed/U$_H$ [–]")
+style.save(fig, "case-d-openfoam-agreement.png")
+print("headings", solved)

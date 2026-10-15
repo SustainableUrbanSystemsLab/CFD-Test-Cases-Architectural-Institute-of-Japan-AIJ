@@ -32,22 +32,21 @@ import os
 import numpy as np
 import ultraplot as uplt
 
+import plotstyle as style
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(HERE)
 VAL = r"C:/Eddy3DVal"
 RESULTS = os.path.join(HERE, "results")
-INK = "#2b2b2b"
-MUTED = "#8a8a88"
-SURFACE = "#fcfcfb"
 
 UH = {"A": 4.491, "B": 5.133}
 SCALE = 100.0
 
-# engine id (file stem), label, colour, probe reader
+# engine id (file stem), label, colour
 ENGINES = [
-    ("openfoam12_realizableKE", "OpenFOAM 12, realizable k-ε", "#2a78d6"),
-    ("openlb", "OpenLB, dx = 1.6 m", "#eda100"),
-    ("fluidx3d", "FluidX3D", "#e87ba4"),
+    ("openfoam12_realizableKE", "OpenFOAM 12, realizable k-ε", style.OPENFOAM),
+    ("openlb", "OpenLB, dx = 1.6 m", style.OPENLB),
+    ("fluidx3d", "FluidX3D", style.FLUIDX3D),
 ]
 
 
@@ -131,36 +130,41 @@ if os.path.isdir(VAL):
         for c in ("A", "B"):
             export(c, e)
 
+style.apply()
 engines = [e for e in ENGINES if all(os.path.exists(pairs_path(c, e[0])) for c in ("A", "B"))]
 cols = [("A", "U"), ("A", "V"), ("B", "U"), ("B", "V")]
-fig, axs = uplt.subplots(nrows=len(engines), ncols=4, refwidth=1.55, refaspect=1, share=False, hspace=3.6, wspace=3.8)
+# One range per column, shared by every engine, so a row compares with the row above it at a glance.
+limits = {}
+for case, q in cols:
+    vals = [v for e, _, _ in engines for p in read_pairs(case, e) for v in (p[f"{q}_meas"], p[f"{q}_model"])]
+    lo, hi = min(vals), max(vals)
+    pad = 0.06 * (hi - lo)
+    limits[(case, q)] = (lo - pad, hi + pad)
+fig, axs = uplt.subplots(nrows=len(engines), ncols=4, refwidth=2.0, refaspect=1, share=False, wspace=4.2, hspace=1.2)
 axs = np.asarray(axs).reshape(len(engines), 4)
 for r, (engine, label, colour) in enumerate(engines):
     for c, (case, q) in enumerate(cols):
         ax = axs[r, c]
         pr = read_pairs(case, engine)
         o = np.array([p[f"{q}_meas"] for p in pr]); m = np.array([p[f"{q}_model"] for p in pr])
-        lo = float(min(o.min(), m.min())); hi = float(max(o.max(), m.max()))
-        pad = 0.08 * (hi - lo); lo, hi = lo - pad, hi + pad
-        ax.plot([lo, hi], [lo, hi], color=MUTED, lw=1.0, zorder=1)
-        if q == "U":
-            line = np.array([max(lo, 1e-6), hi])
-            ax.plot(line, 2 * line, color=MUTED, lw=0.7, ls=":", zorder=1)
-            ax.plot(line, 0.5 * line, color=MUTED, lw=0.7, ls=":", zorder=1)
+        lo, hi = limits[(case, q)]
+        style.one_to_one(ax, lo, hi, factor_two=(q == "U"))
         s, heights = scores(case, engine, q)
         keep = np.array([heights is None or round(p["z"], 5) in heights for p in pr])
-        ax.scatter(o[keep], m[keep], s=9, color=colour, edgecolor=SURFACE, linewidth=0.25, zorder=3)
+        ax.scatter(o[keep], m[keep], s=15, color=colour, edgecolor=style.SURFACE, linewidth=0.35, zorder=3)
         if not keep.all():
-            ax.scatter(o[~keep], m[~keep], s=9, facecolor="none", edgecolor=colour, linewidth=0.6, zorder=2)
+            ax.scatter(o[~keep], m[~keep], s=15, facecolor="none", edgecolor=colour, linewidth=0.8, zorder=2)
         note = f"\nn {s['Count']} filled" if heights is not None else ""
-        ax.text(0.05, 0.95, f"R {s['R']:+.2f}\nFAC2 {s['Fac2']:.2f}\nq {s['HitRate']:.2f}{note}", transform=ax.transAxes,
-                va="top", ha="left", fontsize=6.3, color=INK)
-        ax.format(xlim=(lo, hi), ylim=(lo, hi), xlabel="tunnel" if r == len(engines) - 1 else None,
-                  ylabel="model" if c == 0 else None, title=f"Case {case} — {q}/U$_H$" if r == 0 else None,
-                  titleloc="l", titlesize=8)
-    axs[r, 0].text(-0.5, 0.5, label, transform=axs[r, 0].transAxes, rotation=90, va="center", ha="center",
-                   fontsize=8, color=INK)
-fig.format(suptitle="AIJ UWE Cases A and B — every engine on the same measured points", abc=False,
-           gridcolor="#e3e3e0", gridlinewidth=0.6)
-fig.save(os.path.join(HERE, "figures", "cases-ab-engine-comparison.png"), dpi=220)
-print("wrote cases-ab-engine-comparison.png with", [e[0] for e in engines])
+        style.stats(ax, f"R {s['R']:+.2f}\nFAC2 {s['Fac2']:.2f}{note}")
+        last = r == len(engines) - 1
+        ax.format(xlim=(lo, hi), ylim=(lo, hi), xlabel="Tunnel [–]" if last else None,
+                  ylabel="Model [–]" if c == 0 else None)
+        ax.tick_params(labelbottom=last)
+style.finish(fig, "AIJ UWE Cases A and B — every engine on the same measured points",
+             handles=[style.marker(colour, label) for _, label, colour in engines]
+             + [style.marker(style.FLUIDX3D, "FluidX3D, excluded near-ground point", filled=False),
+                style.line(style.REFERENCE, "1:1", lw=1.0), style.line(style.REFERENCE, "factor of two", lw=0.8, ls=":")],
+             ncols=3, toplabels=[f"Case {case} · {q}/U$_H$" for case, q in cols],
+             leftlabels=[label.split(",")[0] for _, label, _ in engines])
+style.save(fig, "cases-ab-engine-comparison.png")
+print("engines", [e[0] for e in engines])

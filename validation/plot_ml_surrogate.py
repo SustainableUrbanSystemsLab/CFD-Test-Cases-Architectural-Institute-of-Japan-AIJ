@@ -24,28 +24,23 @@ from __future__ import annotations
 import csv
 import io
 import json
-import math
 import os
-import shutil
 
 import numpy as np
 import ultraplot as uplt
+
+import plotstyle as style
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 VAL = r"C:/Eddy3DVal"
 RESULTS = os.path.join(HERE, "results")
 
-AQUA = "#1baf7a"     # slot 3 - the ML surrogate
-INK = "#2b2b2b"
-MUTED = "#8a8a88"
-SURFACE = "#fcfcfb"
-
 PANELS = [
-    ("A", "Case A — |U|/U$_H$, z = 0.01 m plane", "speed.vectorMagnitude"),
-    ("B", "Case B — |U|/U$_H$, z = H/16 plane", "speed.vectorMagnitude"),
-    ("C", "Case C — Vs/U$_H$, 9 configurations", None),
-    ("D", "Case D — Vs/U$_H$, thermistor, 3 WD", "speed.thermistor"),
-    ("E", "Case E — Vs/U(15.9 m), 16 WD, bc + ac", "speed.thermistor"),
+    ("A", "Case A · |U|/U$_H$, z = 0.01 m", "speed.vectorMagnitude"),
+    ("B", "Case B · |U|/U$_H$, z = H/16", "speed.vectorMagnitude"),
+    ("C", "Case C · Vs/U$_H$, 9 configurations", None),
+    ("D", "Case D · Vs/U$_H$, 3 WD", "speed.thermistor"),
+    ("E", "Case E · Vs/U(15.9 m), 16 WD, both states", "speed.thermistor"),
 ]
 
 
@@ -53,12 +48,12 @@ def snapshot():
     os.makedirs(RESULTS, exist_ok=True)
     for case, _, _ in PANELS:
         src = os.path.join(VAL, f"ml_{case}")
-        shutil.copyfile(os.path.join(src, "results.json"), os.path.join(RESULTS, f"case{case}_ml.json"))
         # LF on every platform, like the rest of the served data.
-        with io.open(os.path.join(src, "pairs.csv"), encoding="utf-8") as f:
-            text = f.read().replace("\r\n", "\n")
-        with io.open(os.path.join(RESULTS, f"case{case}_ml_pairs.csv"), "w", encoding="utf-8", newline="\n") as f:
-            f.write(text)
+        for name, dest in (("results.json", f"case{case}_ml.json"), ("pairs.csv", f"case{case}_ml_pairs.csv")):
+            with io.open(os.path.join(src, name), encoding="utf-8") as f:
+                text = f.read().replace("\r\n", "\n")
+            with io.open(os.path.join(RESULTS, dest), "w", encoding="utf-8", newline="\n") as f:
+                f.write(text)
 
 
 def pairs(case):
@@ -83,7 +78,8 @@ def metrics(o, p, d=0.25, w=0.05):
 if os.path.isdir(VAL):
     snapshot()
 
-fig, axs = uplt.subplots(nrows=1, ncols=5, refwidth=1.75, refaspect=1, share=False, wspace=2.6)
+style.apply()
+fig, axs = uplt.subplots([[1, 2, 3], [4, 5, 0]], refwidth=2.4, refaspect=1, share=False, wspace=3.0, hspace=5.0)
 for i, (case, title, key) in enumerate(PANELS):
     ax = axs[i]
     o, p = pairs(case)
@@ -95,19 +91,15 @@ for i, (case, title, key) in enumerate(PANELS):
             assert abs(m[k] - ref[k]) < 1e-9, (case, k, m[k], ref[k])
     lo = min(0.0, float(min(o.min(), p.min())))
     hi = 1.05 * float(max(o.max(), p.max()))
-    line = np.array([max(lo, 1e-6), hi])
-    ax.plot([lo, hi], [lo, hi], color=MUTED, lw=1.0, zorder=1)
-    ax.plot(line, 2 * line, color=MUTED, lw=0.7, ls=":", zorder=1)
-    ax.plot(line, 0.5 * line, color=MUTED, lw=0.7, ls=":", zorder=1)
-    ax.scatter(o, p, s=7 if len(o) > 500 else 11, color=AQUA, edgecolor=SURFACE, linewidth=0.25,
-               alpha=0.8, zorder=3)
-    ax.text(0.05, 0.95, f"n {m['Count']}\nR {m['R']:+.2f}\nFAC2 {m['Fac2']:.2f}\nFB {m['Fb']:+.2f}\nq {m['HitRate']:.2f}",
-            transform=ax.transAxes, va="top", ha="left", fontsize=6.5, color=INK)
-    ax.format(xlim=(lo, hi), ylim=(lo, hi), xlabel="tunnel", ylabel="ML surrogate" if i == 0 else None,
-              title=title, titleloc="l", titlesize=7.5)
+    style.one_to_one(ax, lo, hi)
+    ax.scatter(o, p, s=10 if len(o) > 500 else 18, color=style.ML, edgecolor=style.SURFACE, linewidth=0.3,
+               alpha=0.85, zorder=3)
+    style.stats(ax, f"R {m['R']:+.2f}\nFAC2 {m['Fac2']:.2f}\nFB {m['Fb']:+.2f}\nn {m['Count']}")
+    ax.format(xlim=(lo, hi), ylim=(lo, hi), xlabel="Tunnel [–]", ylabel="ML surrogate [–]" if i in (0, 3) else None,
+              title=title)
     print(f"{case}: n={m['Count']} FB={m['Fb']:+.3f} FAC2={m['Fac2']:.3f} R={m['R']:+.3f} q={m['HitRate']:.3f}")
 
-fig.format(suptitle="AIJ UWE benchmark — Eddy3D ML wind surrogate (Yel-2.0) vs wind tunnel, pedestrian height",
-           abc=False, gridcolor="#e3e3e0", gridlinewidth=0.6)
-fig.save(os.path.join(HERE, "figures", "ml-surrogate-agreement.png"), dpi=220)
-print("wrote ml-surrogate-agreement.png")
+style.finish(fig, "AIJ UWE benchmark — Eddy3D ML wind surrogate (Yel-2.0) vs wind tunnel, pedestrian height",
+             handles=[style.marker(style.ML, "ML surrogate (Yel-2.0)"), style.line(style.REFERENCE, "1:1", lw=1.0),
+                      style.line(style.REFERENCE, "factor of two", lw=0.8, ls=":")])
+style.save(fig, "ml-surrogate-agreement.png")

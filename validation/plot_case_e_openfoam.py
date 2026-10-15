@@ -32,6 +32,8 @@ import os
 
 import numpy as np
 import ultraplot as uplt
+
+import plotstyle as style
 from matplotlib.collections import PolyCollection
 from matplotlib.colors import LinearSegmentedColormap
 from matplotlib.patches import FancyArrowPatch
@@ -43,12 +45,6 @@ RESULTS = os.path.join(HERE, "results")
 PAIRS = os.path.join(RESULTS, "caseE_openfoam12_realizableKE_pairs.csv")
 SCORES = os.path.join(RESULTS, "caseE_openfoam12_realizableKE.json")
 
-BLUE = "#2a78d6"
-RED = "#e34948"
-MID = "#f0efec"
-INK = "#2b2b2b"
-MUTED = "#8a8a88"
-SURFACE = "#fcfcfb"
 BUILDING = "#d9d8d4"
 NEW_BUILDING = "#a9a8a3"
 
@@ -115,51 +111,47 @@ with io.open(SCORES, encoding="utf-8") as f:
     scores = json.load(f)
 
 # ----------------------------------------------------------------------------- figure 1
-fig, axs = uplt.subplots(nrows=1, ncols=3, refwidth=2.0, refaspect=1, share=False, wspace=4.2)
+style.apply()
+fig, axs = uplt.subplots(nrows=1, ncols=3, refwidth=2.5, refaspect=1, share=False, wspace=(1.0, 6.0))
+hi = 1.08 * max(max(max(p["measured_ratio"], p["scalar_ratio"]) for p in pairs[s]) for s, _ in STATES)
 for i, (state, title) in enumerate(STATES):
     ax = axs[i]
     pts = pairs[state]
     o = np.array([p["measured_ratio"] for p in pts])
-    ps = np.array([p["scalar_ratio"] for p in pts])
-    pv = np.array([p["vector_ratio"] for p in pts])
-    hi = 1.08 * float(max(o.max(), ps.max()))
-    line = np.array([1e-6, hi])
-    ax.plot([0, hi], [0, hi], color=MUTED, lw=1.0, zorder=1)
-    ax.plot(line, 2 * line, color=MUTED, lw=0.7, ls=":", zorder=1)
-    ax.plot(line, 0.5 * line, color=MUTED, lw=0.7, ls=":", zorder=1)
-    ax.scatter(o, pv, s=13, facecolor="none", edgecolor=BLUE, linewidth=0.6, alpha=0.7, zorder=2,
-               label="Eddy3D |U|" if i == 0 else None)
-    ax.scatter(o, ps, s=13, color=BLUE, edgecolor=SURFACE, linewidth=0.3, zorder=3,
-               label="Eddy3D √(|U|²+2k)" if i == 0 else None)
+    scalar = np.array([p["scalar_ratio"] for p in pts])
+    vector = np.array([p["vector_ratio"] for p in pts])
+    style.one_to_one(ax, 0, hi)
+    ax.scatter(o, vector, s=22, facecolor="none", edgecolor=style.OPENFOAM, linewidth=0.8, alpha=0.8, zorder=2)
+    ax.scatter(o, scalar, s=22, color=style.OPENFOAM, edgecolor=style.SURFACE, linewidth=0.4, zorder=3)
     m = scores[f"vr.{state}.{DIRECTION}.rms"]
-    ax.text(0.05, 0.95, f"R {m['R']:+.2f}\nFAC2 {m['Fac2']:.2f}\nFB {m['Fb']:+.2f}\nq {m['HitRate']:.2f}",
-            transform=ax.transAxes, va="top", ha="left", fontsize=6.5, color=INK)
-    ax.format(xlim=(0, hi), ylim=(0, hi), xlabel="tunnel velocity ratio", ylabel="Eddy3D / U$_{ref}$" if i == 0 else None,
-              title=f"{title}, wind from {DIRECTION}", titleloc="l", titlesize=8)
-axs[0].legend(loc="lr", ncols=1, frame=False, fontsize=6.5)
+    style.stats(ax, f"R {m['R']:+.2f}\nFAC2 {m['Fac2']:.2f}\nFB {m['Fb']:+.2f}")
+    ax.format(xlim=(0, hi), ylim=(0, hi), xlabel="Tunnel velocity ratio [–]",
+              ylabel="Eddy3D speed/U$_{ref}$ [–]" if i == 0 else None, title=f"{title.capitalize()}, wind from {DIRECTION}")
+    if i:
+        ax.tick_params(labelleft=False)
 
 ax = axs[2]
 d_obs = np.array([a["measured_ratio"] - b["measured_ratio"] for a, b in zip(pairs["ac"], pairs["bc"])])
 d_s = np.array([a["scalar_ratio"] - b["scalar_ratio"] for a, b in zip(pairs["ac"], pairs["bc"])])
 d_v = np.array([a["vector_ratio"] - b["vector_ratio"] for a, b in zip(pairs["ac"], pairs["bc"])])
 lim = 1.1 * float(max(np.abs(d_obs).max(), np.abs(d_s).max(), np.abs(d_v).max()))
-ax.axhline(0, color=MUTED, lw=0.7, zorder=1)
-ax.axvline(0, color=MUTED, lw=0.7, zorder=1)
-ax.plot([-lim, lim], [-lim, lim], color=MUTED, lw=1.0, zorder=1)
-ax.scatter(d_obs, d_v, s=13, facecolor="none", edgecolor=BLUE, linewidth=0.6, alpha=0.7, zorder=2)
-ax.scatter(d_obs, d_s, s=13, color=BLUE, edgecolor=SURFACE, linewidth=0.3, zorder=3)
-ax.text(0.05, 0.95, f"R {scores[f'delta.{DIRECTION}.R.rms']:+.2f} (√(|U|²+2k))\nR {scores[f'delta.{DIRECTION}.R']:+.2f} (|U|)",
-        transform=ax.transAxes, va="top", ha="left", fontsize=6.5, color=INK)
-ax.format(xlim=(-lim, lim), ylim=(-lim, lim), xlabel="tunnel: after − before", ylabel="Eddy3D: after − before",
-          title="what the construction changes", titleloc="l", titlesize=8)
-fig.format(suptitle="AIJ UWE Case E — Eddy3D (OpenFOAM 12, realizable k-ε, tabulated inlet) vs wind tunnel, z = 2 m",
-           abc=False, gridcolor="#e3e3e0", gridlinewidth=0.6)
-fig.save(os.path.join(HERE, "figures", "case-e-openfoam-agreement.png"), dpi=220)
-print("wrote case-e-openfoam-agreement.png")
+ax.axhline(0, color=style.REFERENCE, lw=0.8, zorder=1)
+ax.axvline(0, color=style.REFERENCE, lw=0.8, zorder=1)
+ax.plot([-lim, lim], [-lim, lim], color=style.REFERENCE, lw=1.0, zorder=1)
+ax.scatter(d_obs, d_v, s=22, facecolor="none", edgecolor=style.OPENFOAM, linewidth=0.8, alpha=0.8, zorder=2)
+ax.scatter(d_obs, d_s, s=22, color=style.OPENFOAM, edgecolor=style.SURFACE, linewidth=0.4, zorder=3)
+style.stats(ax, f"R {scores[f'delta.{DIRECTION}.R.rms']:+.2f}  √(|U|²+2k)\nR {scores[f'delta.{DIRECTION}.R']:+.2f}  |U|")
+ax.format(xlim=(-lim, lim), ylim=(-lim, lim), xlabel="Tunnel: after − before [–]", ylabel="Eddy3D: after − before [–]",
+          title="What the construction changes")
+style.finish(fig, "AIJ UWE Case E — Eddy3D (OpenFOAM 12, realizable k-ε, tabulated inlet) vs wind tunnel, z = 2 m",
+             handles=[style.marker(style.OPENFOAM, "Eddy3D √(|U|²+2k)"),
+                      style.marker(style.OPENFOAM, "Eddy3D |U|", filled=False),
+                      style.line(style.REFERENCE, "1:1", lw=1.0), style.line(style.REFERENCE, "factor of two", lw=0.8, ls=":")])
+style.save(fig, "case-e-openfoam-agreement.png")
 
 # ----------------------------------------------------------------------------- figure 2
-cmap = LinearSegmentedColormap.from_list("aij_diverging", [RED, MID, BLUE])
-fig2, axs2 = uplt.subplots(nrows=1, ncols=2, refwidth=3.2, refaspect=1, share=True, wspace=1.2)
+cmap = LinearSegmentedColormap.from_list("aij_diverging", [style.SLOW, style.NEUTRAL, style.FAST])
+fig2, axs2 = uplt.subplots(nrows=1, ncols=2, refwidth=3.6, refaspect=1, share=True)
 xs = [p["x"] for p in pairs["bc"]]; ys = [p["y"] for p in pairs["bc"]]
 pad = 30.0
 xlim = (min(xs) - pad, max(xs) + pad); ylim = (min(ys) - pad, max(ys) + pad)
@@ -177,18 +169,16 @@ for i, (state, title) in enumerate(STATES):
     pts = pairs[state]
     ratio = np.log2(np.array([p["scalar_ratio"] / p["measured_ratio"] for p in pts]))
     sc = ax.scatter([p["x"] for p in pts], [p["y"] for p in pts], c=np.clip(ratio, -1, 1), cmap=cmap,
-                    vmin=-1, vmax=1, s=26, edgecolor=SURFACE, linewidth=0.5, zorder=3)
+                    vmin=-1, vmax=1, s=34, edgecolor=style.SURFACE, linewidth=0.5, zorder=3)
     # Wind FROM the south-west, blowing toward the north-east.
     d = np.array([math.sin(math.radians(45)), math.cos(math.radians(45))])
     tail = np.array([xlim[0] + 0.12 * (xlim[1] - xlim[0]), ylim[0] + 0.12 * (ylim[1] - ylim[0])])
-    ax.add_patch(FancyArrowPatch(tuple(tail), tuple(tail + 30 * d), arrowstyle="-|>", mutation_scale=9,
-                                 color=INK, lw=1.1, zorder=4))
-    ax.format(xlim=xlim, ylim=ylim, aspect="equal", title=f"{title}, wind from {DIRECTION}", titleloc="l",
-              titlesize=8.5, xlabel="x, east (m)", ylabel="y, north (m)" if i == 0 else None)
-    ax.tick_params(labelleft=(i == 0))
+    ax.add_patch(FancyArrowPatch(tuple(tail), tuple(tail + 30 * d), arrowstyle="-|>", mutation_scale=11,
+                                 color=style.INK, lw=1.4, zorder=4))
+    ax.format(xlim=xlim, ylim=ylim, aspect="equal", title=f"{title.capitalize()}, wind from {DIRECTION}")
+style.outer_ticks(axs2, 1, 2)
 fig2.colorbar(sc, loc="b", ticks=[-1, -0.5, 0, 0.5, 1], length=0.7,
-              label="log$_2$(Eddy3D √(|U|²+2k) / tunnel):  −1 = half the tunnel's speed,  0 = equal,  +1 = twice")
-fig2.format(suptitle="AIJ UWE Case E — where the model is slow (red) or fast (blue), z = 2 m",
-            gridcolor="#e3e3e0", gridlinewidth=0.5)
-fig2.save(os.path.join(HERE, "figures", "case-e-openfoam-bias-map.png"), dpi=220)
-print("wrote case-e-openfoam-bias-map.png")
+              label="log$_2$(Eddy3D √(|U|²+2k) / tunnel) [–]:  −1 = half the tunnel's speed,  0 = equal,  +1 = twice")
+style.finish(fig2, "AIJ UWE Case E — where the model is slow (red) or fast (blue), z = 2 m",
+             xlabel="x, east [m]", ylabel="y, north [m]")
+style.save(fig2, "case-e-openfoam-bias-map.png")

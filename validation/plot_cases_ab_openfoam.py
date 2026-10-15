@@ -7,8 +7,9 @@ Two figures, each answering one question:
   cases-ab-openfoam-profiles.png    WHERE does it agree?  Centre-plane vertical profiles of U/U_H at the
                       measurement stations, measured points against the modelled line.
 
-Colours are slots 1-2 of the validated categorical palette (blue #2a78d6, orange #eb6834);
-reference geometry (1:1 line, FAC2 band, grid) is recessive grey so it never competes with data.
+Colours follow plotstyle.py: the measurement is black and the OpenFOAM model is slot 1 of the validated
+categorical palette (blue #2a78d6), as in every figure here; reference geometry (1:1 line, factor-of-two
+band, roof line) is recessive grey so it never competes with data.
 """
 from __future__ import annotations
 
@@ -21,20 +22,16 @@ import os
 import numpy as np
 import ultraplot as uplt
 
-VAL = r"C:/Eddy3DVal"
-OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "figures")
-os.makedirs(OUT, exist_ok=True)
+import plotstyle as style
 
-BLUE = "#2a78d6"     # slot 1 - the model
-ORANGE = "#eb6834"   # slot 2 - the measurement
-INK = "#2b2b2b"
-MUTED = "#8a8a88"
+VAL = r"C:/Eddy3DVal"
+MUTED = "#6b6b69"
 
 CASES = [
     ("A", "aij_A", "RS-caseA.csv", 1.0, +1.0, "aij_A_realizableKE_L3",
-     "Case A — 1:1:2 building", 0.16, 4.491, (-0.04, 0.04)),
+     "Case A · 1:1:2 building", 0.16, 4.491, (-0.04, 0.04)),
     ("B", "aij_B", "RS_caseB.csv", 0.001, -1.0, "aij_B_realizableKE_L3",
-     "Case B — 1:4:4 slab", 0.20, 5.133, (-0.025, 0.025)),
+     "Case B · 1:4:4 slab", 0.20, 5.133, (-0.025, 0.025)),
 ]
 
 
@@ -84,8 +81,8 @@ def metrics(case_dir, key):
 # ----------------------------------------------------------------------------- figure 1
 QUANTITIES = [("U", "U/U$_H$"), ("V", "V/U$_H$"), ("W", "W/U$_H$"), ("k", "k/U$_H^2$")]
 
-fig, axs = uplt.subplots(nrows=2, ncols=4, refwidth=1.72, refaspect=1, share=False,
-                         hspace=4.4, wspace=2.6)
+style.apply()
+fig, axs = uplt.subplots(nrows=2, ncols=4, refwidth=2.0, refaspect=1, share=False, wspace=4.2, hspace=2.4)
 
 for row, (tag, ref_id, ref_file, cscale, lsign, study, title, H, Uh, _bx) in enumerate(CASES):
     meas = read_reference(os.path.join(VAL, "reference", ref_id, ref_file), cscale, lsign)
@@ -101,35 +98,25 @@ for row, (tag, ref_id, ref_file, cscale, lsign, study, title, H, Uh, _bx) in enu
         lo = float(min(o.min(), p.min())); hi = float(max(o.max(), p.max()))
         pad = 0.08 * (hi - lo) if hi > lo else 0.1
         lo, hi = lo - pad, hi + pad
-        line = np.array([lo, hi])
 
-        # Reference geometry first, so data sits on top of it.
-        ax.plot(line, line, color=MUTED, lw=1.0, zorder=1)
-        if q == "k" or (o > 0).all():          # a factor-of-two band is meaningless across zero
-            ax.plot(line, 2 * line, color=MUTED, lw=0.7, ls=":", zorder=1)
-            ax.plot(line, 0.5 * line, color=MUTED, lw=0.7, ls=":", zorder=1)
-
-        ax.scatter(o, p, s=9, color=BLUE, alpha=0.75, edgecolor="none", zorder=3)
+        # Reference geometry first, so data sits on top of it; a factor-of-two band is meaningless across zero.
+        style.one_to_one(ax, lo, hi, factor_two=(q == "k" or (o > 0).all()))
+        ax.scatter(o, p, s=15, color=style.OPENFOAM, edgecolor=style.SURFACE, linewidth=0.35, zorder=3)
 
         m = metrics(study, "k" if q == "k" else f"velocity.{q}")
-        ax.text(0.05, 0.95, f"R {m['R']:+.2f}\nFAC2 {m['Fac2']:.2f}\nFB {m['Fb']:+.2f}",
-                transform=ax.transAxes, va="top", ha="left", fontsize=6.5, color=INK)
+        style.stats(ax, f"R {m['R']:+.2f}\nFAC2 {m['Fac2']:.2f}\nFB {m['Fb']:+.2f}")
+        ax.format(xlim=(lo, hi), ylim=(lo, hi), xlabel="Tunnel [–]" if row == len(CASES) - 1 else None,
+                  ylabel="Eddy3D [–]" if col == 0 else None)
 
-        ax.format(xlim=(lo, hi), ylim=(lo, hi), xlabel="measured", ylabel="Eddy3D" if col == 0 else None,
-                  title=label, titleloc="l", titlesize=8)
-
-for row, (_t, _r, _f, _c, _l, _s, title, _H, _U, _b) in enumerate(CASES):
-    axs[row, 0].text(-0.46, 0.5, title, transform=axs[row, 0].transAxes, rotation=90,
-                     va="center", ha="center", fontsize=9, color=INK)
-
-fig.format(suptitle="AIJ UWE benchmark — Eddy3D (OpenFOAM 12, realizable k-ε) vs wind tunnel",
-           abc=False, gridcolor="#e3e3e0", gridlinewidth=0.6)
-fig.save(os.path.join(OUT, "cases-ab-openfoam-agreement.png"), dpi=220)
-print("wrote cases-ab-openfoam-agreement.png")
+style.finish(fig, "AIJ UWE Cases A and B — Eddy3D (OpenFOAM 12, realizable k-ε) vs wind tunnel",
+             handles=[style.marker(style.OPENFOAM, "Eddy3D at the measured points"),
+                      style.line(style.REFERENCE, "1:1", lw=1.0), style.line(style.REFERENCE, "factor of two", lw=0.8, ls=":")],
+             toplabels=[label for _, label in QUANTITIES], leftlabels=[c[6] for c in CASES])
+style.save(fig, "cases-ab-openfoam-agreement.png")
 
 
 # ----------------------------------------------------------------------------- figure 2
-fig2, axs2 = uplt.subplots(nrows=1, ncols=2, refwidth=3.0, refaspect=1.25, share=False, wspace=4.5)
+fig2, axs2 = uplt.subplots(nrows=1, ncols=2, refwidth=3.4, refaspect=1.25, share=False, wspace=2.0)
 
 for i, (tag, ref_id, ref_file, cscale, lsign, study, title, H, Uh, bx) in enumerate(CASES):
     ax = axs2[i]
@@ -153,28 +140,28 @@ for i, (tag, ref_id, ref_file, cscale, lsign, study, title, H, Uh, bx) in enumer
         um = np.array([m["U"] / Uh for m, _ in sel])
         up = np.array([p["U"] / Uh for _, p in sel])
         off = j * 1.0                      # offset each station so they do not overplot
-        ax.plot(up + off, z, color=BLUE, lw=1.8, zorder=3)
-        ax.scatter(um + off, z, s=16, color=ORANGE, zorder=4, edgecolor="none")
+        ax.plot(up + off, z, color=style.OPENFOAM, lw=1.8, zorder=3)
+        ax.scatter(um + off, z, s=22, color=style.MEASURED, edgecolor=style.SURFACE, linewidth=0.5, zorder=4)
         # Label at the station's NOMINAL band centre (offset + 1, since U/U_H runs about 0..1.2
         # around each offset), not at the data mean: at the offset origin the text is clipped
         # outside the frame, and at the data mean two close stations collide.
-        drawn.append((off + 1.0, f"x/H={s:+.2f}"))
+        drawn.append((off + 1.0, f"x/H = {s:+.2f}"))
         lohi.extend([float(np.nanmin(np.concatenate([up, um]))) + off,
                      float(np.nanmax(np.concatenate([up, um]))) + off])
 
     for xc, lab in drawn:
-        ax.text(xc, 2.08, lab, ha="center", fontsize=6.5, color=MUTED)
+        ax.text(xc, 2.08, lab, ha="center", fontsize=8.5, color=MUTED, zorder=5,
+                bbox=dict(boxstyle="round,pad=0.2", facecolor=style.SURFACE, edgecolor="none"))
 
-    ax.axhline(1.0, color=MUTED, lw=0.7, ls="--", zorder=1)
+    ax.axhline(1.0, color=style.REFERENCE, lw=0.8, ls="--", zorder=1)
     lo, hi = (min(lohi) - 0.28, max(lohi) + 0.28) if lohi else (0, 3)
-    ax.format(title=title, titleloc="l", titlesize=9, xlabel="U/U$_H$  (offset per station)",
-              ylabel="z/H" if i == 0 else None, ylim=(0, 2.25), xlim=(lo, hi))
+    ax.format(title=title, xlabel="U/U$_H$ [–], offset by 1 per station", ylabel="z/H [–]" if i == 0 else None,
+              ylim=(0, 2.25), xlim=(lo, hi))
+    if i:
+        ax.tick_params(labelleft=False)
 
-axs2[0].plot([], [], color=BLUE, lw=1.8, label="Eddy3D")
-axs2[0].scatter([], [], s=16, color=ORANGE, label="wind tunnel")
-axs2[0].legend(loc="lr", ncols=1, frame=False, fontsize=7.5)
-
-fig2.format(suptitle="AIJ UWE benchmark — centre-plane profiles behind the building (y = 0)",
-            gridcolor="#e3e3e0", gridlinewidth=0.6)
-fig2.save(os.path.join(OUT, "cases-ab-openfoam-profiles.png"), dpi=220)
-print("wrote cases-ab-openfoam-profiles.png")
+style.finish(fig2, "AIJ UWE Cases A and B — centre-plane profiles behind the building (y = 0)",
+             handles=[style.marker(style.MEASURED, "Wind tunnel"),
+                      style.line(style.OPENFOAM, "Eddy3D (OpenFOAM 12, realizable k-ε)"),
+                      style.line(style.REFERENCE, "roof height, z = H", lw=0.8, ls="--")])
+style.save(fig2, "cases-ab-openfoam-profiles.png")
