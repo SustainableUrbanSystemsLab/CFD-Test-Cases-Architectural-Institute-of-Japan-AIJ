@@ -6,7 +6,7 @@
 Base URL: https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api
 Fallback (raw files from the repository): https://raw.githubusercontent.com/SustainableUrbanSystemsLab/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/main/docs/api
 Repository: https://github.com/SustainableUrbanSystemsLab/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ
-API version: 2.1.0. Data version (SHA-256 of the served data): e9ab32a2c6c9ed8113d4189941840a9469ffee9388137d0df01e1ead270b5395.
+API version: 2.1.0. Data version (SHA-256 of the served data): 5af8c81571e452c1925b3efe58c698908066f64886eba5efd9b2f0348ecdc019.
 Licence: CC-BY-4.0 — the data belongs to its collectors; cite the benchmark and the per-case papers.
 
 ## How to use this
@@ -92,7 +92,7 @@ Licence: CC-BY-4.0 — the data belongs to its collectors; cite the benchmark an
   - https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/C/pairs/ml-surrogate.csv?v=6a2b60658913
   - https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/C/pairs/openfoam12-realizableKE.csv?v=f3d2b649b543
   - https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/D/pairs/ml-surrogate.csv?v=9dd71c9ce66b
-  - https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/D/pairs/openfoam12-realizableKE.csv?v=af77106391ef
+  - https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/D/pairs/openfoam12-realizableKE.csv?v=fab4f6f21ad5
   - https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/pairs/ml-surrogate.csv?v=90b71f5762aa
   - https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/cases/E/pairs/openfoam12-realizableKE.csv?v=fa16bc3bcd62
 - https://sustainableurbansystems.com/CFD-Test-Cases-Architectural-Institute-of-Japan-AIJ/api/validation.json — every case and engine in one table: status, runs, headline scores

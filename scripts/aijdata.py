@@ -281,7 +281,7 @@ CASES = {
             "x": "+x streamwise at WD = 0 (the 0 deg thermistor field is exactly y-mirror symmetric; the split-fibre U is positive at the stream-like points and negative in the tower's windward horseshoe)",
             "y": "+y lateral",
             "z": "+z up; all points at z = 0.005",
-            "wind_direction_rotation": "+x toward +y, read from Figure 4 of the data paper. The array is exactly y-mirror symmetric, so the rotation sense CANNOT be settled from the measurements: headings +theta and -theta give exact mirror fields. Treat 22.5 and 45 deg with that caveat.",
+            "wind_direction_rotation": "+x toward +y, read from Figure 4 of the data paper. The array is exactly y-mirror symmetric, so the measurements alone cannot settle the rotation sense (headings +theta and -theta give exact mirror fields); solved Eddy3D fields corroborate Figure 4's sense: R 0.80 (22.5 deg) and 0.85 (45 deg) in it, 0.40 and 0.17 mirrored.",
             "lateral_sign_applied": 1,
             "coordinate_scale_applied": 0.001,
         },

@@ -108,7 +108,7 @@ legacy-workbook and WD = 45° symmetry checks all go red (negative control run 2
 - Unmeasured = `-999.9` in the CSVs, `-` in the workbook: NaN here. 12 thermistor points in the band around the tower are unmeasured in every direction (66 of 78 measured); 45 of the 78 points were never measured by the split fibre and are simply absent from its rows.
 - `RS-S_caseD.csv`'s z header is the **full-width** character `ｚ[m]` (U+FF5A) — a reader keyed on `z` misses it.
 - The split-fibre `Vs` column (and the workbook's "Scalar Vel.") is √(U²+V²+W²) to 1e-15 — the vector magnitude, not a thermistor reading — and is dropped. The thermistor's readings at those 33 points are in the thermistor rows; they average 1.34× the magnitude, and √(|U|² + 2k) from the split-fibre data reproduces them to FB +0.06.
-- The 0° thermistor field is an **exact** y-mirror (33 pairs, ΔVs = 0): half was measured and mirrored, so only 33 of 66 values are independent. The array is exactly y-symmetric, so the **22.5°/45° rotation sense is undecidable from the data**; the sense in `directions.csv` is `unverified` (`QUESTIONS.md` Q2).
+- The 0° thermistor field is an **exact** y-mirror (33 pairs, ΔVs = 0): half was measured and mirrored, so only 33 of 66 values are independent. The array is exactly y-symmetric, so the **22.5°/45° rotation sense is undecidable from the data**; the sense in `directions.csv` follows Figure 4 of the data paper and is corroborated by solved Eddy3D fields at both headings (`QUESTIONS.md` Q2).
 - The published `BD_caseD.stl` has 576 duplicate facets and all 83 roofs wound inward (signed volume half the true one); `geometry.stl` here is the 83 boxes, watertight, analytic volume.
 - The measurement plane z/H = 0.02 sits below the 0.02…2H window a log law is usually fitted over; the two fits in `manifest.json` differ by 5× in z₀ and by 20 points in U at the plane. A log-law inlet cannot be right at both the plane and aloft; the inlet k implied by atmBoundaryLayer (0.39–0.65 m²/s²) is below the tunnel's 0.53–0.75.
 - The repository's `case-d/case-d-eddy3d-prior-comparison.xlsx` is a prior attempt at R = +0.10 against the thermistor — a frame or geometry error, not a result.
@@ -131,7 +131,7 @@ legacy-workbook and WD = 45° symmetry checks all go red (negative control run 2
 | A | released | released (box) | n/a (one direction) | — |
 | B | released | released (box) | n/a | V flipped, 7 duplicate locations |
 | C | released | released (boxes, pitch verified) | **measured from the data; contradicts the paper's figure** | Q1 |
-| D | released (official Zenodo CSVs + workbook) | released (rebuilt boxes) | 0° settled; 22.5°/45° **unverified** | Q2 |
+| D | released (official Zenodo CSVs + workbook) | released (rebuilt boxes) | 0° settled; 22.5°/45° corroborated by solved fields | Q2 |
 | E | released (workbook, full precision) | **provisional**: official STL open-edged & model-scale; bc state reconstructed | settled (compass) | Q3 |
 
 ## 6. Cite

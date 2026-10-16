@@ -72,7 +72,7 @@ row and measured counts, and `sense_basis` / `status` saying what fixes the rota
 |---|---|---|
 | A, B | (1, 0) | definition |
 | C | (cos WD, **−sin WD**) | measured from the data: the WD = 45° field is mirror-symmetric about y = −x (mean |ΔVs| 0.10–0.13 m/s, the experiment's repeatability) and not about y = +x (0.52–0.80). Figure 3 of the data paper draws the opposite sense — QUESTIONS Q1 |
-| D | (cos WD, **+sin WD**) for 22.5°, 45° | **unverified**: the array is exactly y-mirror symmetric, so the sense cannot be settled from the data; taken from a reading of Figure 4 of the data paper — QUESTIONS Q2 |
+| D | (cos WD, **+sin WD**) for 22.5°, 45° | **corroborated by solved fields**: the array is exactly y-mirror symmetric, so the sense cannot be settled from the data; it is taken from Figure 4 of the data paper, and Eddy3D's solved fields score R 0.80 / 0.85 in this sense against 0.40 / 0.17 mirrored (22.5° / 45°) — QUESTIONS Q2 |
 | E | (−sin WD, −cos WD) | definition: FROM-direction, +y north (compass rose in `MP_caseE.png`); frame verified by all 80 points lying in open space and a 10° rotation control putting 26 inside buildings |
 
 Note C and D disagree in sense. That is what the sources say today; it is the first question to

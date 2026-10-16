@@ -71,7 +71,8 @@ symmetry convention.
   facets, watertight, volume 0.021477 m³.
 - Unmeasured thermistor cells are `-` (null in the API). At WD = 0 the 66 measured values are 33 exact mirror pairs.
 - **The rotation sense for 22.5° and 45° cannot be settled from the data** — the array is exactly y-mirror symmetric,
-  so +θ and −θ give exact mirror fields. The choice (+x toward +y) rests on Figure 4 of the data paper.
+  so +θ and −θ give exact mirror fields. The choice (+x toward +y) rests on Figure 4 of the data paper, and solved
+  Eddy3D fields corroborate it at both headings: R 0.80 (22.5°) and 0.85 (45°) in that sense, 0.40 and 0.17 mirrored.
 - The sensor coordinates and the geometry agree: every one of the 78 points is outside every block and inside the
   array, and shifting the cloud by 12.5 mm (5 m full scale) in x or y puts two points inside a block.
 - The Zenodo record ([10.5281/zenodo.15402668](https://doi.org/10.5281/zenodo.15402668)) also ships CSVs: unmeasured

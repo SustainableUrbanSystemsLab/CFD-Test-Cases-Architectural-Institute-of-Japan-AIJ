@@ -848,7 +848,7 @@ def build_D(prov):
     check(c, "U_H_from_profile_matches_stated", abs(UH - CASES[c]["U_H_stated"]) < 0.05, U_H_profile=UH, U_H_stated=CASES[c]["U_H_stated"])
     frame = {"origin": "tower centre on the ground plane (the array's bounding box is centred on it)", "x": "+x streamwise at WD = 0 (measured: split-fibre U, exact y-mirror symmetry of the 0 deg field)",
              "y": "+y lateral", "z": "+z up; every point at z = 0.005 = 0.02 H",
-             "wind_direction_rotation": "UNVERIFIED for 22.5 and 45 deg: the array is exactly y-mirror symmetric so the data cannot fix the sense; the scoping read of Figure 4 of the data paper says +x toward +y, i.e. flow_dir = (cos WD, +sin WD) — the OPPOSITE of what Case C's data show for Case C. QUESTIONS.md Q2.",
+             "wind_direction_rotation": "For 22.5 and 45 deg: +x toward +y, i.e. flow_dir = (cos WD, +sin WD), read from Figure 4 of the data paper. The array is exactly y-mirror symmetric so the data cannot fix the sense; solved Eddy3D fields corroborate it (R 0.80 / 0.85 in this sense, 0.40 / 0.17 mirrored) — the OPPOSITE of what Case C's data show for Case C. QUESTIONS.md Q2.",
              "length_scale": "model metres; scale 1:400 (readme), H = 0.25 m = 100 m full scale"}
     transform = {"coordinate_scale": 1.0, "lateral_sign": 1, "origin_shift_m": [0, 0, 0],
                  "note": "Zenodo CSVs are in metres already; -999.9 -> NaN; split-fibre |U| column dropped; variances from the workbook"}
@@ -1013,14 +1013,13 @@ def directions_for(case, pts, frame_note):
             fx, fy = math.cos(r), math.sin(r)
             if wd == 0:
                 basis, status = "measured: split-fibre U > 0, exact y-mirror symmetry of the 0 deg field", "settled"
-            elif wd == 22.5:
-                # The solved Eddy3D field (2026-10-15) scores R 0.80 in this sense and 0.40 in its y mirror.
-                basis = ("read from Figure 4 of the data paper; the y-symmetric array makes the sense undecidable from "
-                         "the data alone, and the solved Eddy3D field corroborates it (R 0.80 in this sense, 0.40 mirrored)")
-                status = "corroborated by a solved field — QUESTIONS.md Q2"
             else:
-                basis = "read from Figure 4 of the data paper (scoping); the y-symmetric array makes the sense undecidable from the data"
-                status = "unverified — QUESTIONS.md Q2"
+                # The solved Eddy3D fields score R 0.80 in this sense and 0.40 in its y mirror at 22.5 (2026-10-15),
+                # R 0.85 and 0.17 at 45 (2026-10-16).
+                r_here, r_mirror = {22.5: ("0.80", "0.40"), 45.0: ("0.85", "0.17")}[wd]
+                basis = ("read from Figure 4 of the data paper; the y-symmetric array makes the sense undecidable from "
+                         f"the data alone, and the solved Eddy3D field corroborates it (R {r_here} in this sense, {r_mirror} mirrored)")
+                status = "corroborated by a solved field — QUESTIONS.md Q2"
         else:
             fx, fy, basis, status = -math.sin(r), -math.cos(r), "definition: compass FROM-direction, +y north (MP_caseE.png rose); checks no_sensor_inside_building_* + the rotation control", "settled"
         rows.append({"case_id": case, "config": cfg, "instrument": inst, "wind_direction_deg": wd, "wind_direction": wname,

@@ -44,6 +44,11 @@ points in this release's sense and in its y mirror on the same solution. In Figu
 22.5° is corroborated in Figure 4's sense (`directions.csv` says so); 45° stays unverified until it is
 solved. The question stays open for the collector's word, and for 45°.
 
+*Update 2026-10-16 — and 45°.* Solved the same way (3000 iterations, the same residual plateau as 0° and
+22.5°): in Figure 4's sense R = 0.85, FAC2 0.89; mirrored R = 0.17, FAC2 0.70 — a wider margin than at 22.5°.
+Both rotated headings are now corroborated in Figure 4's sense. The question stays open only for the
+collector's own word, and for which half of the 0° plane was measured.
+
 ## Q3 — Case E: the sensor frame against the two geometries (Tominaga)
 
 1. Point 50 at (−45.5, −45.0) m lies **0.17 m inside a building wall of the official `BD_caseE.stl`**
